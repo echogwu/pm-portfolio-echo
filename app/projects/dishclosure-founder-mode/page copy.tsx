@@ -37,7 +37,7 @@ export default function GainbridgePage() {
         <BackButton />
 
         <h1 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-          Gainbridge — Product Manager, Data and Measurement
+          Gainbridge: Product Manager, Data and Measurement
         </h1>
         <p className="text-xl text-muted-foreground leading-relaxed mb-8">
           Built the instrumentation layer that made performance trustworthy — before optimization.

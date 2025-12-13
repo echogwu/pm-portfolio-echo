@@ -3,7 +3,7 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import { BackButton } from "@/components/back-button"
 
 export const metadata = {
-  title: "Lyft — System Quality Engineer → Developer Experience PM | Echo Paulus",
+  title: "Lyft: Quality Engineer → Developer Experience PM | Echo Paulus",
   description: "Learned when to stop optimizing tools and start optimizing where teams focus.",
 }
 
@@ -37,7 +37,7 @@ export default function LyftPage() {
         <BackButton />
 
         <h1 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-          Lyft — System Quality Engineer → Developer Experience PM
+          Lyft: Quality Engineer → Developer Experience PM
         </h1>
         <p className="text-xl text-muted-foreground leading-relaxed mb-8">
           When to stop optimizing for conventional metrics — and start optimizing what actually matters.
@@ -65,7 +65,7 @@ export default function LyftPage() {
           <img src="/lyft.gif" alt="Lyft developer experience" className="w-full" />
         </div>
 
-        <div className="prose prose-lg max-w-none space-y-12 text-justify">
+        <div className="prose prose-lg max-w-none space-y-12 justify-text">
           <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
             <p className="text-foreground/90 leading-relaxed">

@@ -38,7 +38,7 @@ export default function DishclosurePage() {
         <BackButton />
 
         <h1 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-          Dishclosure — Founder and Product Lead
+          Dishclosure: Founder and Product Lead
         </h1>
         <p className="text-xl text-muted-foreground leading-relaxed mb-8">
           An operator-first investigation that revealed the real constraint wasn’t UX or adoption, but broken upstream
@@ -65,11 +65,11 @@ export default function DishclosurePage() {
       </section>
 
       {/* Main Content */}
-      <article className="max-w-4xl mx-auto px-6 lg:px-8 pb-16 space-y-12 text-justify">
+      <article className="max-w-4xl mx-auto px-6 lg:px-8 pb-16 space-y-12 justify-text">
         {/* The Challenge */}
         <section>
           <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
-          <div className="space-y-6 text-foreground/90 leading-relaxed text-lg text-justify">
+          <div className="space-y-6 text-foreground/90 leading-relaxed text-lg justify-text">
             <p>
               Dishclosure was an early-stage product exploring how to help diners with dietary restrictions confidently
               identify what's safe to eat at restaurants.
@@ -98,7 +98,7 @@ export default function DishclosurePage() {
         {/* My Role */}
         <section>
           <h2 className="text-3xl font-bold mb-4 tracking-tight">My Role</h2>
-          <div className="space-y-4 text-foreground/90 leading-relaxed text-lg text-justify">
+          <div className="space-y-4 text-foreground/90 leading-relaxed text-lg justify-text">
             <p>Founder and Product Lead.</p>
             <p>
               I owned the problem end-to-end: market research, ecosystem analysis, data modeling, system design,
@@ -117,7 +117,7 @@ export default function DishclosurePage() {
           <div className="space-y-10">
             <div>
               <h3 className="text-xl font-semibold mb-3">Anchor on Safety and Trust, Not Growth Narratives</h3>
-              <p className="text-foreground/90 leading-relaxed text-lg text-justify">
+              <p className="text-foreground/90 leading-relaxed text-lg justify-text">
                 Given the stakes of food allergies, I rejected approaches that relied on probabilistic inference,
                 crowdsourcing, or "AI labeling" without authoritative data. A 1% error rate is unacceptable when
                 outcomes include hospitalization or worse. Trust had to be engineered, not assumed.
@@ -126,7 +126,7 @@ export default function DishclosurePage() {
 
             <div>
               <h3 className="text-xl font-semibold mb-3">Start with Operators, Not Diners</h3>
-              <p className="text-foreground/90 leading-relaxed text-lg text-justify">
+              <p className="text-foreground/90 leading-relaxed text-lg justify-text">
                 I began on the operator side, where allergen information is created and maintained. Restaurants already
                 run on complex stacks — POS, inventory management, recipe management, and menu platforms — and any
                 solution had to fit into existing workflows without adding cognitive or labor burden. I segmented
@@ -137,7 +137,7 @@ export default function DishclosurePage() {
 
             <div>
               <h3 className="text-xl font-semibold mb-3">Design the Data Model to Surface Reality</h3>
-              <div className="space-y-4 text-foreground/90 leading-relaxed text-lg text-justify">
+              <div className="space-y-4 text-foreground/90 leading-relaxed text-lg justify-text">
                 <p>
                   I defined a structured allergen schema connecting ingredients → packaged goods → recipes → menu items,
                   and built an operator portal that enforced normalized inputs. This wasn't about speed or convenience —
@@ -153,7 +153,7 @@ export default function DishclosurePage() {
 
             <div>
               <h3 className="text-xl font-semibold mb-3">Trace the Ecosystem End-to-End</h3>
-              <p className="text-foreground/90 leading-relaxed text-lg text-justify">
+              <p className="text-foreground/90 leading-relaxed text-lg justify-text">
                 I mapped the full data flow — supplier → operator → platform → diner — and prototyped integrations with
                 tools like Toast, Meez, and BentoBox to understand where data contracts broke down. This clarified that
                 the limiting factor wasn't UI, education, or willingness — it was missing upstream infrastructure
@@ -163,7 +163,7 @@ export default function DishclosurePage() {
 
             <div>
               <h3 className="text-xl font-semibold mb-3">Make the Call to Stop</h3>
-              <p className="text-foreground/90 leading-relaxed text-lg text-justify">
+              <p className="text-foreground/90 leading-relaxed text-lg justify-text">
                 Despite building functional MVPs on both the operator and diner sides, securing pilot interest, and
                 advocating for regulatory change (including supporting California SB68), I concluded that delivering a
                 truly reliable allergen experience would require supplier-level aggregation and standardization. Rather
@@ -181,7 +181,7 @@ export default function DishclosurePage() {
               <h3 className="text-lg font-semibold mb-2">
                 High-stakes consumer problems demand infrastructure-level solutions
               </h3>
-              <p className="text-foreground/90 leading-relaxed text-justify">
+              <p className="text-foreground/90 leading-relaxed justify-text">
                 When errors carry medical and legal consequences, probabilistic or surface-level fixes break down
                 quickly.
               </p>
@@ -189,7 +189,7 @@ export default function DishclosurePage() {
 
             <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold mb-2">Trust is an ecosystem property, not a UI feature</h3>
-              <p className="text-foreground/90 leading-relaxed text-justify">
+              <p className="text-foreground/90 leading-relaxed justify-text">
                 It emerges from enforceable schemas, authoritative sources, and aligned incentives across multiple
                 actors — not better messaging.
               </p>
@@ -199,7 +199,7 @@ export default function DishclosurePage() {
               <h3 className="text-lg font-semibold mb-2">
                 Operators don't resist solutions; they resist risk and overhead
               </h3>
-              <p className="text-foreground/90 leading-relaxed text-justify">
+              <p className="text-foreground/90 leading-relaxed justify-text">
                 Any tool that adds workflow friction or liability without clear guarantees will stall, regardless of
                 user empathy or market size.
               </p>
@@ -207,7 +207,7 @@ export default function DishclosurePage() {
 
             <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold mb-2">Regulation can create urgency, but not readiness</h3>
-              <p className="text-foreground/90 leading-relaxed text-justify">
+              <p className="text-foreground/90 leading-relaxed justify-text">
                 Even when laws like SB68 mandate disclosure, most operators lack the data and systems needed to comply
                 cleanly.
               </p>
@@ -215,7 +215,7 @@ export default function DishclosurePage() {
 
             <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-semibold mb-2">Knowing when to stop is part of the job</h3>
-              <p className="text-foreground/90 leading-relaxed text-justify">
+              <p className="text-foreground/90 leading-relaxed justify-text">
                 Exercising restraint — and not scaling on broken inputs — is a core product skill, not a failure.
               </p>
             </div>

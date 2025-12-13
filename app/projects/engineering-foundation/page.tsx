@@ -61,7 +61,7 @@ export default function EngineeringFoundationPage() {
         <div className="prose prose-lg max-w-none space-y-8">
           <div>
             <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
-            <p className="text-foreground leading-relaxed text-justify">
+            <p className="text-foreground leading-relaxed justify-text">
               This case study detailing my test engineering foundation across Amazon, AerServ, and Oracle is currently
               being developed. Check back soon for insights into how technical depth shapes product thinking.
             </p>

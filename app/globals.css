@@ -123,3 +123,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .justify-text {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
