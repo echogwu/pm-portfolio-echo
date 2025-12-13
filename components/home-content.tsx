@@ -284,11 +284,10 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* How I Work */}
+      {/* How I Work - Build Clarify Inside Messy Systems */}
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16 border-t border-border">
         <div className="w-full">
-          <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">How I Work</h1>
-          <p className="text-lg italic text-muted-foreground mt-2">Build clarity inside messy systems.</p>
+          <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">How I Work - Build Clarify Inside Messy Systems</h1>
 
           {/* Horizontal workflow (desktop) + stacked (mobile) */}
           <div className="mt-10">
@@ -400,6 +399,19 @@ export default function HomeContent() {
                           className="absolute left-2 right-2 h-1 rounded-full bg-gradient-to-r from-emerald-500/70 via-sky-500/70 via-amber-500/70 to-pink-500/70"
                           aria-hidden="true"
                         />
+                        {/* Arrowhead (subtle progression cue) */}
+                        <div
+                          className="absolute right-2"
+                          style={{
+                            width: 0,
+                            height: 0,
+                            borderTop: "8px solid transparent",
+                            borderBottom: "8px solid transparent",
+                            borderLeft: "14px solid rgba(236, 72, 153, 0.75)", // pink-500-ish
+                            transform: "translateY(-1px)",
+                          }}
+                          aria-hidden="true"
+                        />
                         {/* Nodes */}
                         <div className="grid grid-cols-4 w-full gap-x-8">
                           {steps.map((s, i) => {
@@ -435,9 +447,12 @@ export default function HomeContent() {
                   )
                 })()}
 
-                <p className="mt-10 text-center text-foreground/90 leading-relaxed">
-                  Once the foundation is sound, execution becomes obvious.
-                </p>
+                <blockquote className="mt-10 text-center">
+                  <div className="mx-auto mb-4 h-px w-24 bg-border" aria-hidden="true" />
+                  <p className="text-foreground/80 italic leading-relaxed">
+                    “Once the foundation is sound, execution becomes obvious.”
+                  </p>
+                </blockquote>
               </div>
             </div>
 
@@ -515,9 +530,12 @@ export default function HomeContent() {
                 ))}
               </ol>
 
-              <p className="mt-8 text-center text-foreground/90 leading-relaxed">
-                Once the foundation is sound, execution becomes obvious.
-              </p>
+              <blockquote className="mt-8 text-center">
+                <div className="mx-auto mb-4 h-px w-24 bg-border" aria-hidden="true" />
+                <p className="text-foreground/80 italic leading-relaxed">
+                  “Once the foundation is sound, execution becomes obvious.”
+                </p>
+              </blockquote>
             </div>
           </div>
 
