@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { PreserveScroll } from "@/components/preserve-scroll"
-import { RouteMap } from "@/components/route-map" // Import the RouteMap component
+import { ProjectsTimeline } from "@/components/projects-timeline"
 
 export const metadata = {
   title: "Projects | Echo Paulus",
@@ -43,44 +43,8 @@ export default function ProjectsPage() {
         </div>
       </nav>
 
-      {/* Header */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <h1 className="text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-balance">Career Journey</h1>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          Follow the route map below to explore my evolution from engineering to product leadership—each node represents
-          a key milestone in building clarity inside messy systems.
-        </p>
-      </section>
-
-      {/* Philosophy Section */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-8 lg:py-12">
-        <blockquote className="border-l-4 border-foreground/20 pl-8 py-4">
-          <p className="text-2xl lg:text-3xl font-medium leading-relaxed text-balance mb-8">
-            I build clarity inside messy systems.
-          </p>
-          <div className="space-y-6 text-foreground/90 leading-relaxed">
-            <p>
-              I'm drawn to problems most people avoid: ambiguous data ecosystems, fragmented workflows, misaligned
-              teams, and products held together by assumptions instead of architecture.
-            </p>
-            <p>
-              Across every project — from restaurant allergen data to financial pipelines — my work follows the same
-              pattern:
-            </p>
-            <ul className="space-y-2 ml-6 list-none">
-              <li>❶ Go where the complexity actually lives.</li>
-              <li>❷ Model the system so everyone can see what's really happening.</li>
-              <li>❸ Align the people who depend on that system.</li>
-              <li>❹ Build only what matters once the foundation is sound.</li>
-            </ul>
-            <p className="font-medium">Execution is cheap.</p>
-            <p className="italic">Clarity, judgment, and system design are the real leverage.</p>
-          </div>
-        </blockquote>
-      </section>
-
-      {/* Interactive Route Map */}
-      <RouteMap />
+      {/* Timeline */}
+      <ProjectsTimeline />
 
       {/* Footer */}
       <footer className="border-t border-border">

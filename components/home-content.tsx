@@ -141,44 +141,70 @@ export default function HomeContent() {
       {/* Data Philosophy Section */}
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16 border-t border-border">
         <div className="w-full">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-8 tracking-tight">My Data Philosophy</h2>
-
-          <div className="flex flex-col gap-6 text-foreground leading-relaxed justify-text">
-            <p className="text-lg font-medium">Modern products are data systems first.</p>
-
-            <p>
-              Every UI, workflow, and activation layer is downstream of whether the right data flows to the right place
-              at the right time. When events are inconsistent, late, or incorrectly modeled, the product breaks — even
-              if the interface is beautiful.
-            </p>
-
-            <p>
-              My work centers on designing clean event schemas, reliable ingestion pipelines, and clear data contracts
-              between upstream and downstream systems so that product behavior becomes predictable and scalable. Good
-              products are built on good data; good data comes from well-structured events, strong lineage, and systems
-              that enforce integrity by design.
-            </p>
-
-            <div className="border-l-4 border-primary pl-6 my-4">
-              <p className="font-medium">My experience at Dishclosure and Gainbridge sharpened this perspective:</p>
-              <ul className="mt-4 space-y-3 list-none">
-                <li>
-                  <span className="font-semibold">At Dishclosure,</span> I learned that no amount of UX innovation can
-                  compensate for missing or unreliable upstream data.
-                </li>
-                <li>
-                  <span className="font-semibold">At Gainbridge,</span> I saw how clean event modeling, dependency
-                  mapping, and taxonomy governance unblock entire workflows and align engineering, product, and
-                  marketing around a shared system of truth.
-                </li>
-              </ul>
+          <div className="rounded-3xl border border-border bg-card px-6 py-8 lg:px-10 lg:py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06),0_0_0_1px_rgba(15,23,42,0.04),0_26px_80px_rgba(248,246,240,0.9)]">
+            {/* Section headline (spans both columns) */}
+            <div className="mb-8 lg:mb-10">
+              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">
+                How I Think About Data Systems
+              </h1>
             </div>
 
-            <p className="text-lg font-medium">This philosophy shapes how I build platforms:</p>
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-10 lg:divide-x lg:divide-border">
+              {/* Left column */}
+              <div className="flex flex-col gap-5 text-foreground leading-relaxed lg:pr-10">
+                <h2 className="text-2xl font-bold leading-tight text-balance">
+                  Modern products are data systems before they are interfaces.
+                </h2>
 
-            <p className="text-xl font-semibold text-primary">
-              Start with the data model, enforce the contracts, and let every feature flow from there.
-            </p>
+                <p className="text-foreground/90 leading-relaxed justify-text">
+                  Every UI, workflow, and activation layer depends on whether the right data reaches the right place at
+                  the right time. When events are inconsistent, delayed, or poorly modeled, the product fails — no
+                  matter how polished the interface looks.
+                </p>
+
+                <p className="text-foreground/90 leading-relaxed justify-text">
+                  My work focuses on designing clean event schemas, reliable ingestion pipelines, and explicit data
+                  contracts between upstream and downstream systems. When data is structured correctly and ownership is
+                  clear, product behavior becomes predictable, scalable, and trustworthy. Good products aren’t powered
+                  by dashboards — they’re powered by data systems that enforce integrity by design.
+                </p>
+              </div>
+
+              {/* Right column */}
+              <div className="lg:pl-10">
+                <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-4">
+                    <h2 className="text-2xl font-bold leading-tight text-balance">What Shaped This Perspective</h2>
+                    <ul className="space-y-4 list-none">
+                      <li>
+                        <div className="font-semibold">Dishclosure</div>
+                        <p className="text-foreground/90 leading-relaxed justify-text mt-1">
+                          UX innovation couldn’t compensate for missing or unreliable upstream data. The real constraint
+                          wasn’t the interface — it was the data model underneath it.
+                        </p>
+                      </li>
+                      <li>
+                        <div className="font-semibold">Gainbridge</div>
+                        <p className="text-foreground/90 leading-relaxed justify-text mt-1">
+                          Clean event modeling, dependency mapping, and taxonomy governance unlocked entire workflows
+                          and aligned product, engineering, and marketing around a shared system of truth.
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Horizontal divider */}
+                  <div className="h-px bg-border" aria-hidden="true" />
+
+                  <div className="flex flex-col gap-3">
+                    <h2 className="text-2xl font-bold leading-tight text-balance">How This Shows Up in My Work</h2>
+                    <p className="text-foreground/90 leading-relaxed font-bold">
+                      Start with the data model. Enforce the contracts. Let every feature flow from there.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -255,6 +281,246 @@ export default function HomeContent() {
               View all →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* How I Work */}
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16 border-t border-border">
+        <div className="w-full">
+          <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">How I Work</h1>
+          <p className="text-lg italic text-muted-foreground mt-2">Build clarity inside messy systems.</p>
+
+          {/* Horizontal workflow (desktop) + stacked (mobile) */}
+          <div className="mt-10">
+            {/* Desktop: horizontal progression */}
+            <div className="hidden lg:block">
+              <div className="relative rounded-3xl border border-border bg-card px-8 py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06)]">
+                {(() => {
+                  const steps = [
+                    {
+                      step: "①",
+                      firstLine: "Map the system",
+                      bullets: ["ELT + event flow mapping", "Ownership & handoff gaps", "Source → warehouse → activation"],
+                      accent: "emerald" as const,
+                      placement: "below" as const, // 1 below
+                    },
+                    {
+                      step: "②",
+                      firstLine: "Define contracts",
+                      bullets: ["Event taxonomy & schemas", "Lifecycle definitions", "Data contracts"],
+                      accent: "sky" as const,
+                      placement: "above" as const, // 2 above
+                    },
+                    {
+                      step: "③",
+                      firstLine: "Socialize & align",
+                      bullets: [
+                        "Diagrams + docs people actually read",
+                        "Demos, walkthroughs, alignment reviews",
+                        "Metric misuse callouts",
+                      ],
+                      accent: "amber" as const,
+                      placement: "below" as const, // 3 below
+                    },
+                    {
+                      step: "④",
+                      firstLine: "Build",
+                      bullets: ["Avoid unnecessary features", "Ship higher-confidence changes"],
+                      accent: "pink" as const,
+                      placement: "above" as const, // 4 above
+                    },
+                  ]
+
+                  const accentClasses = (accent: (typeof steps)[number]["accent"]) => {
+                    if (accent === "emerald")
+                      return {
+                        node: "bg-emerald-600 text-white",
+                        ring: "ring-emerald-500/20",
+                        card: "border-emerald-500/20 bg-emerald-500/[0.02]",
+                        bullet: "marker:text-emerald-500/80",
+                      }
+                    if (accent === "sky")
+                      return {
+                        node: "bg-sky-600 text-white",
+                        ring: "ring-sky-500/20",
+                        card: "border-sky-500/20 bg-sky-500/[0.02]",
+                        bullet: "marker:text-sky-500/80",
+                      }
+                    if (accent === "amber")
+                      return {
+                        node: "bg-amber-600 text-white",
+                        ring: "ring-amber-500/20",
+                        card: "border-amber-500/25 bg-amber-500/[0.02]",
+                        bullet: "marker:text-amber-500/80",
+                      }
+                    return {
+                      node: "bg-pink-600 text-white",
+                      ring: "ring-pink-500/20",
+                      card: "border-pink-500/20 bg-pink-500/[0.02]",
+                      bullet: "marker:text-pink-500/80",
+                    }
+                  }
+
+                  return (
+                    <div className="grid grid-cols-4 grid-rows-[auto_140px_auto] gap-x-8 gap-y-8">
+                      {/* Cards (explicitly aligned to the matching node column) */}
+                      {steps.map((s, i) => {
+                        const a = accentClasses(s.accent)
+                        const isAbove = s.placement === "above"
+                        return (
+                          <div
+                            key={`card-${s.step}`}
+                            className="relative"
+                            style={{
+                              gridColumnStart: i + 1,
+                              gridRowStart: isAbove ? 1 : 3,
+                            }}
+                          >
+                            {/* Connector stub toward the timeline */}
+                            <div
+                              className={`absolute left-1/2 -translate-x-1/2 w-px bg-border ${isAbove ? "-bottom-8 h-8" : "-top-8 h-8"}`}
+                              aria-hidden="true"
+                            />
+                            <div className={`rounded-2xl border bg-background p-5 shadow-sm ${a.card}`}>
+                              <div className="text-foreground font-bold">{s.firstLine}</div>
+                              <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${a.bullet}`}>
+                                {s.bullets.map((b) => (
+                                  <li key={b}>{b}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        )
+                      })}
+
+                      {/* Timeline row */}
+                      <div className="col-span-4 row-start-2 relative flex items-center">
+                        {/* Main line */}
+                        <div
+                          className="absolute left-2 right-2 h-1 rounded-full bg-gradient-to-r from-emerald-500/70 via-sky-500/70 via-amber-500/70 to-pink-500/70"
+                          aria-hidden="true"
+                        />
+                        {/* Nodes */}
+                        <div className="grid grid-cols-4 w-full gap-x-8">
+                          {steps.map((s, i) => {
+                            const a = accentClasses(s.accent)
+                            const isAbove = s.placement === "above"
+                            return (
+                              <div key={`node-${s.step}`} className="relative flex items-center justify-center">
+                                {/* Connector stub up/down */}
+                                <div
+                                  className={`absolute left-1/2 -translate-x-1/2 w-px bg-border ${isAbove ? "top-[-32px] h-8" : "bottom-[-32px] h-8"}`}
+                                  aria-hidden="true"
+                                />
+                                <div
+                                  className={`relative z-10 h-12 w-12 rounded-full ${a.node} shadow-sm flex items-center justify-center text-lg font-bold ring-8 ${a.ring}`}
+                                >
+                                  {s.step}
+                                </div>
+                                {/* Arrow between nodes */}
+                                {i !== steps.length - 1 && (
+                                  <div
+                                    className="absolute top-1/2 -translate-y-1/2 -right-6 text-muted-foreground"
+                                    aria-hidden="true"
+                                  >
+                                    →
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })()}
+
+                <p className="mt-10 text-center text-foreground/90 leading-relaxed">
+                  Once the foundation is sound, execution becomes obvious.
+                </p>
+              </div>
+            </div>
+
+            {/* Mobile: stacked progression */}
+            <div className="lg:hidden">
+              <ol className="space-y-4">
+                {[
+                  {
+                    step: "①",
+                    title: "Map the system",
+                    firstLine: "Map the system",
+                    bullets: ["ELT + event flow mapping", "Ownership & handoff gaps", "Source → warehouse → activation"],
+                    accent: "emerald",
+                  },
+                  {
+                    step: "②",
+                    title: "Define contracts",
+                    firstLine: "Define contracts",
+                    bullets: ["Event taxonomy & schemas", "Lifecycle definitions", "Data contracts"],
+                    accent: "sky",
+                  },
+                  {
+                    step: "③",
+                    title: "Socialize & align",
+                    firstLine: "Socialize & align",
+                    bullets: [
+                      "Diagrams + docs people actually read",
+                      "Demos, walkthroughs, alignment reviews",
+                      "Metric misuse callouts",
+                    ],
+                    accent: "amber",
+                  },
+                  {
+                    step: "④",
+                    title: "Build",
+                    firstLine: "Build",
+                    bullets: ["Avoid unnecessary features", "Ship higher-confidence changes"],
+                    accent: "pink",
+                  },
+                ].map((item, idx, arr) => (
+                  <li key={item.step} className="relative">
+                    {idx !== arr.length - 1 && (
+                      <div className="absolute left-6 top-14 bottom-[-16px] w-px bg-border" aria-hidden="true" />
+                    )}
+                    <div className="flex gap-4">
+                      {(() => {
+                        const accent =
+                          item.accent === "emerald"
+                            ? { node: "bg-emerald-600 text-white", ring: "ring-emerald-500/20", card: "border-emerald-500/20 bg-emerald-500/[0.02]", bullet: "marker:text-emerald-500/80" }
+                            : item.accent === "sky"
+                              ? { node: "bg-sky-600 text-white", ring: "ring-sky-500/20", card: "border-sky-500/20 bg-sky-500/[0.02]", bullet: "marker:text-sky-500/80" }
+                              : item.accent === "amber"
+                                ? { node: "bg-amber-600 text-white", ring: "ring-amber-500/20", card: "border-amber-500/25 bg-amber-500/[0.02]", bullet: "marker:text-amber-500/80" }
+                                : { node: "bg-pink-600 text-white", ring: "ring-pink-500/20", card: "border-pink-500/20 bg-pink-500/[0.02]", bullet: "marker:text-pink-500/80" }
+                        return (
+                          <>
+                            <div
+                              className={`h-12 w-12 rounded-full shadow-sm flex items-center justify-center text-lg font-bold shrink-0 ring-8 ${accent.ring} ${accent.node}`}
+                            >
+                              {item.step}
+                            </div>
+                            <div className={`rounded-2xl border bg-card p-5 shadow-sm flex-1 ${accent.card}`}>
+                              <div className="text-foreground font-bold">{item.firstLine}</div>
+                              <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${accent.bullet}`}>
+                                {item.bullets.map((b) => (
+                                  <li key={b}>{b}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </>
+                        )
+                      })()}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <p className="mt-8 text-center text-foreground/90 leading-relaxed">
+                Once the foundation is sound, execution becomes obvious.
+              </p>
+            </div>
+          </div>
+
         </div>
       </section>
 
