@@ -62,7 +62,7 @@ export default function MBAWorkPage() {
         <div className="prose prose-lg max-w-none space-y-8">
           <div>
             <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
-            <p className="text-foreground leading-relaxed">
+            <p className="text-foreground leading-relaxed text-justify">
               This portfolio showcasing MBA-level analytical work is currently being developed. Check back soon for
               detailed case studies and frameworks.
             </p>

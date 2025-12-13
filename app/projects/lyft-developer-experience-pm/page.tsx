@@ -65,7 +65,7 @@ export default function LyftPage() {
           <img src="/lyft.gif" alt="Lyft developer experience" className="w-full" />
         </div>
 
-        <div className="prose prose-lg max-w-none space-y-12">
+        <div className="prose prose-lg max-w-none space-y-12 text-justify">
           <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
             <p className="text-foreground/90 leading-relaxed">

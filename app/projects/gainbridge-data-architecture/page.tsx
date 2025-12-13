@@ -65,11 +65,11 @@ export default function GainbridgePage() {
       </section>
 
       {/* Main Content */}
-      <article className="max-w-4xl mx-auto px-6 lg:px-8 pb-16 space-y-12">
+      <article className="max-w-4xl mx-auto px-6 lg:px-8 pb-16 space-y-12 text-justify">
         {/* Problem / Context */}
         <section>
           <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
-          <div className="space-y-6 text-foreground/90 leading-relaxed text-lg">
+          <div className="space-y-6 text-foreground/90 leading-relaxed text-lg text-justify">
             <p>
               Gainbridge's B2C business entered a strategic reset. Previous leadership optimized aggressively for
               top-line growth, accepting high CAC and opaque attribution as necessary costs. New leadership shifted
@@ -125,7 +125,7 @@ export default function GainbridgePage() {
         {/* My Role */}
         <section>
           <h2 className="text-3xl font-bold mb-4 tracking-tight">My Role</h2>
-          <div className="space-y-4 text-foreground/90 leading-relaxed text-lg">
+          <div className="space-y-4 text-foreground/90 leading-relaxed text-lg text-justify">
             <p>
               There was no formally defined owner for data architecture or measurement. I stepped in voluntarily, then
               formalized the role by:
@@ -155,7 +155,7 @@ export default function GainbridgePage() {
               <h3 className="text-xl font-semibold mb-3">
                 Reframed growth as a systems problem, not a channel problem
               </h3>
-              <p className="text-foreground/90 leading-relaxed text-lg">
+              <p className="text-foreground/90 leading-relaxed text-lg text-justify">
                 Rather than asking "which channel performs best," I asked: What decisions do we want to make? What
                 signals do those decisions require? Where does the current system distort or lose those signals? This
                 shifted the work from reporting to system design.
@@ -164,7 +164,7 @@ export default function GainbridgePage() {
 
             <div>
               <h3 className="text-xl font-semibold mb-3">Audited and clarified what each tool actually did</h3>
-              <p className="text-foreground/90 leading-relaxed text-lg">
+              <p className="text-foreground/90 leading-relaxed text-lg text-justify">
                 I mapped the full data stack — Segment, GA4, FullStory, Braze, Pendo, Snowflake, ad platforms — and
                 documented each tool's intended role, where capabilities overlapped, and where teams expected behavior
                 the tools could not provide. We didn't need more tools. We needed clear contracts between the ones we
@@ -193,7 +193,7 @@ export default function GainbridgePage() {
 
             <div>
               <h3 className="text-xl font-semibold mb-3">Designed a unified identity-first architecture</h3>
-              <p className="text-foreground/90 leading-relaxed text-lg">
+              <p className="text-foreground/90 leading-relaxed text-lg text-justify">
                 The core technical insight was identity. I redesigned the system around Segment as the identity and
                 routing hub, Snowflake as the system of record, FullStory for pre-enrollment behavior, and activation
                 tools as downstream consumers, not authorities. This allowed anonymous → known user stitching, true
@@ -203,7 +203,7 @@ export default function GainbridgePage() {
 
             <div>
               <h3 className="text-xl font-semibold mb-3">Proved value with a concrete multi-touch attribution model</h3>
-              <p className="text-foreground/90 leading-relaxed text-lg">
+              <p className="text-foreground/90 leading-relaxed text-lg text-justify">
                 Instead of debating attribution frameworks abstractly, I built one. I discovered years of untapped
                 pre-enrollment data in FullStory, reconstructed real customer journeys from first ad click to funding,
                 implemented a starter multi-touch attribution model, and walked leadership through a real user's path
@@ -216,7 +216,7 @@ export default function GainbridgePage() {
         {/* Outcomes / Impact */}
         <section>
           <h2 className="text-3xl font-bold mb-4 tracking-tight">Outcomes / Impact</h2>
-          <div className="space-y-6 text-foreground/90 leading-relaxed text-lg">
+          <div className="space-y-6 text-foreground/90 leading-relaxed text-lg text-justify">
             <p>The work delivered measurable, sustained impact:</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
               <div className="p-6 border border-border/50 rounded-lg bg-background/50 shadow-sm">

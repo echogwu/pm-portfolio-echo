@@ -65,7 +65,7 @@ export default function DishclosurePage() {
       </section>
 
       {/* Main Content */}
-      <article className="max-w-4xl mx-auto px-6 lg:px-8 pb-16 space-y-12">
+      <article className="max-w-4xl mx-auto px-6 lg:px-8 pb-16 space-y-12 text-justify">
         {/* The Challenge */}
         <section>
           <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
