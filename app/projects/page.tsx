@@ -1,12 +1,16 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { PreserveScroll } from "@/components/preserve-scroll"
 import { ProjectsTimeline } from "@/components/projects-timeline"
+import { buildMetadata } from "@/lib/seo"
 
-export const metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Projects | Echo Paulus",
   description:
     "A collection of product management work spanning data platforms, APIs, zero-to-one products, and strategic frameworks.",
-}
+  pathname: "/projects",
+  type: "website",
+})
 
 export default function ProjectsPage() {
   return (

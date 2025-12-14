@@ -1,11 +1,17 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { PreserveScroll } from "@/components/preserve-scroll"
 import { ProjectDetailLayout } from "@/components/project-detail-layout"
+import { buildMetadata } from "@/lib/seo"
 
-export const metadata = {
-  title: "Gainbridge | Product Manager, Data and Measurement",
+export const metadata: Metadata = buildMetadata({
+  title: "Gainbridge | Product Manager, Data and Measurement | Echo Paulus",
   description: "Built the instrumentation layer that made performance trustworthy — before optimization.",
-}
+  pathname: "/projects/gainbridge-data-architecture",
+  ogImagePath: "/gainbridge.gif",
+  ogImageAlt: "Gainbridge data architecture",
+  type: "article",
+})
 
 export default function GainbridgePage() {
   return (

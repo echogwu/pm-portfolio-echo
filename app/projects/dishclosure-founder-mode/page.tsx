@@ -1,12 +1,18 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { PreserveScroll } from "@/components/preserve-scroll"
 import { ProjectDetailLayout } from "@/components/project-detail-layout"
+import { buildMetadata } from "@/lib/seo"
 
-export const metadata = {
-  title: "Dishclosure | Founder and Product Lead",
+export const metadata: Metadata = buildMetadata({
+  title: "Dishclosure | Founder and Product Lead | Echo Paulus",
   description:
     "An operator-first investigation that revealed the real constraint wasn’t UX or adoption, but broken upstream data lineage.",
-}
+  pathname: "/projects/dishclosure-founder-mode",
+  ogImagePath: "/dishclosure.gif",
+  ogImageAlt: "Dishclosure allergen knowledge graph",
+  type: "article",
+})
 
 export default function DishclosurePage() {
   return (

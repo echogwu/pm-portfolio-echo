@@ -1,9 +1,13 @@
 import Link from "next/link"
+import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
 
-export const metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Work Samples | Echo Paulus",
   description: "Sample work artifacts, documents, and deliverables from product management projects.",
-}
+  pathname: "/work-samples",
+  type: "website",
+})
 
 export default function WorkSamplesPage() {
   return (

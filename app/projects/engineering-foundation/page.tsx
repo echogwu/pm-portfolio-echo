@@ -1,11 +1,17 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { ProjectDetailLayout } from "@/components/project-detail-layout"
+import { buildMetadata } from "@/lib/seo"
 
-export const metadata = {
-  title: "Amazon|AerServ|Oracle: Engineering Foundation | Echo Paulus",
+export const metadata: Metadata = buildMetadata({
+  title: "Amazon | AerServ | Oracle: Engineering Foundation | Echo Paulus",
   description: "The technical grounding that shaped how I evaluate data, risk, and leverage as a PM.",
-}
+  pathname: "/projects/engineering-foundation",
+  ogImagePath: "/engineering foundation.gif",
+  ogImageAlt: "Engineering foundation",
+  type: "article",
+})
 
 export default function EngineeringFoundationPage() {
   return (

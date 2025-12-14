@@ -1,11 +1,17 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { ProjectDetailLayout } from "@/components/project-detail-layout"
+import { buildMetadata } from "@/lib/seo"
 
-export const metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "IDEO: Design Thinking Challenge | Echo Paulus",
   description: "Practiced divergent→convergent thinking, research synthesis, rapid prototyping, and iteration.",
-}
+  pathname: "/projects/ideo-design-thinking",
+  ogImagePath: "/design-thinking.gif",
+  ogImageAlt: "IDEO design thinking prototype walkthrough",
+  type: "article",
+})
 
 export default function IDEOPage() {
   return (

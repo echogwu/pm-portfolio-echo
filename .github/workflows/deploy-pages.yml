@@ -38,6 +38,8 @@ jobs:
         env:
           # Custom domain deployed at the site root (no subpath)
           NEXT_PUBLIC_BASE_PATH: ""
+          # Used by Next Metadata to generate absolute OG/Twitter URLs
+          NEXT_PUBLIC_SITE_URL: "https://echo-paulus.com"
         run: pnpm build
 
       - name: Upload artifact

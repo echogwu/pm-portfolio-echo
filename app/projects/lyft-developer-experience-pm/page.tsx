@@ -1,11 +1,17 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { ProjectDetailLayout } from "@/components/project-detail-layout"
+import { buildMetadata } from "@/lib/seo"
 
-export const metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Lyft: Quality Engineer → Developer Experience PM | Echo Paulus",
   description: "Learned when to stop optimizing tools and start optimizing where teams focus.",
-}
+  pathname: "/projects/lyft-developer-experience-pm",
+  ogImagePath: "/lyft.gif",
+  ogImageAlt: "Lyft developer experience",
+  type: "article",
+})
 
 export default function LyftPage() {
   return (

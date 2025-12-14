@@ -1,12 +1,17 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { ProjectDetailLayout } from "@/components/project-detail-layout"
+import { buildMetadata } from "@/lib/seo"
 
-export const metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "MBA: Designing Decision Systems | Echo Paulus",
-  description:
-    "The bridge from “I can build” to “I can decide what’s worth building and align people around it.”",
-}
+  description: "The bridge from “I can build” to “I can decide what’s worth building and align people around it.”",
+  pathname: "/projects/mba-strategic-frameworks",
+  ogImagePath: "/mba.gif",
+  ogImageAlt: "MBA: designing decision systems",
+  type: "article",
+})
 
 export default function MBAWorkPage() {
   return (
