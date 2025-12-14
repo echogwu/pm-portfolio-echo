@@ -1,15 +1,18 @@
 import Link from "next/link"
-import { BackButton } from "@/components/back-button"
+import { ScrollToTop } from "@/components/scroll-to-top"
+import { ProjectDetailLayout } from "@/components/project-detail-layout"
 
 export const metadata = {
-  title: "MBA Decision, Analytics, and Strategy Portfolio | Echo Paulus",
+  title: "MBA: Designing Decision Systems | Echo Paulus",
   description:
-    "Developed analytical frameworks, financial models, and go-to-market strategies under imperfect information.",
+    "The bridge from “I can build” to “I can decide what’s worth building and align people around it.”",
 }
 
 export default function MBAWorkPage() {
   return (
     <div className="min-h-screen bg-background">
+      <ScrollToTop />
+
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -30,45 +33,82 @@ export default function MBAWorkPage() {
         </div>
       </nav>
 
-      {/* Header */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <BackButton />
-
-        <h1 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-          MBA Decision, Analytics, and Strategy Portfolio
-        </h1>
-        <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-          Developed analytical frameworks, financial models, and go-to-market strategies under imperfect information.
-          From M&A to strategy to marketing analytics, built structured decision models, segmentation logic, and
-          value-creation theses that clarified where to invest and how to measure success.
-        </p>
-        <div className="flex flex-wrap gap-2 mb-12">
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">Analytics</span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Measurement Strategy
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Financial Modeling
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Competitive Analysis
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Decision Systems
-          </span>
-        </div>
-
-        {/* Case Study Content - Placeholder */}
-        <div className="rounded-3xl border border-border bg-card px-8 py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06),0_0_0_1px_rgba(15,23,42,0.04)] mt-12">
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
-            <p className="text-foreground leading-relaxed justify-text">
-              This portfolio showcasing MBA-level analytical work is currently being developed. Check back soon for
-              detailed case studies and frameworks.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ProjectDetailLayout
+        title="MBA — Designing Decision Systems"
+        subline="The bridge from “I can build” to “I can decide what’s worth building and align people around it.”"
+        tags={["Decision Systems", "Incentives", "Metrics Strategy", "Tradeoffs", "Cross-functional Fluency"]}
+        heroImage={{
+          src: "/mba.gif",
+          alt: "MBA: designing decision systems",
+        }}
+        row1={{
+          challenge: {
+            heading: "Challenge",
+            bullets: [
+              "Move upstream from execution into how decisions get made before code exists",
+              "Learn how incentives, metrics, power, and uncertainty shape what teams choose to build",
+              "Build judgment (not breadth) across finance, accounting, marketing, economics, and analytics lenses",
+              "Translate ambiguity into clear decision logic and alignment",
+            ],
+          },
+          role: {
+            heading: "Role",
+            bullets: [
+              "Full-time MBA student, optimized for judgment over coverage",
+              "Treated the MBA as a system to design, not a checklist to complete",
+              "Prioritized courses that exposed incentives, tradeoffs, and decision logic",
+              "Synthesized theory with real product, data, and organizational problems",
+            ],
+          },
+        }}
+        row2={{
+          throughline: "decisions over functions → incentives over intentions → clarity over control",
+          left: [
+            {
+              title: "Studied decisions, not functions",
+              description:
+                "Used accounting, finance, economics, marketing, and analytics as different lenses on the same decision problem.",
+            },
+            {
+              title: "Followed incentives, not intentions",
+              description:
+                "Learned how metrics and ownership structures quietly shape behavior — and why smart teams can ship the wrong thing for the right reasons.",
+              bullets: ["Tracked how success metrics flow into prioritization", "Noted where accountability breaks alignment"],
+            },
+          ],
+          right: [
+            {
+              title: "Designed decision systems (not just outputs)",
+              description:
+                "Focused on how leaders create leverage by structuring incentives and clarity, not by increasing control.",
+              bullets: ["Make tradeoffs explicit", "Create shared definitions before execution"],
+            },
+            {
+              title: "Shifted operating defaults",
+              description: "Internalized a sequence that improves decision quality under uncertainty.",
+              bullets: ["Metrics before roadmaps", "Instrumentation before optimization", "Alignment before execution"],
+            },
+          ],
+        }}
+        row3={{
+          outcomes: {
+            heading: "Outcomes",
+            bullets: [
+              "A durable decision framework I now use in product and platform work",
+              "Stronger cross-functional fluency with marketing, finance, and strategy partners",
+              "Increased comfort operating where incentives conflict and clarity is missing",
+            ],
+          },
+          learnings: {
+            heading: "Learnings",
+            bullets: [
+              "Most product conflict is unresolved business strategy (metrics, customers, risk, and goals)",
+              "Execution can’t save broken decision logic — velocity amplifies existing incentives",
+              "Leadership leverage comes from clarity, not control",
+            ],
+          },
+        }}
+      />
 
       {/* Footer */}
       <footer className="border-t border-border mt-24">

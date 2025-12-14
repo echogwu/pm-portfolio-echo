@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { BackButton } from "@/components/back-button"
+import { ProjectDetailLayout } from "@/components/project-detail-layout"
 
 export const metadata = {
   title: "Lyft: Quality Engineer → Developer Experience PM | Echo Paulus",
@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function LyftPage() {
   return (
-    <div className="min-h-screen bg-[#fafaf7]">
+    <div className="min-h-screen bg-background">
       <ScrollToTop />
 
       {/* Navigation */}
@@ -32,276 +32,99 @@ export default function LyftPage() {
         </div>
       </nav>
 
-      {/* Header */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
-            <BackButton />
-
-            <h1 className="mt-10 text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-              Lyft: Quality Engineer → Developer Experience PM
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              When to stop optimizing for conventional metrics — and start optimizing what actually matters.
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Developer Experience
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Internal Tools
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Simulation
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Systems Thinking
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Validation Strategy
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Platform Reliability
-              </span>
-            </div>
-          </div>
-
-          <div className="relative rounded-xl overflow-hidden shadow-2xl bg-muted">
-            <img
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/lyft.gif`}
-              alt="Lyft developer experience"
-              className="w-full"
-            />
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-border bg-card px-8 py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06),0_0_0_1px_rgba(15,23,42,0.04)] mt-12">
-          <div className="space-y-12 justify-text">
-            <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
-            <p className="text-foreground/90 leading-relaxed">
-              Lyft fundamentally changed the driver workflow to surface earnings and destination earlier in the
-              experience. This shift touched core pricing, dispatch, and earnings services across regions and ride
-              types.
-            </p>
-            <p className="text-foreground/90 leading-relaxed mt-4">
-              After launching experiments, the impact was immediate:
-            </p>
-            <ul className="space-y-2 text-foreground/90 mt-4">
-              <li>Weekly SEVs tied to earnings and pricing logic</li>
-              <li>Critical bugs that slipped past manual regression suites and UI automation</li>
-              <li>
-                Issues discovered only through sophisticated exploratory testing, combining logs, metrics, and system
-                tools
-              </li>
-            </ul>
-            <p className="text-foreground/90 leading-relaxed mt-6">
-              Existing validation approaches were largely optimized for automation coverage of individual components.
-              They struggled to surface failures that emerged only when multiple services interacted under real-world
-              conditions.
-            </p>
-            <p className="text-foreground/90 leading-relaxed mt-4">
-              The challenge was to move beyond maximizing test coverage and instead identify new tools and methods that
-              could bridge gaps across services, exposing high-stakes system failures before they reached production.
-            </p>
-            </div>
-
-            <div>
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">My Role</h2>
-            <p className="text-muted-foreground italic mb-6">System Quality Engineer → Internal Tool Product Manager</p>
-            <p className="text-foreground/90 leading-relaxed mb-6">
-              I started as a system quality engineer embedded in driver workflows, where my focus extended beyond test
-              execution to shaping quality strategy across teams. As gaps in the existing validation approach became
-              clear, my role evolved into owning and productizing the internal simulation tool as the highest-leverage
-              solution.
-            </p>
-
-            <p className="text-foreground/90 leading-relaxed mb-3 font-medium">
-              As a System Quality Engineer, I focused on:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-6">
-              <li>Setting quality strategy for complex, multi-service driver systems</li>
-              <li>Creating alignment across teams on where validation effort mattered most</li>
-              <li>
-                Influencing quality culture by shifting focus from test coverage to failure modes and system behavior
-              </li>
-              <li>Identifying high-leverage tools and methods to surface earnings- and pricing-related risks</li>
-            </ul>
-
-            <p className="text-foreground/90 leading-relaxed mb-3 font-medium">
-              As an Internal Tool Product Manager, I focused on expanding usefulness and driving adoption under
-              constrained, post-RIF conditions, wearing multiple hats:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-6">
-              <li>
-                <strong>Product Manager</strong> — roadmap definition, prioritization, success metrics
-              </li>
-              <li>
-                <strong>Technical Lead</strong> — tool reliability, workflows, instrumentation
-              </li>
-              <li>
-                <strong>Adoption Driver</strong> — documentation, demos, stakeholder enablement
-              </li>
-              <li>
-                <strong>Support Owner</strong> — on-call rotation, user feedback loops
-              </li>
-            </ul>
-
-            <p className="text-foreground/90 leading-relaxed font-semibold">
-              The transition reflected a shift from influencing quality locally to owning a platform that changed how
-              teams validated systems company-wide.
-            </p>
-            </div>
-          </div>
-
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">Approach / Decisions</h2>
-            <p className="text-muted-foreground italic mb-6">
-              UI automation → acceptance tests → still not enough → simulation + metrics
-            </p>
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Questioned UI automation efficacy with data</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  Pulled six months of Jira bugs and SEVs into a spreadsheet and reviewed each one to assess whether UI
-                  automation could have realistically caught it. Found that UI tests would have prevented only a small
-                  fraction of high-impact issues.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Identified where automation breaks down</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  Most severe failures came from complex, real-world conditions — region-specific logic, ride-type
-                  combinations, pricing edge cases — that neither UI nor standard end-to-end tests could reliably cover.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Rebalanced validation strategy</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  Shifted effort away from flaky UI tests toward backend end-to-end acceptance tests for deterministic
-                  paths, while acknowledging the limits of automation as a whole.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Discovered simulation as the highest leverage</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  Through SEV postmortems and metrics reviews, concluded that system-level simulation paired with
-                  metrics and alerts was the only reliable way to surface the failures that mattered most.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Productized the solution</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  Took ownership of the rider–driver simulation tool, defined a roadmap based on user feedback and usage
-                  data, and improved reliability, usability, and adoption across engineering teams.
-                </p>
-              </div>
-            </div>
-            </div>
-
-            <div>
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">Key Outcomes</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <div className="text-3xl font-bold text-foreground mb-2">+10%</div>
-                <div className="text-sm text-muted-foreground">
-                  Reliability and adoption of internal validation tooling
-                </div>
-              </div>
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <div className="text-3xl font-bold text-foreground mb-2">−30%</div>
-                <div className="text-sm text-muted-foreground">
-                  Support load, reducing on-call noise and engineering interrupts
-                </div>
-              </div>
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <div className="text-3xl font-bold text-foreground mb-2">~$150K</div>
-                <div className="text-sm text-muted-foreground">
-                  Quarterly savings validated through log and usage analysis
-                </div>
-              </div>
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <div className="text-3xl font-bold text-foreground mb-2">Earlier</div>
-                <div className="text-sm text-muted-foreground">
-                  Failure detection shifted from post-launch to pre-release
-                </div>
-              </div>
-            </div>
-            <ul className="space-y-3 text-foreground/90 mt-6">
-              <li>
-                <strong>Earlier failure detection:</strong> shifted discovery of high-risk issues (pricing, earnings,
-                regional logic) from post-launch to pre-release
-              </li>
-              <li>
-                <strong>Prevented recurring SEVs</strong> by introducing metrics, alerts, and simulation checks that
-                caught issues automation could not
-              </li>
-              <li>
-                <strong>Shaped quality culture:</strong> moved teams away from "more tests" toward evidence-based
-                validation, focusing on failure modes, observability, and system behavior
-              </li>
-            </ul>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">What I Learned</h2>
-            <div className="space-y-6">
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">Judgment beats tools</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  The hardest part of product work isn't choosing what to build, but deciding what not to invest in. At
-                  Lyft, the highest-impact move was not adding more automation, but recognizing where it stopped
-                  creating value and redirecting effort to higher-leverage validation.
-                </p>
-              </div>
-
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">Leverage comes from understanding the system</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  The most important failures didn't live in features or UI flows, but in how systems interacted under
-                  real-world conditions. Effective product decisions required reasoning across data, infrastructure, and
-                  user behavior — not optimizing any single layer in isolation.
-                </p>
-              </div>
-
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">Evidence is the fastest way to influence</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  Challenging entrenched practices only worked when decisions were grounded in concrete data (bugs,
-                  SEVs, usage metrics). Clear evidence made tradeoffs legible and enabled alignment without authority.
-                </p>
-              </div>
-
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">Internal tools need product rigor</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  Adoption, reliability, and trust don't happen by accident. Internal platforms only change behavior
-                  when they have clear users, workflows, success metrics, and positioning — the same fundamentals as
-                  external products.
-                </p>
-              </div>
-
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">Prevention is a product outcome</h3>
-                <p className="text-foreground/90 leading-relaxed">
-                  The most valuable impact often shows up as incidents that never happen. Designing for early detection
-                  and confidence at launch protected driver trust and business outcomes, even when the results were
-                  invisible.
-                </p>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-      </section>
+      <ProjectDetailLayout
+        title="Lyft: Quality Engineer → Developer Experience PM"
+        subline="When to stop optimizing for conventional metrics — and start optimizing what actually matters."
+        tags={[
+          "Developer Experience",
+          "Internal Tools",
+          "Simulation",
+          "Systems Thinking",
+          "Validation Strategy",
+          "Platform Reliability",
+        ]}
+        heroImage={{
+          src: "/lyft.gif",
+          alt: "Lyft developer experience",
+        }}
+        row1={{
+          challenge: {
+            heading: "Challenge",
+            bullets: [
+              "Major driver workflow change touched pricing, dispatch, and earnings services across regions",
+              "Weekly SEVs tied to earnings/pricing logic exposed gaps in existing validation",
+              "Critical bugs slipped past manual regression suites and UI automation",
+              "Severe failures emerged only when multiple services interacted under real-world conditions",
+              "Move beyond “maximize coverage” to prevent high-stakes system failures before production",
+            ],
+          },
+          role: {
+            heading: "Role",
+            bullets: [
+              "System Quality Engineer → Internal Tool Product Manager",
+              "Set quality strategy for complex, multi-service driver systems",
+              "Created alignment on where validation effort mattered most (failure modes over coverage)",
+              "Identified simulation + metrics as the highest-leverage solution",
+              "Owned roadmap, reliability, and adoption of the internal simulation tool",
+            ],
+          },
+        }}
+        row2={{
+          throughline: "UI automation → acceptance tests → still not enough → simulation + metrics",
+          left: [
+            {
+              title: "Used evidence to question UI automation ROI",
+              description: "Reviewed six months of Jira bugs and SEVs to see what automation could realistically prevent.",
+              bullets: ["UI tests would have caught only a small fraction of high-impact issues"],
+            },
+            {
+              title: "Named where automation breaks down",
+              description:
+                "The worst failures came from real-world combinations (region logic, ride types, pricing edges) that tests can’t cover reliably.",
+              bullets: ["Multi-service interactions", "Edge-case condition explosions"],
+            },
+            {
+              title: "Rebalanced the validation strategy",
+              description: "Shifted effort away from flaky UI tests toward deterministic backend acceptance tests.",
+              bullets: ["Automate what’s deterministic", "Acknowledge the limits of coverage"],
+            },
+          ],
+          right: [
+            {
+              title: "Made simulation the center of gravity",
+              description:
+                "Postmortems + metrics made it clear: system-level simulation paired with alerts was the only reliable early-warning mechanism.",
+              bullets: ["Surface failures before launch", "Detect behavioral changes across services"],
+            },
+            {
+              title: "Productized the solution for adoption",
+              description:
+                "Took ownership of the rider–driver simulation tool and improved reliability, usability, and adoption under constraints.",
+              bullets: ["Roadmap from user feedback + usage data", "Better support loops and documentation"],
+            },
+          ],
+        }}
+        row3={{
+          outcomes: {
+            heading: "Outcomes",
+            bullets: [
+              "Earlier detection: shifted discovery of high-risk failures from post-launch to pre-release",
+              "Prevented recurring SEVs with metrics, alerts, and simulation checks automation couldn’t cover",
+              "Improved reliability/adoption of internal validation tooling (+10%)",
+              "Reduced support load and on-call noise (−30%), validating ~$150K quarterly savings",
+            ],
+          },
+          learnings: {
+            heading: "Learnings",
+            bullets: [
+              "Judgment beats tools: redirect effort when it stops creating value",
+              "Leverage comes from understanding system interactions, not optimizing a single layer",
+              "Evidence is the fastest way to influence and align without authority",
+              "Internal tools need product rigor: clear users, workflows, metrics, and positioning",
+            ],
+          },
+        }}
+      />
 
       {/* Footer */}
       <footer className="border-t border-border mt-24">

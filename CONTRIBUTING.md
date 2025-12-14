@@ -66,6 +66,12 @@ See `PROJECT_STRUCTURE.md`.
 
 ## Project detail page consistency
 
-When adding/editing case studies under `app/projects/*`, follow the **Project detail page typography (standard)** section in `PROJECT_STRUCTURE.md` to keep font sizes/weights consistent across pages.
+When adding/editing case studies under `app/projects/*`, follow the **Project detail page layout (standard)** and **Project detail page typography (standard)** sections in `PROJECT_STRUCTURE.md`.
+
+In practice:
+
+- Use the shared layout component: `components/project-detail-layout.tsx`
+- Keep content scannable (short paragraphs + bullets)
+- Avoid “mega wrapper” cards; rely on whitespace + thin rules + vertical dividers
 
 

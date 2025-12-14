@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { PreserveScroll } from "@/components/preserve-scroll"
-import { BackButton } from "@/components/back-button"
+import { ProjectDetailLayout } from "@/components/project-detail-layout"
 
 export const metadata = {
   title: "Dishclosure | Founder and Product Lead",
@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function DishclosurePage() {
   return (
-    <div className="min-h-screen bg-[#fafaf7]">
+    <div className="min-h-screen bg-background">
       <PreserveScroll />
 
       {/* Navigation */}
@@ -33,215 +33,95 @@ export default function DishclosurePage() {
         </div>
       </nav>
 
-      {/* Header Section */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
-            <BackButton />
-
-            <h1 className="mt-10 text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-              Dishclosure: Founder and Product Lead
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              An operator-first investigation that revealed the real constraint wasn’t UX or adoption, but broken
-              upstream data lineage.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Zero-to-One
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Data Lineage
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Schema Design
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Ecosystem Diagnosis
-              </span>
-              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-                Go/No-Go Decision
-              </span>
-            </div>
-          </div>
-
-          <div className="relative rounded-xl overflow-hidden shadow-2xl bg-muted">
-            <img
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/dishclosure.gif`}
-              alt="Dishclosure allergen knowledge graph"
-              className="w-full"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <article className="max-w-6xl mx-auto px-6 lg:px-8 pb-16">
-        <div className="rounded-3xl border border-border bg-card px-8 py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06),0_0_0_1px_rgba(15,23,42,0.04)]">
-          <div className="space-y-12 justify-text">
-            <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          {/* The Challenge */}
-          <section>
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
-            <div className="space-y-6 text-foreground/90 leading-relaxed text-lg justify-text">
-              <p>
-                Dishclosure was an early-stage product exploring how to help diners with dietary restrictions confidently
-                identify what's safe to eat at restaurants.
-              </p>
-              <p>
-                The problem looked deceptively simple: surface allergen information so people can order safely. In
-                reality, food allergies sit at the intersection of health risk, legal liability, operational constraints,
-                and fragmented data systems.
-              </p>
-              <p>
-                For diners and parents, eating out involves anxiety, social exclusion, and real financial risk — a single
-                mistake can result in emergency care and thousands of dollars in medical bills. For restaurants,
-                disclosing allergen information carries legal exposure, workflow overhead, and accuracy risk, especially
-                when ingredient data is incomplete or constantly changing.
-              </p>
-              <div className="border-l-4 border-[#0066cc]/30 pl-6 py-4 my-8 bg-muted/30 rounded-r">
-                <p className="text-xl font-medium text-balance leading-relaxed">
-                  The core challenge wasn't building a consumer experience. It was this: there is no reliable, end-to-end
-                  source of truth for allergen data in the restaurant ecosystem, from suppliers to inventory systems to
-                  menus. Without that foundation, any diner-facing solution risks being untrustworthy.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* My Role */}
-          <section>
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">My Role</h2>
-            <div className="space-y-4 text-foreground/90 leading-relaxed text-lg justify-text">
-              <p>Founder and Product Lead.</p>
-              <p>
-                I owned the problem end-to-end: market research, ecosystem analysis, data modeling, system design,
-                prototyping, validation, and go/no-go decision-making. I was responsible not just for building solutions,
-                but for determining whether a safe, scalable product was viable given real-world constraints.
-              </p>
-            </div>
-          </section>
-        </div>
-
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          {/* Approach / Decisions */}
-          <section>
-            <h2 className="text-3xl font-bold mb-2 tracking-tight">Approach / Decisions</h2>
-            <p className="text-muted-foreground italic mb-6">
-              systems investigation → source-of-truth analysis → schema enforcement → ecosystem constraint discovery →
-              stop decision
-            </p>
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-xl font-semibold mb-3">Anchor on Safety and Trust, Not Growth Narratives</h3>
-                <p className="text-foreground/90 leading-relaxed text-lg justify-text">
-                  Given the stakes of food allergies, I rejected approaches that relied on probabilistic inference,
-                  crowdsourcing, or "AI labeling" without authoritative data. A 1% error rate is unacceptable when
-                  outcomes include hospitalization or worse. Trust had to be engineered, not assumed.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-3">Start with Operators, Not Diners</h3>
-                <p className="text-foreground/90 leading-relaxed text-lg justify-text">
-                  I began on the operator side, where allergen information is created and maintained. Restaurants already
-                  run on complex stacks — POS, inventory management, recipe management, and menu platforms — and any
-                  solution had to fit into existing workflows without adding cognitive or labor burden. I segmented
-                  operators not just by size, but by tech adoption, mindset, and motivation (e.g., inclusive dining,
-                  personal connection to allergies, or revenue upside).
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-3">Design the Data Model to Surface Reality</h3>
-                <div className="space-y-4 text-foreground/90 leading-relaxed text-lg justify-text">
-                  <p>
-                    I defined a structured allergen schema connecting ingredients → packaged goods → recipes → menu items,
-                    and built an operator portal that enforced normalized inputs. This wasn't about speed or convenience —
-                    it was about making ambiguity visible.
-                  </p>
-                  <p>
-                    I explored barcode scanning and external ingredient databases as the entry point for operators, only
-                    to discover a critical blocker: supplier-level allergen data was inconsistent, incomplete, or
-                    unavailable via APIs. If the first step in the workflow fails, the entire system collapses.
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-3">Trace the Ecosystem End-to-End</h3>
-                <p className="text-foreground/90 leading-relaxed text-lg justify-text">
-                  I mapped the full data flow — supplier → operator → platform → diner — and prototyped integrations with
-                  tools like Toast, Meez, and BentoBox to understand where data contracts broke down. This clarified that
-                  the limiting factor wasn't UI, education, or willingness — it was missing upstream infrastructure
-                  outside the control of a standalone startup.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-3">Make the Call to Stop</h3>
-                <p className="text-foreground/90 leading-relaxed text-lg justify-text">
-                  Despite building functional MVPs on both the operator and diner sides, securing pilot interest, and
-                  advocating for regulatory change (including supporting California SB68), I concluded that delivering a
-                  truly reliable allergen experience would require supplier-level aggregation and standardization. Rather
-                  than ship something unsafe or misleading, I chose to pause the product.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* What I Learned */}
-          <section>
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">What I Learned</h2>
-            <div className="space-y-6">
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">
-                  High-stakes consumer problems demand infrastructure-level solutions
-                </h3>
-                <p className="text-foreground/90 leading-relaxed justify-text">
-                  When errors carry medical and legal consequences, probabilistic or surface-level fixes break down
-                  quickly.
-                </p>
-              </div>
-
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">Trust is an ecosystem property, not a UI feature</h3>
-                <p className="text-foreground/90 leading-relaxed justify-text">
-                  It emerges from enforceable schemas, authoritative sources, and aligned incentives across multiple
-                  actors — not better messaging.
-                </p>
-              </div>
-
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">
-                  Operators don't resist solutions; they resist risk and overhead
-                </h3>
-                <p className="text-foreground/90 leading-relaxed justify-text">
-                  Any tool that adds workflow friction or liability without clear guarantees will stall, regardless of
-                  user empathy or market size.
-                </p>
-              </div>
-
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">Regulation can create urgency, but not readiness</h3>
-                <p className="text-foreground/90 leading-relaxed justify-text">
-                  Even when laws like SB68 mandate disclosure, most operators lack the data and systems needed to comply
-                  cleanly.
-                </p>
-              </div>
-
-              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold mb-2">Knowing when to stop is part of the job</h3>
-                <p className="text-foreground/90 leading-relaxed justify-text">
-                  Exercising restraint — and not scaling on broken inputs — is a core product skill, not a failure.
-                </p>
-              </div>
-            </div>
-          </section>
-        </div>
-          </div>
-        </div>
-      </article>
+      <ProjectDetailLayout
+        title="Dishclosure: Founder and Product Lead"
+        subline="An operator-first investigation that revealed the real constraint wasn’t UX or adoption, but broken upstream data lineage."
+        tags={["Zero-to-One", "Data Lineage", "Schema Design", "Ecosystem Diagnosis", "Go/No-Go Decision"]}
+        heroImage={{
+          src: "/dishclosure.gif",
+          alt: "Dishclosure allergen knowledge graph",
+        }}
+        row1={{
+          challenge: {
+            heading: "Challenge",
+            bullets: [
+              "Food allergy mistakes carry medical, financial, and legal consequences",
+              "Restaurants face workflow overhead and liability if allergen info is wrong or incomplete",
+              "Allergen data is fragmented across suppliers, inventory systems, recipes, and menus",
+              "No reliable end-to-end source of truth → any diner-facing UX risks being untrustworthy",
+              "Build trust as infrastructure, not as messaging",
+            ],
+          },
+          role: {
+            heading: "Role",
+            bullets: [
+              "Founder and Product Lead (end-to-end ownership)",
+              "Market research and ecosystem analysis across supplier → operator → platform → diner",
+              "Designed the data model and operator workflow (schema enforcement)",
+              "Prototyped and validated product concepts on both operator and diner sides",
+              "Made the go/no-go call based on safety and infrastructure constraints",
+            ],
+          },
+        }}
+        row2={{
+          throughline:
+            "systems investigation → source-of-truth analysis → schema enforcement → ecosystem constraint discovery → stop decision",
+          left: [
+            {
+              title: "Anchored on safety and trust",
+              description:
+                "Rejected probabilistic inference/crowdsourcing/“AI labeling” without authoritative data — trust had to be engineered.",
+              bullets: ["A 1% error rate is unacceptable in high-stakes contexts"],
+            },
+            {
+              title: "Started with operators (not diners)",
+              description:
+                "Focused on where allergen information is created and maintained, designing for existing restaurant workflows and constraints.",
+              bullets: ["Fit into POS/inventory/recipe/menu stacks", "Segmented operators by adoption and motivation"],
+            },
+            {
+              title: "Designed the data model to surface reality",
+              description:
+                "Built a structured schema connecting ingredients → packaged goods → recipes → menu items to make ambiguity visible.",
+              bullets: ["Normalized inputs via an operator portal", "Discovered supplier-level data inconsistency as a blocker"],
+            },
+          ],
+          right: [
+            {
+              title: "Traced the ecosystem end-to-end",
+              description:
+                "Mapped supplier → operator → platform → diner flows and prototyped integrations to find where contracts broke.",
+              bullets: ["Constraint was upstream infrastructure outside a startup’s control"],
+            },
+            {
+              title: "Made the call to stop",
+              description:
+                "Chose to pause rather than ship an unsafe or misleading product given missing supplier-level standardization.",
+              bullets: ["Built MVPs and secured pilot interest, but reliability required ecosystem change"],
+            },
+          ],
+        }}
+        row3={{
+          outcomes: {
+            heading: "Outcomes",
+            bullets: [
+              "Validated the true constraint: broken upstream data lineage, not diner UX",
+              "Produced a structured allergen schema + operator workflow prototype to test feasibility",
+              "Mapped ecosystem contracts and identified where data reliability collapses",
+              "Made a principled stop decision to avoid scaling on unsafe inputs",
+            ],
+          },
+          learnings: {
+            heading: "Learnings",
+            bullets: [
+              "High-stakes consumer problems demand infrastructure-level solutions",
+              "Trust is an ecosystem property, not a UI feature",
+              "Operators don’t resist solutions; they resist risk and overhead",
+              "Knowing when to stop is part of the job",
+            ],
+          },
+        }}
+      />
     </div>
   )
 }

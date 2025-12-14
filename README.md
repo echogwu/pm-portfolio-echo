@@ -65,6 +65,8 @@ NEXT_PUBLIC_BASE_PATH=/portfolio pnpm build
 - **Changelog**: see `CHANGELOG.md`
 - **Contributing**: see `CONTRIBUTING.md`
 
+Tip: project case studies under `app/projects/*` should use the shared `ProjectDetailLayout` described in `PROJECT_STRUCTURE.md`.
+
 ## Deployment
 
 Your project is live at:

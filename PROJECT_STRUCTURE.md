@@ -19,6 +19,7 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
     home-content.tsx        # Home page content sections
     projects-timeline.tsx   # /projects timeline cards (“Career Journey”)
     route-map.tsx           # Legacy/experimental journey map (currently unused)
+    project-detail-layout.tsx # Standard project detail layout (hero + guided rows)
     preserve-scroll.tsx     # Scroll position preservation helper (client)
     scroll-to-top.tsx       # Scroll-to-top helper (client)
     back-button.tsx         # Back navigation UI
@@ -82,9 +83,47 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
 2. Link to it from wherever you want (commonly the Projects route map or the home featured projects section).
 3. Add any required images to `public/` and reference them by absolute path (`/my-image.png`).
 
+## Project detail page layout (standard)
+
+All case studies under `app/projects/*/page.tsx` should use the shared `ProjectDetailLayout` component:
+
+- **Component**: `components/project-detail-layout.tsx`
+- **Goal**: a clean, editorial reading flow guided by **spacing + thin rules**, not heavy cards/boxes.
+
+### Required structure (must match)
+
+1. **Header band (hero)**:
+   - Top-left link: “← Back to projects”
+   - Two columns (equal-ish):
+     - Left: title, 1–2 line subline, tag chips
+     - Right: hero image (rounded, fixed aspect, `object-cover`)
+   - Then a full-width thin rule: `border-t border-neutral-200`
+2. **Row 1**: **Challenge | Role**
+   - Two equal columns
+   - Subtle tint for the whole row: `bg-neutral-50/50`
+   - On `md+`, add a vertical divider between columns: `md:border-l md:border-neutral-200`
+   - End with a full-width thin rule
+3. **Row 2**: **Approach & Decisions** (primary focus)
+   - Full-width band with heading + italic throughline
+   - Two equal internal columns
+   - Each column has a **left spine line** (thin vertical rule) to guide the eye
+   - Decision blocks are narrative (title → 1 sentence → optional bullets); no cards/boxes
+   - End with a full-width thin rule
+4. **Row 3**: **Outcomes | Learnings**
+   - Two equal columns with the same `md+` vertical divider treatment as Row 1
+
+### Content conventions
+
+- Prefer **bullets and short paragraphs**; keep sections scannable.
+- Keep “Approach & Decisions” blocks structured as:
+  - **Bold title**
+  - **1 sentence explanation**
+  - Optional: **2–3 short bullets**
+- Avoid adding a “mega wrapper” card around all sections; each band stands alone.
+
 ## Project detail page typography (standard)
 
-The current case study pages (e.g. `app/projects/engineering-foundation/page.tsx`) establish the typography system below. Use these **exact Tailwind classes** so every project detail page stays consistent.
+`ProjectDetailLayout` already applies the core type scale below. If you add custom content, use these **exact Tailwind classes** so every project detail page stays consistent.
 
 ### Font family
 
