@@ -82,10 +82,46 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
 2. Link to it from wherever you want (commonly the Projects route map or the home featured projects section).
 3. Add any required images to `public/` and reference them by absolute path (`/my-image.png`).
 
+## Project detail page typography (standard)
+
+The current case study pages (e.g. `app/projects/engineering-foundation/page.tsx`) establish the typography system below. Use these **exact Tailwind classes** so every project detail page stays consistent.
+
+### Font family
+
+- **Default**: `font-sans` (configured to **Geist** and loaded via `next/font` in `app/layout.tsx`)
+  - `app/layout.tsx` registers Geist as CSS variables (`--font-sans` / `--font-mono`) and applies them on `<body>`
+  - `app/globals.css` uses those variables so Tailwind’s `font-sans` renders Geist consistently in dev + static export builds
+
+### Type scale (Tailwind defaults)
+
+- **Page title (`h1`)**: `text-4xl lg:text-5xl font-bold tracking-tight text-balance`
+  - `text-4xl` = 2.25rem (36px), `text-5xl` = 3rem (48px)
+- **Section heading (`h2`)**: `text-3xl font-bold mb-4 tracking-tight`
+  - `text-3xl` = 1.875rem (30px)
+- **Subheading (`h3`)**: `text-xl font-semibold mb-2` (or `mb-3` when spacing needs more air)
+  - `text-xl` = 1.25rem (20px)
+- **Card title (`h3` inside cards)**: `text-lg font-semibold mb-2`
+  - `text-lg` = 1.125rem (18px)
+- **Body paragraph**: `text-foreground/90 leading-relaxed`
+  - default text size is `text-base` (1rem / 16px) unless overridden
+- **Muted descriptor line**: `text-muted-foreground italic`
+  - used for role/position taglines and “Approach” sequences
+- **Lead paragraph (under `h1`)**: `text-xl text-muted-foreground leading-relaxed`
+
+### Lists
+
+- **Bulleted list**: `list-disc pl-6 space-y-2 text-foreground/90`
+
 ## Static assets
 
 - Put images and icons in `public/` and reference them like `src="/profile-avatar.png"`.
 - `next.config.mjs` currently sets `images.unoptimized = true`, so `<img>` works fine without Next Image optimization.
+
+## Static export output (`out/`)
+
+- `next.config.mjs` sets `output: "export"`, so `pnpm build` emits a fully static site to `out/`.
+- To preview locally, serve that folder (example: `pnpm dlx serve out`).
+- If you host the site under a subpath, set `NEXT_PUBLIC_BASE_PATH` at build time (it maps to `basePath` + `assetPrefix`).
 
 ## Notes / known rough edges
 

@@ -33,11 +33,18 @@ pnpm dev
 
 Then open `http://localhost:3000`.
 
-## Build + start (prod-like)
+## Build (static export)
 
 ```bash
 pnpm build
-pnpm start
+```
+
+## Preview the static export (prod-like)
+
+After `pnpm build`, Next.js outputs a static site to `out/`. To preview it locally:
+
+```bash
+pnpm dlx serve out
 ```
 
 ## Lint
@@ -56,5 +63,9 @@ Note: the `lint` script currently runs `eslint .`, but ESLint is not installed/c
 ## Project structure
 
 See `PROJECT_STRUCTURE.md`.
+
+## Project detail page consistency
+
+When adding/editing case studies under `app/projects/*`, follow the **Project detail page typography (standard)** section in `PROJECT_STRUCTURE.md` to keep font sizes/weights consistent across pages.
 
 

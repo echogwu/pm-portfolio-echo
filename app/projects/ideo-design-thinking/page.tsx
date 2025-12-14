@@ -25,7 +25,7 @@ export default function IDEOPage() {
             <Link href="/projects" className="text-sm font-medium hover:text-foreground/70 transition-colors">
               Projects
             </Link>
-            <Link href="#" className="text-sm font-medium hover:text-foreground/70 transition-colors">
+            <Link href="/work-samples" className="text-sm font-medium hover:text-foreground/70 transition-colors">
               Work Samples
             </Link>
           </div>
@@ -33,42 +33,52 @@ export default function IDEOPage() {
       </nav>
 
       {/* Header */}
-      <section className="max-w-4xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <BackButton />
-
-        <h1 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-          IDEO: Design Thinking Challenge
-        </h1>
-        <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-          Understanding humans before designing systems
-        </p>
-        <div className="flex flex-wrap gap-2 mb-12">
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Design Thinking
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            User Research
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">Prototyping</span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Synthesis
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Divergent → Convergent
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">Storytelling</span>
-        </div>
-
-        <div className="relative rounded-xl overflow-hidden shadow-2xl bg-muted mb-12">
-          <img
-            src="/design-thinking.gif"
-            alt="IDEO design thinking prototype walkthrough"
-            className="w-full"
-          />
-        </div>
-
-        <div className="prose prose-lg max-w-none space-y-12 justify-text">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div>
+            <BackButton />
+
+            <h1 className="mt-10 text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
+              IDEO: Design Thinking Challenge
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+              Understanding humans before designing systems
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Design Thinking
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                User Research
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Prototyping
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Synthesis
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Divergent → Convergent
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Storytelling
+              </span>
+            </div>
+          </div>
+
+          <div className="relative rounded-xl overflow-hidden shadow-2xl bg-muted">
+            <img
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/design-thinking.gif`}
+              alt="IDEO design thinking prototype walkthrough"
+              className="w-full"
+            />
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-border bg-card px-8 py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06),0_0_0_1px_rgba(15,23,42,0.04)] mt-12">
+          <div className="space-y-12 justify-text">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
             <p className="text-foreground/90 leading-relaxed">
               Loneliness is widely discussed, but poorly understood in practice. Most products treat it as a social
@@ -84,9 +94,9 @@ export default function IDEOPage() {
               This project intentionally constrained us from jumping to solutions. The goal was insight quality, not
               feature output.
             </p>
-          </div>
+            </div>
 
-          <div>
+            <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">My Role</h2>
             <p className="text-muted-foreground italic mb-6">Project Lead — Research, Synthesis, and Narrative</p>
             <p className="text-foreground/90 leading-relaxed mb-6">
@@ -117,9 +127,11 @@ export default function IDEOPage() {
               This role required switching constantly between facilitation, analysis, synthesis, and communication —
               keeping the team aligned while preserving space for insight to emerge.
             </p>
+            </div>
           </div>
 
-          <div>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Approach / Decisions</h2>
             <p className="text-muted-foreground italic mb-6">
               Observe → synthesize → frame → diverge → converge → prototype → test → iterate
@@ -197,9 +209,9 @@ export default function IDEOPage() {
                 </ul>
               </div>
             </div>
-          </div>
+            </div>
 
-          <div>
+            <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Key Outcomes</h2>
             <ul className="space-y-6 text-foreground/90 mt-6">
               <li>
@@ -235,6 +247,7 @@ export default function IDEOPage() {
                 </ul>
               </li>
             </ul>
+            </div>
           </div>
 
           <div>
@@ -278,6 +291,7 @@ export default function IDEOPage() {
               <li>Low-fidelity wireframes (emotional check-ins, inner circle, community flows)</li>
               <li>End-to-end prototype walkthrough deck</li>
             </ul>
+          </div>
           </div>
         </div>
       </section>

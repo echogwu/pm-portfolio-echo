@@ -31,7 +31,7 @@ export default function MBAWorkPage() {
       </nav>
 
       {/* Header */}
-      <section className="max-w-4xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
         <BackButton />
 
         <h1 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
@@ -59,7 +59,7 @@ export default function MBAWorkPage() {
         </div>
 
         {/* Case Study Content - Placeholder */}
-        <div className="prose prose-lg max-w-none space-y-8">
+        <div className="rounded-3xl border border-border bg-card px-8 py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06),0_0_0_1px_rgba(15,23,42,0.04)] mt-12">
           <div>
             <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
             <p className="text-foreground leading-relaxed justify-text">

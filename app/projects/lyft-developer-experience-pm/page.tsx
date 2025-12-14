@@ -25,7 +25,7 @@ export default function LyftPage() {
             <Link href="/projects" className="text-sm font-medium hover:text-foreground/70 transition-colors">
               Projects
             </Link>
-            <Link href="#" className="text-sm font-medium hover:text-foreground/70 transition-colors">
+            <Link href="/work-samples" className="text-sm font-medium hover:text-foreground/70 transition-colors">
               Work Samples
             </Link>
           </div>
@@ -33,40 +33,53 @@ export default function LyftPage() {
       </nav>
 
       {/* Header */}
-      <section className="max-w-4xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <BackButton />
-
-        <h1 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
-          Lyft: Quality Engineer → Developer Experience PM
-        </h1>
-        <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-          When to stop optimizing for conventional metrics — and start optimizing what actually matters.
-        </p>
-
-        <div className="flex flex-wrap gap-2 mb-12">
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Developer Experience
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Internal Tools
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">Simulation</span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Systems Thinking
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Validation Strategy
-          </span>
-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
-            Platform Reliability
-          </span>
-        </div>
-        <div className="relative rounded-xl overflow-hidden shadow-2xl bg-muted mb-12">
-          <img src="/lyft.gif" alt="Lyft developer experience" className="w-full" />
-        </div>
-
-        <div className="prose prose-lg max-w-none space-y-12 justify-text">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div>
+            <BackButton />
+
+            <h1 className="mt-10 text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
+              Lyft: Quality Engineer → Developer Experience PM
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+              When to stop optimizing for conventional metrics — and start optimizing what actually matters.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Developer Experience
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Internal Tools
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Simulation
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Systems Thinking
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Validation Strategy
+              </span>
+              <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+                Platform Reliability
+              </span>
+            </div>
+          </div>
+
+          <div className="relative rounded-xl overflow-hidden shadow-2xl bg-muted">
+            <img
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/lyft.gif`}
+              alt="Lyft developer experience"
+              className="w-full"
+            />
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-border bg-card px-8 py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06),0_0_0_1px_rgba(15,23,42,0.04)] mt-12">
+          <div className="space-y-12 justify-text">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
             <p className="text-foreground/90 leading-relaxed">
               Lyft fundamentally changed the driver workflow to surface earnings and destination earlier in the
@@ -93,9 +106,9 @@ export default function LyftPage() {
               The challenge was to move beyond maximizing test coverage and instead identify new tools and methods that
               could bridge gaps across services, exposing high-stakes system failures before they reached production.
             </p>
-          </div>
+            </div>
 
-          <div>
+            <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">My Role</h2>
             <p className="text-muted-foreground italic mb-6">System Quality Engineer → Internal Tool Product Manager</p>
             <p className="text-foreground/90 leading-relaxed mb-6">
@@ -140,9 +153,11 @@ export default function LyftPage() {
               The transition reflected a shift from influencing quality locally to owning a platform that changed how
               teams validated systems company-wide.
             </p>
+            </div>
           </div>
 
-          <div>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Approach / Decisions</h2>
             <p className="text-muted-foreground italic mb-6">
               UI automation → acceptance tests → still not enough → simulation + metrics
@@ -189,9 +204,9 @@ export default function LyftPage() {
                 </p>
               </div>
             </div>
-          </div>
+            </div>
 
-          <div>
+            <div>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Key Outcomes</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
               <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
@@ -233,6 +248,7 @@ export default function LyftPage() {
                 validation, focusing on failure modes, observability, and system behavior
               </li>
             </ul>
+            </div>
           </div>
 
           <div>
@@ -282,6 +298,7 @@ export default function LyftPage() {
                 </p>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>

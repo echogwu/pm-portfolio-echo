@@ -29,16 +29,6 @@ export default function ProjectsPage() {
             <Link href="/work-samples" className="text-sm font-medium hover:text-foreground/70 transition-colors">
               Work Samples
             </Link>
-            <button className="p-2 hover:bg-muted rounded-lg transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 015.646 5.646 9.001 9.001 0 0020.354 15.354z"
-                />
-              </svg>
-            </button>
           </div>
         </div>
       </nav>

@@ -3,6 +3,8 @@ import { Github, Mail, MapPin, Linkedin } from "lucide-react"
 // import { Button } from "@/components/ui/button"
 
 export default function HomeContent() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
+
   const featuredProjects = [
     {
       title: "Gainbridge: Product Manager, Data and Measurement",
@@ -54,16 +56,6 @@ export default function HomeContent() {
             <Link href="/work-samples" className="text-sm font-medium hover:text-foreground/70 transition-colors">
               Work Samples
             </Link>
-            <button className="p-2 hover:bg-muted rounded-lg transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 015.646 5.646 9.001 9.001 0 0020.354 15.354z"
-                />
-              </svg>
-            </button>
           </div>
         </div>
       </nav>
@@ -120,7 +112,7 @@ export default function HomeContent() {
               <div className="relative w-64 h-64 lg:w-80 lg:h-80">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full opacity-10" />
                 <img
-                  src="/profile-avatar.png"
+                  src={`${basePath}/profile-avatar.png`}
                   alt="Profile"
                   className="w-full h-full rounded-full object-cover border-4 border-border shadow-xl"
                 />
@@ -238,7 +230,7 @@ export default function HomeContent() {
                 <div className={isReversed ? "lg:order-2" : undefined}>
                   <div className="relative rounded-2xl overflow-hidden border border-border/60 bg-muted/40 shadow-sm aspect-video">
                     <img
-                      src={project.imageSrc}
+                      src={`${basePath}${project.imageSrc}`}
                       alt={project.imageAlt}
                       className="w-full h-full object-cover"
                     />

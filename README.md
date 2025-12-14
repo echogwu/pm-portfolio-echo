@@ -29,11 +29,16 @@ Run the dev server:
 pnpm dev
 ```
 
-Build + start (prod-like):
+Build (static export):
 
 ```bash
 pnpm build
-pnpm start
+```
+
+Preview the static export locally (serves `out/`):
+
+```bash
+pnpm dlx serve out
 ```
 
 Lint:
@@ -43,6 +48,16 @@ pnpm lint
 ```
 
 Note: the `lint` script currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet. Either add ESLint, or treat linting as optional for now.
+
+### Deploying under a subpath (basePath)
+
+This site is configured for static export and supports hosting under a subpath via `NEXT_PUBLIC_BASE_PATH` (wired to `next.config.mjs` as `basePath` + `assetPrefix`).
+
+Example (host at `/portfolio`):
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/portfolio pnpm build
+```
 
 ## Docs
 

@@ -41,7 +41,7 @@ const items: TimelineItem[] = [
   },
   {
     id: "mba",
-    year: "2023-",
+    year: "2023-2026",
     companyRole: "MBA: Student",
     label: "Understanding incentives & tradeoffs",
     microCaption: "Why organizations underinvest in data foundations",
