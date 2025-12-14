@@ -2,9 +2,8 @@ import type { Metadata } from "next"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 
-export const DEFAULT_TITLE = "PM Portfolio | AI Ships Features, I Ship Direction"
-export const DEFAULT_DESCRIPTION =
-  "Data & Platform Product Manager specializing in event-driven systems and analytics foundations. Owned event architecture, attribution, and activation platforms powering revenue-critical B2B and consumer workflows. Founder experience diagnosing data lineage failures at the ecosystem level."
+export const DEFAULT_DESCRIPTION = "AI ships features, I ship direction"
+export const DEFAULT_TITLE = "Echo's Portfolio"
 
 export function getSiteUrl() {
   // Used to produce absolute OG/Twitter URLs at build time.
@@ -70,7 +69,7 @@ export function buildMetadata(args: BuildMetadataArgs): Metadata {
       url: canonical,
       title: args.title,
       description: args.description,
-      siteName: "PM Portfolio",
+      siteName: "Echo's Portfolio",
       images,
     },
     twitter: {

@@ -34,26 +34,23 @@ export async function GET() {
             style={{
               display: "flex",
               flexDirection: "column",
-              fontSize: 90,
+              fontSize: 88,
               lineHeight: 1.03,
               fontWeight: 850,
               letterSpacing: -1.8,
             }}
           >
-            <span>AI Ships Features.</span>
-            <span>I Ship Direction.</span>
+            <span>Echo's Portfolio</span>
           </div>
           <div
             style={{
-              fontSize: 30,
+              fontSize: 34,
               lineHeight: 1.35,
               color: "rgba(15, 23, 42, 0.62)",
               maxWidth: 650,
             }}
           >
-            Data & Platform Product Manager who builds the systems that make business performance legible. Owned data
-            architecture, attribution, and activation platforms behind mission-critical growth engines and consumer
-            workflows. Founder experience diagnosing ecosystem-level data lineage failures.
+            AI ships features, I ship direction
           </div>
         </div>
 
@@ -82,13 +79,7 @@ export async function GET() {
           </div>
 
           <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontSize: 46, fontWeight: 850, letterSpacing: -0.8 }}>Echo Paulus</div>
-            <div style={{ fontSize: 28, fontWeight: 600, color: "rgba(15, 23, 42, 0.55)", marginTop: 6 }}>
-              Data Product Manager
-            </div>
-            <div style={{ fontSize: 24, color: "rgba(15, 23, 42, 0.5)", marginTop: 8 }}>
-              San Francisco Bay Area, CA
-            </div>
+            <div style={{ fontSize: 26, color: "rgba(15, 23, 42, 0.5)", marginTop: 2 }}>echo-paulus.com</div>
           </div>
         </div>
       </div>

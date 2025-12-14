@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     url: withBasePath("/"),
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    siteName: "PM Portfolio",
+    siteName: "Echo's Portfolio",
     images: [
       {
         url: withBasePath("/opengraph-image.png"),
