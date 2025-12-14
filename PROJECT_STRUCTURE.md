@@ -17,7 +17,8 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
 
   components/               # Reusable React components (mostly client components)
     home-content.tsx        # Home page content sections
-    route-map.tsx           # Interactive “Career Journey” route map (client)
+    projects-timeline.tsx   # /projects timeline cards (“Career Journey”)
+    route-map.tsx           # Legacy/experimental journey map (currently unused)
     preserve-scroll.tsx     # Scroll position preservation helper (client)
     scroll-to-top.tsx       # Scroll-to-top helper (client)
     back-button.tsx         # Back navigation UI
@@ -91,4 +92,7 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
 - `next.config.mjs` currently has `typescript.ignoreBuildErrors = true`. That’s convenient during rapid iteration but can hide real issues; consider turning it off once the codebase stabilizes.
 - The repo includes a `lint` script, but lint tooling/config may be intentionally minimal right now; see `CONTRIBUTING.md` for recommendations.
 
+## Changelog
+
+- See `CHANGELOG.md` for user-facing changes.
 

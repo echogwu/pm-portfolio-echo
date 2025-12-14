@@ -1,0 +1,1165 @@
+diff --git a/.gitignore b/.gitignore
+index f70543bf..9bf8e291 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -2,6 +2,7 @@
+ 
+ # dependencies
+ /node_modules
++.pnpm-store
+ 
+ # next.js
+ /.next/
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+new file mode 100644
+index 00000000..6ba75e02
+--- /dev/null
++++ b/CHANGELOG.md
+@@ -0,0 +1,28 @@
++# Changelog
++
++All notable changes to this project will be documented in this file.
++
++This format is based on **Keep a Changelog**, and this project aims to follow **Semantic Versioning**.
++
++## [Unreleased]
++
++### Added
++
++- Tags displayed on `/projects` timeline cards (mirrors the tag pills on each project detail page).
++- An IDEO project card on the `/projects` timeline.
++
++### Changed
++
++- `/projects` timeline cards now use a two-column layout with a dedicated tags column.
++- Added more top spacing between the nav bar and the “Career Journey” section.
++- Documentation updates: local development instructions and changelog guidance.
++
++## [0.1.0] - 2025-12-13
++
++### Added
++
++- Baseline version synced from v0/Vercel deployment
++- Initial portfolio site scaffold (Next.js App Router + TypeScript + Tailwind v4)
++- Project/case-study routes under `app/projects/*`
++- Reusable UI components under `components/`
++
+diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
+index b1828124..0d59039d 100644
+--- a/CONTRIBUTING.md
++++ b/CONTRIBUTING.md
+@@ -11,6 +11,12 @@ If you don’t have pnpm:
+ npm i -g pnpm
+ ```
+ 
++## Changelog
++
++- Keep `CHANGELOG.md` updated for any user-facing change.
++- Add entries under **[Unreleased]** using Keep a Changelog headings (Added/Changed/Fixed/Removed).
++- When cutting a release, move entries from **[Unreleased]** into a dated version section (e.g. `## [0.2.0] - YYYY-MM-DD`).
++
+ ## Install
+ 
+ From the repo root:
+@@ -40,6 +46,8 @@ pnpm start
+ pnpm lint
+ ```
+ 
++Note: the `lint` script currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet. Either add ESLint, or treat linting as optional for now.
++
+ ## Environment variables
+ 
+ - This project currently does **not** require env vars.
+diff --git a/PROJECT_STRUCTURE.md b/PROJECT_STRUCTURE.md
+index bf5a9f26..e252b555 100644
+--- a/PROJECT_STRUCTURE.md
++++ b/PROJECT_STRUCTURE.md
+@@ -17,7 +17,8 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
+ 
+   components/               # Reusable React components (mostly client components)
+     home-content.tsx        # Home page content sections
+-    route-map.tsx           # Interactive “Career Journey” route map (client)
++    projects-timeline.tsx   # /projects timeline cards (“Career Journey”)
++    route-map.tsx           # Legacy/experimental journey map (currently unused)
+     preserve-scroll.tsx     # Scroll position preservation helper (client)
+     scroll-to-top.tsx       # Scroll-to-top helper (client)
+     back-button.tsx         # Back navigation UI
+@@ -91,4 +92,7 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
+ - `next.config.mjs` currently has `typescript.ignoreBuildErrors = true`. That’s convenient during rapid iteration but can hide real issues; consider turning it off once the codebase stabilizes.
+ - The repo includes a `lint` script, but lint tooling/config may be intentionally minimal right now; see `CONTRIBUTING.md` for recommendations.
+ 
++## Changelog
++
++- See `CHANGELOG.md` for user-facing changes.
+ 
+diff --git a/README.md b/README.md
+index c29c9593..cf6bd001 100644
+--- a/README.md
++++ b/README.md
+@@ -10,6 +10,46 @@
+ This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
+ Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+ 
++## Local development
++
++### Prereqs
++
++- **Node.js**: a recent LTS is recommended
++- **pnpm**: this repo includes `pnpm-lock.yaml`, so pnpm is the intended package manager
++
++Install dependencies:
++
++```bash
++pnpm install
++```
++
++Run the dev server:
++
++```bash
++pnpm dev
++```
++
++Build + start (prod-like):
++
++```bash
++pnpm build
++pnpm start
++```
++
++Lint:
++
++```bash
++pnpm lint
++```
++
++Note: the `lint` script currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet. Either add ESLint, or treat linting as optional for now.
++
++## Docs
++
++- **Project structure**: see `PROJECT_STRUCTURE.md`
++- **Changelog**: see `CHANGELOG.md`
++- **Contributing**: see `CONTRIBUTING.md`
++
+ ## Deployment
+ 
+ Your project is live at:
+diff --git a/app/projects/engineering-foundation/page.tsx b/app/projects/engineering-foundation/page.tsx
+index 52ccded7..20c0d4d6 100644
+--- a/app/projects/engineering-foundation/page.tsx
++++ b/app/projects/engineering-foundation/page.tsx
+@@ -3,13 +3,13 @@ import { ScrollToTop } from "@/components/scroll-to-top"
+ import { BackButton } from "@/components/back-button"
+ 
+ export const metadata = {
+-  title: "Test Engineering Foundation — Amazon, AerServ, Oracle | Echo Paulus",
+-  description: "Built technical foundations through quality engineering roles across leading tech companies.",
++  title: "Amazon|AerServ|Oracle: Engineering Foundation | Echo Paulus",
++  description: "The technical grounding that shaped how I evaluate data, risk, and leverage as a PM.",
+ }
+ 
+ export default function EngineeringFoundationPage() {
+   return (
+-    <div className="min-h-screen bg-background">
++    <div className="min-h-screen bg-[#fafaf7]">
+       <ScrollToTop />
+ 
+       {/* Navigation */}
+@@ -25,7 +25,7 @@ export default function EngineeringFoundationPage() {
+             <Link href="/projects" className="text-sm font-medium hover:text-foreground/70 transition-colors">
+               Projects
+             </Link>
+-            <Link href="/work-samples" className="text-sm font-medium hover:text-foreground/70 transition-colors">
++            <Link href="#" className="text-sm font-medium hover:text-foreground/70 transition-colors">
+               Work Samples
+             </Link>
+           </div>
+@@ -37,35 +37,150 @@ export default function EngineeringFoundationPage() {
+         <BackButton />
+ 
+         <h1 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-balance">
+-          Test Engineering Foundation — Amazon, AerServ, Oracle
++          Amazon|AerServ|Oracle: Engineering Foundation
+         </h1>
+         <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+-          Built technical foundations through quality engineering roles at Amazon, AerServ, and Oracle—developing deep
+-          understanding of system architecture, API design, data pipelines, and cross-team collaboration that shapes my
+-          product thinking today.
++          The technical grounding that shaped how I evaluate data, risk, and leverage as a PM.
+         </p>
++
+         <div className="flex flex-wrap gap-2 mb-12">
+           <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+-            Test Automation
++            Distributed Systems
++          </span>
++          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
++            Data Integrity
+           </span>
+           <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+-            System Architecture
++            Validation Strategy
+           </span>
+-          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">API Design</span>
+           <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
+-            Technical Foundation
++            Failure Analysis
+           </span>
++          <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
++            Platform Thinking
++          </span>
++        </div>
++
++        <div className="relative rounded-xl overflow-hidden shadow-2xl bg-muted mb-12">
++          <img src="/engineering foundation.gif" alt="Engineering foundation" className="w-full" />
+         </div>
+ 
+-        {/* Case Study Content - Placeholder */}
+-        <div className="prose prose-lg max-w-none space-y-8">
++        <div className="prose prose-lg max-w-none space-y-12 justify-text">
+           <div>
+-            <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
+-            <p className="text-foreground leading-relaxed justify-text">
+-              This case study detailing my test engineering foundation across Amazon, AerServ, and Oracle is currently
+-              being developed. Check back soon for insights into how technical depth shapes product thinking.
++            <h2 className="text-3xl font-bold mb-4 tracking-tight">The Challenge</h2>
++            <p className="text-foreground/90 leading-relaxed">
++              Across large-scale platforms (Amazon, InMobi/AerServ, Oracle, IBM), production failures rarely came from
++              missing tests. They came from misunderstood system behavior: asynchronous workflows, weak data contracts,
++              environment-specific logic, and automation that validated the wrong assumptions.
++            </p>
++            <p className="text-foreground/90 leading-relaxed mt-4">The recurring pattern:</p>
++            <ul className="list-disc pl-6 space-y-2 text-foreground/90 mt-4">
++              <li>Test suites passed while incidents escalated</li>
++              <li>Data pipelines degraded silently</li>
++              <li>Failures surfaced late, through customers or operations</li>
++              <li>Teams optimized for coverage instead of correctness</li>
++            </ul>
++            <p className="text-foreground/90 leading-relaxed mt-6">
++              The challenge wasn’t execution quality — it was reasoning about complex systems with incomplete signals.
++            </p>
++          </div>
++
++          <div>
++            <h2 className="text-3xl font-bold mb-4 tracking-tight">My Role</h2>
++            <p className="text-muted-foreground italic mb-6">
++              Quality Engineer embedded in platform, API, and data-intensive systems
++            </p>
++            <p className="text-foreground/90 leading-relaxed mb-6">
++              I partnered closely with engineers and PMs to validate correctness across APIs, services, and data flows.
++              My role evolved from executing test plans to shaping how teams identified risk, interpreted data, and
++              defined “done.”
++            </p>
++            <p className="text-foreground/90 leading-relaxed font-semibold">
++              This role trained me to look past features and into system behavior, assumptions, and failure modes.
+             </p>
+           </div>
++
++          <div>
++            <h2 className="text-3xl font-bold mb-4 tracking-tight">Approach / Decisions</h2>
++            <p className="text-muted-foreground italic mb-6">Test execution → failure modes → system boundaries → instrumentation</p>
++            <div className="space-y-6">
++              <div>
++                <h3 className="text-xl font-semibold mb-2">Shifted from test execution to failure-mode analysis</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  Rather than expanding automation indiscriminately, I analyzed incidents, bugs, and regressions to
++                  identify which failure classes actually mattered.
++                </p>
++              </div>
++
++              <div>
++                <h3 className="text-xl font-semibold mb-2">Validated system boundaries instead of isolated components</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  Most high-impact issues emerged at service boundaries and lifecycle transitions.
++                </p>
++              </div>
++
++              <div>
++                <h3 className="text-xl font-semibold mb-2">Designed validation as part of the system, not an afterthought</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  Validation (metrics, events, alerts) was treated as foundational infrastructure, not a post-build
++                  checklist.
++                </p>
++              </div>
++            </div>
++          </div>
++
++          <div>
++            <h2 className="text-3xl font-bold mb-4 tracking-tight">Key Outcomes</h2>
++            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
++              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
++                <h3 className="text-lg font-semibold mb-2">Prevented critical bugs from reaching production</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  By identifying high-risk failure modes and instrumenting systems to surface them before release,
++                  especially in pricing, earnings, and data-sensitive paths.
++                </p>
++              </div>
++              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
++                <h3 className="text-lg font-semibold mb-2">Proactive quality thought partner to product and engineering</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  Helped teams design metrics, events, and alerts as part of system architecture, laying a robust
++                  observability foundation that supported faster decisions and safer launches.
++                </p>
++              </div>
++            </div>
++          </div>
++
++          <div>
++            <h2 className="text-3xl font-bold mb-4 tracking-tight">What I Learned</h2>
++            <div className="space-y-6">
++              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
++                <h3 className="text-lg font-semibold mb-2">Systems fail at boundaries</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  The highest-impact failures emerge where ownership, assumptions, or data contracts blur.
++                </p>
++              </div>
++
++              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
++                <h3 className="text-lg font-semibold mb-2">Automation without judgment is noise</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  Validation must reflect real-world behavior, not idealized flows.
++                </p>
++              </div>
++
++              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
++                <h3 className="text-lg font-semibold mb-2">Data is a diagnostic instrument</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  Metrics, logs, and events are tools for reasoning — not vanity outputs.
++                </p>
++              </div>
++
++              <div className="bg-white/60 border border-border/50 rounded-lg p-6 shadow-sm">
++                <h3 className="text-lg font-semibold mb-2">Prevention compounds</h3>
++                <p className="text-foreground/90 leading-relaxed">
++                  The most valuable work often shows up as incidents that never happen.
++                </p>
++              </div>
++            </div>
++          </div>
+         </div>
+       </section>
+ 
+diff --git a/components/projects-timeline.tsx b/components/projects-timeline.tsx
+index 69e5632f..eb609469 100644
+--- a/components/projects-timeline.tsx
++++ b/components/projects-timeline.tsx
+@@ -2,169 +2,183 @@ import Link from "next/link"
+ 
+ type TimelineItem = {
+   id: string
+-  title: string
+-  subtitle: string
+-  timeframe: string
+-  href: string
+-  logoSrc: string
+-  logoAlt: string
+-  accent: "emerald" | "indigo" | "amber" | "pink" | "slate"
++  year: string
++  companyRole: string
++  label: string
++  microCaption: string
+   tags: string[]
++  href: string
++  accent: "pink" | "blue" | "orange" | "green" | "slate"
+ }
+ 
+ const items: TimelineItem[] = [
+   {
+-    id: "dishclosure",
+-    title: "Dishclosure",
+-    subtitle: "Founder & Product Lead",
+-    timeframe: "2022–2023",
+-    href: "/projects/dishclosure-founder-mode",
+-    logoSrc: "/dishclosure.gif",
+-    logoAlt: "Dishclosure",
+-    accent: "emerald",
+-    tags: ["Zero-to-one", "Data lineage", "Schema design", "Go/No-Go decision"],
++    id: "engineering",
++    year: "2014-2020",
++    companyRole: "Amazon|AerServ|Oracle: Engineering Foundation",
++    label: "Building technical depth",
++    microCaption: "Learning how systems behave at scale",
++    tags: ["Test Automation", "System Architecture", "API Design", "Technical Foundation"],
++    href: "/projects/engineering-foundation",
++    accent: "slate",
+   },
+   {
+-    id: "gainbridge",
+-    title: "Gainbridge",
+-    subtitle: "Product Manager, Data & Measurement",
+-    timeframe: "2023–2025",
+-    href: "/projects/gainbridge-data-architecture",
+-    logoSrc: "/gainbridge.gif",
+-    logoAlt: "Gainbridge",
+-    accent: "indigo",
+-    tags: ["Event taxonomy", "Attribution", "Identity resolution", "Data architecture"],
++    id: "lyft",
++    year: "2020-2023",
++    companyRole: "Lyft: Developer Experience PM",
++    label: "Learning what good looks like",
++    microCaption: "Benefiting from mature data infrastructure",
++    tags: [
++      "Developer Experience",
++      "Internal Tools",
++      "Simulation",
++      "Systems Thinking",
++      "Validation Strategy",
++      "Platform Reliability",
++    ],
++    href: "/projects/lyft-developer-experience-pm",
++    accent: "pink",
+   },
+   {
+     id: "mba",
+-    title: "MBA",
+-    subtitle: "Berkeley Haas",
+-    timeframe: "2017–2019",
++    year: "2023-",
++    companyRole: "MBA: Student",
++    label: "Understanding incentives & tradeoffs",
++    microCaption: "Why organizations underinvest in data foundations",
++    tags: ["Analytics", "Measurement Strategy", "Financial Modeling", "Competitive Analysis", "Decision Systems"],
+     href: "/projects/mba-strategic-frameworks",
+-    logoSrc: "/cal-logo.png",
+-    logoAlt: "UC Berkeley",
+-    accent: "amber",
+-    tags: ["Financial modeling", "Strategy", "Decision frameworks"],
++    accent: "blue",
+   },
+   {
+-    id: "lyft",
+-    title: "Lyft",
+-    subtitle: "Quality Engineer → Developer Experience PM",
+-    timeframe: "2019–2022",
+-    href: "/projects/lyft-developer-experience-pm",
+-    logoSrc: "/lyft.gif",
+-    logoAlt: "Lyft",
+-    accent: "pink",
+-    tags: ["Developer experience", "Reliability", "Internal tools", "Validation strategy"],
++    id: "ideo",
++    year: "2024",
++    companyRole: "IDEO: Design Thinking Challenge",
++    label: "Trusting the design process",
++    microCaption: "Practicing divergent→convergent problem framing",
++    tags: ["Design Thinking", "User Research", "Prototyping", "Creativity Under Ambiguity"],
++    href: "/projects/ideo-design-thinking",
++    accent: "blue",
+   },
+   {
+-    id: "engineering",
+-    title: "Engineering Foundation",
+-    subtitle: "Amazon",
+-    timeframe: "2012–2016",
+-    href: "/projects/engineering-foundation",
+-    logoSrc: "/amazon-logo.png",
+-    logoAlt: "Amazon",
+-    accent: "slate",
+-    tags: ["Systems fundamentals", "Technical depth", "Operating at scale"],
++    id: "gainbridge",
++    year: "2023-2025",
++    companyRole: "Gainbridge: Data Product Manager",
++    label: "Owning data systems",
++    microCaption: "Turning fragmented signals into reliable, revenue-critical truth",
++    tags: ["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"],
++    href: "/projects/gainbridge-data-architecture",
++    accent: "orange",
++  },
++  {
++    id: "dishclosure",
++    year: "2025",
++    companyRole: "Dishclosure: Founder, Product Lead",
++    label: "Discovering system limits",
++    microCaption: "Where data integrity fundamentally breaks",
++    tags: ["Zero-to-One", "Data Lineage", "Schema Design", "Ecosystem Diagnosis", "Go/No-Go Decision"],
++    href: "/projects/dishclosure-founder-mode",
++    accent: "green",
+   },
+ ]
+ 
+ function accentClasses(accent: TimelineItem["accent"]) {
+   switch (accent) {
+-    case "emerald":
++    case "green":
+       return {
+-        ring: "ring-emerald-500/25",
+-        dot: "bg-emerald-500",
+-        chip: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-200 border-emerald-500/15",
+-        link: "text-emerald-700 hover:text-emerald-800 dark:text-emerald-200 dark:hover:text-emerald-100",
++        dot: "bg-green-500",
++        label: "text-green-600",
++        year: "bg-green-400/70",
++        hover: "hover:border-green-500/40",
+       }
+-    case "indigo":
++    case "blue":
+       return {
+-        ring: "ring-indigo-500/25",
+-        dot: "bg-indigo-500",
+-        chip: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-200 border-indigo-500/15",
+-        link: "text-indigo-700 hover:text-indigo-800 dark:text-indigo-200 dark:hover:text-indigo-100",
++        dot: "bg-blue-500",
++        label: "text-blue-600",
++        year: "bg-blue-400/70",
++        hover: "hover:border-blue-500/40",
+       }
+-    case "amber":
++    case "orange":
+       return {
+-        ring: "ring-amber-500/25",
+-        dot: "bg-amber-500",
+-        chip: "bg-amber-500/10 text-amber-800 dark:text-amber-200 border-amber-500/15",
+-        link: "text-amber-800 hover:text-amber-900 dark:text-amber-200 dark:hover:text-amber-100",
++        dot: "bg-orange-500",
++        label: "text-orange-500",
++        year: "bg-orange-400/70",
++        hover: "hover:border-orange-500/40",
+       }
+     case "pink":
+       return {
+-        ring: "ring-pink-500/25",
+         dot: "bg-pink-500",
+-        chip: "bg-pink-500/10 text-pink-700 dark:text-pink-200 border-pink-500/15",
+-        link: "text-pink-700 hover:text-pink-800 dark:text-pink-200 dark:hover:text-pink-100",
++        label: "text-pink-600",
++        year: "bg-pink-400/70",
++        hover: "hover:border-pink-500/40",
+       }
+     case "slate":
+     default:
+       return {
+-        ring: "ring-slate-500/20",
+         dot: "bg-slate-500",
+-        chip: "bg-slate-500/10 text-slate-700 dark:text-slate-200 border-slate-500/15",
+-        link: "text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-slate-100",
++        label: "text-slate-600",
++        year: "bg-slate-300/80",
++        hover: "hover:border-slate-400/60",
+       }
+   }
+ }
+ 
+ export function ProjectsTimeline() {
+   return (
+-    <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-24">
++    <section className="max-w-6xl mx-auto px-6 lg:px-8 pt-16 lg:pt-24 pb-24">
+       <div className="flex flex-col gap-2 mb-10">
+         <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">Career Journey</h2>
+-        <p className="text-muted-foreground max-w-2xl">
+-          My career has been about understanding data systems from every angle — using them, building them, and learning where they break — and turning those lessons into product ownership.
+-        </p>
++        <p className="text-muted-foreground max-w-2xl">From using reliable data → to owning data systems → to discovering where data breaks</p>
+       </div>
+ 
+-      <ol className="relative pl-6">
+-        <div className="absolute left-[11px] top-2 bottom-2 w-px bg-border" aria-hidden="true" />
++      <ol className="relative pl-8">
++        {/* Spine */}
++        <div className="absolute left-[14px] top-2 bottom-2 w-px bg-border" aria-hidden="true" />
+ 
+         {items.map((item) => {
+           const a = accentClasses(item.accent)
+           return (
+             <li key={item.id} className="relative pb-10 last:pb-0">
+-              {/* Node */}
+-              <div className="absolute left-0 top-2">
+-                <div className="relative">
+-                  <div className={`h-[22px] w-[22px] rounded-full ${a.dot} shadow-sm`} />
+-                  <div className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-background ring-1 ring-border shadow-sm" />
+-                  <div className={`absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full ring-8 ${a.ring}`} />
+-                  <div className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white dark:bg-slate-950 flex items-center justify-center overflow-hidden border border-border">
+-                    <img src={item.logoSrc} alt={item.logoAlt} className="h-7 w-7 object-contain" />
+-                  </div>
+-                </div>
++              {/* Dot */}
++              <div className="absolute left-[14px] top-7 -translate-x-1/2">
++                <div className={`h-3.5 w-3.5 rounded-full ${a.dot} border-2 border-black/80`} />
+               </div>
+ 
+               {/* Card */}
+-              <div className="ml-10 rounded-2xl border border-border bg-card p-5 shadow-sm">
+-                <div className="flex flex-wrap items-start justify-between gap-3">
+-                  <div>
+-                    <div className="text-sm text-muted-foreground">{item.subtitle}</div>
+-                    <h3 className="text-xl font-bold leading-tight mt-1">{item.title}</h3>
+-                  </div>
+-                  <div className="text-sm font-medium text-muted-foreground">{item.timeframe}</div>
+-                </div>
++              <Link
++                href={item.href}
++                className={`ml-6 block rounded-2xl border border-border bg-card px-6 py-5 shadow-sm transition-colors ${a.hover}`}
++              >
++                <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-start">
++                  {/* Left column: primary content */}
++                  <div className="min-w-0">
++                    <div className="flex flex-wrap items-center gap-3">
++                      <span
++                        className={`inline-flex items-center justify-center px-4 py-1.5 rounded-lg border-2 border-black/80 text-sm font-semibold ${a.year}`}
++                      >
++                        {item.year}
++                      </span>
++                      <div className="text-lg font-semibold text-foreground">{item.companyRole}</div>
++                    </div>
+ 
+-                <div className="flex flex-wrap gap-2 mt-4">
+-                  {item.tags.map((t) => (
+-                    <span key={t} className={`text-xs font-medium px-2.5 py-1 rounded-full border ${a.chip}`}>
+-                      {t}
+-                    </span>
+-                  ))}
+-                </div>
++                    <div className={`mt-4 text-xl font-semibold leading-tight ${a.label}`}>{item.label}</div>
++                    <div className={`mt-1 text-base leading-relaxed ${a.label} opacity-80`}>{item.microCaption}</div>
++                  </div>
+ 
+-                <div className="mt-5">
+-                  <Link href={item.href} className={`text-sm font-semibold inline-flex items-center gap-1 ${a.link}`}>
+-                    Read case study
+-                    <span aria-hidden="true">→</span>
+-                  </Link>
++                  {/* Right column: tags */}
++                  {item.tags.length > 0 ? (
++                    <div className="flex flex-wrap gap-2 lg:max-w-[240px] lg:justify-end">
++                      {item.tags.map((tag) => (
++                        <span
++                          key={tag}
++                          className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground"
++                        >
++                          {tag}
++                        </span>
++                      ))}
++                    </div>
++                  ) : null}
+                 </div>
+-              </div>
++              </Link>
+             </li>
+           )
+         })}
+diff --git a/components/route-map.tsx b/components/route-map.tsx
+index 00e6b0cd..44833ef8 100644
+--- a/components/route-map.tsx
++++ b/components/route-map.tsx
+@@ -1,410 +1,192 @@
+ "use client"
+ 
+-import { useState, useEffect } from "react"
+ import Link from "next/link"
+ 
+ interface JourneyNode {
+   id: string
+-  title: string
+-  summary: string
+   href: string
+   position: { x: number; y: number }
+-  size: "small" | "medium" | "large"
+-  color: string
+-  year: string
+-  icon: string
+-  scale: number
+-  opacity: number
++  timeframe: string
++  role: string
++  stageTitle: string
++  stageSubtitle: string
++  accent: "pink" | "blue" | "orange" | "green"
++  roleSide: "left" | "right"
++  stageSide: "left" | "right"
++  stageBox?: boolean
+ }
+ 
+ const nodes: JourneyNode[] = [
+-  {
+-    id: "engineering",
+-    title: "Engineering Foundation",
+-    summary: "Building technical depth at scale",
+-    href: "/projects/engineering-foundation",
+-    position: { x: 15, y: 65 },
+-    size: "small",
+-    color: "#7a8fb8",
+-    year: "2012-2016",
+-    icon: "/amazon-logo.png", // Updated to use PNG logo
+-    scale: 0.8,
+-    opacity: 1,
+-  },
+   {
+     id: "lyft",
+-    title: "Lyft",
+-    summary: "Improving reliability at scale",
+     href: "/projects/lyft-developer-experience-pm",
+-    position: { x: 35, y: 42 },
+-    size: "large",
+-    color: "#e63ba8",
+-    year: "2019-2022",
+-    icon: "🚗",
+-    scale: 1.15,
+-    opacity: 1,
++    position: { x: 64, y: 12 },
++    timeframe: "2020-2023",
++    role: "Lyft: Developer Experience PM",
++    stageTitle: "Learning what good looks like",
++    stageSubtitle: "Stage: Benefiting from mature data infrastructure",
++    accent: "pink",
++    roleSide: "right",
++    stageSide: "left",
++    stageBox: true,
+   },
+   {
+     id: "mba",
+-    title: "MBA",
+-    summary: "Financial modeling under uncertainty",
+     href: "/projects/mba-strategic-frameworks",
+-    position: { x: 52, y: 55 },
+-    size: "medium",
+-    color: "#c9af68",
+-    year: "2017-2019",
+-    icon: "/cal-logo.png", // Updated to use Cal logo image
+-    scale: 0.95,
+-    opacity: 0.88,
++    position: { x: 46, y: 35 },
++    timeframe: "2023-",
++    role: "MBA: Student",
++    stageTitle: "Understanding incentives & tradeoffs",
++    stageSubtitle: "Stage: Why organizations underinvest in data foundations",
++    accent: "blue",
++    roleSide: "left",
++    stageSide: "right",
+   },
+   {
+     id: "gainbridge",
+-    title: "Gainbridge",
+-    summary: "Cross-team data foundation",
+     href: "/projects/gainbridge-data-architecture",
+-    position: { x: 68, y: 35 },
+-    size: "medium",
+-    color: "#7378c4",
+-    year: "2023-2025",
+-    icon: "🏢",
+-    scale: 1.08,
+-    opacity: 0.98,
++    position: { x: 58, y: 62 },
++    timeframe: "2023-2025",
++    role: "Gainbridge: Data Product Manager",
++    stageTitle: "Owning data systems",
++    stageSubtitle: "Stage: Turning fragmented signals into reliable, revenue-critical truth",
++    accent: "orange",
++    roleSide: "right",
++    stageSide: "left",
+   },
+   {
+     id: "dishclosure",
+-    title: "Dishclosure",
+-    summary: "Zero-to-one allergen data layer",
+     href: "/projects/dishclosure-founder-mode",
+-    position: { x: 82, y: 58 },
+-    size: "medium",
+-    color: "#5a9a7a",
+-    year: "2022-2023",
+-    icon: "🍽️",
+-    scale: 1.0,
+-    opacity: 0.92,
++    position: { x: 47, y: 82 },
++    timeframe: "2025",
++    role: "Dishclosure: Founder, Product Lead",
++    stageTitle: "Discovering system limits",
++    stageSubtitle: "Stage: Where data integrity fundamentally breaks",
++    accent: "green",
++    roleSide: "left",
++    stageSide: "right",
+   },
+ ]
+ 
+-const getSizeValue = (size: "small" | "medium" | "large", scale: number) => {
+-  const baseSize = size === "large" ? 140 : size === "medium" ? 100 : 80
+-  return baseSize * scale
++function accentStyles(accent: JourneyNode["accent"]) {
++  switch (accent) {
++    case "pink":
++      return { text: "text-pink-600", bg: "bg-pink-300", dot: "#f3a6b6" }
++    case "blue":
++      return { text: "text-blue-600", bg: "bg-blue-300", dot: "#73a3e6" }
++    case "orange":
++      return { text: "text-orange-500", bg: "bg-orange-300", dot: "#f2a15a" }
++    case "green":
++    default:
++      return { text: "text-green-600", bg: "bg-green-300", dot: "#4fb36c" }
++  }
+ }
+ 
+ export function RouteMap() {
+-  const [hoveredNode, setHoveredNode] = useState<string | null>(null)
+-  const [skaterProgress, setSkaterProgress] = useState(0)
+-
+-  useEffect(() => {
+-    const interval = setInterval(() => {
+-      setSkaterProgress((prev) => (prev + 0.5) % 100)
+-    }, 50)
+-    return () => clearInterval(interval)
+-  }, [])
+-
+-  const getSkaterPosition = (progress: number) => {
+-    const t = progress / 100
+-    const points = nodes.map((n) => n.position)
+-
+-    if (t === 0) return points[0]
+-    if (t === 1) return points[points.length - 1]
+-
+-    const segmentCount = points.length - 1
+-    const segmentIndex = Math.floor(t * segmentCount)
+-    const segmentT = t * segmentCount - segmentIndex
+-
+-    const p0 = points[Math.max(0, segmentIndex - 1)]
+-    const p1 = points[segmentIndex]
+-    const p2 = points[Math.min(points.length - 1, segmentIndex + 1)]
+-    const p3 = points[Math.min(points.length - 1, segmentIndex + 2)]
+-
+-    // Catmull-Rom spline for smooth organic curves
+-    const x =
+-      0.5 *
+-      (2 * p1.x +
+-        (-p0.x + p2.x) * segmentT +
+-        (2 * p0.x - 5 * p1.x + 4 * p2.x - p3.x) * segmentT * segmentT +
+-        (-p0.x + 3 * p1.x - 3 * p2.x + p3.x) * segmentT * segmentT * segmentT)
+-
+-    const y =
+-      0.5 *
+-      (2 * p1.y +
+-        (-p0.y + p2.y) * segmentT +
+-        (2 * p0.y - 5 * p1.y + 4 * p2.y - p3.y) * segmentT * segmentT +
+-        (-p0.y + 3 * p1.y - 3 * p2.y + p3.y) * segmentT * segmentT * segmentT)
+-
+-    return { x, y }
+-  }
+-
+-  const skaterPos = getSkaterPosition(skaterProgress)
+-
+   const generateSmoothPath = () => {
+     const points = nodes.map((n) => ({ x: n.position.x, y: n.position.y }))
++    if (points.length < 2) return ""
+     let pathData = `M ${points[0].x} ${points[0].y}`
+-
+     for (let i = 0; i < points.length - 1; i++) {
+       const current = points[i]
+       const next = points[i + 1]
+       const controlX = (current.x + next.x) / 2
+-      const controlY = i % 2 === 0 ? Math.min(current.y, next.y) - 5 : Math.max(current.y, next.y) + 5
+-
++      const controlY = i % 2 === 0 ? Math.min(current.y, next.y) - 8 : Math.max(current.y, next.y) + 8
+       pathData += ` Q ${controlX} ${controlY}, ${next.x} ${next.y}`
+     }
+-
+     return pathData
+   }
+ 
+   return (
+-    <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-24">
+-      <div className="text-center mb-12">
+-        <h1 className="text-5xl font-bold mb-4 text-balance">
+-          Roadmap to <span className="text-[#e63ba8]">Product Leadership</span>
+-        </h1>
+-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
+-          A visual journey through my career evolution - shaped by the experiences that defined my path, with Lyft at
+-          the heart of my transformation
++    <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-24">
++      <div className="flex flex-col gap-2 mb-10">
++        <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">Career Journey</h2>
++        <p className="text-muted-foreground max-w-2xl">
++          A visual map of roles and the “stage” each one taught me about building reliable data systems.
+         </p>
+       </div>
+ 
+-      <div className="relative w-full aspect-[16/10] rounded-3xl overflow-hidden border border-slate-300/40 dark:border-slate-700/40 bg-[#f8f7f4] dark:bg-slate-900">
+-        {/* Radial vignette for focus */}
++      <div className="relative w-full aspect-[3/4] rounded-3xl overflow-hidden border border-border bg-[#f8f7f4]">
++        {/* Grid background (matches screenshot vibe) */}
+         <div
+           className="absolute inset-0"
+           style={{
+-            background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 0%, rgba(0,0,0,0.02) 100%)",
+-            zIndex: 0,
++            backgroundImage:
++              "repeating-linear-gradient(0deg, rgba(15,23,42,0.06) 0, rgba(15,23,42,0.06) 1px, transparent 1px, transparent 52px), repeating-linear-gradient(90deg, rgba(15,23,42,0.06) 0, rgba(15,23,42,0.06) 1px, transparent 1px, transparent 52px)",
++            opacity: 0.35,
+           }}
+         />
+ 
+-        {/* Subtle noise/grain texture */}
+-        <div
+-          className="absolute inset-0"
+-          style={{
+-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+-            opacity: 0.03,
+-            zIndex: 0,
+-          }}
+-        />
+-
+-        {/* Faint dotted grid/contour pattern */}
+-        <div
+-          className="absolute inset-0"
+-          style={{
+-            backgroundImage: "radial-gradient(circle, #6b7280 0.5px, transparent 0.5px)",
+-            backgroundSize: "24px 24px",
+-            opacity: 0.025,
+-            zIndex: 0,
+-          }}
+-        />
+-
+-        <svg
+-          className="absolute inset-0 w-full h-full"
+-          style={{ zIndex: 1 }}
+-          viewBox="0 0 100 100"
+-          preserveAspectRatio="none"
+-        >
+-          <defs>
+-            {/* 2-tone subtle gradient for the path */}
+-            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+-              <stop offset="0%" stopColor="#d4508f" stopOpacity="0.4" />
+-              <stop offset="30%" stopColor="#d4508f" stopOpacity="0.65" />
+-              <stop offset="50%" stopColor="#d4508f" stopOpacity="0.8" />
+-              <stop offset="70%" stopColor="#d4508f" stopOpacity="0.7" />
+-              <stop offset="100%" stopColor="#d4508f" stopOpacity="0.5" />
+-            </linearGradient>
+-
+-            {/* Soft shadow for path */}
+-            <filter id="softPathShadow">
+-              <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
+-              <feOffset dx="0" dy="1" result="offsetblur" />
+-              <feComponentTransfer>
+-                <feFuncA type="linear" slope="0.12" />
+-              </feComponentTransfer>
+-              <feMerge>
+-                <feMergeNode />
+-                <feMergeNode in="SourceGraphic" />
+-              </feMerge>
+-            </filter>
+-          </defs>
+-
+-          {/* Main path with variable stroke width effect */}
++        {/* Curve */}
++        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+           <path
+             d={generateSmoothPath()}
+-            stroke="url(#pathGradient)"
+-            strokeWidth="1.2"
++            stroke="rgba(2,6,23,0.85)"
++            strokeWidth="0.55"
+             fill="none"
+             strokeLinecap="round"
+             strokeLinejoin="round"
+-            filter="url(#softPathShadow)"
+-            opacity="0.9"
+           />
+-
+-          {/* Thinner overlay path for transitions */}
+-          <path
+-            d={generateSmoothPath()}
+-            stroke="#d4508f"
+-            strokeWidth="0.3"
+-            fill="none"
+-            strokeLinecap="round"
+-            strokeLinejoin="round"
+-            opacity="0.15"
+-          />
+-
+-          {/* Tiny wayfinding markers along the path */}
+-          {nodes.slice(0, -1).map((node, i) => {
+-            const nextNode = nodes[i + 1]
+-            const midX = (node.position.x + nextNode.position.x) / 2
+-            const midY = (node.position.y + nextNode.position.y) / 2
+-            return <circle key={`marker-${i}`} cx={midX} cy={midY} r="0.4" fill="#d4508f" opacity="0.3" />
+-          })}
+         </svg>
+ 
+-        {/* Rollerskate animation */}
+-        <div
+-          className="absolute transition-all duration-100 ease-linear"
+-          style={{
+-            left: `${skaterPos.x}%`,
+-            top: `${skaterPos.y}%`,
+-            transform: "translate(-50%, -50%)",
+-            zIndex: 5,
+-          }}
+-        >
+-          <div className="text-6xl drop-shadow-lg animate-bounce" style={{ animationDuration: "1s" }}>
+-            🛼
+-          </div>
+-        </div>
+-
++        {/* Nodes + labels */}
+         {nodes.map((node) => {
+-          const size = getSizeValue(node.size, node.scale)
+-          const isHovered = hoveredNode === node.id
+-
+-          // Desaturate colors slightly for editorial feel
+-          const desaturatedColor = node.color.replace(/#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i, (match, r, g, b) => {
+-            const red = Number.parseInt(r, 16)
+-            const green = Number.parseInt(g, 16)
+-            const blue = Number.parseInt(b, 16)
+-            const gray = (red + green + blue) / 3
+-            const newR = Math.round(red * 0.85 + gray * 0.15)
+-              .toString(16)
+-              .padStart(2, "0")
+-            const newG = Math.round(green * 0.85 + gray * 0.15)
+-              .toString(16)
+-              .padStart(2, "0")
+-            const newB = Math.round(blue * 0.85 + gray * 0.15)
+-              .toString(16)
+-              .padStart(2, "0")
+-            return `#${newR}${newG}${newB}`
+-          })
++          const a = accentStyles(node.accent)
++          const roleIsRight = node.roleSide === "right"
++          const stageIsRight = node.stageSide === "right"
+ 
+           return (
+             <div
+               key={node.id}
+-              className="absolute transition-all duration-300"
++              className="absolute"
+               style={{
+                 left: `${node.position.x}%`,
+                 top: `${node.position.y}%`,
+                 transform: "translate(-50%, -50%)",
+-                zIndex: isHovered ? 20 : Math.round(node.scale * 10),
+-                opacity: node.opacity,
+               }}
+             >
+-              <Link href={node.href}>
+-                <button
+-                  onMouseEnter={() => setHoveredNode(node.id)}
+-                  onMouseLeave={() => setHoveredNode(null)}
+-                  className="relative group"
+-                  style={{
+-                    width: size,
+-                    height: size,
+-                  }}
+-                >
+-                  {/* Stronger but soft shadows with thin border */}
+-                  <div
+-                    className="absolute inset-0 rounded-full transition-all duration-300 border-[3px] flex items-center justify-center"
+-                    style={{
+-                      backgroundColor: desaturatedColor,
+-                      borderColor: "rgba(255, 255, 255, 0.6)",
+-                      transform: isHovered ? `scale(1.08)` : "scale(1)",
+-                      boxShadow: isHovered
+-                        ? `0 16px 36px rgba(0,0,0,0.14), 0 8px 18px rgba(0,0,0,0.1), 0 3px 8px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.2)`
+-                        : `0 10px 24px rgba(0,0,0,0.11), 0 5px 12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.15)`,
+-                    }}
++              {/* Dot */}
++              <div
++                className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
++                style={{
++                  backgroundColor: a.dot,
++                  border: "2px solid rgba(2,6,23,0.9)",
++                }}
++                aria-hidden="true"
++              />
++
++              {/* Role label (year pill + role) */}
++              <Link
++                href={node.href}
++                className="absolute top-1/2 -translate-y-1/2 group"
++                style={roleIsRight ? { left: 26 } : { right: 26 }}
++              >
++                <div className={`flex items-center gap-4 ${roleIsRight ? "" : "flex-row-reverse"}`}>
++                  <span
++                    className={`inline-flex items-center justify-center px-4 py-1.5 rounded-lg border-2 border-black/80 text-sm font-semibold ${a.bg}`}
++                    style={{ color: "rgba(2,6,23,0.9)" }}
+                   >
+-                    {node.icon.startsWith("/") ? (
+-                      <img
+-                        src={node.icon || "/placeholder.svg"}
+-                        alt={node.title}
+-                        className="w-[70%] h-[70%] object-contain rounded-full"
+-                      />
+-                    ) : (
+-                      <div className="text-4xl" style={{ fontSize: `${node.scale * 2.5}rem` }}>
+-                        {node.icon}
+-                      </div>
+-                    )}
+-                  </div>
+-
+-                  {/* Label with refined styling */}
+-                  <div
+-                    className="absolute w-max text-center"
+-                    style={{
+-                      top: node.position.y < 50 ? size + 8 : -32,
+-                      left: "50%",
+-                      transform: "translateX(-50%)",
+-                    }}
+-                  >
+-                    <div
+-                      className="font-semibold text-sm px-3 py-1.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-lg border border-slate-300/50 dark:border-slate-700/50"
+-                      style={{
+-                        boxShadow: "0 3px 10px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05)",
+-                        fontSize: `${0.85 + node.scale * 0.1}rem`,
+-                      }}
+-                    >
+-                      <span style={{ color: desaturatedColor }}>{node.title}</span>
+-                    </div>
+-                  </div>
+-
+-                  {/* Hover card with accent color highlight */}
+-                  {isHovered && (
+-                    <div
+-                      className="absolute bg-white dark:bg-slate-900 rounded-xl p-4 border-2 animate-in fade-in zoom-in-95 duration-200 w-64"
+-                      style={{
+-                        top: node.position.y < 50 ? size + 45 : -140,
+-                        left: "50%",
+-                        transform: "translateX(-50%)",
+-                        borderColor: "#d4508f",
+-                        zIndex: 30,
+-                        boxShadow:
+-                          "0 20px 48px rgba(0,0,0,0.14), 0 10px 24px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.08)",
+-                      }}
+-                    >
+-                      <div
+-                        className="absolute w-3 h-3 rotate-45 border"
+-                        style={{
+-                          [node.position.y < 50 ? "top" : "bottom"]: -7,
+-                          left: "50%",
+-                          transform: "translateX(-50%)",
+-                          backgroundColor: "white",
+-                          borderColor: "#d4508f",
+-                          borderWidth: node.position.y < 50 ? "2px 0 0 2px" : "0 2px 2px 0",
+-                        }}
+-                      />
+-
+-                      <h3 className="font-bold mb-2" style={{ color: desaturatedColor }}>
+-                        {node.title}
+-                      </h3>
+-                      <p className="text-sm text-muted-foreground mb-3">{node.summary}</p>
+-                      <div className="flex items-center justify-between text-xs">
+-                        <span className="text-muted-foreground font-medium">{node.year}</span>
+-                        <span className="font-semibold flex items-center gap-1" style={{ color: "#d4508f" }}>
+-                          Explore
+-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+-                          </svg>
+-                        </span>
+-                      </div>
+-                    </div>
+-                  )}
+-                </button>
++                    {node.timeframe}
++                  </span>
++                  <span className="text-lg font-semibold text-black/85 group-hover:underline underline-offset-4">
++                    {node.role}
++                  </span>
++                </div>
+               </Link>
++
++              {/* Stage callout */}
++              <div
++                className={`absolute top-1/2 -translate-y-1/2 ${a.text}`}
++                style={stageIsRight ? { left: 26 } : { right: 26 }}
++              >
++                <div
++                  className={node.stageBox ? "rounded-md bg-white/80 px-4 py-3 backdrop-blur-sm" : undefined}
++                  style={node.stageBox ? { boxShadow: "0 1px 0 rgba(2,6,23,0.06)" } : undefined}
++                >
++                  <div className="text-xl font-semibold leading-tight text-balance">{node.stageTitle}</div>
++                  <div className="text-lg leading-snug opacity-85 text-pretty">{node.stageSubtitle}</div>
++                </div>
++              </div>
+             </div>
+           )
+         })}

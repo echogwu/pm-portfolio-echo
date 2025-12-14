@@ -11,6 +11,12 @@ If you don’t have pnpm:
 npm i -g pnpm
 ```
 
+## Changelog
+
+- Keep `CHANGELOG.md` updated for any user-facing change.
+- Add entries under **[Unreleased]** using Keep a Changelog headings (Added/Changed/Fixed/Removed).
+- When cutting a release, move entries from **[Unreleased]** into a dated version section (e.g. `## [0.2.0] - YYYY-MM-DD`).
+
 ## Install
 
 From the repo root:
@@ -39,6 +45,8 @@ pnpm start
 ```bash
 pnpm lint
 ```
+
+Note: the `lint` script currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet. Either add ESLint, or treat linting as optional for now.
 
 ## Environment variables
 

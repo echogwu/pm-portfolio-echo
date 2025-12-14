@@ -10,6 +10,46 @@
 This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
 Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
 
+## Local development
+
+### Prereqs
+
+- **Node.js**: a recent LTS is recommended
+- **pnpm**: this repo includes `pnpm-lock.yaml`, so pnpm is the intended package manager
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+Run the dev server:
+
+```bash
+pnpm dev
+```
+
+Build + start (prod-like):
+
+```bash
+pnpm build
+pnpm start
+```
+
+Lint:
+
+```bash
+pnpm lint
+```
+
+Note: the `lint` script currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet. Either add ESLint, or treat linting as optional for now.
+
+## Docs
+
+- **Project structure**: see `PROJECT_STRUCTURE.md`
+- **Changelog**: see `CHANGELOG.md`
+- **Contributing**: see `CONTRIBUTING.md`
+
 ## Deployment
 
 Your project is live at:
