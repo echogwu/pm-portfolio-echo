@@ -1,11 +1,12 @@
 import { createProjectOgImageResponse, fetchAsDataUrl, mimeFromPath } from "@/lib/og"
 
 export const dynamic = "force-static"
+export const runtime = "nodejs"
 
 export async function GET() {
   const heroPath = "/lyft.gif"
-  const publicBase = new URL("../../../../public/", import.meta.url)
-  const heroImageDataUrl = await fetchAsDataUrl(new URL(heroPath.replace(/^\//, ""), publicBase), mimeFromPath(heroPath))
+  const heroUrl = new URL("../../../../public/lyft.gif", import.meta.url)
+  const heroImageDataUrl = await fetchAsDataUrl(heroUrl, mimeFromPath(heroPath))
 
   return createProjectOgImageResponse({
     title: "Lyft: Quality Engineer → Developer Experience PM",

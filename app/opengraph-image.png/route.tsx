@@ -1,20 +1,12 @@
 import { ImageResponse } from "next/og"
+import { fetchAsDataUrl, mimeFromPath } from "@/lib/og"
 
 export const dynamic = "force-static"
-
-function arrayBufferToBase64(data: ArrayBuffer) {
-  const bytes = new Uint8Array(data)
-  const chunkSize = 0x8000
-  let binary = ""
-  for (let i = 0; i < bytes.length; i += chunkSize) {
-    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize))
-  }
-  return btoa(binary)
-}
+export const runtime = "nodejs"
 
 async function getProfileAvatarDataUrl() {
-  const avatar = await fetch(new URL("../../public/profile-avatar.png", import.meta.url)).then((res) => res.arrayBuffer())
-  return `data:image/png;base64,${arrayBufferToBase64(avatar)}`
+  const heroPath = "/profile-avatar.png"
+  return fetchAsDataUrl(new URL(`../../public${heroPath}`, import.meta.url), mimeFromPath(heroPath))
 }
 
 export async function GET() {
@@ -66,7 +58,7 @@ export async function GET() {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18, width: 420 }}>
-          <div style={{ position: "relative", width: 340, height: 340 }}>
+          <div style={{ position: "relative", width: 340, height: 340, display: "flex" }}>
             <div
               style={{
                 position: "absolute",
@@ -89,7 +81,7 @@ export async function GET() {
             />
           </div>
 
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={{ fontSize: 46, fontWeight: 850, letterSpacing: -0.8 }}>Echo Paulus</div>
             <div style={{ fontSize: 28, fontWeight: 600, color: "rgba(15, 23, 42, 0.55)", marginTop: 6 }}>
               Data Product Manager

@@ -20,6 +20,14 @@ export function mimeFromPath(pathname: string) {
 }
 
 export async function fetchAsDataUrl(url: URL, mime: string) {
+  // Node's fetch() does not support file:// (undici throws "not implemented... yet...").
+  if (url.protocol === "file:") {
+    const { readFile } = await import("node:fs/promises")
+    const file = await readFile(url)
+    const base64 = Buffer.from(file).toString("base64")
+    return `data:${mime};base64,${base64}`
+  }
+
   const buf = await fetch(url).then((res) => res.arrayBuffer())
   return `data:${mime};base64,${arrayBufferToBase64(buf)}`
 }
@@ -84,6 +92,7 @@ export function createProjectOgImageResponse(props: ProjectOgTemplateProps) {
         <div style={{ width: 520, height: 420, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div
             style={{
+              display: "flex",
               width: "100%",
               height: "100%",
               borderRadius: 28,
