@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { buildMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Work Samples | Echo Paulus",
+  title: "Work Samples",
   description: "Sample work artifacts, documents, and deliverables from product management projects.",
   pathname: "/work-samples",
   type: "website",

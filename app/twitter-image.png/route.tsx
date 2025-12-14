@@ -2,7 +2,24 @@ import { ImageResponse } from "next/og"
 
 export const dynamic = "force-static"
 
-export function GET() {
+function arrayBufferToBase64(data: ArrayBuffer) {
+  const bytes = new Uint8Array(data)
+  const chunkSize = 0x8000
+  let binary = ""
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize))
+  }
+  return btoa(binary)
+}
+
+async function getProfileAvatarDataUrl() {
+  const avatar = await fetch(new URL("../../public/profile-avatar.png", import.meta.url)).then((res) => res.arrayBuffer())
+  return `data:image/png;base64,${arrayBufferToBase64(avatar)}`
+}
+
+export async function GET() {
+  const avatarSrc = await getProfileAvatarDataUrl()
+
   return new ImageResponse(
     (
       <div
@@ -10,33 +27,76 @@ export function GET() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
           padding: 84,
-          background:
-            "radial-gradient(900px 630px at 15% 20%, rgba(34,197,94,0.20), transparent 55%), radial-gradient(900px 630px at 85% 30%, rgba(59,130,246,0.20), transparent 55%), linear-gradient(135deg, #0b1220 0%, #070b14 100%)",
-          color: "#e5e7eb",
+          background: "linear-gradient(180deg, #ffffff 0%, #fafafa 100%)",
+          color: "#0b0f19",
           fontFamily:
             'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"',
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          <div style={{ fontSize: 24, fontWeight: 650, color: "rgba(229,231,235,0.9)" }}>PM Portfolio</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 26, flex: 1, paddingRight: 48 }}>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              fontSize: 74,
-              fontWeight: 850,
-              letterSpacing: -1.6,
+              fontSize: 90,
               lineHeight: 1.03,
+              fontWeight: 850,
+              letterSpacing: -1.8,
             }}
           >
-            <span>AI ships features.</span>
-            <span>I ship direction.</span>
+            <span>AI Ships Features.</span>
+            <span>I Ship Direction.</span>
           </div>
-          <div style={{ fontSize: 28, color: "rgba(229,231,235,0.82)", lineHeight: 1.25, maxWidth: 980 }}>
-            Data & Platform PM — event-driven systems, analytics foundations, and decision-making under uncertainty.
+          <div
+            style={{
+              fontSize: 30,
+              lineHeight: 1.35,
+              color: "rgba(15, 23, 42, 0.62)",
+              maxWidth: 650,
+            }}
+          >
+            Data & Platform Product Manager who builds the systems that make business performance legible. Owned data
+            architecture, attribution, and activation platforms behind mission-critical growth engines and consumer
+            workflows. Founder experience diagnosing ecosystem-level data lineage failures.
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18, width: 420 }}>
+          <div style={{ position: "relative", width: 340, height: 340 }}>
+            <div
+              style={{
+                position: "absolute",
+                inset: -14,
+                borderRadius: 999,
+                background: "linear-gradient(135deg, rgba(59,130,246,0.12), rgba(59,130,246,0.0))",
+              }}
+            />
+            <img
+              src={avatarSrc}
+              alt="Profile"
+              style={{
+                width: 340,
+                height: 340,
+                borderRadius: 999,
+                objectFit: "cover",
+                border: "8px solid rgba(15, 23, 42, 0.08)",
+                boxShadow: "0 28px 80px rgba(2, 6, 23, 0.18)",
+              }}
+            />
+          </div>
+
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: 46, fontWeight: 850, letterSpacing: -0.8 }}>Echo Paulus</div>
+            <div style={{ fontSize: 28, fontWeight: 600, color: "rgba(15, 23, 42, 0.55)", marginTop: 6 }}>
+              Data Product Manager
+            </div>
+            <div style={{ fontSize: 24, color: "rgba(15, 23, 42, 0.5)", marginTop: 8 }}>
+              San Francisco Bay Area, CA
+            </div>
           </div>
         </div>
       </div>

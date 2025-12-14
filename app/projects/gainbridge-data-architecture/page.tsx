@@ -5,10 +5,10 @@ import { ProjectDetailLayout } from "@/components/project-detail-layout"
 import { buildMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Gainbridge | Product Manager, Data and Measurement | Echo Paulus",
+  title: "Gainbridge | Product Manager, Data and Measurement",
   description: "Built the instrumentation layer that made performance trustworthy — before optimization.",
   pathname: "/projects/gainbridge-data-architecture",
-  ogImagePath: "/gainbridge.gif",
+  ogImagePath: "/projects/gainbridge-data-architecture/opengraph-image.png",
   ogImageAlt: "Gainbridge data architecture",
   type: "article",
 })

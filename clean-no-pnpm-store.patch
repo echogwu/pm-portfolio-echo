@@ -151,9 +151,9 @@ index 52ccded7..20c0d4d6 100644
  import { BackButton } from "@/components/back-button"
  
  export const metadata = {
--  title: "Test Engineering Foundation — Amazon, AerServ, Oracle | Echo Paulus",
+-  title: "Test Engineering Foundation — Amazon, AerServ, Oracle",
 -  description: "Built technical foundations through quality engineering roles across leading tech companies.",
-+  title: "Amazon|AerServ|Oracle: Engineering Foundation | Echo Paulus",
++  title: "Amazon|AerServ|Oracle: Engineering Foundation",
 +  description: "The technical grounding that shaped how I evaluate data, risk, and leverage as a PM.",
  }
  

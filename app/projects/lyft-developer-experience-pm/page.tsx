@@ -5,10 +5,10 @@ import { ProjectDetailLayout } from "@/components/project-detail-layout"
 import { buildMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Lyft: Quality Engineer → Developer Experience PM | Echo Paulus",
+  title: "Lyft: Quality Engineer → Developer Experience PM",
   description: "Learned when to stop optimizing tools and start optimizing where teams focus.",
   pathname: "/projects/lyft-developer-experience-pm",
-  ogImagePath: "/lyft.gif",
+  ogImagePath: "/projects/lyft-developer-experience-pm/opengraph-image.png",
   ogImageAlt: "Lyft developer experience",
   type: "article",
 })

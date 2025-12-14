@@ -5,7 +5,7 @@ import { ProjectsTimeline } from "@/components/projects-timeline"
 import { buildMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Projects | Echo Paulus",
+  title: "Projects",
   description:
     "A collection of product management work spanning data platforms, APIs, zero-to-one products, and strategic frameworks.",
   pathname: "/projects",

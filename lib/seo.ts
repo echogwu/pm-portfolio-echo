@@ -51,6 +51,8 @@ export function buildMetadata(args: BuildMetadataArgs): Metadata {
   if (args.ogImagePath) {
     images.unshift({
       url: assetPath(args.ogImagePath),
+      width: 1200,
+      height: 630,
       alt: args.ogImageAlt || args.title,
     })
   }
