@@ -5,6 +5,9 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 export const DEFAULT_DESCRIPTION = "AI ships features, I ship direction"
 export const DEFAULT_TITLE = "Echo's Portfolio"
 
+const OG_IMAGE_VERSION =
+  process.env.NEXT_PUBLIC_OG_IMAGE_VERSION || process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 8) || "2025-12-14"
+
 export function getSiteUrl() {
   // Used to produce absolute OG/Twitter URLs at build time.
   // Override in CI via NEXT_PUBLIC_SITE_URL.
@@ -25,6 +28,12 @@ export function assetPath(pathname: string) {
   return encodeURI(withBasePath(pathname))
 }
 
+export function ogImagePath(pathname: string) {
+  // Cache-bust social scrapers (WhatsApp, iMessage, etc.) that aggressively cache og:image by URL.
+  // Bump via NEXT_PUBLIC_OG_IMAGE_VERSION (or rely on VERCEL_GIT_COMMIT_SHA when on Vercel).
+  return `${encodeURI(withBasePath(pathname))}?v=${OG_IMAGE_VERSION}`
+}
+
 type BuildMetadataArgs = {
   title: string
   description: string
@@ -40,7 +49,7 @@ export function buildMetadata(args: BuildMetadataArgs): Metadata {
   const images: NonNullable<NonNullable<Metadata["openGraph"]>["images"]> = [
     // Always include a crisp default fallback (good for pages without a hero).
     {
-      url: withBasePath("/opengraph-image.png"),
+      url: ogImagePath("/opengraph-image.png"),
       width: 1200,
       height: 630,
       alt: DEFAULT_TITLE,
@@ -49,7 +58,7 @@ export function buildMetadata(args: BuildMetadataArgs): Metadata {
 
   if (args.ogImagePath) {
     images.unshift({
-      url: assetPath(args.ogImagePath),
+      url: ogImagePath(args.ogImagePath),
       width: 1200,
       height: 630,
       alt: args.ogImageAlt || args.title,
@@ -57,8 +66,8 @@ export function buildMetadata(args: BuildMetadataArgs): Metadata {
   }
 
   const twitterImages: string[] = []
-  if (args.ogImagePath) twitterImages.push(assetPath(args.ogImagePath))
-  twitterImages.push(withBasePath("/twitter-image.png"))
+  if (args.ogImagePath) twitterImages.push(ogImagePath(args.ogImagePath))
+  twitterImages.push(ogImagePath("/twitter-image.png"))
 
   return {
     title: args.title,

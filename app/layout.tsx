@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, getMetadataBase, withBasePath } from "@/lib/seo"
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, getMetadataBase, ogImagePath, withBasePath } from "@/lib/seo"
 import "./globals.css"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Echo's Portfolio",
     images: [
       {
-        url: withBasePath("/opengraph-image.png"),
+        url: ogImagePath("/opengraph-image.png"),
         width: 1200,
         height: 630,
         alt: DEFAULT_TITLE,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [withBasePath("/twitter-image.png")],
+    images: [ogImagePath("/twitter-image.png")],
   },
   icons: {
     icon: [
