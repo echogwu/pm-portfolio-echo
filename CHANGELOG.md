@@ -11,7 +11,7 @@ This format is based on **Keep a Changelog**, and this project aims to follow **
 - Tags displayed on `/projects` timeline cards (mirrors the tag pills on each project detail page).
 - An IDEO project card on the `/projects` timeline.
 - `public/mba.gif` hero asset for the MBA project page.
-- Dishclosure work sample cards on `/work-samples` with placeholder-image lightbox previews and backlinks to the project.
+- Dishclosure work sample cards on `/work-samples` with modal previews (images + PDFs), external artifact links (Figma/GitHub/PDF), and backlinks to the project.
 
 ### Changed
 

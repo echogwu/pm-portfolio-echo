@@ -74,4 +74,26 @@ In practice:
 - Keep content scannable (short paragraphs + bullets)
 - Avoid “mega wrapper” cards; rely on whitespace + thin rules + vertical dividers
 
+## Work samples (artifacts)
+
+`/work-samples` is where we showcase concrete deliverables (strategy docs, ERDs, prototypes, legal PDFs, etc.).
+
+### Adding a new artifact card
+
+1. **Add assets to `public/`**
+   - Images: `public/<name>.png` (or `.jpg/.webp`)
+   - PDFs: `public/<name>.pdf`
+2. **Wire the artifact in** `components/work-samples-grid.tsx`
+   - **Thumbnail**: set `images: [{ src: "/your-preview.png", alt: "..." }]`
+   - **Gallery** (optional): add multiple entries in `images[]`
+   - **PDF preview** (optional): set `pdfSrc: "/your-doc.pdf"`
+   - **Full artifact link** (optional): set `artifactHref` (+ `artifactLabel`)
+3. **Verify static export**
+   - Run `pnpm build` and confirm the artifact opens correctly in the modal.
+
+### Notes
+
+- Static assets must live in **`public/`** to be served at `/<filename>` (required for static export).
+- Prefer exporting screenshots at **2x/3x** (retina) so modal previews don’t look blurry when enlarged.
+
 

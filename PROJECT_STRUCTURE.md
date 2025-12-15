@@ -20,6 +20,7 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
     projects-timeline.tsx   # /projects timeline cards (“Career Journey”)
     route-map.tsx           # Legacy/experimental journey map (currently unused)
     project-detail-layout.tsx # Standard project detail layout (hero + guided rows)
+    work-samples-grid.tsx   # /work-samples artifact cards + modal (images + PDFs)
     preserve-scroll.tsx     # Scroll position preservation helper (client)
     scroll-to-top.tsx       # Scroll-to-top helper (client)
     back-button.tsx         # Back navigation UI
@@ -50,6 +51,30 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
   - `app/work-samples/page.tsx` → `/work-samples`
 - **Metadata** can be exported per-route (`export const metadata = { ... }`).
 - **Global layout** is `app/layout.tsx`.
+
+## Work samples (artifacts)
+
+`/work-samples` is a gallery of deliverables (artifacts) with consistent card UI:
+
+- **Page**: `app/work-samples/page.tsx` (server component; metadata lives here)
+- **Grid + modal**: `components/work-samples-grid.tsx` (client component)
+
+### Artifact capabilities
+
+Each artifact card supports:
+
+- **Preview image thumbnail**: first entry of `images[]` (served from `public/`)
+- **Image gallery preview**: multi-image modal with arrow buttons and keyboard navigation
+- **PDF preview**: set `pdfSrc` to embed a PDF in the modal (PDF must live in `public/`)
+- **Full artifact link**: set `artifactHref` + optional `artifactLabel` (shown on the card and in the modal header)
+- **Project backlink**: `projectHref` (e.g. back to `/projects/dishclosure-founder-mode`)
+
+### Static assets for artifacts
+
+- Put preview images / PDFs in `public/` and reference them by absolute path:
+  - Example image: `"/dishclosure-erd.png"`
+  - Example PDF: `"/dishclosure-legal.pdf"`
+- The UI uses `withBasePath()` so assets also work when deploying under `NEXT_PUBLIC_BASE_PATH`.
 
 ## Components and client/server boundaries
 

@@ -67,6 +67,16 @@ NEXT_PUBLIC_BASE_PATH=/portfolio pnpm build
 
 Tip: project case studies under `app/projects/*` should use the shared `ProjectDetailLayout` described in `PROJECT_STRUCTURE.md`.
 
+## Work samples (artifacts)
+
+`/work-samples` hosts artifact cards (deliverables) with lightweight previews:
+
+- **Images**: click to open a modal preview; multi-image artifacts support arrow navigation
+- **PDFs**: embedded PDF preview in the modal (served from `public/`)
+- **External sources**: optional “View full artifact” links (e.g. Figma, GitHub)
+
+To add/update artifacts, see the **Work samples (artifacts)** section in `CONTRIBUTING.md`.
+
 ## Deployment
 
 Your project is live at:
