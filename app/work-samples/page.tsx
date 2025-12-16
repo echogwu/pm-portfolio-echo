@@ -1,7 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { buildMetadata } from "@/lib/seo"
-import { WorkSamplesGrid } from "@/components/work-samples-grid"
+import { WorkSamplesTabs } from "@/components/work-samples-tabs"
 import { SiteNav } from "@/components/site-nav"
 
 export const metadata: Metadata = buildMetadata({
@@ -28,14 +28,7 @@ export default function WorkSamplesPage() {
 
       {/* Content */}
       <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-24">
-        <div className="flex flex-col gap-2 mb-10">
-          <h2 className="text-3xl font-bold tracking-tight">Dishclosure artifacts</h2>
-          <p className="text-muted-foreground max-w-3xl">
-            Five representative artifacts from the Dishclosure founder build — click any card to preview.
-          </p>
-        </div>
-
-        <WorkSamplesGrid />
+        <WorkSamplesTabs />
       </section>
 
       {/* Footer */}

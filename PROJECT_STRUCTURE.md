@@ -10,10 +10,16 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
     layout.tsx              # Root layout + metadata + analytics
     page.tsx                # Home route (/)
     globals.css             # Tailwind + design tokens (CSS variables)
+    opengraph-image.png/    # Default Open Graph image route (static)
+      route.tsx
     projects/               # Projects index + per-project case study routes
       page.tsx              # /projects
       <project-slug>/page.tsx
+        opengraph-image.png/  # Optional per-project OG image route(s)
+          route.tsx
     work-samples/page.tsx   # /work-samples
+    twitter-image.png/      # Default Twitter image route (static)
+      route.tsx
 
   components/               # Reusable React components (mostly client components)
     home-content.tsx        # Home page content sections
@@ -21,6 +27,7 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
     route-map.tsx           # Legacy/experimental journey map (currently unused)
     project-detail-layout.tsx # Standard project detail layout (hero + guided rows)
     work-samples-grid.tsx   # /work-samples artifact cards + modal (images + PDFs)
+    work-samples-tabs.tsx   # /work-samples project tabs (filters the artifact grid)
     preserve-scroll.tsx     # Scroll position preservation helper (client)
     scroll-to-top.tsx       # Scroll-to-top helper (client)
     back-button.tsx         # Back navigation UI
@@ -28,6 +35,8 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
 
   lib/
     utils.ts                # `cn()` className helper (clsx + tailwind-merge)
+    seo.ts                  # SEO helpers (base URL, OG/Twitter paths, basePath-aware URLs)
+    og.tsx                  # Shared OG/Twitter image composition
 
   public/                   # Static assets served at /
     *.png/*.jpg/*.gif/*.svg # Logos, screenshots, icons, etc.
@@ -57,6 +66,7 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
 `/work-samples` is a gallery of deliverables (artifacts) with consistent card UI:
 
 - **Page**: `app/work-samples/page.tsx` (server component; metadata lives here)
+- **Tabs**: `components/work-samples-tabs.tsx` (client component; groups artifacts by project)
 - **Grid + modal**: `components/work-samples-grid.tsx` (client component)
 
 ### Artifact capabilities

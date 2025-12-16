@@ -1,4 +1,4 @@
-# portfolio website
+# Portfolio website
 
 *Automatically synced with your [v0.app](https://v0.app) deployments*
 
@@ -9,6 +9,12 @@
 
 This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
 Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+
+## Live site
+
+The production site is hosted on the custom domain:
+
+- **[https://echo-paulus.com](https://echo-paulus.com)** (see `public/CNAME`)
 
 ## Local development
 
@@ -47,7 +53,12 @@ Lint:
 pnpm lint
 ```
 
-Note: the `lint` script currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet. Either add ESLint, or treat linting as optional for now.
+Note: `pnpm lint` currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet, so this will fail in a fresh checkout.
+
+If you want linting, either:
+
+- Add ESLint tooling (recommended): install `eslint` + `eslint-config-next` and add an `.eslintrc` configuration, or switch the script to `next lint`.
+- Treat linting as optional for now.
 
 ### Deploying under a subpath (basePath)
 
@@ -69,7 +80,7 @@ Tip: project case studies under `app/projects/*` should use the shared `ProjectD
 
 ## Work samples (artifacts)
 
-`/work-samples` hosts artifact cards (deliverables) with lightweight previews:
+`/work-samples` hosts artifact cards (deliverables) grouped under **project tabs** with lightweight previews:
 
 - **Images**: click to open a modal preview; multi-image artifacts support arrow navigation
 - **PDFs**: embedded PDF preview in the modal (served from `public/`)
@@ -79,9 +90,9 @@ To add/update artifacts, see the **Work samples (artifacts)** section in `CONTRI
 
 ## Deployment
 
-Your project is live at:
+Admin/infra lives in Vercel (project dashboard):
 
-**[https://vercel.com/echogwus-projects/v0-portfolio-website-journey-dishclosure](https://vercel.com/echogwus-projects/v0-portfolio-website-journey-dishclosure)**
+- **[Vercel project](https://vercel.com/echogwus-projects/v0-portfolio-website-journey-dishclosure)**
 
 ## Build your app
 

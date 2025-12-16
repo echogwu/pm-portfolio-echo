@@ -12,6 +12,8 @@ This format is based on **Keep a Changelog**, and this project aims to follow **
 - An IDEO project card on the `/projects` timeline.
 - `public/mba.gif` hero asset for the MBA project page.
 - Dishclosure work sample cards on `/work-samples` with modal previews (images + PDFs), external artifact links (Figma/GitHub/PDF), and backlinks to the project.
+- Gainbridge work sample cards on `/work-samples` (PDF + diagram previews).
+- Project tabs on `/work-samples` to switch artifacts by project.
 
 ### Changed
 
@@ -19,7 +21,8 @@ This format is based on **Keep a Changelog**, and this project aims to follow **
 - Added more top spacing between the nav bar and the “Career Journey” section.
 - Updated the MBA project page and timeline card to “MBA — Designing Decision Systems”.
 - Redesigned all project detail pages with an editorial “hero + 3 guided rows” layout using thin rules, subtle tints, and spine-guided decision flows.
-- Documentation updates: local development instructions and changelog guidance.
+- Documentation updates: corrected “live site” URL (custom domain), clarified static export preview flow, and refreshed project structure notes.
+- GitHub Pages workflow: fixed pnpm-not-found failures during build.
 
 ## [0.1.0] - 2025-12-13
 

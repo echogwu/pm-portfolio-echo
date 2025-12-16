@@ -53,7 +53,12 @@ pnpm dlx serve out
 pnpm lint
 ```
 
-Note: the `lint` script currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet. Either add ESLint, or treat linting as optional for now.
+Note: `pnpm lint` currently runs `eslint .`, but ESLint is not installed/configured in `package.json` yet, so this will fail in a fresh checkout.
+
+If you want linting, either:
+
+- Add ESLint tooling (recommended): install `eslint` + `eslint-config-next` and add an `.eslintrc` configuration, or switch the script to `next lint`.
+- Treat linting as optional for now.
 
 ## Environment variables
 
@@ -83,11 +88,14 @@ In practice:
 1. **Add assets to `public/`**
    - Images: `public/<name>.png` (or `.jpg/.webp`)
    - PDFs: `public/<name>.pdf`
-2. **Wire the artifact in** `components/work-samples-grid.tsx`
+2. **Wire the artifact into** `components/work-samples-grid.tsx`
+   - Add a new entry to the exported `WORK_SAMPLES` array.
+   - **Project grouping (tabs)**: set `projectLabel` (e.g. `"Dishclosure"`, `"Gainbridge"`). `/work-samples` groups artifacts by this label.
+   - **Backlink**: set `projectHref` to the relevant project page.
    - **Thumbnail**: set `images: [{ src: "/your-preview.png", alt: "..." }]`
    - **Gallery** (optional): add multiple entries in `images[]`
-   - **PDF preview** (optional): set `pdfSrc: "/your-doc.pdf"`
-   - **Full artifact link** (optional): set `artifactHref` (+ `artifactLabel`)
+   - **PDF preview** (optional): set `pdfSrc: "/your-doc.pdf"` and `artifactHref: "/your-doc.pdf"` (use `artifactLabel: "Open PDF"`).
+   - **External artifact link** (optional): set `artifactHref` (+ `artifactLabel`) to a URL (Figma/GitHub/etc.)
 3. **Verify static export**
    - Run `pnpm build` and confirm the artifact opens correctly in the modal.
 
