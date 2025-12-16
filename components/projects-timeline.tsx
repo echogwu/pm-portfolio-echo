@@ -62,7 +62,7 @@ const items: TimelineItem[] = [
   {
     id: "gainbridge",
     year: "2023-2025",
-    companyRole: "Gainbridge: Data Product Manager",
+    companyRole: "Gainbridge: Product Manager, Data & Platform",
     label: "Owning data systems",
     microCaption: "Turning fragmented signals into reliable, revenue-critical truth",
     tags: ["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"],

@@ -14,6 +14,7 @@ type WorkSample = {
   pdfSrc?: string
   artifactHref?: string
   artifactLabel?: string
+  defaultPreviewTint?: boolean
 }
 
 function SafeImg({
@@ -38,6 +39,52 @@ function SafeImg({
       }}
     />
   )
+}
+
+function clamp01(n: number) {
+  return Math.max(0, Math.min(1, n))
+}
+
+async function computeAverageLuminance(src: string): Promise<number> {
+  const url = withBasePath(src)
+  return await new Promise((resolve) => {
+    const img = new Image()
+    img.decoding = "async"
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas")
+        const ctx = canvas.getContext("2d", { willReadFrequently: true })
+        if (!ctx) return resolve(0.5)
+
+        const w = 24
+        const h = 24
+        canvas.width = w
+        canvas.height = h
+        ctx.drawImage(img, 0, 0, w, h)
+        const data = ctx.getImageData(0, 0, w, h).data
+
+        let sum = 0
+        let count = 0
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i] / 255
+          const g = data[i + 1] / 255
+          const b = data[i + 2] / 255
+          const a = data[i + 3] / 255
+          if (a < 0.05) continue
+          // relative luminance (sRGB-ish)
+          const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b
+          sum += lum
+          count += 1
+        }
+
+        resolve(count > 0 ? clamp01(sum / count) : 0.5)
+      } catch {
+        resolve(0.5)
+      }
+    }
+    img.onerror = () => resolve(0.5)
+    img.src = url
+  })
 }
 
 function LightboxModal({
@@ -132,7 +179,7 @@ function LightboxModal({
                   href={artifactHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted transition-colors"
+                  className="inline-flex items-center justify-center rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   {artifactLabel ?? "View full artifact"} ↗
                 </a>
@@ -150,7 +197,7 @@ function LightboxModal({
 
           <div className="p-4 sm:p-6">
             {isPdf ? (
-              <div className="overflow-hidden rounded-xl border border-border bg-background">
+              <div className="overflow-hidden rounded-xl border border-border bg-background shadow-sm">
                 <iframe
                   title={title}
                   src={withBasePath(pdfSrc!)}
@@ -158,7 +205,7 @@ function LightboxModal({
                 />
               </div>
             ) : (
-              <div className="flex items-center justify-center rounded-xl bg-muted p-2">
+              <div className="flex items-center justify-center rounded-xl bg-muted p-2 ring-1 ring-inset ring-black/10 dark:ring-white/10">
                 <SafeImg
                   src={current.src}
                   alt={current.alt}
@@ -208,6 +255,91 @@ function LightboxModal({
         </div>
       </div>
     </div>
+  )
+}
+
+function WorkSampleCard({
+  item,
+  onOpen,
+}: {
+  item: WorkSample
+  onOpen: () => void
+}) {
+  const thumb = item.images[0] ?? { src: "/placeholder.jpg", alt: "Placeholder image" }
+
+  // Default to a subtle always-on tint so light/white previews don't feel washed out.
+  // Allow opting out per-card via `defaultPreviewTint: false`.
+  const overlayBase = item.defaultPreviewTint === false ? "opacity-0" : "opacity-15"
+
+  const [pillVariant, setPillVariant] = useState<"light" | "dark">("dark")
+
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      const lum = await computeAverageLuminance(thumb.src)
+      if (cancelled) return
+      // Bright images (off-white) need a dark pill; darker images need a light pill.
+      setPillVariant(lum > 0.58 ? "dark" : "light")
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [thumb.src])
+
+  const pillClass =
+    pillVariant === "dark"
+      ? "bg-black/75 text-white border border-white/10 shadow-sm"
+      : "bg-white/85 text-foreground border border-black/10 shadow-sm"
+
+  return (
+    <article className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
+      <button type="button" className="group block w-full text-left" onClick={onOpen}>
+        <div className="relative bg-muted aspect-[16/10] overflow-hidden ring-1 ring-inset ring-black/10 dark:ring-white/10">
+          <SafeImg
+            src={thumb.src}
+            alt={thumb.alt}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+          />
+          <div
+            className={`absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0 ${overlayBase} group-hover:opacity-100 transition-opacity`}
+          />
+          <div className="absolute bottom-3 left-3 right-3">
+            <div
+              className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm transition-transform duration-200 group-hover:-translate-y-0.5 ${pillClass}`}
+            >
+              {item.images.length > 1 ? "Click to preview (gallery)" : "Click to preview"}
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <div className="p-5">
+        <h3 className="text-lg font-semibold text-foreground">{item.headline}</h3>
+        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.subline}</p>
+        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="flex w-full items-center justify-between gap-3">
+            <Link
+              href={item.projectHref}
+              className="min-w-0 truncate text-[clamp(0.8rem,2.6vw,0.95rem)] font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              ← Back to {item.projectLabel}
+            </Link>
+            {item.artifactHref ? (
+              <a
+                href={item.artifactHref}
+                target="_blank"
+                rel="noreferrer"
+                className="shrink-0 whitespace-nowrap inline-flex items-center justify-center rounded-lg bg-primary px-2.5 py-1 text-[clamp(0.8rem,2.6vw,0.95rem)] font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3 sm:py-1.5"
+              >
+                {item.artifactLabel ?? "View full artifact"} ↗
+              </a>
+            ) : (
+              <span className="shrink-0" />
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
   )
 }
 
@@ -280,6 +412,7 @@ export function WorkSamplesGrid() {
         projectLabel: "Dishclosure",
         artifactHref: "https://github.com/echogwu/dishclosure-operator-and-diner-app",
         artifactLabel: "View GitHub repo",
+        defaultPreviewTint: true,
         images: [
           {
             src: "/dishclosure-tech-consideration.png",
@@ -315,64 +448,14 @@ export function WorkSamplesGrid() {
     <>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
-          <article
+          <WorkSampleCard
             key={item.id}
-            className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden"
-          >
-            <button
-              type="button"
-              className="group block w-full text-left"
-              onClick={() => {
-                setActive(item)
-                setActiveIndex(0)
-              }}
-            >
-              {(() => {
-                const thumb = item.images[0] ?? {
-                  src: "/placeholder.jpg",
-                  alt: "Placeholder image",
-                }
-                return (
-              <div className="relative bg-muted aspect-[16/10] overflow-hidden">
-                <SafeImg
-                  src={thumb.src}
-                  alt={thumb.alt}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <div className="inline-flex items-center rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground">
-                    {item.images.length > 1 ? "Click to preview (gallery)" : "Click to preview"}
-                  </div>
-                </div>
-              </div>
-                )
-              })()}
-            </button>
-
-            <div className="p-5">
-              <h3 className="text-lg font-semibold text-foreground">{item.headline}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.subline}</p>
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-                <Link
-                  href={item.projectHref}
-                  className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-                >
-                  ← Back to {item.projectLabel}
-                </Link>
-                {item.artifactHref ? (
-                  <a
-                    href={item.artifactHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-                  >
-                    {item.artifactLabel ?? "View full artifact"} ↗
-                  </a>
-                ) : null}
-              </div>
-            </div>
-          </article>
+            item={item}
+            onOpen={() => {
+              setActive(item)
+              setActiveIndex(0)
+            }}
+          />
         ))}
       </div>
 

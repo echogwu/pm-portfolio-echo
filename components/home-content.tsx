@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Github, Mail, MapPin, Linkedin } from "lucide-react"
+import { TypingTagline } from "@/components/typing-tagline"
 // import { Button } from "@/components/ui/button"
 
 export default function HomeContent() {
@@ -66,8 +67,15 @@ export default function HomeContent() {
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-balance">
-                AI Ships Features.
-                <br />I Ship Direction.
+                <span className="relative inline-block">
+                  {/* Reserve layout to avoid any shift while the typing animation runs */}
+                  <span className="invisible whitespace-pre">
+                    {"AI Ships Features.\n I Ship  Direction."}
+                  </span>
+                  <span className="absolute inset-0">
+                    <TypingTagline line1="AI Ships Features." line2="   I Ship    Direction." />
+                  </span>
+                </span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-md justify-text">
                 Data & Platform Product Manager who builds the systems that make business performance legible. Owned
@@ -119,7 +127,7 @@ export default function HomeContent() {
               </div>
               <div className="text-center">
                 <h2 className="text-2xl font-bold">Echo Paulus</h2>
-                <p className="text-muted-foreground font-medium">Data Product Manager</p>
+                <p className="text-muted-foreground font-medium">Product Manager, Data & Platform</p>
                 <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground mt-1">
                   <MapPin className="w-4 h-4" />
                   San Francisco Bay Area, CA

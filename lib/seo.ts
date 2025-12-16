@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
 
-export const DEFAULT_DESCRIPTION = "AI ships features, I ship direction"
+export const DEFAULT_DESCRIPTION = "AI ships features, I Ship Direction"
 export const DEFAULT_TITLE = "Echo's Portfolio"
 
 const OG_IMAGE_VERSION =

@@ -47,7 +47,7 @@ const nodes: JourneyNode[] = [
     href: "/projects/gainbridge-data-architecture",
     position: { x: 58, y: 62 },
     timeframe: "2023-2025",
-    role: "Gainbridge: Data Product Manager",
+    role: "Gainbridge: Product Manager, Data & Platform",
     stageTitle: "Owning data systems",
     stageSubtitle: "Stage: Turning fragmented signals into reliable, revenue-critical truth",
     accent: "orange",

@@ -59,7 +59,7 @@ export default function MBAWorkPage() {
           role: {
             heading: "Role",
             bullets: [
-              "Full-time MBA student, optimized for judgment over coverage",
+              "Part-time MBA student, optimized for judgment over coverage",
               "Treated the MBA as a system to design, not a checklist to complete",
               "Prioritized courses that exposed incentives, tradeoffs, and decision logic",
               "Synthesized theory with real product, data, and organizational problems",

@@ -16,17 +16,29 @@ export default function WorkSamplesPage() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
-          <Link href="/" className="text-lg font-semibold tracking-tight hover:text-foreground/70 transition-colors">
+          <Link
+            href="/"
+            className="text-[clamp(0.95rem,3.2vw,1.125rem)] font-semibold tracking-tight hover:text-foreground/70 transition-colors"
+          >
             PM Portfolio
           </Link>
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium hover:text-foreground/70 transition-colors">
+          <div className="flex items-center gap-4 sm:gap-8">
+            <Link
+              href="/"
+              className="text-[clamp(0.8rem,2.6vw,0.95rem)] font-medium hover:text-foreground/70 transition-colors"
+            >
               Home
             </Link>
-            <Link href="/projects" className="text-sm font-medium hover:text-foreground/70 transition-colors">
+            <Link
+              href="/projects"
+              className="text-[clamp(0.8rem,2.6vw,0.95rem)] font-medium hover:text-foreground/70 transition-colors"
+            >
               Projects
             </Link>
-            <Link href="/work-samples" className="text-sm font-medium hover:text-foreground/70 transition-colors">
+            <Link
+              href="/work-samples"
+              className="text-[clamp(0.8rem,2.6vw,0.95rem)] font-medium hover:text-foreground/70 transition-colors"
+            >
               Work Samples
             </Link>
           </div>

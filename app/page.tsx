@@ -5,7 +5,7 @@ import { buildMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
   title: "Echo's Portfolio",
-  description: "AI ships features, I ship direction",
+  description: "AI ships features, I Ship Direction",
   pathname: "/",
   type: "website",
 })

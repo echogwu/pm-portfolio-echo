@@ -50,7 +50,7 @@ export async function GET() {
               maxWidth: 650,
             }}
           >
-            AI ships features, I ship direction
+            AI ships features, I Ship Direction
           </div>
         </div>
 
