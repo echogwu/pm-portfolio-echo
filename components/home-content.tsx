@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Github, Mail, MapPin, Linkedin } from "lucide-react"
+import { SiteNav } from "@/components/site-nav"
 import { TypingTagline } from "@/components/typing-tagline"
 // import { Button } from "@/components/ui/button"
 
@@ -42,38 +43,24 @@ export default function HomeContent() {
   ] as const
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="text-lg font-semibold tracking-tight">PM Portfolio</div>
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium hover:text-foreground/70 transition-colors">
-              Home
-            </Link>
-            <Link href="/projects" className="text-sm font-medium hover:text-foreground/70 transition-colors">
-              Projects
-            </Link>
-            <Link href="/work-samples" className="text-sm font-medium hover:text-foreground/70 transition-colors">
-              Work Samples
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="home" />
 
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-balance">
-                <span className="relative inline-block">
+              <h1 className="font-bold leading-tight tracking-tight text-balance text-[clamp(2.15rem,8.2vw,3.75rem)]">
+                <span className="relative inline-block max-w-full">
                   {/* Reserve layout to avoid any shift while the typing animation runs */}
-                  <span className="invisible whitespace-pre">
-                    {"AI Ships Features.\n I Ship  Direction."}
+                  <span className="invisible">
+                    <span className="block whitespace-pre">{"AI Ships Features."}</span>
+                    <span className="block whitespace-pre">{" I Ship  Direction."}</span>
                   </span>
                   <span className="absolute inset-0">
-                    <TypingTagline line1="AI Ships Features." line2="   I Ship    Direction." />
+                    <TypingTagline line1="AI Ships Features." line2="   I Ship   Direction." />
                   </span>
                 </span>
               </h1>

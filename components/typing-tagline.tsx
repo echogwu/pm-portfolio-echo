@@ -88,16 +88,17 @@ export function TypingTagline({ line1, line2, startDelayMs = 250 }: TypingTaglin
   const showCursor = !(reduceMotion || prefersReducedMotion()) && (t1.length < full.line1.length || t2.length < full.line2.length)
 
   return (
-    <span className="whitespace-pre" aria-label={`${full.line1} ${full.line2}`}>
-      <span>{t1}</span>
-      {"\n"}
-      <span>{t2}</span>
-      {showCursor ? (
-        <span
-          aria-hidden="true"
-          className="inline-block w-[0.085em] h-[0.95em] bg-foreground align-[-0.08em] ml-1 animate-pulse"
-        />
-      ) : null}
+    <span aria-label={`${full.line1} ${full.line2}`}>
+      <span className="block whitespace-pre">{t1}</span>
+      <span className="block whitespace-pre">
+        {t2}
+        {showCursor ? (
+          <span
+            aria-hidden="true"
+            className="inline-block w-[0.085em] h-[0.95em] bg-foreground align-[-0.08em] ml-1 animate-pulse"
+          />
+        ) : null}
+      </span>
     </span>
   )
 }

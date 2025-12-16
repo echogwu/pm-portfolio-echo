@@ -2,6 +2,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { buildMetadata } from "@/lib/seo"
 import { WorkSamplesGrid } from "@/components/work-samples-grid"
+import { SiteNav } from "@/components/site-nav"
 
 export const metadata: Metadata = buildMetadata({
   title: "Work Samples",
@@ -14,36 +15,7 @@ export default function WorkSamplesPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="text-[clamp(0.95rem,3.2vw,1.125rem)] font-semibold tracking-tight hover:text-foreground/70 transition-colors"
-          >
-            PM Portfolio
-          </Link>
-          <div className="flex items-center gap-4 sm:gap-8">
-            <Link
-              href="/"
-              className="text-[clamp(0.8rem,2.6vw,0.95rem)] font-medium hover:text-foreground/70 transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/projects"
-              className="text-[clamp(0.8rem,2.6vw,0.95rem)] font-medium hover:text-foreground/70 transition-colors"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/work-samples"
-              className="text-[clamp(0.8rem,2.6vw,0.95rem)] font-medium hover:text-foreground/70 transition-colors"
-            >
-              Work Samples
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="work-samples" />
 
       {/* Header */}
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
