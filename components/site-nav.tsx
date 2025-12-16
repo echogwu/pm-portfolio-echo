@@ -5,8 +5,10 @@ export type SiteNavActive = "home" | "projects" | "work-samples"
 function linkClass(active: boolean) {
   return [
     "shrink-0 whitespace-nowrap leading-none",
-    "text-[clamp(0.68rem,2.2vw,0.95rem)] font-medium transition-colors",
-    active ? "text-foreground" : "hover:text-foreground/70",
+    "text-[clamp(0.68rem,2.2vw,0.95rem)] transition-colors",
+    active
+      ? "text-foreground font-semibold border-b-2 border-foreground/60 pb-1 -mb-1"
+      : "text-muted-foreground font-medium hover:text-foreground/70",
   ].join(" ")
 }
 
@@ -24,13 +26,21 @@ export function SiteNav({ active }: { active: SiteNavActive }) {
 
           <div className="ml-auto flex flex-1 min-w-0 justify-end">
             <div className="flex items-center gap-2.5 sm:gap-8 flex-nowrap">
-              <Link href="/" className={linkClass(active === "home")}>
+              <Link href="/" aria-current={active === "home" ? "page" : undefined} className={linkClass(active === "home")}>
                 Home
               </Link>
-              <Link href="/projects" className={linkClass(active === "projects")}>
+              <Link
+                href="/projects"
+                aria-current={active === "projects" ? "page" : undefined}
+                className={linkClass(active === "projects")}
+              >
                 Projects
               </Link>
-              <Link href="/work-samples" className={linkClass(active === "work-samples")}>
+              <Link
+                href="/work-samples"
+                aria-current={active === "work-samples" ? "page" : undefined}
+                className={linkClass(active === "work-samples")}
+              >
                 Work Samples
               </Link>
             </div>

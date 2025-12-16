@@ -1,7 +1,7 @@
-import Link from "next/link"
 import type { Metadata } from "next"
 import { PreserveScroll } from "@/components/preserve-scroll"
 import { ProjectDetailLayout } from "@/components/project-detail-layout"
+import { SiteNav } from "@/components/site-nav"
 import { buildMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
@@ -19,38 +19,7 @@ export default function GainbridgePage() {
       <PreserveScroll />
 
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
-        <div className="w-full border-b border-border">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center gap-3">
-            <Link
-              href="/"
-              className="whitespace-nowrap text-[clamp(0.9rem,3vw,1.125rem)] font-semibold tracking-tight hover:text-foreground/70 transition-colors"
-            >
-              PM Portfolio
-            </Link>
-            <div className="ml-auto flex items-center gap-3 sm:gap-8">
-              <Link
-                href="/"
-                className="whitespace-nowrap text-[clamp(0.72rem,2.4vw,0.95rem)] font-medium hover:text-foreground/70 transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                href="/projects"
-                className="whitespace-nowrap text-[clamp(0.72rem,2.4vw,0.95rem)] font-medium text-foreground"
-              >
-                Projects
-              </Link>
-              <Link
-                href="/work-samples"
-                className="whitespace-nowrap text-[clamp(0.72rem,2.4vw,0.95rem)] font-medium hover:text-foreground/70 transition-colors"
-              >
-                Work Samples
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="projects" />
 
       <ProjectDetailLayout
         title="Gainbridge: Product Manager, Data and Measurement"

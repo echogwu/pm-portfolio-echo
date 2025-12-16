@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { PreserveScroll } from "@/components/preserve-scroll"
 import { BackButton } from "@/components/back-button"
+import { SiteNav } from "@/components/site-nav"
 
 export const metadata = {
   title: "Gainbridge | Product Manager, Data and Measurement",
@@ -13,24 +14,7 @@ export default function GainbridgePage() {
       <PreserveScroll />
 
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
-          <Link href="/" className="text-lg font-semibold tracking-tight hover:text-foreground/70 transition-colors">
-            PM Portfolio
-          </Link>
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium hover:text-foreground/70 transition-colors">
-              Home
-            </Link>
-            <Link href="/projects" className="text-sm font-medium hover:text-foreground/70 transition-colors">
-              Projects
-            </Link>
-            <Link href="#" className="text-sm font-medium hover:text-foreground/70 transition-colors">
-              Work Samples
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="projects" />
 
       {/* Header Section */}
       <section className="max-w-4xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
