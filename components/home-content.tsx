@@ -489,8 +489,8 @@ export default function HomeContent() {
                 </div>
 
                 <div className="p-5 pb-16">
-                  <ol className="space-y-4">
-                    {[
+              <ol className="space-y-4">
+                {[
                   {
                     step: "①",
                     title: "Map the system",
@@ -523,29 +523,29 @@ export default function HomeContent() {
                     bullets: ["Avoid unnecessary features", "Ship higher-confidence changes"],
                     accent: "pink",
                   },
-                    ].map((item, idx, arr) => (
-                      <li key={item.step} className="relative">
-                        {idx !== arr.length - 1 && (
-                          <div className="absolute left-6 top-14 bottom-[-16px] w-px bg-border" aria-hidden="true" />
-                        )}
-                        <div className="flex gap-4">
-                          {(() => {
-                            const accent =
-                              item.accent === "emerald"
+                ].map((item, idx, arr) => (
+                  <li key={item.step} className="relative">
+                    {idx !== arr.length - 1 && (
+                      <div className="absolute left-6 top-14 bottom-[-16px] w-px bg-border" aria-hidden="true" />
+                    )}
+                    <div className="flex gap-4">
+                      {(() => {
+                        const accent =
+                          item.accent === "emerald"
                                 ? {
                                     node: "bg-emerald-600 text-white",
                                     ring: "ring-emerald-500/20",
                                     card: "border-emerald-500/20 bg-emerald-500/[0.02]",
                                     bullet: "marker:text-emerald-500/80",
                                   }
-                                : item.accent === "sky"
+                            : item.accent === "sky"
                                   ? {
                                       node: "bg-sky-600 text-white",
                                       ring: "ring-sky-500/20",
                                       card: "border-sky-500/20 bg-sky-500/[0.02]",
                                       bullet: "marker:text-sky-500/80",
                                     }
-                                  : item.accent === "amber"
+                              : item.accent === "amber"
                                     ? {
                                         node: "bg-amber-600 text-white",
                                         ring: "ring-amber-500/20",
@@ -558,34 +558,34 @@ export default function HomeContent() {
                                         card: "border-pink-500/20 bg-pink-500/[0.02]",
                                         bullet: "marker:text-pink-500/80",
                                       }
-                            return (
-                              <>
-                                <div
-                                  className={`h-12 w-12 rounded-full shadow-sm flex items-center justify-center text-lg font-bold shrink-0 ring-8 ${accent.ring} ${accent.node}`}
-                                >
-                                  {item.step}
-                                </div>
+                        return (
+                          <>
+                            <div
+                              className={`h-12 w-12 rounded-full shadow-sm flex items-center justify-center text-lg font-bold shrink-0 ring-8 ${accent.ring} ${accent.node}`}
+                            >
+                              {item.step}
+                            </div>
                                 <div className={`rounded-2xl border bg-background/90 backdrop-blur-sm p-5 shadow-sm flex-1 ${accent.card}`}>
-                                  <div className="text-foreground font-bold">{item.firstLine}</div>
-                                  <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${accent.bullet}`}>
-                                    {item.bullets.map((b) => (
-                                      <li key={b}>{b}</li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              </>
-                            )
-                          })()}
-                        </div>
-                      </li>
-                    ))}
-                  </ol>
+                              <div className="text-foreground font-bold">{item.firstLine}</div>
+                              <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${accent.bullet}`}>
+                                {item.bullets.map((b) => (
+                                  <li key={b}>{b}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </>
+                        )
+                      })()}
+                    </div>
+                  </li>
+                ))}
+              </ol>
                 </div>
 
                 <div className="absolute inset-x-0 bottom-0 px-5 pb-4">
                   <p className="text-center text-sm font-semibold text-foreground/80">
-                    “Once the foundation is sound, execution becomes obvious.”
-                  </p>
+                  “Once the foundation is sound, execution becomes obvious.”
+                </p>
                 </div>
               </div>
             </div>

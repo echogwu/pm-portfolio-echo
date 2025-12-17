@@ -250,25 +250,25 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
             </div>
           ) : (
             // Default back to the classic two-column layout when there are no artifacts
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div className="md:pr-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="md:pr-10">
                 <h2 className="text-3xl font-bold mb-4 tracking-tight">{row3.outcomes.heading ?? "Outcomes"}</h2>
-                <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-                  {row3.outcomes.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="md:pl-10 md:border-l md:border-neutral-200">
-                <h2 className="text-3xl font-bold mb-4 tracking-tight">{row3.learnings.heading ?? "Learnings"}</h2>
-                <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-                  {row3.learnings.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="list-disc pl-6 space-y-2 text-foreground/90">
+                {row3.outcomes.bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
             </div>
+
+            <div className="md:pl-10 md:border-l md:border-neutral-200">
+                <h2 className="text-3xl font-bold mb-4 tracking-tight">{row3.learnings.heading ?? "Learnings"}</h2>
+              <ul className="list-disc pl-6 space-y-2 text-foreground/90">
+                {row3.learnings.bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
           )}
         </div>
       </section>

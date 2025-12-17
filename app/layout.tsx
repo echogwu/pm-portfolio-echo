@@ -1,13 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import Script from "next/script"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, getMetadataBase, ogImagePath, withBasePath } from "@/lib/seo"
 import "./globals.css"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
-const gtmId = process.env.NEXT_PUBLIC_GTM_ID
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-PWQGF8W5"
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -73,20 +72,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Google Tag Manager (head) */}
-        {gtmId ? (
-          <Script id="gtm" strategy="beforeInteractive">
-            {`
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','${gtmId}');
-            `}
-          </Script>
-        ) : null}
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         {/* Google Tag Manager (noscript) */}
         {gtmId ? (

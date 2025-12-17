@@ -209,14 +209,14 @@ export function ProjectsTimeline() {
       <div className="hidden lg:block">
         <div className="flex flex-col gap-6">
           {[...items].reverse().map((item, i) => {
-            const a = accentClasses(item.accent)
+          const a = accentClasses(item.accent)
             const bg = accentBgClasses(item.accent)
             const denom = Math.max(1, total - 1)
             // Shift right as we move upward (Dishclosure at top-right, Engineering at bottom-left)
             const t = (total - 1 - i) / denom // 1 → 0
             const offsetPct = t * 25 // 0–25% left margin
 
-            return (
+          return (
               <Link
                 key={item.id}
                 href={item.href}
@@ -255,16 +255,16 @@ export function ProjectsTimeline() {
                   </div>
                 </div>
 
-                {item.tags.length > 0 ? (
+                  {item.tags.length > 0 ? (
                   <div className="mt-4 flex flex-wrap gap-2">
                     {item.tags.slice(0, 5).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                        <span
+                          key={tag}
+                          className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     {item.tags.length > 5 ? (
                       <span className="text-xs font-medium px-3 py-1 bg-muted rounded-full text-muted-foreground">
                         +{item.tags.length - 5}
@@ -332,8 +332,8 @@ export function ProjectsTimeline() {
                   </div>
                 ) : null}
               </Link>
-            )
-          })}
+          )
+        })}
         </div>
       </div>
     </section>
