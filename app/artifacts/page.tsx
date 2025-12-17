@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Suspense } from "react"
 import { buildMetadata } from "@/lib/seo"
 import { ArtifactsTabs } from "@/components/artifacts-tabs"
 import { SiteFooter } from "@/components/site-footer"
@@ -56,7 +57,15 @@ export default function ArtifactsPage() {
 
       {/* Content */}
       <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-24">
-        <ArtifactsTabs />
+        <Suspense
+          fallback={
+            <div className="rounded-2xl border border-border bg-card p-6 text-sm text-muted-foreground">
+              Loading artifacts…
+            </div>
+          }
+        >
+          <ArtifactsTabs />
+        </Suspense>
       </section>
 
       {/* Footer */}
