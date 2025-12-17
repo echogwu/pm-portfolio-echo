@@ -2,6 +2,8 @@ import Link from "next/link"
 import { Github, Mail, MapPin, Linkedin } from "lucide-react"
 import { SiteNav } from "@/components/site-nav"
 import { TypingTagline } from "@/components/typing-tagline"
+import { SiteFooter } from "@/components/site-footer"
+import howIWorkBg from "@/components/how-i-work-bg.png"
 // import { Button } from "@/components/ui/button"
 
 export default function HomeContent() {
@@ -11,7 +13,7 @@ export default function HomeContent() {
     {
       title: "Gainbridge: Product Manager, Data and Measurement",
       description: "Built the instrumentation layer that made performance trustworthy — before optimization.",
-      href: "/projects/gainbridge-data-architecture",
+      href: "/journey/gainbridge-data-architecture",
       imageSrc: "/gainbridge.gif",
       imageAlt: "Gainbridge project",
       tags: ["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"],
@@ -20,7 +22,7 @@ export default function HomeContent() {
       title: "Dishclosure: Founder and Product Lead",
       description:
         "An operator-first investigation that revealed the real constraint wasn't UX or adoption, but broken upstream data lineage.",
-      href: "/projects/dishclosure-founder-mode",
+      href: "/journey/dishclosure-founder-mode",
       imageSrc: "/dishclosure.gif",
       imageAlt: "Dishclosure project - Collaborative ingredient exploration and allergen discovery",
       tags: ["Zero-to-One", "Data Lineage", "Schema Design", "Ecosystem Diagnosis", "Go/No-Go Decision"],
@@ -28,7 +30,7 @@ export default function HomeContent() {
     {
       title: "Lyft: Quality Engineer → Developer Experience PM",
       description: "When to stop optimizing for conventional metrics — and start optimizing what actually matters.",
-      href: "/projects/lyft-developer-experience-pm",
+      href: "/journey/lyft-developer-experience-pm",
       imageSrc: "/lyft.gif",
       imageAlt: "Lyft project",
       tags: [
@@ -74,13 +76,13 @@ export default function HomeContent() {
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4">
               <Link
-                href="https://github.com/echogwu"
+                href="https://www.linkedin.com/in/echo-paulus/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Github className="w-5 h-5" />
-                Github
+                <Linkedin className="w-5 h-5" />
+                LinkedIn
               </Link>
               <Link
                 href="mailto:echopaulus@berkeley.edu"
@@ -90,13 +92,13 @@ export default function HomeContent() {
                 Email
               </Link>
               <Link
-                href="https://www.linkedin.com/in/echo-paulus/"
+                href="https://github.com/echogwu"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Linkedin className="w-5 h-5" />
-                LinkedIn
+                <Github className="w-5 h-5" />
+                Github
               </Link>
             </div>
           </div>
@@ -207,7 +209,7 @@ export default function HomeContent() {
             </p>
           </div>
           <Link
-            href="/projects"
+            href="/journey"
             className="hidden sm:inline-flex text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
           >
             View all →
@@ -264,23 +266,57 @@ export default function HomeContent() {
           })}
 
           <div className="sm:hidden pt-2">
-            <Link href="/projects" className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
+            <Link href="/journey" className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
               View all →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* How I Work - Build Clarify Inside Messy Systems */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16 border-t border-border">
-        <div className="w-full">
-          <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">How I Work - Build Clarify Inside Messy Systems</h1>
+      {/* How I Work - Build clarity inside messy systems */}
+      <section className="relative border-t border-border">
+        {/* Full-bleed accent backdrop (subtle gradient + dot grid) */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-background to-emerald-50 dark:from-slate-950 dark:via-background dark:to-slate-900" />
+          <div className="absolute inset-0 opacity-[0.35] dark:opacity-[0.22] [background-image:radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.18)_1px,transparent_0)] dark:[background-image:radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.22)_1px,transparent_0)] [background-size:22px_22px]" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="space-y-3">
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">
+                How I work: build <span className="underline decoration-lime-300 decoration-[6px] underline-offset-[6px]">clarity</span>{" "}
+                inside messy systems
+              </h2>
+              <p className="text-muted-foreground max-w-2xl leading-relaxed">
+                I align teams around shared definitions and reliable signals, then turn that clarity into execution that compounds.
+              </p>
+            </div>
+
+            <div className="pt-2 lg:pt-0">
+              <Link
+                href="/journey"
+                className="inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                View case studies
+              </Link>
+            </div>
+          </div>
 
           {/* Horizontal workflow (desktop) + stacked (mobile) */}
           <div className="mt-10">
             {/* Desktop: horizontal progression */}
             <div className="hidden lg:block">
-              <div className="relative rounded-3xl border border-border bg-card px-8 py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06)]">
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-background shadow-[0_18px_50px_rgba(2,6,23,0.08)]">
+                {/* Background image */}
+                <div className="absolute inset-0 -z-10" aria-hidden="true">
+                  <img src={howIWorkBg.src} alt="" className="h-full w-full object-cover" />
+                  {/* Light wash for readability */}
+                  <div className="absolute inset-0 bg-background/35" />
+                </div>
+
+                {/* Content (reserve space for the bottom-bar quote) */}
+                <div className="px-8 py-10 pb-20">
                 {(() => {
                   const steps = [
                     {
@@ -367,7 +403,7 @@ export default function HomeContent() {
                               className={`absolute left-1/2 -translate-x-1/2 w-px bg-border ${isAbove ? "-bottom-8 h-8" : "-top-8 h-8"}`}
                               aria-hidden="true"
                             />
-                            <div className={`rounded-2xl border bg-background p-5 shadow-sm ${a.card}`}>
+                            <div className={`rounded-2xl border bg-background/90 backdrop-blur-sm p-5 shadow-sm ${a.card}`}>
                               <div className="text-foreground font-bold">{s.firstLine}</div>
                               <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${a.bullet}`}>
                                 {s.bullets.map((b) => (
@@ -433,20 +469,28 @@ export default function HomeContent() {
                     </div>
                   )
                 })()}
+                </div>
 
-                <blockquote className="mt-10 text-center">
-                  <div className="mx-auto mb-4 h-px w-24 bg-border" aria-hidden="true" />
-                  <p className="text-foreground/80 italic leading-relaxed">
+                {/* Quote placed on the image's bottom bar */}
+                <div className="absolute inset-x-0 bottom-0 px-8 pb-5">
+                  <p className="text-center text-sm font-semibold text-foreground/80">
                     “Once the foundation is sound, execution becomes obvious.”
                   </p>
-                </blockquote>
+                </div>
               </div>
             </div>
 
             {/* Mobile: stacked progression */}
             <div className="lg:hidden">
-              <ol className="space-y-4">
-                {[
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-background shadow-sm">
+                <div className="absolute inset-0 -z-10" aria-hidden="true">
+                  <img src={howIWorkBg.src} alt="" className="h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-background/40" />
+                </div>
+
+                <div className="p-5 pb-16">
+                  <ol className="space-y-4">
+                    {[
                   {
                     step: "①",
                     title: "Map the system",
@@ -479,50 +523,71 @@ export default function HomeContent() {
                     bullets: ["Avoid unnecessary features", "Ship higher-confidence changes"],
                     accent: "pink",
                   },
-                ].map((item, idx, arr) => (
-                  <li key={item.step} className="relative">
-                    {idx !== arr.length - 1 && (
-                      <div className="absolute left-6 top-14 bottom-[-16px] w-px bg-border" aria-hidden="true" />
-                    )}
-                    <div className="flex gap-4">
-                      {(() => {
-                        const accent =
-                          item.accent === "emerald"
-                            ? { node: "bg-emerald-600 text-white", ring: "ring-emerald-500/20", card: "border-emerald-500/20 bg-emerald-500/[0.02]", bullet: "marker:text-emerald-500/80" }
-                            : item.accent === "sky"
-                              ? { node: "bg-sky-600 text-white", ring: "ring-sky-500/20", card: "border-sky-500/20 bg-sky-500/[0.02]", bullet: "marker:text-sky-500/80" }
-                              : item.accent === "amber"
-                                ? { node: "bg-amber-600 text-white", ring: "ring-amber-500/20", card: "border-amber-500/25 bg-amber-500/[0.02]", bullet: "marker:text-amber-500/80" }
-                                : { node: "bg-pink-600 text-white", ring: "ring-pink-500/20", card: "border-pink-500/20 bg-pink-500/[0.02]", bullet: "marker:text-pink-500/80" }
-                        return (
-                          <>
-                            <div
-                              className={`h-12 w-12 rounded-full shadow-sm flex items-center justify-center text-lg font-bold shrink-0 ring-8 ${accent.ring} ${accent.node}`}
-                            >
-                              {item.step}
-                            </div>
-                            <div className={`rounded-2xl border bg-card p-5 shadow-sm flex-1 ${accent.card}`}>
-                              <div className="text-foreground font-bold">{item.firstLine}</div>
-                              <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${accent.bullet}`}>
-                                {item.bullets.map((b) => (
-                                  <li key={b}>{b}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </>
-                        )
-                      })()}
-                    </div>
-                  </li>
-                ))}
-              </ol>
+                    ].map((item, idx, arr) => (
+                      <li key={item.step} className="relative">
+                        {idx !== arr.length - 1 && (
+                          <div className="absolute left-6 top-14 bottom-[-16px] w-px bg-border" aria-hidden="true" />
+                        )}
+                        <div className="flex gap-4">
+                          {(() => {
+                            const accent =
+                              item.accent === "emerald"
+                                ? {
+                                    node: "bg-emerald-600 text-white",
+                                    ring: "ring-emerald-500/20",
+                                    card: "border-emerald-500/20 bg-emerald-500/[0.02]",
+                                    bullet: "marker:text-emerald-500/80",
+                                  }
+                                : item.accent === "sky"
+                                  ? {
+                                      node: "bg-sky-600 text-white",
+                                      ring: "ring-sky-500/20",
+                                      card: "border-sky-500/20 bg-sky-500/[0.02]",
+                                      bullet: "marker:text-sky-500/80",
+                                    }
+                                  : item.accent === "amber"
+                                    ? {
+                                        node: "bg-amber-600 text-white",
+                                        ring: "ring-amber-500/20",
+                                        card: "border-amber-500/25 bg-amber-500/[0.02]",
+                                        bullet: "marker:text-amber-500/80",
+                                      }
+                                    : {
+                                        node: "bg-pink-600 text-white",
+                                        ring: "ring-pink-500/20",
+                                        card: "border-pink-500/20 bg-pink-500/[0.02]",
+                                        bullet: "marker:text-pink-500/80",
+                                      }
+                            return (
+                              <>
+                                <div
+                                  className={`h-12 w-12 rounded-full shadow-sm flex items-center justify-center text-lg font-bold shrink-0 ring-8 ${accent.ring} ${accent.node}`}
+                                >
+                                  {item.step}
+                                </div>
+                                <div className={`rounded-2xl border bg-background/90 backdrop-blur-sm p-5 shadow-sm flex-1 ${accent.card}`}>
+                                  <div className="text-foreground font-bold">{item.firstLine}</div>
+                                  <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${accent.bullet}`}>
+                                    {item.bullets.map((b) => (
+                                      <li key={b}>{b}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </>
+                            )
+                          })()}
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
 
-              <blockquote className="mt-8 text-center">
-                <div className="mx-auto mb-4 h-px w-24 bg-border" aria-hidden="true" />
-                <p className="text-foreground/80 italic leading-relaxed">
-                  “Once the foundation is sound, execution becomes obvious.”
-                </p>
-              </blockquote>
+                <div className="absolute inset-x-0 bottom-0 px-5 pb-4">
+                  <p className="text-center text-sm font-semibold text-foreground/80">
+                    “Once the foundation is sound, execution becomes obvious.”
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -530,11 +595,7 @@ export default function HomeContent() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border mt-16">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12">
-          <div className="text-sm text-muted-foreground">© 2025 Product Portfolio. Crafted with care.</div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

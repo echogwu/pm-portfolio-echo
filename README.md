@@ -76,11 +76,11 @@ NEXT_PUBLIC_BASE_PATH=/portfolio pnpm build
 - **Changelog**: see `CHANGELOG.md`
 - **Contributing**: see `CONTRIBUTING.md`
 
-Tip: project case studies under `app/projects/*` should use the shared `ProjectDetailLayout` described in `PROJECT_STRUCTURE.md`.
+Tip: project case studies under `app/journey/*` should use the shared `ProjectDetailLayout` described in `PROJECT_STRUCTURE.md`.
 
 ## Work samples (artifacts)
 
-`/work-samples` hosts artifact cards (deliverables) grouped under **project tabs** with lightweight previews:
+`/artifacts` hosts artifact cards (deliverables) grouped under **project tabs** with lightweight previews:
 
 - **Images**: click to open a modal preview; multi-image artifacts support arrow navigation
 - **PDFs**: embedded PDF preview in the modal (served from `public/`)

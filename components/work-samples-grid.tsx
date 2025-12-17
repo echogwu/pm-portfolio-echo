@@ -3,144 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import Link from "next/link"
 import { withBasePath } from "@/lib/seo"
+import type { Artifact } from "@/lib/artifacts"
+import { ARTIFACTS } from "@/lib/artifacts"
 
-export type WorkSample = {
-  id: string
-  headline: string
-  subline: string
-  projectHref: string
-  projectLabel: string
-  images: { src: string; alt: string }[]
-  pdfSrc?: string
-  artifactHref?: string
-  artifactLabel?: string
-  defaultPreviewTint?: boolean
-}
-
-export const WORK_SAMPLES: WorkSample[] = [
-  {
-    id: "dishclosure-product-strategy",
-    headline: "Product strategy",
-    subline: "Market research, competitive analysis, and ICP definition.",
-    projectHref: "/projects/dishclosure-founder-mode",
-    projectLabel: "Dishclosure",
-    pdfSrc: "/dishclosure-product-strategy.pdf",
-    artifactHref: "/dishclosure-product-strategy.pdf",
-    artifactLabel: "Open PDF",
-    images: [
-      {
-        src: "/dishclosure-product-strategy.png",
-        alt: "Dishclosure product strategy preview (PDF thumbnail)",
-      },
-    ],
-  },
-  {
-    id: "dishclosure-data-erd",
-    headline: "Data Entity-Relationship Diagram(ERD)",
-    subline: "Entity relationships and schema foundations for allergen lineage.",
-    projectHref: "/projects/dishclosure-founder-mode",
-    projectLabel: "Dishclosure",
-    images: [
-      {
-        src: "/dishclosure-erd.png",
-        alt: "Dishclosure ERD diagram",
-      },
-    ],
-  },
-  {
-    id: "dishclosure-ux-prototype",
-    headline: "UX prototype",
-    subline: "Operator-first workflow prototype for input and validation.",
-    projectHref: "/projects/dishclosure-founder-mode",
-    projectLabel: "Dishclosure",
-    artifactHref:
-      "https://www.figma.com/board/lk8ToFLRwePtXxSJ2EIKa6/Dishclosure-UX-Prototype?node-id=0-1&t=lBRBH58cwN5ljgeU-1",
-    artifactLabel: "Open in Figma",
-    images: [{ src: "/dishclosure-ux-1.png", alt: "Dishclosure UX prototype — Menu items with dietary tags" }],
-  },
-  {
-    id: "dishclosure-legal-doc",
-    headline: "Legal doc",
-    subline: "Drafting constraints, liability considerations, and policy framing.",
-    projectHref: "/projects/dishclosure-founder-mode",
-    projectLabel: "Dishclosure",
-    pdfSrc: "/dishclosure-legal.pdf",
-    artifactHref: "/dishclosure-legal.pdf",
-    artifactLabel: "Open PDF",
-    images: [
-      {
-        src: "/dishclosure-legal.png",
-        alt: "Dishclosure legal document preview (PDF thumbnail)",
-      },
-    ],
-  },
-  {
-    id: "dishclosure-technical-design",
-    headline: "Technical design considerations",
-    subline: "System constraints, integration assumptions, and reliability tradeoffs.",
-    projectHref: "/projects/dishclosure-founder-mode",
-    projectLabel: "Dishclosure",
-    artifactHref: "https://github.com/echogwu/dishclosure-operator-and-diner-app",
-    artifactLabel: "View GitHub repo",
-    defaultPreviewTint: true,
-    images: [
-      {
-        src: "/dishclosure-tech-consideration.png",
-        alt: "Dishclosure technical design considerations preview",
-      },
-    ],
-  },
-  {
-    id: "gainbridge-data-architecture-placeholder",
-    headline: "Growth strategy (One-pager)",
-    subline:
-      "Built the decision infrastructure behind D2C growth by aligning acquisition, education, and attribution around behavioral signals",
-    projectHref: "/projects/gainbridge-data-architecture",
-    projectLabel: "Gainbridge",
-    pdfSrc: "/gainbridge-growth-engine.pdf",
-    artifactHref: "/gainbridge-growth-engine.pdf",
-    artifactLabel: "Open PDF",
-    defaultPreviewTint: true,
-    images: [
-      {
-        src: "/gainbridge-growth-engine.png",
-        alt: "Gainbridge growth engine preview (PDF thumbnail)",
-      },
-    ],
-  },
-  {
-    id: "gainbridge-metrics-dictionary-placeholder",
-    headline: "Customer Journey × Data Flow Architecture",
-    subline:
-      "Connected customer journeys to data flows to surface identity fragmentation and delayed activation caused by partial attribution and unclear customer profiles.",
-    projectHref: "/projects/gainbridge-data-architecture",
-    projectLabel: "Gainbridge",
-    defaultPreviewTint: true,
-    images: [
-      {
-        src: "/gainbridge-data-flow.png",
-        alt: "Gainbridge customer journey × data flow architecture diagram",
-      },
-    ],
-  },
-  {
-    id: "gainbridge-delivery-roadmap-placeholder",
-    headline: "Attribution Starts Before Conversion",
-    subline: "Reframed attribution as an identity and data-visibility problem, not a reporting problem.",
-    projectHref: "/projects/gainbridge-data-architecture",
-    projectLabel: "Gainbridge",
-    pdfSrc: "/gainbridge-mta.pdf",
-    artifactHref: "/gainbridge-mta.pdf",
-    artifactLabel: "Open PDF",
-    defaultPreviewTint: true,
-    images: [
-      {
-        src: "/gainbridge-mta.png",
-        alt: "Gainbridge multi-touch attribution diagram preview",
-      },
-    ],
-  },
-]
+// Artifact data lives in `lib/artifacts.ts` so it can be used by both server and client components.
 
 function SafeImg({
   src,
@@ -387,7 +253,7 @@ function WorkSampleCard({
   item,
   onOpen,
 }: {
-  item: WorkSample
+  item: Artifact
   onOpen: () => void
 }) {
   const thumb = item.images[0] ?? { src: "/placeholder.jpg", alt: "Placeholder image" }
@@ -419,7 +285,7 @@ function WorkSampleCard({
   return (
     <article className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
       <button type="button" className="group block w-full text-left" onClick={onOpen}>
-        <div className="relative bg-muted aspect-[16/10] overflow-hidden ring-1 ring-inset ring-black/10 dark:ring-white/10">
+        <div className="relative bg-muted aspect-[16/10] overflow-hidden ring-2 ring-inset ring-black/20 dark:ring-white/20">
           <SafeImg
             src={thumb.src}
             alt={thumb.alt}
@@ -468,11 +334,18 @@ function WorkSampleCard({
   )
 }
 
-export function WorkSamplesGrid({ items = WORK_SAMPLES }: { items?: WorkSample[] }) {
+export function ArtifactsGrid({
+  items = ARTIFACTS,
+  autoOpenId,
+}: {
+  items?: Artifact[]
+  autoOpenId?: string
+}) {
   const stableItems = useMemo(() => items, [items])
 
-  const [active, setActive] = useState<WorkSample | null>(null)
+  const [active, setActive] = useState<Artifact | null>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const hasAutoOpened = useRef(false)
 
   const activeImages = active?.images ?? []
   const canNavigate = activeImages.length > 1
@@ -490,6 +363,16 @@ export function WorkSamplesGrid({ items = WORK_SAMPLES }: { items?: WorkSample[]
     if (total <= 1) return
     setActiveIndex((i) => (i + 1) % total)
   }
+
+  useEffect(() => {
+    if (!autoOpenId) return
+    if (hasAutoOpened.current) return
+    const match = stableItems.find((i) => i.id === autoOpenId)
+    if (!match) return
+    setActive(match)
+    setActiveIndex(0)
+    hasAutoOpened.current = true
+  }, [autoOpenId, stableItems])
 
   return (
     <>

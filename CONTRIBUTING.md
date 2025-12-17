@@ -71,7 +71,7 @@ See `PROJECT_STRUCTURE.md`.
 
 ## Project detail page consistency
 
-When adding/editing case studies under `app/projects/*`, follow the **Project detail page layout (standard)** and **Project detail page typography (standard)** sections in `PROJECT_STRUCTURE.md`.
+When adding/editing case studies under `app/journey/*`, follow the **Project detail page layout (standard)** and **Project detail page typography (standard)** sections in `PROJECT_STRUCTURE.md`.
 
 In practice:
 
@@ -81,16 +81,16 @@ In practice:
 
 ## Work samples (artifacts)
 
-`/work-samples` is where we showcase concrete deliverables (strategy docs, ERDs, prototypes, legal PDFs, etc.).
+`/artifacts` is where we showcase concrete deliverables (strategy docs, ERDs, prototypes, legal PDFs, etc.).
 
 ### Adding a new artifact card
 
 1. **Add assets to `public/`**
    - Images: `public/<name>.png` (or `.jpg/.webp`)
    - PDFs: `public/<name>.pdf`
-2. **Wire the artifact into** `components/work-samples-grid.tsx`
-   - Add a new entry to the exported `WORK_SAMPLES` array.
-   - **Project grouping (tabs)**: set `projectLabel` (e.g. `"Dishclosure"`, `"Gainbridge"`). `/work-samples` groups artifacts by this label.
+2. **Wire the artifact into** `lib/artifacts.ts`
+   - Add a new entry to the exported `ARTIFACTS` array.
+   - **Project grouping (tabs)**: set `projectLabel` (e.g. `"Dishclosure"`, `"Gainbridge"`). `/artifacts` groups deliverables by this label.
    - **Backlink**: set `projectHref` to the relevant project page.
    - **Thumbnail**: set `images: [{ src: "/your-preview.png", alt: "..." }]`
    - **Gallery** (optional): add multiple entries in `images[]`
@@ -103,5 +103,6 @@ In practice:
 
 - Static assets must live in **`public/`** to be served at `/<filename>` (required for static export).
 - Prefer exporting screenshots at **2x/3x** (retina) so modal previews don’t look blurry when enlarged.
+- External artifacts can link to Google Docs/Slides/Sheets; use `artifactLabel` like “Open slides” / “Open spreadsheet” for clarity.
 
 

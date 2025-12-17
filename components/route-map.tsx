@@ -19,7 +19,7 @@ interface JourneyNode {
 const nodes: JourneyNode[] = [
   {
     id: "lyft",
-    href: "/projects/lyft-developer-experience-pm",
+    href: "/journey/lyft-developer-experience-pm",
     position: { x: 64, y: 12 },
     timeframe: "2020-2023",
     role: "Lyft: Developer Experience PM",
@@ -32,7 +32,7 @@ const nodes: JourneyNode[] = [
   },
   {
     id: "mba",
-    href: "/projects/mba-strategic-frameworks",
+    href: "/journey/mba-strategic-frameworks",
     position: { x: 46, y: 35 },
     timeframe: "2023-",
     role: "MBA: Designing Decision Systems",
@@ -44,7 +44,7 @@ const nodes: JourneyNode[] = [
   },
   {
     id: "gainbridge",
-    href: "/projects/gainbridge-data-architecture",
+    href: "/journey/gainbridge-data-architecture",
     position: { x: 58, y: 62 },
     timeframe: "2023-2025",
     role: "Gainbridge: Product Manager, Data & Platform",
@@ -56,7 +56,7 @@ const nodes: JourneyNode[] = [
   },
   {
     id: "dishclosure",
-    href: "/projects/dishclosure-founder-mode",
+    href: "/journey/dishclosure-founder-mode",
     position: { x: 47, y: 82 },
     timeframe: "2025",
     role: "Dishclosure: Founder, Product Lead",
@@ -100,7 +100,7 @@ export function RouteMap() {
   return (
     <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-24">
       <div className="flex flex-col gap-2 mb-10">
-        <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">Career Journey</h2>
+        <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">Projects</h2>
         <p className="text-muted-foreground max-w-2xl">
           A visual map of roles and the “stage” each one taught me about building reliable data systems.
         </p>

@@ -19,6 +19,7 @@ export function TypingTagline({ line1, line2, startDelayMs = 250 }: TypingTaglin
   const [t2, setT2] = useState("")
 
   const full = useMemo(() => ({ line1, line2 }), [line1, line2])
+  const speed = 0.2 // smaller = faster (0.5 => ~2x faster)
 
   useEffect(() => {
     const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)")
@@ -55,7 +56,7 @@ export function TypingTagline({ line1, line2, startDelayMs = 250 }: TypingTaglin
         setter(next)
 
         if (i >= text.length) {
-          timeout = window.setTimeout(done, 350)
+          timeout = window.setTimeout(done, Math.round(350 * speed))
           return
         }
 
@@ -63,7 +64,7 @@ export function TypingTagline({ line1, line2, startDelayMs = 250 }: TypingTaglin
         const base = 38
         const jitter = Math.round(Math.random() * 22) // mechanical-ish variance
         const pause = ch === "." || ch === "!" || ch === "?" ? 220 : 0
-        timeout = window.setTimeout(tick, base + jitter + pause)
+        timeout = window.setTimeout(tick, Math.round((base + jitter + pause) * speed))
       }
 
       tick()
@@ -77,7 +78,7 @@ export function TypingTagline({ line1, line2, startDelayMs = 250 }: TypingTaglin
       type(full.line1, setT1, () => {
         type(full.line2, setT2, () => {})
       })
-    }, startDelayMs)
+    }, Math.round(startDelayMs * speed))
 
     return () => {
       cancelled = true

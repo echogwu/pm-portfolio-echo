@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { ARTIFACTS } from "@/lib/artifacts"
 
 export type DecisionBlock = {
   title: string
@@ -41,6 +42,11 @@ export type ProjectDetailLayoutProps = {
       heading?: string
       bullets: string[]
     }
+  }
+
+  artifacts?: {
+    projectHref: string
+    projectLabel: string
   }
 }
 
@@ -90,7 +96,10 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
     row1,
     row2,
     row3,
+    artifacts,
   } = props
+
+  const artifactItems = artifacts ? ARTIFACTS.filter((a) => a.projectHref === artifacts.projectHref) : []
 
   return (
     <main>
@@ -98,10 +107,10 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
       <section className="max-w-6xl mx-auto px-6 lg:px-8 pt-12 pb-12 lg:pt-14 lg:pb-14">
         <div className="mb-8">
           <Link
-            href="/projects"
+            href="/journey"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            ← Back to projects
+            ← Back to journey
           </Link>
         </div>
 
@@ -187,29 +196,80 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
       {/* Row 3: Outcomes | Learnings */}
       <section>
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="md:pr-10">
-              <h2 className="text-3xl font-bold mb-4 tracking-tight">
-                {row3.outcomes.heading ?? "Outcomes"}
-              </h2>
-              <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-                {row3.outcomes.bullets.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-            </div>
+          {artifactItems.length > 0 && artifacts ? (
+            // Concise closing card when artifacts exist
+            <div className="border-y border-border">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y divide-border md:divide-y-0 md:divide-x">
+                <div className="py-8 pr-0 md:pr-8">
+                  <h2 className="text-2xl font-bold tracking-tight">{row3.outcomes.heading ?? "Outcomes"}</h2>
+                  <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-foreground/90 leading-relaxed">
+                    {row3.outcomes.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
 
-            <div className="md:pl-10 md:border-l md:border-neutral-200">
-              <h2 className="text-3xl font-bold mb-4 tracking-tight">
-                {row3.learnings.heading ?? "Learnings"}
-              </h2>
-              <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-                {row3.learnings.bullets.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
+                <div className="py-8 md:px-8">
+                  <h2 className="text-2xl font-bold tracking-tight">{row3.learnings.heading ?? "Learnings"}</h2>
+                  <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-foreground/90 leading-relaxed">
+                    {row3.learnings.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="py-8 md:pl-8">
+                  <div className="flex items-center justify-between gap-4">
+                    <h2 className="text-2xl font-bold tracking-tight">Artifacts</h2>
+                    <Link
+                      href={{ pathname: "/artifacts", query: { project: artifacts.projectLabel } }}
+                      className="shrink-0 inline-flex items-center justify-center rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    >
+                      View all ↗
+                    </Link>
+                  </div>
+
+                  <ul className="mt-4 space-y-3">
+                    {artifactItems.map((a) => (
+                      <li key={a.id} className="flex items-start justify-between gap-4">
+                        <div className="min-w-0">
+                          <div className="font-semibold text-foreground truncate">{a.headline}</div>
+                          <div className="mt-1 text-sm text-muted-foreground line-clamp-2">{a.subline}</div>
+                        </div>
+                        <Link
+                          href={{ pathname: "/artifacts", query: { project: artifacts.projectLabel, artifact: a.id } }}
+                          className="shrink-0 text-sm font-semibold text-foreground/80 hover:text-foreground transition-colors"
+                        >
+                          Open ↗
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            // Default back to the classic two-column layout when there are no artifacts
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="md:pr-10">
+                <h2 className="text-3xl font-bold mb-4 tracking-tight">{row3.outcomes.heading ?? "Outcomes"}</h2>
+                <ul className="list-disc pl-6 space-y-2 text-foreground/90">
+                  {row3.outcomes.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="md:pl-10 md:border-l md:border-neutral-200">
+                <h2 className="text-3xl font-bold mb-4 tracking-tight">{row3.learnings.heading ?? "Learnings"}</h2>
+                <ul className="list-disc pl-6 space-y-2 text-foreground/90">
+                  {row3.learnings.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </main>
