@@ -17,7 +17,7 @@ export type Artifact = {
 export const ARTIFACTS: Artifact[] = [
   {
     id: "dishclosure-product-strategy",
-    headline: "Product strategy",
+    headline: "Product Strategy",
     subline: "Market research, competitive analysis, and ICP definition.",
     projectHref: "/journey/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
@@ -46,7 +46,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "dishclosure-ux-prototype",
-    headline: "UX prototype",
+    headline: "UX Prototype",
     subline: "Operator-first workflow prototype for input and validation.",
     projectHref: "/journey/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
@@ -57,7 +57,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "dishclosure-legal-doc",
-    headline: "Legal doc",
+    headline: "Pilot Program Agreement",
     subline: "Drafting constraints, liability considerations, and policy framing.",
     projectHref: "/journey/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
@@ -73,7 +73,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "dishclosure-technical-design",
-    headline: "Technical design considerations",
+    headline: "Technical Design Considerations",
     subline: "System constraints, integration assumptions, and reliability tradeoffs.",
     projectHref: "/journey/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
@@ -89,7 +89,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "gainbridge-growth-strategy-one-pager",
-    headline: "Growth strategy (One-pager)",
+    headline: "Growth Strategy (One-pager)",
     subline:
       "Built the decision infrastructure behind D2C growth by aligning acquisition, education, and attribution around behavioral signals",
     projectHref: "/journey/gainbridge-data-architecture",
@@ -191,7 +191,7 @@ export const ARTIFACTS: Artifact[] = [
   },
   {
     id: "mba-defending-a-core-business-in-the-ai-era",
-    headline: "Defending a Core Business in the AI Era",
+    headline: "Defending a Core Business in the AI Era - Google Assist",
     subline:
       "Proposed a bundled subscription and agentic product strategy to defend Google Search from AI disruption while creating a new recurring revenue stream.",
     projectHref: "/journey/mba-strategic-frameworks",
