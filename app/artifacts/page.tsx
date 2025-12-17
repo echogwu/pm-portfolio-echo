@@ -7,7 +7,7 @@ import { SiteNav } from "@/components/site-nav"
 import { SocialLinks } from "@/components/social-links"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Work Gallery",
+  title: "Artifacts",
   description: "Work samples showing how I diagnose systems, make tradeoffs explicit, and design foundations.",
   pathname: "/artifacts",
   type: "website",
@@ -21,7 +21,7 @@ export default function ArtifactsPage() {
 
       {/* Header */}
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <h1 className="sr-only">Work gallery</h1>
+        <h1 className="sr-only">Artifacts</h1>
         <div className="border-b border-border py-8 lg:py-10">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-start">
             <div className="min-w-0">
