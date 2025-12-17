@@ -198,7 +198,7 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
           {artifactItems.length > 0 && artifacts ? (
             // Concise closing card when artifacts exist
-            <div className="border-y border-border">
+            <div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y divide-border md:divide-y-0 md:divide-x">
                 <div className="py-8 pr-0 md:pr-8">
                   <h2 className="text-2xl font-bold tracking-tight">{row3.outcomes.heading ?? "Outcomes"}</h2>

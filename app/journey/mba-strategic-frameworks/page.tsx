@@ -25,6 +25,7 @@ export default function MBAWorkPage() {
         title="MBA — Designing Decision Systems"
         subline="The bridge from “I can build” to “I can decide what’s worth building and align people around it.”"
         tags={["Decision Systems", "Incentives", "Metrics Strategy", "Tradeoffs", "Cross-functional Fluency"]}
+        artifacts={{ projectHref: "/journey/mba-strategic-frameworks", projectLabel: "MBA" }}
         heroImage={{
           src: "/mba.gif",
           alt: "MBA: designing decision systems",
