@@ -74,7 +74,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <head>
         {/* Google Tag Manager (head) */}
         {gtmId ? (
           <Script id="gtm" strategy="beforeInteractive">
@@ -87,7 +87,8 @@ export default function RootLayout({
             `}
           </Script>
         ) : null}
-
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         {/* Google Tag Manager (noscript) */}
         {gtmId ? (
           <noscript>
