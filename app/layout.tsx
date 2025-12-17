@@ -50,18 +50,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: `${basePath}/icon-light-32x32.png`,
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: `${basePath}/icon-dark-32x32.png`,
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: `${basePath}/icon.svg`,
-        type: "image/svg+xml",
+        url: `${basePath}/profile-avatar.png`,
+        type: "image/png",
       },
     ],
+    apple: [{ url: `${basePath}/profile-avatar.png` }],
   },
 }
 
