@@ -1,33 +1,14 @@
 import type { Metadata } from "next"
-import { PreserveScroll } from "@/components/preserve-scroll"
-import { ProjectsTimeline } from "@/components/projects-timeline"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteNav } from "@/components/site-nav"
+import { ClientRedirect } from "@/components/client-redirect"
 import { buildMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Journey",
-  description:
-    "A collection of product management work spanning data platforms, APIs, zero-to-one products, and strategic frameworks.",
+  title: "Selected Work",
+  description: "Redirecting to Selected Work.",
   pathname: "/journey",
   type: "website",
 })
 
-export default function JourneyPage() {
-  return (
-    <div className="min-h-screen bg-background">
-      <PreserveScroll />
-
-      {/* Navigation */}
-      <SiteNav active="journey" />
-
-      {/* Timeline */}
-      <ProjectsTimeline />
-
-      {/* Footer */}
-      <SiteFooter />
-    </div>
-  )
+export default function JourneyRedirectPage() {
+  return <ClientRedirect to="/selected-work" />
 }
-
-

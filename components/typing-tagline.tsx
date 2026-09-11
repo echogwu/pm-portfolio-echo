@@ -86,7 +86,10 @@ export function TypingTagline({ line1, line2, startDelayMs = 250 }: TypingTaglin
     }
   }, [full.line1, full.line2, reduceMotion, startDelayMs])
 
-  const showCursor = !(reduceMotion || prefersReducedMotion()) && (t1.length < full.line1.length || t2.length < full.line2.length)
+  // Use only React state here — calling prefersReducedMotion() during render
+  // reads window and can mismatch server HTML when reduced-motion is enabled.
+  const showCursor =
+    !reduceMotion && (t1.length < full.line1.length || t2.length < full.line2.length)
 
   return (
     <span aria-label={`${full.line1} ${full.line2}`}>

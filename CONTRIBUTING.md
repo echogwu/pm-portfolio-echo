@@ -71,7 +71,7 @@ See `PROJECT_STRUCTURE.md`.
 
 ## Project detail page consistency
 
-When adding/editing case studies under `app/journey/*`, follow the **Project detail page layout (standard)** and **Project detail page typography (standard)** sections in `PROJECT_STRUCTURE.md`.
+When adding/editing case studies under `app/selected-work/*`, follow the **Project detail page layout (standard)** and **Project detail page typography (standard)** sections in `PROJECT_STRUCTURE.md`.
 
 In practice:
 

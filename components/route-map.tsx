@@ -19,7 +19,7 @@ interface JourneyNode {
 const nodes: JourneyNode[] = [
   {
     id: "lyft",
-    href: "/journey/lyft-developer-experience-pm",
+    href: "/selected-work/lyft-developer-experience-pm",
     position: { x: 64, y: 12 },
     timeframe: "2020-2023",
     role: "Lyft: Developer Experience PM",
@@ -32,7 +32,7 @@ const nodes: JourneyNode[] = [
   },
   {
     id: "mba",
-    href: "/journey/mba-strategic-frameworks",
+    href: "/selected-work/mba-strategic-frameworks",
     position: { x: 46, y: 35 },
     timeframe: "2023-",
     role: "MBA: Designing Decision Systems",
@@ -44,7 +44,7 @@ const nodes: JourneyNode[] = [
   },
   {
     id: "gainbridge",
-    href: "/journey/gainbridge-data-architecture",
+    href: "/selected-work/gainbridge-data-architecture",
     position: { x: 58, y: 62 },
     timeframe: "2023-2025",
     role: "Gainbridge: Product Manager, Data & Platform",
@@ -56,7 +56,7 @@ const nodes: JourneyNode[] = [
   },
   {
     id: "dishclosure",
-    href: "/journey/dishclosure-founder-mode",
+    href: "/selected-work/dishclosure-founder-mode",
     position: { x: 47, y: 82 },
     timeframe: "2025",
     role: "Dishclosure: Founder, Product Lead",

@@ -76,7 +76,7 @@ NEXT_PUBLIC_BASE_PATH=/portfolio pnpm build
 - **Changelog**: see `CHANGELOG.md`
 - **Contributing**: see `CONTRIBUTING.md`
 
-Tip: project case studies under `app/journey/*` should use the shared `ProjectDetailLayout` described in `PROJECT_STRUCTURE.md`.
+Tip: project case studies under `app/selected-work/*` should use the shared `ProjectDetailLayout` described in `PROJECT_STRUCTURE.md`.
 
 ## Work samples (artifacts)
 

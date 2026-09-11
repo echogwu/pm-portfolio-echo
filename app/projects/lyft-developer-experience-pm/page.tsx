@@ -12,5 +12,5 @@ export const metadata: Metadata = buildMetadata({
 })
 
 export default function LyftPage() {
-  return <ClientRedirect to="/journey/lyft-developer-experience-pm" />
+  return <ClientRedirect to="/selected-work/lyft-developer-experience-pm" />
 }

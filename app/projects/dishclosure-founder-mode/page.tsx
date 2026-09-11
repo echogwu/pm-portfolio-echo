@@ -13,5 +13,5 @@ export const metadata: Metadata = buildMetadata({
 })
 
 export default function DishclosurePage() {
-  return <ClientRedirect to="/journey/dishclosure-founder-mode" />
+  return <ClientRedirect to="/selected-work/dishclosure-founder-mode" />
 }

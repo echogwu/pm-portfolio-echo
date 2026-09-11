@@ -64,7 +64,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning: browser extensions (and GTM) often mutate <html>/<body>
+    // attributes before React hydrates, which triggers a noisy false-positive mismatch.
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Marker so you can verify via View Source */}
         <meta name="gtm-container" content={gtmId} />
@@ -83,7 +85,10 @@ window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});`,
         ) : null}
         {/* End Google Tag Manager */}
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         {/* Google Tag Manager (noscript) */}
         {gtmId ? (
           <noscript>

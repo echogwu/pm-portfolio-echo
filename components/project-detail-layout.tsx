@@ -107,10 +107,10 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
       <section className="max-w-6xl mx-auto px-6 lg:px-8 pt-12 pb-12 lg:pt-14 lg:pb-14">
         <div className="mb-8">
           <Link
-            href="/journey"
+            href="/selected-work"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            ← Back to journey
+            ← Back to selected work
           </Link>
         </div>
 

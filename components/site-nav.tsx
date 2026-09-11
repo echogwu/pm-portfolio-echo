@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export type SiteNavActive = "home" | "journey" | "artifacts"
+export type SiteNavActive = "home" | "selected-work" | "artifacts"
 
 function linkClass(active: boolean) {
   return [
@@ -30,11 +30,11 @@ export function SiteNav({ active }: { active: SiteNavActive }) {
                 Home
               </Link>
               <Link
-                href="/journey"
-                aria-current={active === "journey" ? "page" : undefined}
-                className={linkClass(active === "journey")}
+                href="/selected-work"
+                aria-current={active === "selected-work" ? "page" : undefined}
+                className={linkClass(active === "selected-work")}
               >
-                Journey
+                Selected Work
               </Link>
               <Link
                 href="/artifacts"
@@ -50,5 +50,3 @@ export function SiteNav({ active }: { active: SiteNavActive }) {
     </nav>
   )
 }
-
-

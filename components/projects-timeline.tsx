@@ -47,7 +47,7 @@ const items: TimelineItem[] = [
     label: "Building technical depth",
     microCaption: "Learning how systems behave at scale",
     tags: ["Test Automation", "System Architecture", "API Design", "Technical Foundation"],
-    href: "/journey/engineering-foundation",
+    href: "/selected-work/engineering-foundation",
     accent: "slate",
   },
   {
@@ -64,7 +64,7 @@ const items: TimelineItem[] = [
       "Validation Strategy",
       "Platform Reliability",
     ],
-    href: "/journey/lyft-developer-experience-pm",
+    href: "/selected-work/lyft-developer-experience-pm",
     accent: "pink",
   },
   {
@@ -74,7 +74,7 @@ const items: TimelineItem[] = [
     label: "Building judgment upstream",
     microCaption: "The bridge from “I can build” to “I can decide what’s worth building”",
     tags: ["Decision Systems", "Incentives", "Metrics Strategy", "Tradeoffs", "Cross-functional Fluency"],
-    href: "/journey/mba-strategic-frameworks",
+    href: "/selected-work/mba-strategic-frameworks",
     accent: "blue",
   },
   {
@@ -84,7 +84,7 @@ const items: TimelineItem[] = [
     label: "Trusting the design process",
     microCaption: "Practicing divergent→convergent problem framing",
     tags: ["Design Thinking", "User Research", "Prototyping", "Creativity Under Ambiguity"],
-    href: "/journey/ideo-design-thinking",
+    href: "/selected-work/ideo-design-thinking",
     accent: "blue",
   },
   {
@@ -94,7 +94,7 @@ const items: TimelineItem[] = [
     label: "Owning data systems",
     microCaption: "Turning fragmented signals into reliable, revenue-critical truth",
     tags: ["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"],
-    href: "/journey/gainbridge-data-architecture",
+    href: "/selected-work/gainbridge-data-architecture",
     accent: "orange",
   },
   {
@@ -104,7 +104,7 @@ const items: TimelineItem[] = [
     label: "Discovering system limits",
     microCaption: "Where data integrity fundamentally breaks",
     tags: ["Zero-to-One", "Data Lineage", "Schema Design", "Ecosystem Diagnosis", "Go/No-Go Decision"],
-    href: "/journey/dishclosure-founder-mode",
+    href: "/selected-work/dishclosure-founder-mode",
     accent: "green",
   },
 ]
