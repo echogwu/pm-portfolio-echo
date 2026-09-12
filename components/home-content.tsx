@@ -11,33 +11,41 @@ export default function HomeContent() {
       <SiteNav active="home" />
 
       {/* Hero — editorial composition matching Screenshot 1 */}
-      <section className="page-container pt-[150px] lg:pt-[158px] pb-24 lg:pb-[min(20rem,calc(100svh-46rem))]">
+      <section className="page-container pt-[38px] lg:pt-[40px] pb-12 lg:pb-[min(10rem,calc((100svh-46rem)/2))]">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)] gap-14 lg:gap-x-24 xl:gap-x-28 items-start">
-          {/* Copy — ~60% */}
-          <div className="flex flex-col min-w-0 max-w-[720px]">
+          {/* Copy — narrowed so headline wraps cleanly on 2 lines */}
+          <div className="flex flex-col min-w-0 max-w-[600px]">
             <h1
-              className="text-left text-balance tracking-tight text-foreground"
+              className="w-full max-w-[580px] tracking-tight text-foreground"
               style={{
-                fontSize: "clamp(2rem, 3.4vw, 60px)",
+                fontSize: "clamp(1.65rem, 2.4vw, 42px)",
                 lineHeight: 1.25,
                 fontWeight: 700,
-                maxWidth: "700px",
+                textAlign: "left",
+                hyphens: "manual",
+                WebkitHyphens: "none",
+                msHyphens: "none",
+                overflowWrap: "normal",
+                wordBreak: "normal",
               }}
             >
-              Product leader for real-time customer data infrastructure.
+              Product lead for real-time
+              <br />
+              customer data infrastructure.
             </h1>
 
             <p
-              className="mt-6 text-left"
+              className="mt-6 w-full max-w-[580px]"
               style={{
                 fontSize: "clamp(0.95rem, 1.1vw, 21px)",
                 lineHeight: 1.55,
                 color: "#737373",
-                maxWidth: "700px",
+                textAlign: "left",
               }}
             >
-              I build event and data platforms where product decisions shape scale, cost, reliability, and customer
-              trust.
+              I build event and data platforms where product decisions shape scale,
+              <br />
+              cost, reliability, and customer trust.
             </p>
 
             <div className="flex flex-wrap items-center gap-5 mt-[45px]">
@@ -71,11 +79,11 @@ export default function HomeContent() {
 
           {/* Profile — ~40%, centered in column */}
           <div className="flex justify-center lg:justify-center">
-            <div className="flex flex-col items-center w-full max-w-[435px]">
+            <div className="flex flex-col items-center w-full max-w-[218px]">
               <div
                 className="relative shrink-0 rounded-full overflow-hidden bg-muted"
                 style={{
-                  width: "min(100%, 430px)",
+                  width: "min(100%, 215px)",
                   height: "auto",
                   aspectRatio: "1 / 1",
                 }}
@@ -106,7 +114,7 @@ export default function HomeContent() {
       </div>
 
       {/* Featured proof — Klaviyo dominant, Gainbridge secondary */}
-      <section className="page-container py-10 lg:py-14">
+      <section className="page-container pt-5 pb-10 lg:pt-7 lg:pb-14">
         <div className="grid gap-5 lg:grid-cols-12 lg:gap-6">
           <Link
             href="/selected-work/klaviyo-event-data-platform"

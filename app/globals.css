@@ -134,10 +134,10 @@
     text-justify: inter-word;
   }
 
-  /* Centered ~70% viewport width on all pages */
+  /* Centered ~80% viewport width on all pages */
   .page-container {
     @apply mx-auto;
-    width: 70%;
-    max-width: 70%;
+    width: 80%;
+    max-width: 80%;
   }
 }

@@ -5,7 +5,7 @@ export type SiteNavActive = "home" | "selected-work" | "artifacts"
 function linkClass(active: boolean) {
   return [
     "shrink-0 whitespace-nowrap leading-none",
-    "text-[clamp(0.68rem,2.2vw,0.95rem)] transition-colors",
+    "text-[clamp(1.36rem,4.4vw,1.9rem)] transition-colors",
     active
       ? "text-foreground font-semibold border-b-2 border-foreground/60 pb-1 -mb-1"
       : "text-muted-foreground font-medium hover:text-foreground/70",
@@ -19,7 +19,7 @@ export function SiteNav({ active }: { active: SiteNavActive }) {
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="shrink-0 whitespace-nowrap leading-none text-[clamp(0.85rem,3vw,1.125rem)] font-semibold tracking-tight hover:text-foreground/70 transition-colors"
+            className="shrink-0 whitespace-nowrap leading-none text-[clamp(1.7rem,6vw,2.25rem)] font-semibold tracking-tight hover:text-foreground/70 transition-colors"
           >
             PM Portfolio
           </Link>
@@ -34,7 +34,7 @@ export function SiteNav({ active }: { active: SiteNavActive }) {
                 aria-current={active === "selected-work" ? "page" : undefined}
                 className={linkClass(active === "selected-work")}
               >
-                Journey
+                Selected Work
               </Link>
               <Link
                 href="/artifacts"

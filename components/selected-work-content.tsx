@@ -73,8 +73,7 @@ export function SelectedWorkContent() {
   return (
     <main className="bg-[#f7f6f1] text-foreground">
       <section className="page-container pt-14 lg:pt-16 pb-10">
-        <p className="text-[11px] font-semibold tracking-[0.16em] text-neutral-500 uppercase">Selected Work</p>
-        <h1 className="mt-4 max-w-4xl text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-[1.08] text-balance">
+        <h1 className="max-w-4xl text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-[1.08] text-balance">
           Product work across data infrastructure, platforms, and strategy.
         </h1>
         <p className="mt-5 max-w-3xl text-base sm:text-lg text-neutral-600 leading-relaxed">
