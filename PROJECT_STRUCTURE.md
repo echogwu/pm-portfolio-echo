@@ -147,6 +147,14 @@ All case studies under `app/journey/*/page.tsx` should use the shared `ProjectDe
 4. **Row 3**: **Outcomes | Learnings**
    - Two equal columns with the same `md+` vertical divider treatment as Row 1
    - If the project has artifacts, Row 3 uses a concise 3-column layout (**Outcomes | Learnings | Artifacts**) with thin rules/dividers.
+5. **Artifacts (optional, placeholders only)**:
+   - Pass `artifactPlaceholders` for deliverables that aren’t published yet
+   - Renders as three hairline-topped rows with an uppercase “Coming soon” label — no dashed borders or boxes
+   - Once a deliverable is real, move it into `lib/artifacts.ts` and use `artifacts` instead
+
+Both column headings in Row 3 accept a custom `heading`, so a project without a
+“Learnings” list can reuse the right column for something else (Klaviyo uses
+“How I make the tradeoff”).
 
 ### Content conventions
 

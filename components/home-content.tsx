@@ -12,11 +12,11 @@ export default function HomeContent() {
     {
       title: "Klaviyo: Evolving the Event Data Platform",
       description:
-        "Product strategy across serving, storage, APIs, SLOs, customer impact, and rollout guardrails.",
+        "How high-volume behavioral data should be stored, served, and accessed—balancing customer value, latency, reliability, cost, and product economics.",
       href: "/journey/klaviyo-real-time-data-strategy",
-      imageSrc: "/placeholder.jpg",
-      imageAlt: "Klaviyo event data platform (placeholder)",
-      tags: ["Event infrastructure", "Real-time data", "Platform strategy", "Cost × customer value"],
+      imageSrc: "/klaviyo-logo.jpg",
+      imageAlt: "Klaviyo",
+      tags: ["Event Infrastructure", "Real-Time Data", "APIs & SLOs", "Platform Economics"],
     },
     {
       title: "Gainbridge: Product Manager, Data and Measurement",
@@ -139,13 +139,20 @@ export default function HomeContent() {
                 className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
               >
                 <div className={isReversed ? "lg:order-2" : undefined}>
-                  <div className="relative rounded-2xl overflow-hidden border border-border/60 bg-muted/40 shadow-sm aspect-video">
-                    <img
-                      src={`${basePath}${project.imageSrc}`}
-                      alt={project.imageAlt}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <Link
+                    href={project.href}
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    className="group block rounded-2xl transition-all duration-200 hover:-translate-y-0.5"
+                  >
+                    <div className="relative rounded-2xl overflow-hidden border border-border/60 bg-muted/40 shadow-sm aspect-video transition-all duration-200 group-hover:border-border group-hover:shadow-md">
+                      <img
+                        src={`${basePath}${project.imageSrc}`}
+                        alt={project.imageAlt}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </Link>
                 </div>
 
                 <div className={isReversed ? "lg:order-1" : undefined}>

@@ -7,10 +7,10 @@ import { buildMetadata } from "@/lib/seo"
 export const metadata: Metadata = buildMetadata({
   title: "Klaviyo | Evolving the Event Data Platform",
   description:
-    "Product strategy across serving, storage, APIs, SLOs, customer impact, and rollout guardrails.",
+    "Deciding what a high-volume event platform must guarantee — across serving, storage, APIs, SLOs, economics, and rollout.",
   pathname: "/journey/klaviyo-real-time-data-strategy",
   ogImagePath: "/journey/klaviyo-real-time-data-strategy/opengraph-image.png",
-  ogImageAlt: "Klaviyo event data platform",
+  ogImageAlt: "Klaviyo",
   type: "article",
 })
 
@@ -18,75 +18,111 @@ export default function KlaviyoRealTimeDataStrategyPage() {
   return (
     <div className="min-h-screen bg-background">
       <PreserveScroll />
+
+      {/* Navigation */}
       <SiteNav active="journey" />
 
       <ProjectDetailLayout
         title="Klaviyo: Evolving the Event Data Platform"
-        subline="Product strategy across serving, storage, APIs, SLOs, customer impact, and rollout guardrails."
-        tags={["Event infrastructure", "Real-time data", "Platform strategy", "Cost × customer value"]}
+        subline="Deciding what a high-volume event platform must guarantee — and what those guarantees are worth."
+        tags={["Event Infrastructure", "Real-Time Data", "APIs & SLOs", "Platform Economics", "Rollout Strategy"]}
         heroImage={{
-          src: "/placeholder.jpg",
-          alt: "Klaviyo event data platform (placeholder)",
+          src: "/klaviyo-logo.jpg",
+          alt: "Klaviyo",
         }}
         row1={{
           challenge: {
-            heading: "Problem / business context",
+            heading: "Challenge",
             bullets: [
-              "Placeholder: business pressure as event volume, infrastructure cost, and downstream product needs diverged.",
-              "Placeholder: why this became a product-contract problem for the event platform—not only a storage policy.",
+              "One event platform serves automation, APIs, profile history, segmentation, reporting, and exports",
+              "Those workloads don't need the same history, latency, or serving model",
+              "Rising event volume turned retention into a platform economics question, not a storage setting",
+              "Guarantees—not implementation policy—determine what customers can actually rely on",
+              "Access patterns shape pricing, packaging, and GTM differentiation around always-available data",
             ],
           },
           role: {
-            heading: "What I owned",
+            heading: "Role",
             bullets: [
-              "Product strategy across serving, storage, APIs, SLOs, customer impact, and rollout guardrails.",
-              "Placeholder: clarify partners, decision rights, and scope.",
+              "Translate customer jobs into platform guarantees: history, latency, freshness, completeness, throughput",
+              "Partner with infrastructure and downstream product teams on hot, hybrid, and analytical serving paths",
+              "Connect storage and serving choices to infrastructure economics and future packaging",
+              "Define rollout guardrails so event-access changes don't break customer workflows",
             ],
           },
         }}
         row2={{
-          throughline: "platform contract → access patterns → cost × value → rollout risk",
+          throughline: "platform contract → workload SLOs → serving architecture → economics & packaging → staged rollout",
           left: [
             {
-              title: "Placeholder decision",
-              description: "Content TBD — key product decision and why it mattered.",
-              bullets: ["Placeholder"],
+              title: "Defined the platform contract",
+              description:
+                "Replaced “how much data should we retain?” with “what does each product need the platform to guarantee?”",
+              bullets: ["Separated customer-visible requirements from implementation policy"],
             },
             {
-              title: "Placeholder decision",
-              description: "Content TBD — trade-off and leverage created.",
-              bullets: ["Placeholder"],
+              title: "Matched architecture to customer value",
+              description:
+                "Mapped data flows and downstream workloads, then set the SLOs that actually mattered for each one.",
+              bullets: [
+                "History, latency, freshness, completeness, throughput",
+                "Pay for performance where customers value it; serve the rest differently",
+              ],
             },
           ],
           right: [
             {
-              title: "Placeholder decision",
-              description: "Content TBD — how cost and customer value were aligned.",
-              bullets: ["Placeholder"],
+              title: "Connected infrastructure to the business model",
+              description:
+                "Evaluated how platform guarantees shape infrastructure economics, future packaging, and enterprise expectations.",
+              bullets: ["Avoid locking today's infrastructure into tomorrow's product model"],
             },
             {
-              title: "Placeholder decision",
-              description: "Content TBD — rollout guardrails and risk management.",
-              bullets: ["Placeholder"],
+              title: "Made rollout part of the product",
+              description:
+                "Pushed for canary → controlled cohorts → broader rollout, with evidence gates at every stage.",
+              bullets: [
+                "Explicit metrics, rollback conditions, and customer communication",
+                "A reversible change isn't reversible if the customer experience isn't",
+              ],
             },
           ],
         }}
         row3={{
           outcomes: {
-            heading: "Outcome / business impact",
+            heading: "Outcomes so far",
             bullets: [
-              "Placeholder: measurable impact on cost, reliability, or product enablement.",
-              "Placeholder: what the platform now guarantees.",
+              "Reframed a retention problem into platform strategy across storage, serving, APIs, SLOs, pricing, and GTM",
+              "Created a path to meaningful infrastructure savings by separating requirements from implementation assumptions",
+              "Established a safer decision and rollout model with explicit guarantees, evidence gates, and reversible stages",
             ],
           },
           learnings: {
-            heading: "Risks / learnings",
+            heading: "How I make the tradeoff",
             bullets: [
-              "Placeholder: where assumptions broke.",
-              "Placeholder: implications for future platform product work.",
+              "Customer value: what job are we protecting?",
+              "Product guarantee: what must remain true?",
+              "Feasibility: what architectures satisfy it?",
+              "Economics: what does the guarantee cost?",
+              "Pricing & GTM: how does packaging shift?",
+              "Reversibility: can we test before committing?",
             ],
           },
         }}
+        artifactPlaceholders={[
+          {
+            title: "Event Platform × Product Requirements Map",
+            description: "Maps downstream products to history, latency, freshness, and serving requirements.",
+          },
+          {
+            title: "Hot / Hybrid / Analytical Decision Tree",
+            description: "How product requirements drive serving architecture.",
+          },
+          {
+            title: "Rollout & Evidence Plan",
+            description: "Cohorts, success metrics, rollback conditions, and communication gates.",
+          },
+        ]}
       />
     </div>
   )

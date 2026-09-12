@@ -7,6 +7,12 @@ export type DecisionBlock = {
   bullets?: string[]
 }
 
+export type PlaceholderCard = {
+  title: string
+  description?: string
+  status?: string
+}
+
 export type ProjectDetailLayoutProps = {
   title: string
   subline: string
@@ -48,6 +54,9 @@ export type ProjectDetailLayoutProps = {
     projectHref: string
     projectLabel: string
   }
+
+  /** Upcoming deliverables, shown as light "coming soon" rows when no real artifacts exist yet. */
+  artifactPlaceholders?: PlaceholderCard[]
 }
 
 function withBasePath(path: string) {
@@ -97,6 +106,7 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
     row2,
     row3,
     artifacts,
+    artifactPlaceholders,
   } = props
 
   const artifactItems = artifacts ? ARTIFACTS.filter((a) => a.projectHref === artifacts.projectHref) : []
@@ -272,8 +282,30 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
           )}
         </div>
       </section>
+
+      {artifactPlaceholders && artifactPlaceholders.length > 0 ? (
+        <>
+          <div className="border-t border-neutral-200" />
+          <section>
+            <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
+              <h2 className="text-3xl font-bold mb-6 tracking-tight">Artifacts</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
+                {artifactPlaceholders.map((artifact) => (
+                  <div key={artifact.title} className="border-t border-neutral-200 pt-4">
+                    <p className="font-semibold tracking-tight">{artifact.title}</p>
+                    {artifact.description ? (
+                      <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{artifact.description}</p>
+                    ) : null}
+                    <p className="mt-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      {artifact.status ?? "Coming soon"}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      ) : null}
     </main>
   )
 }
-
-
