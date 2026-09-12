@@ -23,6 +23,8 @@ function withBasePath(path: string) {
 
 function logoForItemId(id: TimelineItem["id"]) {
   switch (id) {
+    case "klaviyo":
+      return "/klaviyo-logo.jpg"
     case "dishclosure":
       return "/dishclosure-logo.png"
     case "gainbridge":
@@ -107,6 +109,22 @@ const items: TimelineItem[] = [
     href: "/journey/dishclosure-founder-mode",
     accent: "green",
   },
+  {
+    id: "klaviyo",
+    year: "2026",
+    companyRole: "Klaviyo: Senior Product Manager, Events",
+    label: "Shaping the event data platform",
+    microCaption: "Product strategy across serving, storage, APIs, and SLOs",
+    tags: [
+      "Event Infrastructure",
+      "Real-Time Data",
+      "Storage & Serving",
+      "APIs & SLOs",
+      "Platform Economics",
+    ],
+    href: "/journey/klaviyo-real-time-data-strategy",
+    accent: "orange",
+  },
 ]
 
 function accentClasses(accent: TimelineItem["accent"]) {
@@ -176,22 +194,30 @@ export function ProjectsTimeline() {
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-start">
             <div className="min-w-0">
               <p className="text-[clamp(1rem,2.8vw,1.25rem)] leading-relaxed text-foreground/90 text-left hyphens-auto">
-                My work traces a{" "}
-                <span className="font-semibold text-foreground">progression</span> from{" "}
-                <span className="font-semibold text-foreground">engineering foundations</span> to{" "}
-                <span className="font-semibold text-foreground">data platforms</span> to{" "}
-                <span className="font-semibold text-foreground">decision design</span>—focused on where systems fail in
-                practice:{" "}
+                My work has evolved from{" "}
                 <span className="font-semibold underline decoration-lime-300 decoration-[5px] underline-offset-[6px]">
-                  broken data
+                  engineering foundations
+                </span>
+                , to{" "}
+                <span className="font-semibold underline decoration-sky-300 decoration-[5px] underline-offset-[6px]">
+                  developer platforms
+                </span>
+                , to{" "}
+                <span className="font-semibold underline decoration-emerald-300 decoration-[5px] underline-offset-[6px]">
+                  owning complex data products
+                </span>
+                —while business training broadened how I think about markets, economics, and strategy. Today, I bring
+                those perspectives together to make product decisions across{" "}
+                <span className="font-semibold underline decoration-amber-300 decoration-[5px] underline-offset-[6px]">
+                  customer value
                 </span>
                 ,{" "}
-                <span className="font-semibold underline decoration-sky-300 decoration-[5px] underline-offset-[6px]">
-                  misaligned incentives
+                <span className="font-semibold underline decoration-pink-300 decoration-[5px] underline-offset-[6px]">
+                  technical architecture
                 </span>
                 , and{" "}
-                <span className="font-semibold underline decoration-emerald-300 decoration-[5px] underline-offset-[6px]">
-                  preventable team errors
+                <span className="font-semibold underline decoration-violet-300 decoration-[5px] underline-offset-[6px]">
+                  business outcomes
                 </span>
                 .
               </p>

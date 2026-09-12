@@ -101,7 +101,7 @@ export default function IDEOPage() {
 
       {/* Footer */}
       <footer className="border-t border-border mt-24">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12">
+        <div className="page-container py-12">
           <div className="text-sm text-muted-foreground">© 2025 Product Portfolio. Crafted with care.</div>
         </div>
       </footer>
