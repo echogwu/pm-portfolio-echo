@@ -20,7 +20,7 @@ export default function ArtifactsPage() {
       <SiteNav active="artifacts" />
 
       {/* Header */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <section className="page-container py-16 lg:py-24">
         <h1 className="sr-only">Artifacts</h1>
         <div className="border-b border-border py-8 lg:py-10">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-start">
@@ -56,7 +56,7 @@ export default function ArtifactsPage() {
       </section>
 
       {/* Content */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-24">
+      <section className="page-container pb-24">
         <Suspense
           fallback={
             <div className="rounded-2xl border border-border bg-card p-6 text-sm text-muted-foreground">

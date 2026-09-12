@@ -102,9 +102,9 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
   const artifactItems = artifacts ? ARTIFACTS.filter((a) => a.projectHref === artifacts.projectHref) : []
 
   return (
-    <main>
+    <main className="page-container pb-16 lg:pb-20">
       {/* Header band (hero) */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 pt-12 pb-12 lg:pt-14 lg:pb-14">
+      <section className="pt-12 pb-12 lg:pt-14 lg:pb-14">
         <div className="mb-8">
           <Link
             href="/selected-work"
@@ -145,11 +145,9 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
         </div>
       </section>
 
-      <div className="border-t border-neutral-200" />
-
       {/* Row 1: Challenge | Role */}
-      <section className="bg-neutral-50/50">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
+      <section className="border-t border-neutral-200 bg-neutral-50/50 rounded-2xl">
+        <div className="py-12 lg:py-14 px-6 sm:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="md:pr-10">
               <h2 className="text-3xl font-bold mb-4 tracking-tight">
@@ -176,11 +174,9 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
         </div>
       </section>
 
-      <div className="border-t border-neutral-200" />
-
       {/* Row 2: Approach & Decisions */}
-      <section>
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
+      <section className="border-t border-neutral-200 mt-2">
+        <div className="py-12 lg:py-14">
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">Approach &amp; Decisions</h2>
           <p className="mt-3 text-muted-foreground italic">{row2.throughline}</p>
 
@@ -191,11 +187,9 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
         </div>
       </section>
 
-      <div className="border-t border-neutral-200" />
-
       {/* Row 3: Outcomes | Learnings */}
-      <section>
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
+      <section className="border-t border-neutral-200">
+        <div className="py-12 lg:py-14">
           {artifactItems.length > 0 && artifacts ? (
             // Concise closing card when artifacts exist
             <div>

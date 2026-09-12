@@ -15,7 +15,7 @@ export function ProjectArtifacts({
     <>
       <div className="border-t border-neutral-200" />
       <section>
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
+        <div className="page-container py-12 lg:py-14">
           <div className="flex items-end justify-between gap-6">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tight">Artifacts</h2>

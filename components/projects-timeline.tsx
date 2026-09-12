@@ -170,7 +170,7 @@ function accentBgClasses(accent: TimelineItem["accent"]) {
 export function ProjectsTimeline() {
   const total = items.length
   return (
-    <section className="max-w-6xl mx-auto px-6 lg:px-8 pt-16 lg:pt-24 pb-24">
+    <section className="page-container pt-16 lg:pt-24 pb-24">
       <div className="mb-10">
         <div className="border-b border-border py-8 lg:py-10">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-start">

@@ -98,7 +98,7 @@ export function RouteMap() {
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-24">
+    <section className="page-container pb-24">
       <div className="flex flex-col gap-2 mb-10">
         <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">Projects</h2>
         <p className="text-muted-foreground max-w-2xl">

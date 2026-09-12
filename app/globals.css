@@ -119,6 +119,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* 80% of previous 80% root → ~64% of browser default */
+    font-size: 64%;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -128,5 +132,12 @@
   .justify-text {
     text-align: justify;
     text-justify: inter-word;
+  }
+
+  /* Centered ~70% viewport width on all pages */
+  .page-container {
+    @apply mx-auto;
+    width: 70%;
+    max-width: 70%;
   }
 }

@@ -15,7 +15,7 @@ function linkClass(active: boolean) {
 export function SiteNav({ active }: { active: SiteNavActive }) {
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="mx-auto max-w-6xl px-3 sm:px-6 lg:px-8 py-3.5 sm:py-4">
+      <div className="page-container py-3.5 sm:py-4">
         <div className="flex items-center gap-3">
           <Link
             href="/"
@@ -34,7 +34,7 @@ export function SiteNav({ active }: { active: SiteNavActive }) {
                 aria-current={active === "selected-work" ? "page" : undefined}
                 className={linkClass(active === "selected-work")}
               >
-                Selected Work
+                Journey
               </Link>
               <Link
                 href="/artifacts"

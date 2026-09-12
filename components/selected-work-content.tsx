@@ -72,7 +72,7 @@ function WorkCard({
 export function SelectedWorkContent() {
   return (
     <main className="bg-[#f7f6f1] text-foreground">
-      <section className="mx-auto max-w-[1280px] px-6 lg:px-10 pt-14 lg:pt-16 pb-10">
+      <section className="page-container pt-14 lg:pt-16 pb-10">
         <p className="text-[11px] font-semibold tracking-[0.16em] text-neutral-500 uppercase">Selected Work</p>
         <h1 className="mt-4 max-w-4xl text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-[1.08] text-balance">
           Product work across data infrastructure, platforms, and strategy.
@@ -84,7 +84,7 @@ export function SelectedWorkContent() {
       </section>
 
       {/* Tier 1 — role-fit proof */}
-      <section className="mx-auto max-w-[1280px] px-6 lg:px-10 pb-14">
+      <section className="page-container pb-14">
         <div className="grid gap-5 lg:grid-cols-12 lg:gap-6">
           <WorkCard
             className="lg:col-span-8"
@@ -109,7 +109,7 @@ export function SelectedWorkContent() {
       </section>
 
       {/* Tier 2 — supporting range */}
-      <section className="mx-auto max-w-[1280px] px-6 lg:px-10 pb-16">
+      <section className="page-container pb-16">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">The range behind the work</h2>
         <p className="mt-3 max-w-3xl text-neutral-600 leading-relaxed">
           The experiences that built technical depth, platform empathy, commercial range, and end-to-end ownership.
@@ -136,7 +136,7 @@ export function SelectedWorkContent() {
       </section>
 
       {/* Foundation band */}
-      <section className="mx-auto max-w-[1280px] px-6 lg:px-10 pb-20">
+      <section className="page-container pb-20">
         <div className="border-y border-neutral-200 py-8 lg:py-10">
           <div className="grid gap-8 lg:grid-cols-[140px_1fr] lg:gap-10 lg:items-start">
             <div className="text-[11px] font-semibold tracking-[0.16em] text-neutral-500 uppercase pt-1">

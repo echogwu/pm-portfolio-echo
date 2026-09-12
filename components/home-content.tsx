@@ -10,79 +10,88 @@ export default function HomeContent() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <SiteNav active="home" />
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-5">
-              <h1 className="font-bold leading-tight tracking-tight text-balance text-[clamp(2.1rem,6.5vw,3.4rem)]">
-                Product leader for real-time customer data infrastructure.
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                I build event and data platforms where product decisions shape scale, cost, reliability, and customer
-                trust.
-              </p>
-            </div>
+      {/* Hero — editorial composition matching Screenshot 1 */}
+      <section className="page-container pt-[150px] lg:pt-[158px] pb-24 lg:pb-[min(20rem,calc(100svh-46rem))]">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)] gap-14 lg:gap-x-24 xl:gap-x-28 items-start">
+          {/* Copy — ~60% */}
+          <div className="flex flex-col min-w-0 max-w-[720px]">
+            <h1
+              className="text-left text-balance tracking-tight text-foreground"
+              style={{
+                fontSize: "clamp(2rem, 3.4vw, 60px)",
+                lineHeight: 1.25,
+                fontWeight: 700,
+                maxWidth: "700px",
+              }}
+            >
+              Product leader for real-time customer data infrastructure.
+            </h1>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/selected-work"
-                className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background hover:bg-foreground/90 transition-colors"
-              >
-                View Selected Work
-              </Link>
-              <Link
-                href="/artifacts"
-                className="inline-flex items-center justify-center rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/60 transition-colors"
-              >
-                Explore Product Artifacts
-              </Link>
-            </div>
+            <p
+              className="mt-6 text-left"
+              style={{
+                fontSize: "clamp(0.95rem, 1.1vw, 21px)",
+                lineHeight: 1.55,
+                color: "#737373",
+                maxWidth: "700px",
+              }}
+            >
+              I build event and data platforms where product decisions shape scale, cost, reliability, and customer
+              trust.
+            </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-1">
+            <div className="flex flex-wrap items-center gap-5 mt-[45px]">
               <Link
                 href="https://www.linkedin.com/in/echo-paulus/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center gap-2 text-[12px] text-[#737373] hover:text-foreground transition-colors"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-3.5 h-3.5" strokeWidth={1.75} />
                 LinkedIn
               </Link>
               <Link
                 href="mailto:echopaulus@berkeley.edu"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center gap-2 text-[12px] text-[#737373] hover:text-foreground transition-colors"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-3.5 h-3.5" strokeWidth={1.75} />
                 Email
               </Link>
               <Link
                 href="https://github.com/echogwu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center gap-2 text-[12px] text-[#737373] hover:text-foreground transition-colors"
               >
-                <Github className="w-5 h-5" />
+                <Github className="w-3.5 h-3.5" strokeWidth={1.75} />
                 Github
               </Link>
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full opacity-10" />
+          {/* Profile — ~40%, centered in column */}
+          <div className="flex justify-center lg:justify-center">
+            <div className="flex flex-col items-center w-full max-w-[435px]">
+              <div
+                className="relative shrink-0 rounded-full overflow-hidden bg-muted"
+                style={{
+                  width: "min(100%, 430px)",
+                  height: "auto",
+                  aspectRatio: "1 / 1",
+                }}
+              >
                 <img
                   src={`${basePath}/profile-avatar.png`}
                   alt="Echo Paulus"
-                  className="w-full h-full rounded-full object-cover border-4 border-border shadow-xl"
+                  className="absolute inset-0 h-full w-full rounded-full object-cover border border-neutral-200 shadow-[0_8px_30px_rgba(15,23,42,0.08)]"
                 />
               </div>
-              <div className="text-center">
-                <h2 className="text-2xl font-bold">Echo Paulus</h2>
-                <p className="text-muted-foreground font-medium">Product Manager, Data & Platform</p>
-                <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground mt-1">
-                  <MapPin className="w-4 h-4" />
+
+              <div className="text-center mt-[22px] space-y-1">
+                <h2 className="text-[22px] font-bold tracking-tight text-foreground leading-tight">Echo Paulus</h2>
+                <p className="text-[14px] text-[#737373] font-normal leading-snug">Product Manager, Data & Platform</p>
+                <div className="flex items-center justify-center gap-1.5 text-[12px] text-[#737373] pt-0.5">
+                  <MapPin className="w-3 h-3" strokeWidth={1.75} />
                   San Francisco Bay Area, CA
                 </div>
               </div>
@@ -91,16 +100,13 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* Product judgment line */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-10 lg:pb-12">
-        <p className="max-w-3xl text-lg sm:text-xl font-medium leading-relaxed text-foreground/90 border-l-2 border-foreground/20 pl-5">
-          I define what the product must guarantee, where the system can flex, and which trade-offs create the most
-          leverage.
-        </p>
-      </section>
+      {/* Section boundary — inside the same max-width */}
+      <div className="page-container">
+        <div className="border-t border-border" />
+      </div>
 
       {/* Featured proof — Klaviyo dominant, Gainbridge secondary */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-10 lg:py-14 border-t border-border">
+      <section className="page-container py-10 lg:py-14">
         <div className="grid gap-5 lg:grid-cols-12 lg:gap-6">
           <Link
             href="/selected-work/klaviyo-event-data-platform"
@@ -145,15 +151,6 @@ export default function HomeContent() {
                 Read Case Study →
               </div>
             </div>
-          </Link>
-        </div>
-
-        <div className="mt-10">
-          <Link
-            href="/selected-work"
-            className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors inline-flex items-center gap-1"
-          >
-            More Selected Work →
           </Link>
         </div>
       </section>
