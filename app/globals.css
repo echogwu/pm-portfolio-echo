@@ -129,4 +129,9 @@
     text-align: justify;
     text-justify: inter-word;
   }
+
+  /* Shared horizontal gutters — matches nav / homepage content width */
+  .page-container {
+    @apply mx-auto w-full max-w-6xl px-6 lg:px-8;
+  }
 }

@@ -23,6 +23,8 @@ function withBasePath(path: string) {
 
 function logoForItemId(id: TimelineItem["id"]) {
   switch (id) {
+    case "klaviyo":
+      return "/klaviyo-logo.jpg"
     case "dishclosure":
       return "/dishclosure-logo.png"
     case "gainbridge":
@@ -47,7 +49,7 @@ const items: TimelineItem[] = [
     label: "Building technical depth",
     microCaption: "Learning how systems behave at scale",
     tags: ["Test Automation", "System Architecture", "API Design", "Technical Foundation"],
-    href: "/journey/engineering-foundation",
+    href: "/work/engineering-foundation",
     accent: "slate",
   },
   {
@@ -64,7 +66,7 @@ const items: TimelineItem[] = [
       "Validation Strategy",
       "Platform Reliability",
     ],
-    href: "/journey/lyft-developer-experience-pm",
+    href: "/work/lyft-developer-experience-pm",
     accent: "pink",
   },
   {
@@ -74,7 +76,7 @@ const items: TimelineItem[] = [
     label: "Building judgment upstream",
     microCaption: "The bridge from “I can build” to “I can decide what’s worth building”",
     tags: ["Decision Systems", "Incentives", "Metrics Strategy", "Tradeoffs", "Cross-functional Fluency"],
-    href: "/journey/mba-strategic-frameworks",
+    href: "/work/mba-strategic-frameworks",
     accent: "blue",
   },
   {
@@ -84,7 +86,7 @@ const items: TimelineItem[] = [
     label: "Trusting the design process",
     microCaption: "Practicing divergent→convergent problem framing",
     tags: ["Design Thinking", "User Research", "Prototyping", "Creativity Under Ambiguity"],
-    href: "/journey/ideo-design-thinking",
+    href: "/work/ideo-design-thinking",
     accent: "blue",
   },
   {
@@ -94,7 +96,7 @@ const items: TimelineItem[] = [
     label: "Owning data systems",
     microCaption: "Turning fragmented signals into reliable, revenue-critical truth",
     tags: ["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"],
-    href: "/journey/gainbridge-data-architecture",
+    href: "/work/gainbridge-data-architecture",
     accent: "orange",
   },
   {
@@ -104,8 +106,24 @@ const items: TimelineItem[] = [
     label: "Discovering system limits",
     microCaption: "Where data integrity fundamentally breaks",
     tags: ["Zero-to-One", "Data Lineage", "Schema Design", "Ecosystem Diagnosis", "Go/No-Go Decision"],
-    href: "/journey/dishclosure-founder-mode",
+    href: "/work/dishclosure-founder-mode",
     accent: "green",
+  },
+  {
+    id: "klaviyo",
+    year: "2026",
+    companyRole: "Klaviyo: Senior Product Manager, Events",
+    label: "Shaping the event data platform",
+    microCaption: "Product strategy across serving, storage, APIs, and SLOs",
+    tags: [
+      "Event Infrastructure",
+      "Real-Time Data",
+      "Storage & Serving",
+      "APIs & SLOs",
+      "Platform Economics",
+    ],
+    href: "/work/klaviyo-real-time-data-strategy",
+    accent: "orange",
   },
 ]
 
@@ -176,22 +194,30 @@ export function ProjectsTimeline() {
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-start">
             <div className="min-w-0">
               <p className="text-[clamp(1rem,2.8vw,1.25rem)] leading-relaxed text-foreground/90 text-left hyphens-auto">
-                My work traces a{" "}
-                <span className="font-semibold text-foreground">progression</span> from{" "}
-                <span className="font-semibold text-foreground">engineering foundations</span> to{" "}
-                <span className="font-semibold text-foreground">data platforms</span> to{" "}
-                <span className="font-semibold text-foreground">decision design</span>—focused on where systems fail in
-                practice:{" "}
+                My work has evolved from{" "}
                 <span className="font-semibold underline decoration-lime-300 decoration-[5px] underline-offset-[6px]">
-                  broken data
+                  engineering foundations
+                </span>
+                , to{" "}
+                <span className="font-semibold underline decoration-sky-300 decoration-[5px] underline-offset-[6px]">
+                  developer platforms
+                </span>
+                , to{" "}
+                <span className="font-semibold underline decoration-emerald-300 decoration-[5px] underline-offset-[6px]">
+                  owning complex data products
+                </span>
+                —while business training broadened how I think about markets, economics, and strategy. Today, I bring
+                those perspectives together to make product decisions across{" "}
+                <span className="font-semibold underline decoration-amber-300 decoration-[5px] underline-offset-[6px]">
+                  customer value
                 </span>
                 ,{" "}
-                <span className="font-semibold underline decoration-sky-300 decoration-[5px] underline-offset-[6px]">
-                  misaligned incentives
+                <span className="font-semibold underline decoration-pink-300 decoration-[5px] underline-offset-[6px]">
+                  technical architecture
                 </span>
                 , and{" "}
-                <span className="font-semibold underline decoration-emerald-300 decoration-[5px] underline-offset-[6px]">
-                  preventable team errors
+                <span className="font-semibold underline decoration-violet-300 decoration-[5px] underline-offset-[6px]">
+                  business outcomes
                 </span>
                 .
               </p>

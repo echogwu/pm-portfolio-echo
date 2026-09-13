@@ -12,5 +12,5 @@ export const metadata: Metadata = buildMetadata({
 })
 
 export default function MBAWorkPage() {
-  return <ClientRedirect to="/journey/mba-strategic-frameworks" />
+  return <ClientRedirect to="/work/mba-strategic-frameworks" />
 }

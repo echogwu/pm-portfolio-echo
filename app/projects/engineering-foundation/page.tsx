@@ -12,5 +12,5 @@ export const metadata: Metadata = buildMetadata({
 })
 
 export default function EngineeringFoundationPage() {
-  return <ClientRedirect to="/journey/engineering-foundation" />
+  return <ClientRedirect to="/work/engineering-foundation" />
 }

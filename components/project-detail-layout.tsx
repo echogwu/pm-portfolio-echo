@@ -7,6 +7,12 @@ export type DecisionBlock = {
   bullets?: string[]
 }
 
+export type PlaceholderCard = {
+  title: string
+  description?: string
+  status?: string
+}
+
 export type ProjectDetailLayoutProps = {
   title: string
   subline: string
@@ -14,6 +20,10 @@ export type ProjectDetailLayoutProps = {
   heroImage: {
     src: string
     alt: string
+    /** Use "contain" for diagrams that must not be cropped. Defaults to "cover". */
+    fit?: "cover" | "contain"
+    /** Letterbox color behind a "contain" image, so it reads as intentional. */
+    background?: string
   }
 
   row1: {
@@ -47,6 +57,12 @@ export type ProjectDetailLayoutProps = {
   artifacts?: {
     projectHref: string
     projectLabel: string
+  }
+
+  /** Upcoming deliverables, shown as light "coming soon" rows. */
+  artifactPlaceholders?: {
+    heading?: string
+    items: PlaceholderCard[]
   }
 }
 
@@ -97,6 +113,7 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
     row2,
     row3,
     artifacts,
+    artifactPlaceholders,
   } = props
 
   const artifactItems = artifacts ? ARTIFACTS.filter((a) => a.projectHref === artifacts.projectHref) : []
@@ -107,10 +124,10 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
       <section className="max-w-6xl mx-auto px-6 lg:px-8 pt-12 pb-12 lg:pt-14 lg:pb-14">
         <div className="mb-8">
           <Link
-            href="/journey"
+            href="/work"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            ← Back to journey
+            ← Back to work
           </Link>
         </div>
 
@@ -134,11 +151,16 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
           </div>
 
           <div className="md:pl-2">
-            <div className="relative overflow-hidden rounded-2xl bg-muted aspect-[4/3] md:aspect-auto md:h-full">
+            <div
+              className="relative overflow-hidden rounded-2xl bg-muted aspect-[4/3] md:aspect-auto md:h-full"
+              style={heroImage.background ? { backgroundColor: heroImage.background } : undefined}
+            >
               <img
                 src={withBasePath(heroImage.src)}
                 alt={heroImage.alt}
-                className="absolute inset-0 h-full w-full object-cover"
+                className={`absolute inset-0 h-full w-full ${
+                  heroImage.fit === "contain" ? "object-contain" : "object-cover"
+                }`}
               />
             </div>
           </div>
@@ -272,8 +294,32 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
           )}
         </div>
       </section>
+
+      {artifactPlaceholders && artifactPlaceholders.items.length > 0 ? (
+        <>
+          <div className="border-t border-neutral-200" />
+          <section>
+            <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
+              <h2 className="text-3xl font-bold mb-6 tracking-tight">
+                {artifactPlaceholders.heading ?? "Artifacts"}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
+                {artifactPlaceholders.items.map((artifact) => (
+                  <div key={artifact.title} className="border-t border-neutral-200 pt-4">
+                    <p className="font-semibold tracking-tight">{artifact.title}</p>
+                    {artifact.description ? (
+                      <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{artifact.description}</p>
+                    ) : null}
+                    <p className="mt-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      {artifact.status ?? "Coming soon"}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      ) : null}
     </main>
   )
 }
-
-

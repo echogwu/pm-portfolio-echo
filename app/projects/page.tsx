@@ -3,7 +3,7 @@ import { ClientRedirect } from "@/components/client-redirect"
 import { buildMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = buildMetadata({
-  title: "Journey",
+  title: "Work",
   description:
     "A collection of product management work spanning data platforms, APIs, zero-to-one products, and strategic frameworks.",
   pathname: "/projects",
@@ -11,5 +11,5 @@ export const metadata: Metadata = buildMetadata({
 })
 
 export default function ProjectsPage() {
-  return <ClientRedirect to="/journey" />
+  return <ClientRedirect to="/work" />
 }

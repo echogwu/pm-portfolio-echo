@@ -12,5 +12,5 @@ export const metadata: Metadata = buildMetadata({
 })
 
 export default function IDEOPage() {
-  return <ClientRedirect to="/journey/ideo-design-thinking" />
+  return <ClientRedirect to="/work/ideo-design-thinking" />
 }

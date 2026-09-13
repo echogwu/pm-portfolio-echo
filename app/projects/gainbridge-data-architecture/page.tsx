@@ -12,5 +12,5 @@ export const metadata: Metadata = buildMetadata({
 })
 
 export default function GainbridgePage() {
-  return <ClientRedirect to="/journey/gainbridge-data-architecture" />
+  return <ClientRedirect to="/work/gainbridge-data-architecture" />
 }

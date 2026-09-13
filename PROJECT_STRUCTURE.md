@@ -12,8 +12,8 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
     globals.css             # Tailwind + design tokens (CSS variables)
     opengraph-image.png/    # Default Open Graph image route (static)
       route.tsx
-    journey/                # Journey index + per-project case study routes
-      page.tsx              # /journey
+    work/                   # Work index + per-project case study routes
+      page.tsx              # /work
       <project-slug>/page.tsx
         opengraph-image.png/  # Optional per-project OG image route(s)
           route.tsx
@@ -23,8 +23,8 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
 
   components/               # Reusable React components (mostly client components)
     home-content.tsx        # Home page content sections
-    projects-timeline.tsx   # /journey timeline cards
-    route-map.tsx           # Legacy/experimental journey map (currently unused)
+    projects-timeline.tsx   # /work timeline cards
+    route-map.tsx           # Legacy/experimental work map (currently unused)
     project-detail-layout.tsx # Standard project detail layout (hero + guided rows)
     artifacts-grid.tsx      # /artifacts grid + modal (images + PDFs)
     artifacts-tabs.tsx      # /artifacts project tabs (filters the grid)
@@ -55,8 +55,8 @@ This repo is a **Next.js (App Router) + TypeScript + Tailwind v4** portfolio sit
 
 - **Routes** are folders under `app/` with a `page.tsx`.
   - `app/page.tsx` → `/`
-  - `app/journey/page.tsx` → `/journey`
-  - `app/journey/<slug>/page.tsx` → `/journey/<slug>`
+  - `app/work/page.tsx` → `/work`
+  - `app/work/<slug>/page.tsx` → `/work/<slug>`
   - `app/artifacts/page.tsx` → `/artifacts`
 - **Metadata** can be exported per-route (`export const metadata = { ... }`).
 - **Global layout** is `app/layout.tsx`.
@@ -77,7 +77,7 @@ Each artifact card supports:
 - **Image gallery preview**: multi-image modal with arrow buttons and keyboard navigation
 - **PDF preview**: set `pdfSrc` to embed a PDF in the modal (PDF must live in `public/`)
 - **Full artifact link**: set `artifactHref` + optional `artifactLabel` (shown on the card and in the modal header)
-- **Project backlink**: `projectHref` (e.g. back to `/journey/dishclosure-founder-mode`)
+- **Project backlink**: `projectHref` (e.g. back to `/work/dishclosure-founder-mode`)
 
 ### Static assets for artifacts
 
@@ -113,14 +113,14 @@ Each artifact card supports:
 
 ## Adding a new project page (case study)
 
-1. Create a folder under `app/journey/`:
-   - Example: `app/journey/my-new-project/page.tsx`
+1. Create a folder under `app/work/`:
+   - Example: `app/work/my-new-project/page.tsx`
 2. Link to it from wherever you want (commonly the Projects route map or the home featured projects section).
 3. Add any required images to `public/` and reference them by absolute path (`/my-image.png`).
 
 ## Project detail page layout (standard)
 
-All case studies under `app/journey/*/page.tsx` should use the shared `ProjectDetailLayout` component:
+All case studies under `app/work/*/page.tsx` should use the shared `ProjectDetailLayout` component:
 
 - **Component**: `components/project-detail-layout.tsx`
 - **Goal**: a clean, editorial reading flow guided by **spacing + thin rules**, not heavy cards/boxes.
@@ -128,7 +128,7 @@ All case studies under `app/journey/*/page.tsx` should use the shared `ProjectDe
 ### Required structure (must match)
 
 1. **Header band (hero)**:
-   - Top-left link: “← Back to journey”
+   - Top-left link: “← Back to work”
    - Two columns (equal-ish):
      - Left: title, 1–2 line subline, tag chips
      - Right: hero image (rounded, fixed aspect, `object-cover`)
@@ -147,6 +147,14 @@ All case studies under `app/journey/*/page.tsx` should use the shared `ProjectDe
 4. **Row 3**: **Outcomes | Learnings**
    - Two equal columns with the same `md+` vertical divider treatment as Row 1
    - If the project has artifacts, Row 3 uses a concise 3-column layout (**Outcomes | Learnings | Artifacts**) with thin rules/dividers.
+5. **Artifacts (optional, placeholders only)**:
+   - Pass `artifactPlaceholders` for deliverables that aren’t published yet
+   - Renders as three hairline-topped rows with an uppercase “Coming soon” label — no dashed borders or boxes
+   - Once a deliverable is real, move it into `lib/artifacts.ts` and use `artifacts` instead
+
+Both column headings in Row 3 accept a custom `heading`, so a project without a
+“Learnings” list can reuse the right column for something else (Klaviyo uses
+“How I make the tradeoff”).
 
 ### Content conventions
 

@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { Github, Mail, MapPin, Linkedin } from "lucide-react"
 import { SiteNav } from "@/components/site-nav"
-import { TypingTagline } from "@/components/typing-tagline"
 import { SiteFooter } from "@/components/site-footer"
 import howIWorkBg from "@/components/how-i-work-bg.png"
 // import { Button } from "@/components/ui/button"
@@ -11,26 +10,26 @@ export default function HomeContent() {
 
   const featuredProjects = [
     {
+      title: "Klaviyo: Evolving the Event Data Platform",
+      description:
+        "How high-volume behavioral data should be stored, served, and accessed—balancing customer value, latency, reliability, cost, and product economics.",
+      href: "/work/klaviyo-real-time-data-strategy",
+      imageSrc: "/klaviyo-logo.jpg",
+      imageAlt: "Klaviyo",
+      tags: ["Event Infrastructure", "Real-Time Data", "APIs & SLOs", "Platform Economics"],
+    },
+    {
       title: "Gainbridge: Product Manager, Data and Measurement",
       description: "Built the instrumentation layer that made performance trustworthy — before optimization.",
-      href: "/journey/gainbridge-data-architecture",
+      href: "/work/gainbridge-data-architecture",
       imageSrc: "/gainbridge.gif",
       imageAlt: "Gainbridge project",
       tags: ["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"],
     },
     {
-      title: "Dishclosure: Founder and Product Lead",
-      description:
-        "An operator-first investigation that revealed the real constraint wasn't UX or adoption, but broken upstream data lineage.",
-      href: "/journey/dishclosure-founder-mode",
-      imageSrc: "/dishclosure.gif",
-      imageAlt: "Dishclosure project - Collaborative ingredient exploration and allergen discovery",
-      tags: ["Zero-to-One", "Data Lineage", "Schema Design", "Ecosystem Diagnosis", "Go/No-Go Decision"],
-    },
-    {
       title: "Lyft: Quality Engineer → Developer Experience PM",
       description: "When to stop optimizing for conventional metrics — and start optimizing what actually matters.",
-      href: "/journey/lyft-developer-experience-pm",
+      href: "/work/lyft-developer-experience-pm",
       imageSrc: "/lyft.gif",
       imageAlt: "Lyft project",
       tags: [
@@ -55,21 +54,11 @@ export default function HomeContent() {
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <h1 className="font-bold leading-tight tracking-tight text-balance text-[clamp(2.15rem,8.2vw,3.75rem)]">
-                <span className="relative inline-block max-w-full">
-                  {/* Reserve layout to avoid any shift while the typing animation runs */}
-                  <span className="invisible">
-                    <span className="block whitespace-pre">{"AI Ships Features."}</span>
-                    <span className="block whitespace-pre">{" I Ship  Direction."}</span>
-                  </span>
-                  <span className="absolute inset-0">
-                    <TypingTagline line1="AI Ships Features." line2="   I Ship   Direction." />
-                  </span>
-                </span>
+                Product lead, real-time customer data infrastructure
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-md justify-text">
-                Data & Platform Product Manager who builds the systems that make business performance legible. Owned
-                data architecture, attribution, and activation platforms behind mission-critical growth engines and
-                consumer workflows. Founder experience diagnosing ecosystem-level data lineage failures.
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                I build event and data platforms where product decisions shape how data is ingested, stored, served, and
+                activated—balancing scale, cost, reliability, and customer trust.
               </p>
             </div>
 
@@ -127,92 +116,17 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* Data Philosophy Section */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16 border-t border-border">
-        <div className="w-full">
-          <div className="rounded-3xl border border-border bg-card px-6 py-8 lg:px-10 lg:py-10 shadow-[0_18px_50px_rgba(2,6,23,0.06),0_0_0_1px_rgba(15,23,42,0.04),0_26px_80px_rgba(248,246,240,0.9)]">
-            {/* Section headline (spans both columns) */}
-            <div className="mb-8 lg:mb-10">
-              <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">
-                How I Think About Data Systems
-              </h1>
-            </div>
-
-            <div className="grid gap-8 lg:grid-cols-2 lg:gap-10 lg:divide-x lg:divide-border">
-              {/* Left column */}
-              <div className="flex flex-col gap-5 text-foreground leading-relaxed lg:pr-10">
-                <h2 className="text-2xl font-bold leading-tight text-balance">
-                  Modern products are data systems before they are interfaces.
-                </h2>
-
-                <p className="text-foreground/90 leading-relaxed justify-text">
-                  Every UI, workflow, and activation layer depends on whether the right data reaches the right place at
-                  the right time. When events are inconsistent, delayed, or poorly modeled, the product fails — no
-                  matter how polished the interface looks.
-                </p>
-
-                <p className="text-foreground/90 leading-relaxed justify-text">
-                  My work focuses on designing clean event schemas, reliable ingestion pipelines, and explicit data
-                  contracts between upstream and downstream systems. When data is structured correctly and ownership is
-                  clear, product behavior becomes predictable, scalable, and trustworthy. Good products aren’t powered
-                  by dashboards — they’re powered by data systems that enforce integrity by design.
-                </p>
-              </div>
-
-              {/* Right column */}
-              <div className="lg:pl-10">
-                <div className="flex flex-col gap-6">
-                  <div className="flex flex-col gap-4">
-                    <h2 className="text-2xl font-bold leading-tight text-balance">What Shaped This Perspective</h2>
-                    <ul className="space-y-4 list-none">
-                      <li>
-                        <div className="font-semibold">Dishclosure</div>
-                        <p className="text-foreground/90 leading-relaxed justify-text mt-1">
-                          UX innovation couldn’t compensate for missing or unreliable upstream data. The real constraint
-                          wasn’t the interface — it was the data model underneath it.
-                        </p>
-                      </li>
-                      <li>
-                        <div className="font-semibold">Gainbridge</div>
-                        <p className="text-foreground/90 leading-relaxed justify-text mt-1">
-                          Clean event modeling, dependency mapping, and taxonomy governance unlocked entire workflows
-                          and aligned product, engineering, and marketing around a shared system of truth.
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Horizontal divider */}
-                  <div className="h-px bg-border" aria-hidden="true" />
-
-                  <div className="flex flex-col gap-3">
-                    <h2 className="text-2xl font-bold leading-tight text-balance">How This Shows Up in My Work</h2>
-                    <p className="text-foreground/90 leading-relaxed font-bold">
-                      Start with the data model. Enforce the contracts. Let every feature flow from there.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Projects */}
-      <section id="projects" className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-20">
+      <section id="projects" className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-20 border-t border-border">
         <div className="flex items-end justify-between gap-6 mb-10 lg:mb-12">
           <div>
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">Featured Projects</h2>
-            <p className="text-muted-foreground mt-2 max-w-2xl justify-text">
-              A few representative case studies. Each one focuses on system clarity: definitions, contracts, and
-              decisions that scale.
-            </p>
           </div>
           <Link
-            href="/journey"
-            className="hidden sm:inline-flex text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+            href="/work"
+            className="hidden sm:inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            View all →
+            View case studies
           </Link>
         </div>
 
@@ -225,13 +139,20 @@ export default function HomeContent() {
                 className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
               >
                 <div className={isReversed ? "lg:order-2" : undefined}>
-                  <div className="relative rounded-2xl overflow-hidden border border-border/60 bg-muted/40 shadow-sm aspect-video">
-                    <img
-                      src={`${basePath}${project.imageSrc}`}
-                      alt={project.imageAlt}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <Link
+                    href={project.href}
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    className="group block rounded-2xl transition-all duration-200 hover:-translate-y-0.5"
+                  >
+                    <div className="relative rounded-2xl overflow-hidden border border-border/60 bg-muted/40 shadow-sm aspect-video transition-all duration-200 group-hover:border-border group-hover:shadow-md">
+                      <img
+                        src={`${basePath}${project.imageSrc}`}
+                        alt={project.imageAlt}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </Link>
                 </div>
 
                 <div className={isReversed ? "lg:order-1" : undefined}>
@@ -256,7 +177,7 @@ export default function HomeContent() {
                       href={project.href}
                       className="text-blue-600 hover:text-blue-700 font-medium text-sm inline-flex items-center gap-1 group w-fit"
                     >
-                      Read case study
+                      Read Case Study
                       <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </Link>
                   </div>
@@ -266,8 +187,11 @@ export default function HomeContent() {
           })}
 
           <div className="sm:hidden pt-2">
-            <Link href="/journey" className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
-              View all →
+            <Link
+              href="/work"
+              className="inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              View case studies
             </Link>
           </div>
         </div>
@@ -285,17 +209,14 @@ export default function HomeContent() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="space-y-3">
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">
-                How I work: build <span className="underline decoration-lime-300 decoration-[6px] underline-offset-[6px]">clarity</span>{" "}
-                inside messy systems
+                How I work: turn complexity into{" "}
+                <span className="underline decoration-lime-300 decoration-[6px] underline-offset-[6px]">product decisions</span>
               </h2>
-              <p className="text-muted-foreground max-w-2xl leading-relaxed">
-                I align teams around shared definitions and reliable signals, then turn that clarity into execution that compounds.
-              </p>
             </div>
 
             <div className="pt-2 lg:pt-0">
               <Link
-                href="/journey"
+                href="/work"
                 className="inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 View case studies
@@ -321,33 +242,42 @@ export default function HomeContent() {
                   const steps = [
                     {
                       step: "①",
-                      firstLine: "Map the system",
-                      bullets: ["ELT + event flow mapping", "Ownership & handoff gaps", "Source → warehouse → activation"],
+                      firstLine: "Define the right to win",
+                      bullets: ["Competitive landscape", "Differentiated positioning", "Strategic wedge"],
                       accent: "emerald" as const,
                       placement: "below" as const, // 1 below
                     },
                     {
                       step: "②",
-                      firstLine: "Define contracts",
-                      bullets: ["Event taxonomy & schemas", "Lifecycle definitions", "Data contracts"],
+                      firstLine: "Map the system",
+                      bullets: [
+                        "Follow the end-to-end data flow",
+                        "Map data → product capability",
+                        "Define contracts, SLOs, and dependencies",
+                      ],
                       accent: "sky" as const,
                       placement: "above" as const, // 2 above
                     },
                     {
                       step: "③",
-                      firstLine: "Socialize & align",
+                      firstLine: "Understand the customer job",
                       bullets: [
-                        "Diagrams + docs people actually read",
-                        "Demos, walkthroughs, alignment reviews",
-                        "Metric misuse callouts",
+                        "Customer interviews",
+                        "Workflow and pain-point walkthroughs",
+                        "Quantify frequency, severity, and stakes",
                       ],
                       accent: "amber" as const,
                       placement: "below" as const, // 3 below
                     },
                     {
                       step: "④",
-                      firstLine: "Build",
-                      bullets: ["Avoid unnecessary features", "Ship higher-confidence changes"],
+                      firstLine: "Make the product call",
+                      bullets: [
+                        "Customer value",
+                        "Technical feasibility",
+                        "Economics and cost",
+                        "GTM and operational complexity",
+                      ],
                       accent: "pink" as const,
                       placement: "above" as const, // 4 above
                     },
@@ -474,7 +404,7 @@ export default function HomeContent() {
                 {/* Quote placed on the image's bottom bar */}
                 <div className="absolute inset-x-0 bottom-0 px-8 pb-5">
                   <p className="text-center text-sm font-semibold text-foreground/80">
-                    “Once the foundation is sound, execution becomes obvious.”
+                    “Clarity turns complex tradeoffs into confident product decisions.”
                   </p>
                 </div>
               </div>
@@ -493,34 +423,43 @@ export default function HomeContent() {
                 {[
                   {
                     step: "①",
-                    title: "Map the system",
-                    firstLine: "Map the system",
-                    bullets: ["ELT + event flow mapping", "Ownership & handoff gaps", "Source → warehouse → activation"],
+                    title: "Define the right to win",
+                    firstLine: "Define the right to win",
+                    bullets: ["Competitive landscape", "Differentiated positioning", "Strategic wedge"],
                     accent: "emerald",
                   },
                   {
                     step: "②",
-                    title: "Define contracts",
-                    firstLine: "Define contracts",
-                    bullets: ["Event taxonomy & schemas", "Lifecycle definitions", "Data contracts"],
+                    title: "Map the system",
+                    firstLine: "Map the system",
+                    bullets: [
+                      "Follow the end-to-end data flow",
+                      "Map data → product capability",
+                      "Define contracts, SLOs, and dependencies",
+                    ],
                     accent: "sky",
                   },
                   {
                     step: "③",
-                    title: "Socialize & align",
-                    firstLine: "Socialize & align",
+                    title: "Understand the customer job",
+                    firstLine: "Understand the customer job",
                     bullets: [
-                      "Diagrams + docs people actually read",
-                      "Demos, walkthroughs, alignment reviews",
-                      "Metric misuse callouts",
+                      "Customer interviews",
+                      "Workflow and pain-point walkthroughs",
+                      "Quantify frequency, severity, and stakes",
                     ],
                     accent: "amber",
                   },
                   {
                     step: "④",
-                    title: "Build",
-                    firstLine: "Build",
-                    bullets: ["Avoid unnecessary features", "Ship higher-confidence changes"],
+                    title: "Make the product call",
+                    firstLine: "Make the product call",
+                    bullets: [
+                      "Customer value",
+                      "Technical feasibility",
+                      "Economics and cost",
+                      "GTM and operational complexity",
+                    ],
                     accent: "pink",
                   },
                 ].map((item, idx, arr) => (
@@ -584,7 +523,7 @@ export default function HomeContent() {
 
                 <div className="absolute inset-x-0 bottom-0 px-5 pb-4">
                   <p className="text-center text-sm font-semibold text-foreground/80">
-                  “Once the foundation is sound, execution becomes obvious.”
+                  “Clarity turns complex tradeoffs into confident product decisions.”
                 </p>
                 </div>
               </div>
