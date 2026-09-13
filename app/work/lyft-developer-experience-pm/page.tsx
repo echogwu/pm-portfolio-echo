@@ -7,8 +7,8 @@ import { buildMetadata } from "@/lib/seo"
 export const metadata: Metadata = buildMetadata({
   title: "Lyft: Quality Engineer → Developer Experience PM",
   description: "Learned when to stop optimizing tools and start optimizing where teams focus.",
-  pathname: "/journey/lyft-developer-experience-pm",
-  ogImagePath: "/journey/lyft-developer-experience-pm/opengraph-image.png",
+  pathname: "/work/lyft-developer-experience-pm",
+  ogImagePath: "/work/lyft-developer-experience-pm/opengraph-image.png",
   ogImageAlt: "Lyft developer experience",
   type: "article",
 })
@@ -19,7 +19,7 @@ export default function LyftPage() {
       <ScrollToTop />
 
       {/* Navigation */}
-      <SiteNav active="journey" />
+      <SiteNav active="work" />
 
       <ProjectDetailLayout
         title="Lyft: Quality Engineer → Developer Experience PM"

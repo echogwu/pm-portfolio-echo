@@ -13,7 +13,7 @@ export default function HomeContent() {
       title: "Klaviyo: Evolving the Event Data Platform",
       description:
         "How high-volume behavioral data should be stored, served, and accessed—balancing customer value, latency, reliability, cost, and product economics.",
-      href: "/journey/klaviyo-real-time-data-strategy",
+      href: "/work/klaviyo-real-time-data-strategy",
       imageSrc: "/klaviyo-logo.jpg",
       imageAlt: "Klaviyo",
       tags: ["Event Infrastructure", "Real-Time Data", "APIs & SLOs", "Platform Economics"],
@@ -21,7 +21,7 @@ export default function HomeContent() {
     {
       title: "Gainbridge: Product Manager, Data and Measurement",
       description: "Built the instrumentation layer that made performance trustworthy — before optimization.",
-      href: "/journey/gainbridge-data-architecture",
+      href: "/work/gainbridge-data-architecture",
       imageSrc: "/gainbridge.gif",
       imageAlt: "Gainbridge project",
       tags: ["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"],
@@ -29,7 +29,7 @@ export default function HomeContent() {
     {
       title: "Lyft: Quality Engineer → Developer Experience PM",
       description: "When to stop optimizing for conventional metrics — and start optimizing what actually matters.",
-      href: "/journey/lyft-developer-experience-pm",
+      href: "/work/lyft-developer-experience-pm",
       imageSrc: "/lyft.gif",
       imageAlt: "Lyft project",
       tags: [
@@ -123,7 +123,7 @@ export default function HomeContent() {
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">Featured Projects</h2>
           </div>
           <Link
-            href="/journey"
+            href="/work"
             className="hidden sm:inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             View case studies
@@ -188,7 +188,7 @@ export default function HomeContent() {
 
           <div className="sm:hidden pt-2">
             <Link
-              href="/journey"
+              href="/work"
               className="inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               View case studies
@@ -216,7 +216,7 @@ export default function HomeContent() {
 
             <div className="pt-2 lg:pt-0">
               <Link
-                href="/journey"
+                href="/work"
                 className="inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 View case studies

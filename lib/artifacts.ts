@@ -19,7 +19,7 @@ export const ARTIFACTS: Artifact[] = [
     id: "dishclosure-product-strategy",
     headline: "Product Strategy",
     subline: "Market research, competitive analysis, and ICP definition.",
-    projectHref: "/journey/dishclosure-founder-mode",
+    projectHref: "/work/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
     pdfSrc: "/dishclosure-product-strategy.pdf",
     artifactHref: "/dishclosure-product-strategy.pdf",
@@ -35,7 +35,7 @@ export const ARTIFACTS: Artifact[] = [
     id: "dishclosure-data-erd",
     headline: "Data Entity-Relationship Diagram(ERD)",
     subline: "Entity relationships and schema foundations for allergen lineage.",
-    projectHref: "/journey/dishclosure-founder-mode",
+    projectHref: "/work/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
     images: [
       {
@@ -48,7 +48,7 @@ export const ARTIFACTS: Artifact[] = [
     id: "dishclosure-ux-prototype",
     headline: "UX Prototype",
     subline: "Operator-first workflow prototype for input and validation.",
-    projectHref: "/journey/dishclosure-founder-mode",
+    projectHref: "/work/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
     artifactHref:
       "https://www.figma.com/board/lk8ToFLRwePtXxSJ2EIKa6/Dishclosure-UX-Prototype?node-id=0-1&t=lBRBH58cwN5ljgeU-1",
@@ -59,7 +59,7 @@ export const ARTIFACTS: Artifact[] = [
     id: "dishclosure-legal-doc",
     headline: "Pilot Program Agreement",
     subline: "Drafting constraints, liability considerations, and policy framing.",
-    projectHref: "/journey/dishclosure-founder-mode",
+    projectHref: "/work/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
     pdfSrc: "/dishclosure-legal.pdf",
     artifactHref: "/dishclosure-legal.pdf",
@@ -75,7 +75,7 @@ export const ARTIFACTS: Artifact[] = [
     id: "dishclosure-technical-design",
     headline: "Technical Design Considerations",
     subline: "System constraints, integration assumptions, and reliability tradeoffs.",
-    projectHref: "/journey/dishclosure-founder-mode",
+    projectHref: "/work/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
     artifactHref: "https://github.com/echogwu/dishclosure-operator-and-diner-app",
     artifactLabel: "View GitHub repo",
@@ -92,7 +92,7 @@ export const ARTIFACTS: Artifact[] = [
     headline: "Growth Strategy (One-pager)",
     subline:
       "Built the decision infrastructure behind D2C growth by aligning acquisition, education, and attribution around behavioral signals",
-    projectHref: "/journey/gainbridge-data-architecture",
+    projectHref: "/work/gainbridge-data-architecture",
     projectLabel: "Gainbridge",
     pdfSrc: "/gainbridge-growth-engine.pdf",
     artifactHref: "/gainbridge-growth-engine.pdf",
@@ -110,7 +110,7 @@ export const ARTIFACTS: Artifact[] = [
     headline: "Customer Journey × Data Flow Architecture",
     subline:
       "Connected customer journeys to data flows to surface identity fragmentation and delayed activation caused by partial attribution and unclear customer profiles.",
-    projectHref: "/journey/gainbridge-data-architecture",
+    projectHref: "/work/gainbridge-data-architecture",
     projectLabel: "Gainbridge",
     defaultPreviewTint: true,
     images: [
@@ -124,7 +124,7 @@ export const ARTIFACTS: Artifact[] = [
     id: "gainbridge-attribution-starts-before-conversion",
     headline: "Attribution Starts Before Conversion",
     subline: "Reframed attribution as an identity and data-visibility problem, not a reporting problem.",
-    projectHref: "/journey/gainbridge-data-architecture",
+    projectHref: "/work/gainbridge-data-architecture",
     projectLabel: "Gainbridge",
     pdfSrc: "/gainbridge-mta.pdf",
     artifactHref: "/gainbridge-mta.pdf",
@@ -142,7 +142,7 @@ export const ARTIFACTS: Artifact[] = [
     headline: "IDEO — Turning Qualitative Chaos into Behavioral Insight",
     subline:
       "Clustered interviews into behavioral patterns and tensions, translating messy human input into clear insights.",
-    projectHref: "/journey/ideo-design-thinking",
+    projectHref: "/work/ideo-design-thinking",
     projectLabel: "IDEO",
     artifactHref:
       "https://www.figma.com/board/o7BSFYxHFIv7s26FUvbzv0/Design-Interviews?node-id=0-1&t=Z9myuX0UxY0qVCO1-1",
@@ -159,7 +159,7 @@ export const ARTIFACTS: Artifact[] = [
     id: "ideo-insight-to-structure",
     headline: "IDEO — Translating Human Insight into Product Structure",
     subline: "Converted behavioral insights into product constraints and flows",
-    projectHref: "/journey/ideo-design-thinking",
+    projectHref: "/work/ideo-design-thinking",
     projectLabel: "IDEO",
     artifactHref: "https://docs.google.com/presentation/d/16BeaNorse-9Kj5e1Krc0tjEQov3lERfMNmKgfRx7tzc/edit?usp=sharing",
     artifactLabel: "Open slides",
@@ -172,11 +172,60 @@ export const ARTIFACTS: Artifact[] = [
     ],
   },
   {
+    id: "klaviyo-data-access-decision-gates",
+    headline: "Decision Tree",
+    subline: "How product requirements drive serving architecture.",
+    projectHref: "/work/klaviyo-real-time-data-strategy",
+    projectLabel: "Klaviyo",
+    defaultPreviewTint: true,
+    images: [
+      {
+        src: "/klaviyo-decision-gates.jpg",
+        alt: "Decision gates flowchart routing workloads to async export, hybrid query, or on-demand recovery based on latency, freshness, and lookback window",
+      },
+    ],
+  },
+  {
+    id: "klaviyo-cost-to-value-segmentation",
+    headline: "Cost-to-Value Segmentation Framework",
+    subline:
+      "Separates absolute infrastructure burden from economic efficiency to find accounts that are expensive to serve and weakly monetized.",
+    projectHref: "/work/klaviyo-real-time-data-strategy",
+    projectLabel: "Klaviyo",
+    pdfSrc: "/klaviyo-cost-to-value-segmentation.pdf",
+    artifactHref: "/klaviyo-cost-to-value-segmentation.pdf",
+    artifactLabel: "Open PDF",
+    defaultPreviewTint: true,
+    images: [
+      {
+        src: "/klaviyo-cost-to-value-segmentation.png",
+        alt: "Cost-to-value segmentation framework preview (PDF thumbnail)",
+      },
+    ],
+  },
+  {
+    id: "klaviyo-rollout-and-evidence-plan",
+    headline: "Rollout & Evidence Plan",
+    subline: "Cohorts, success metrics, rollback conditions, and communication gates.",
+    projectHref: "/work/klaviyo-real-time-data-strategy",
+    projectLabel: "Klaviyo",
+    pdfSrc: "/klaviyo-rollout-evidence-plan.pdf",
+    artifactHref: "/klaviyo-rollout-evidence-plan.pdf",
+    artifactLabel: "Open PDF",
+    defaultPreviewTint: true,
+    images: [
+      {
+        src: "/klaviyo-rollout-evidence-plan.png",
+        alt: "Rollout and evidence plan preview (PDF thumbnail)",
+      },
+    ],
+  },
+  {
     id: "mba-product-profitability-under-uncertainty",
     headline: "Product Profitability Under Uncertainty",
     subline:
       "Built a multi-scenario financial model to decide whether a zero-cost hardware product with subscription revenue should launch, scale, or be killed.",
-    projectHref: "/journey/mba-strategic-frameworks",
+    projectHref: "/work/mba-strategic-frameworks",
     projectLabel: "MBA",
     artifactHref:
       "https://docs.google.com/spreadsheets/d/1O3cR9yBl4f_Kjx_nUDBBTLYc-6a1-TjS/edit?usp=sharing&ouid=107147940664291051669&rtpof=true&sd=true",
@@ -194,7 +243,7 @@ export const ARTIFACTS: Artifact[] = [
     headline: "Defending a Core Business in the AI Era - Google Assist",
     subline:
       "Proposed a bundled subscription and agentic product strategy to defend Google Search from AI disruption while creating a new recurring revenue stream.",
-    projectHref: "/journey/mba-strategic-frameworks",
+    projectHref: "/work/mba-strategic-frameworks",
     projectLabel: "MBA",
     artifactHref: "https://docs.google.com/presentation/d/1kPFvllmRW0zAm5yl58_4BXYPbs5CyJWoQoPOFgd2zJM/edit?usp=sharing",
     artifactLabel: "Open slides",
@@ -211,7 +260,7 @@ export const ARTIFACTS: Artifact[] = [
     headline: "Designing a Sustainable Go-to-Market Model",
     subline:
       "Designed pricing, GTM sequencing, and unit economics for an early-stage resilience startup balancing impact, scale, and financial viability.",
-    projectHref: "/journey/mba-strategic-frameworks",
+    projectHref: "/work/mba-strategic-frameworks",
     projectLabel: "MBA",
     artifactHref: "https://docs.google.com/presentation/d/1urlMSRZggiZCJye_UfFxvwoBJPp_m_6T/edit?usp=sharing&ouid=107147940664291051669&rtpof=true&sd=true",
     artifactLabel: "Open slides",
@@ -228,7 +277,7 @@ export const ARTIFACTS: Artifact[] = [
     headline: "Five-Year Strategic Planning at the Board Level",
     subline:
       "Contributed to a charter school’s 5-year strategic plan spanning enrollment growth, talent pipelines, facilities expansion, and financial sustainability.",
-    projectHref: "/journey/mba-strategic-frameworks",
+    projectHref: "/work/mba-strategic-frameworks",
     projectLabel: "MBA",
     pdfSrc: "/mba-strategic-planning-yuming.pdf",
     artifactHref: "/mba-strategic-planning-yuming.pdf",

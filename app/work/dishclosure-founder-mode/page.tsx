@@ -8,8 +8,8 @@ export const metadata: Metadata = buildMetadata({
   title: "Dishclosure | Founder and Product Lead",
   description:
     "An operator-first investigation that revealed the real constraint wasn’t UX or adoption, but broken upstream data lineage.",
-  pathname: "/journey/dishclosure-founder-mode",
-  ogImagePath: "/journey/dishclosure-founder-mode/opengraph-image.png",
+  pathname: "/work/dishclosure-founder-mode",
+  ogImagePath: "/work/dishclosure-founder-mode/opengraph-image.png",
   ogImageAlt: "Dishclosure allergen knowledge graph",
   type: "article",
 })
@@ -20,13 +20,13 @@ export default function DishclosurePage() {
       <PreserveScroll />
 
       {/* Navigation */}
-      <SiteNav active="journey" />
+      <SiteNav active="work" />
 
       <ProjectDetailLayout
         title="Dishclosure: Founder and Product Lead"
         subline="An operator-first investigation that revealed the real constraint wasn’t UX or adoption, but broken upstream data lineage."
         tags={["Zero-to-One", "Data Lineage", "Schema Design", "Ecosystem Diagnosis", "Go/No-Go Decision"]}
-        artifacts={{ projectHref: "/journey/dishclosure-founder-mode", projectLabel: "Dishclosure" }}
+        artifacts={{ projectHref: "/work/dishclosure-founder-mode", projectLabel: "Dishclosure" }}
         heroImage={{
           src: "/dishclosure.gif",
           alt: "Dishclosure allergen knowledge graph",

@@ -7,8 +7,8 @@ import { buildMetadata } from "@/lib/seo"
 export const metadata: Metadata = buildMetadata({
   title: "IDEO: Design Thinking Challenge",
   description: "Practiced divergent→convergent thinking, research synthesis, rapid prototyping, and iteration.",
-  pathname: "/journey/ideo-design-thinking",
-  ogImagePath: "/journey/ideo-design-thinking/opengraph-image.png",
+  pathname: "/work/ideo-design-thinking",
+  ogImagePath: "/work/ideo-design-thinking/opengraph-image.png",
   ogImageAlt: "IDEO design thinking prototype walkthrough",
   type: "article",
 })
@@ -19,13 +19,13 @@ export default function IDEOPage() {
       <ScrollToTop />
 
       {/* Navigation */}
-      <SiteNav active="journey" />
+      <SiteNav active="work" />
 
       <ProjectDetailLayout
         title="IDEO: Design Thinking Challenge"
         subline="Understanding humans before designing systems"
         tags={["Design Thinking", "User Research", "Prototyping", "Synthesis", "Divergent → Convergent", "Storytelling"]}
-        artifacts={{ projectHref: "/journey/ideo-design-thinking", projectLabel: "IDEO" }}
+        artifacts={{ projectHref: "/work/ideo-design-thinking", projectLabel: "IDEO" }}
         heroImage={{
           src: "/design-thinking.gif",
           alt: "IDEO design thinking prototype walkthrough",

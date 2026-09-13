@@ -7,8 +7,8 @@ import { buildMetadata } from "@/lib/seo"
 export const metadata: Metadata = buildMetadata({
   title: "Gainbridge | Product Manager, Data and Measurement",
   description: "Built the instrumentation layer that made performance trustworthy — before optimization.",
-  pathname: "/journey/gainbridge-data-architecture",
-  ogImagePath: "/journey/gainbridge-data-architecture/opengraph-image.png",
+  pathname: "/work/gainbridge-data-architecture",
+  ogImagePath: "/work/gainbridge-data-architecture/opengraph-image.png",
   ogImageAlt: "Gainbridge data architecture",
   type: "article",
 })
@@ -19,13 +19,13 @@ export default function GainbridgePage() {
       <PreserveScroll />
 
       {/* Navigation */}
-      <SiteNav active="journey" />
+      <SiteNav active="work" />
 
       <ProjectDetailLayout
         title="Gainbridge: Product Manager, Data and Measurement"
         subline="Built the instrumentation layer that made performance trustworthy — before optimization."
         tags={["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"]}
-        artifacts={{ projectHref: "/journey/gainbridge-data-architecture", projectLabel: "Gainbridge" }}
+        artifacts={{ projectHref: "/work/gainbridge-data-architecture", projectLabel: "Gainbridge" }}
         heroImage={{
           src: "/gainbridge.gif",
           alt: "Gainbridge data architecture",

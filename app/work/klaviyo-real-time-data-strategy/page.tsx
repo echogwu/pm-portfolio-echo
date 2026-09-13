@@ -8,8 +8,8 @@ export const metadata: Metadata = buildMetadata({
   title: "Klaviyo | Evolving the Event Data Platform",
   description:
     "Deciding what a high-volume event platform must guarantee — across serving, storage, APIs, SLOs, economics, and rollout.",
-  pathname: "/journey/klaviyo-real-time-data-strategy",
-  ogImagePath: "/journey/klaviyo-real-time-data-strategy/opengraph-image.png",
+  pathname: "/work/klaviyo-real-time-data-strategy",
+  ogImagePath: "/work/klaviyo-real-time-data-strategy/opengraph-image.png",
   ogImageAlt: "Klaviyo",
   type: "article",
 })
@@ -20,15 +20,18 @@ export default function KlaviyoRealTimeDataStrategyPage() {
       <PreserveScroll />
 
       {/* Navigation */}
-      <SiteNav active="journey" />
+      <SiteNav active="work" />
 
       <ProjectDetailLayout
         title="Klaviyo: Evolving the Event Data Platform"
         subline="Deciding what a high-volume event platform must guarantee — and what those guarantees are worth."
         tags={["Event Infrastructure", "Real-Time Data", "APIs & SLOs", "Platform Economics", "Rollout Strategy"]}
+        artifacts={{ projectHref: "/work/klaviyo-real-time-data-strategy", projectLabel: "Klaviyo" }}
         heroImage={{
-          src: "/klaviyo-logo.jpg",
-          alt: "Klaviyo",
+          src: "/klaviyo-events-ecosystem.jpg",
+          alt: "The events ecosystem: upstream data sources feed the events platform, which serves downstream products",
+          fit: "contain",
+          background: "#0a1424",
         }}
         row1={{
           challenge: {
@@ -109,20 +112,6 @@ export default function KlaviyoRealTimeDataStrategyPage() {
             ],
           },
         }}
-        artifactPlaceholders={[
-          {
-            title: "Event Platform × Product Requirements Map",
-            description: "Maps downstream products to history, latency, freshness, and serving requirements.",
-          },
-          {
-            title: "Hot / Hybrid / Analytical Decision Tree",
-            description: "How product requirements drive serving architecture.",
-          },
-          {
-            title: "Rollout & Evidence Plan",
-            description: "Cohorts, success metrics, rollback conditions, and communication gates.",
-          },
-        ]}
       />
     </div>
   )

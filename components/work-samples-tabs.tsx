@@ -11,6 +11,15 @@ type Tab = {
   count: number
 }
 
+// Labels pinned to the front of the tab strip, in this order. Everything else
+// follows alphabetically. The first tab is also the one selected by default.
+const PINNED_LABELS = ["Klaviyo"]
+
+function tabRank(label: string) {
+  const pinned = PINNED_LABELS.indexOf(label)
+  return pinned === -1 ? PINNED_LABELS.length : pinned
+}
+
 function tabButtonClass(active: boolean) {
   return [
     "inline-flex flex-1 min-w-[9rem] items-center justify-center gap-2 rounded-lg px-3 py-2 text-[clamp(0.82rem,2.5vw,0.95rem)] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
@@ -33,7 +42,7 @@ export function ArtifactsTabs() {
 
     const tabs: Tab[] = [...map.entries()]
       .map(([label, items]) => ({ key: label.toLowerCase(), label, count: items.length }))
-      .sort((a, b) => a.label.localeCompare(b.label))
+      .sort((a, b) => tabRank(a.label) - tabRank(b.label) || a.label.localeCompare(b.label))
 
     const byLabel = map
     return { tabs, byLabel }
@@ -48,7 +57,7 @@ export function ArtifactsTabs() {
     return groups.tabs.find((t) => t.label.toLowerCase() === normalized)?.label ?? null
   }
 
-  const defaultTab = groups.tabs.find((t) => t.label === "Dishclosure")?.label ?? groups.tabs[0]?.label ?? "Work"
+  const defaultTab = groups.tabs[0]?.label ?? "Work"
   const [activeLabel, setActiveLabel] = useState<string>(() => resolveLabel(requestedProject) ?? defaultTab)
 
   useEffect(() => {

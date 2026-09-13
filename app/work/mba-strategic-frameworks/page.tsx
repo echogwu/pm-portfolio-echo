@@ -7,8 +7,8 @@ import { buildMetadata } from "@/lib/seo"
 export const metadata: Metadata = buildMetadata({
   title: "MBA: Designing Decision Systems",
   description: "The bridge from “I can build” to “I can decide what’s worth building and align people around it.”",
-  pathname: "/journey/mba-strategic-frameworks",
-  ogImagePath: "/journey/mba-strategic-frameworks/opengraph-image.png",
+  pathname: "/work/mba-strategic-frameworks",
+  ogImagePath: "/work/mba-strategic-frameworks/opengraph-image.png",
   ogImageAlt: "MBA: designing decision systems",
   type: "article",
 })
@@ -19,13 +19,13 @@ export default function MBAWorkPage() {
       <ScrollToTop />
 
       {/* Navigation */}
-      <SiteNav active="journey" />
+      <SiteNav active="work" />
 
       <ProjectDetailLayout
         title="MBA — Designing Decision Systems"
         subline="The bridge from “I can build” to “I can decide what’s worth building and align people around it.”"
         tags={["Decision Systems", "Incentives", "Metrics Strategy", "Tradeoffs", "Cross-functional Fluency"]}
-        artifacts={{ projectHref: "/journey/mba-strategic-frameworks", projectLabel: "MBA" }}
+        artifacts={{ projectHref: "/work/mba-strategic-frameworks", projectLabel: "MBA" }}
         heroImage={{
           src: "/mba.gif",
           alt: "MBA: designing decision systems",
