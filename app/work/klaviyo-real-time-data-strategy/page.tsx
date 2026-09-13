@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo"
 export const metadata: Metadata = buildMetadata({
   title: "Klaviyo | Evolving the Event Data Platform",
   description:
-    "Deciding what a high-volume event platform must guarantee — across serving, storage, APIs, SLOs, economics, and rollout.",
+    "Evolving a high-volume event platform to materially reduce infrastructure cost while preserving the data guarantees customers depend on.",
   pathname: "/work/klaviyo-real-time-data-strategy",
   ogImagePath: "/work/klaviyo-real-time-data-strategy/opengraph-image.png",
   ogImageAlt: "Klaviyo",
@@ -24,7 +24,7 @@ export default function KlaviyoRealTimeDataStrategyPage() {
 
       <ProjectDetailLayout
         title="Klaviyo: Evolving the Event Data Platform"
-        subline="Deciding what a high-volume event platform must guarantee — and what those guarantees are worth."
+        subline="Evolving a high-volume event platform to materially reduce infrastructure cost while preserving the data guarantees customers depend on."
         tags={["Event Infrastructure", "Real-Time Data", "APIs & SLOs", "Platform Economics", "Rollout Strategy"]}
         artifacts={{ projectHref: "/work/klaviyo-real-time-data-strategy", projectLabel: "Klaviyo" }}
         heroImage={{
@@ -38,24 +38,26 @@ export default function KlaviyoRealTimeDataStrategyPage() {
             heading: "Challenge",
             bullets: [
               "One event platform serves automation, APIs, profile history, segmentation, reporting, and exports",
-              "Those workloads don't need the same history, latency, or serving model",
+              "Those workloads don't need the same history, latency, freshness, throughput, or serving model",
               "Rising event volume turned retention into a platform economics question, not a storage setting",
-              "Guarantees—not implementation policy—determine what customers can actually rely on",
-              "Access patterns shape pricing, packaging, and GTM differentiation around always-available data",
+              "The core decision became which workloads require low-latency operational access, which can use alternative serving paths, and what the platform must guarantee across both",
+              "Those choices also shape future pricing, packaging, and GTM differentiation around always-available data",
             ],
           },
           role: {
             heading: "Role",
             bullets: [
-              "Translate customer jobs into platform guarantees: history, latency, freshness, completeness, throughput",
+              "Own the product strategy connecting customer data-access needs, platform guarantees, serving architecture, and infrastructure economics",
+              "Translate customer jobs into explicit guarantees for history, latency, freshness, completeness, and throughput",
               "Partner with infrastructure and downstream product teams on hot, hybrid, and analytical serving paths",
-              "Connect storage and serving choices to infrastructure economics and future packaging",
-              "Define rollout guardrails so event-access changes don't break customer workflows",
+              "Use customer research, usage analysis, competitive context, and cost-to-value analysis to determine where differentiated access makes sense",
+              "Decompose a multi-quarter platform change into reversible releases and define rollout guardrails that protect customer workflows",
             ],
           },
         }}
         row2={{
-          throughline: "platform contract → workload SLOs → serving architecture → economics & packaging → staged rollout",
+          throughline:
+            "customer jobs → platform contract → workload SLOs → serving architecture → economics & packaging → reversible rollout",
           left: [
             {
               title: "Defined the platform contract",
@@ -64,29 +66,46 @@ export default function KlaviyoRealTimeDataStrategyPage() {
               bullets: ["Separated customer-visible requirements from implementation policy"],
             },
             {
+              title: "Validated what customers actually need",
+              description:
+                "Combined customer interviews across segments, competitive research, product and API usage patterns, and infrastructure economics to distinguish customer promises from historical implementation choices.",
+              bullets: [
+                "Different workflows require very different combinations of lookback window, latency, freshness, completeness, and throughput",
+              ],
+            },
+            {
               title: "Matched architecture to customer value",
               description:
-                "Mapped data flows and downstream workloads, then set the SLOs that actually mattered for each one.",
-              bullets: [
-                "History, latency, freshness, completeness, throughput",
-                "Pay for performance where customers value it; serve the rest differently",
-              ],
+                "Mapped upstream and downstream data flows, then evaluated which workloads require low-latency operational access versus alternative serving paths.",
+              bullets: ["Pay for performance where customers value it; serve the rest differently"],
             },
           ],
           right: [
             {
-              title: "Connected infrastructure to the business model",
+              title: "Connected infrastructure cost to customer value",
               description:
-                "Evaluated how platform guarantees shape infrastructure economics, future packaging, and enterprise expectations.",
-              bullets: ["Avoid locking today's infrastructure into tomorrow's product model"],
+                "Analyzed both absolute infrastructure burden and economic efficiency rather than treating high-volume customers as inherently problematic. This created a quantitative basis for identifying workloads where storage consumption was high relative to monetization—and where differentiated serving or future packaging could make sense.",
+              bullets: ["Avoid locking today's infrastructure economics into tomorrow's product model"],
+            },
+            {
+              title: "Decomposed the strategy into reversible releases",
+              description:
+                "Rather than treating retention as one platform-wide policy change, separated the problem by event class, customer impact, and access pattern. This created a path to capture meaningful savings earlier while continuing discovery and architecture work on higher-risk workloads.",
+              bullets: [
+                "Start with a lower-impact event class",
+                "Preserve optionality for broader retention decisions",
+                "Use rollout evidence to inform subsequent platform changes",
+              ],
             },
             {
               title: "Made rollout part of the product",
               description:
-                "Pushed for canary → controlled cohorts → broader rollout, with evidence gates at every stage.",
+                "Designed a staged rollout from lower- to higher-exposure customer segments, with evidence gates at every stage.",
               bullets: [
-                "Explicit metrics, rollback conditions, and customer communication",
-                "A reversible change isn't reversible if the customer experience isn't",
+                "Explicit metrics and rollback conditions",
+                "Customer communication as part of the product experience",
+                "Tailored handling for strategically important accounts",
+                "A reversible technical change isn't reversible if the customer experience isn't",
               ],
             },
           ],
@@ -95,9 +114,26 @@ export default function KlaviyoRealTimeDataStrategyPage() {
           outcomes: {
             heading: "Outcomes so far",
             bullets: [
-              "Reframed a retention problem into platform strategy across storage, serving, APIs, SLOs, pricing, and GTM",
-              "Created a path to meaningful infrastructure savings by separating requirements from implementation assumptions",
-              "Established a safer decision and rollout model with explicit guarantees, evidence gates, and reversible stages",
+              {
+                label: "High-six-figure annual savings path",
+                description:
+                  "Decomposed a multi-quarter platform strategy and initiated the first lower-risk change, targeting high-six-figure annual infrastructure savings.",
+              },
+              {
+                label: "Platform contract before architecture",
+                description:
+                  "Shifted the decision from blanket retention policy toward explicit guarantees for history, latency, freshness, completeness, and throughput.",
+              },
+              {
+                label: "Safer execution model",
+                description:
+                  "Designed staged rollout from lower- to higher-exposure customer segments, with evidence gates, rollback criteria, customer communication, and tailored handling for strategic accounts.",
+              },
+              {
+                label: "Foundation for future monetization",
+                description:
+                  "Connected event access patterns and infrastructure economics to future pricing, packaging, and GTM decisions.",
+              },
             ],
           },
           learnings: {
@@ -107,8 +143,8 @@ export default function KlaviyoRealTimeDataStrategyPage() {
               "Product guarantee: what must remain true?",
               "Feasibility: what architectures satisfy it?",
               "Economics: what does the guarantee cost?",
-              "Pricing & GTM: how does packaging shift?",
-              "Reversibility: can we test before committing?",
+              "Pricing & GTM: how should packaging evolve?",
+              "Reversibility: can we learn before committing?",
             ],
           },
         }}

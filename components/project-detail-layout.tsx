@@ -13,6 +13,9 @@ export type PlaceholderCard = {
   status?: string
 }
 
+/** A plain bullet, or a titled one when the outcome needs a short label up front. */
+export type OutcomeItem = string | { label: string; description: string }
+
 export type ProjectDetailLayoutProps = {
   title: string
   subline: string
@@ -46,7 +49,7 @@ export type ProjectDetailLayoutProps = {
   row3: {
     outcomes: {
       heading?: string
-      bullets: string[]
+      bullets: OutcomeItem[]
     }
     learnings: {
       heading?: string
@@ -73,6 +76,23 @@ function withBasePath(path: string) {
   if (path.startsWith(base)) return path
   if (path.startsWith("/")) return `${base}${path}`
   return `${base}/${path}`
+}
+
+function OutcomeBullets({ items, className }: { items: OutcomeItem[]; className: string }) {
+  return (
+    <ul className={className}>
+      {items.map((item) =>
+        typeof item === "string" ? (
+          <li key={item}>{item}</li>
+        ) : (
+          <li key={item.label}>
+            <span className="font-semibold text-foreground">{item.label}</span>
+            <span className="block">{item.description}</span>
+          </li>
+        ),
+      )}
+    </ul>
+  )
 }
 
 function DecisionColumn({
@@ -224,11 +244,10 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y divide-border md:divide-y-0 md:divide-x">
                 <div className="py-8 pr-0 md:pr-8">
                   <h2 className="text-2xl font-bold tracking-tight">{row3.outcomes.heading ?? "Outcomes"}</h2>
-                  <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-foreground/90 leading-relaxed">
-                    {row3.outcomes.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
+                  <OutcomeBullets
+                    items={row3.outcomes.bullets}
+                    className="mt-4 list-disc pl-5 space-y-2 text-sm text-foreground/90 leading-relaxed"
+                  />
                 </div>
 
                 <div className="py-8 md:px-8">
@@ -275,11 +294,7 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="md:pr-10">
                 <h2 className="text-3xl font-bold mb-4 tracking-tight">{row3.outcomes.heading ?? "Outcomes"}</h2>
-              <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-                {row3.outcomes.bullets.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
+              <OutcomeBullets items={row3.outcomes.bullets} className="list-disc pl-6 space-y-2 text-foreground/90" />
             </div>
 
             <div className="md:pl-10 md:border-l md:border-neutral-200">
