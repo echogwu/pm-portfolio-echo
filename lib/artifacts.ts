@@ -189,7 +189,7 @@ export const ARTIFACTS: Artifact[] = [
     id: "klaviyo-cost-to-value-segmentation",
     headline: "Cost-to-Value Segmentation Framework",
     subline:
-      "Separates absolute infrastructure burden from economic efficiency to identify accounts and workloads that are expensive to serve and weakly monetized.",
+      "How infrastructure burden compares with economic value.",
     projectHref: "/work/klaviyo-real-time-data-strategy",
     projectLabel: "Klaviyo",
     pdfSrc: "/klaviyo-cost-to-value-segmentation.pdf",
@@ -206,7 +206,7 @@ export const ARTIFACTS: Artifact[] = [
   {
     id: "klaviyo-rollout-and-evidence-plan",
     headline: "Rollout & Evidence Plan",
-    subline: "Cohorts, success metrics, rollback conditions, customer communication, and evidence gates.",
+    subline: "How cohorts, evidence gates, rollback, and communication reduce rollout risk.",
     projectHref: "/work/klaviyo-real-time-data-strategy",
     projectLabel: "Klaviyo",
     pdfSrc: "/klaviyo-rollout-evidence-plan.pdf",

@@ -41,7 +41,7 @@ export type ProjectDetailLayoutProps = {
   }
 
   row2: {
-    throughline: string
+    throughline?: string
     left: DecisionBlock[]
     right: DecisionBlock[]
   }
@@ -53,7 +53,9 @@ export type ProjectDetailLayoutProps = {
     }
     learnings: {
       heading?: string
-      bullets: string[]
+      bullets?: string[]
+      /** A single arrow chain, shown in place of the bullet list. */
+      flow?: string
     }
   }
 
@@ -91,6 +93,25 @@ function OutcomeBullets({ items, className }: { items: OutcomeItem[]; className:
           </li>
         ),
       )}
+    </ul>
+  )
+}
+
+function LearningsBody({
+  learnings,
+  listClassName,
+}: {
+  learnings: { bullets?: string[]; flow?: string }
+  listClassName: string
+}) {
+  if (learnings.flow) {
+    return <p className="mt-4 text-foreground/90 leading-relaxed italic">{learnings.flow}</p>
+  }
+  return (
+    <ul className={listClassName}>
+      {(learnings.bullets ?? []).map((b) => (
+        <li key={b}>{b}</li>
+      ))}
     </ul>
   )
 }
@@ -224,7 +245,7 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
       <section>
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-14">
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">Approach &amp; Decisions</h2>
-          <p className="mt-3 text-muted-foreground italic">{row2.throughline}</p>
+          {row2.throughline ? <p className="mt-3 text-muted-foreground italic">{row2.throughline}</p> : null}
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
             <DecisionColumn blocks={row2.left} />
@@ -252,11 +273,10 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
 
                 <div className="py-8 md:px-8">
                   <h2 className="text-2xl font-bold tracking-tight">{row3.learnings.heading ?? "Learnings"}</h2>
-                  <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-foreground/90 leading-relaxed">
-                    {row3.learnings.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
+                  <LearningsBody
+                    learnings={row3.learnings}
+                    listClassName="mt-4 list-disc pl-5 space-y-2 text-sm text-foreground/90 leading-relaxed"
+                  />
                 </div>
 
                 <div className="py-8 md:pl-8">
@@ -299,11 +319,7 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
 
             <div className="md:pl-10 md:border-l md:border-neutral-200">
                 <h2 className="text-3xl font-bold mb-4 tracking-tight">{row3.learnings.heading ?? "Learnings"}</h2>
-              <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-                {row3.learnings.bullets.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
+              <LearningsBody learnings={row3.learnings} listClassName="list-disc pl-6 space-y-2 text-foreground/90" />
             </div>
           </div>
           )}
