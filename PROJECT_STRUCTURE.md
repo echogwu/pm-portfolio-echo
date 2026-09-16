@@ -211,6 +211,13 @@ Both column headings in Row 3 accept a custom `heading`, so a project without a
 - `next.config.mjs` currently has `typescript.ignoreBuildErrors = true`. That’s convenient during rapid iteration but can hide real issues; consider turning it off once the codebase stabilizes.
 - The repo includes a `lint` script, but lint tooling/config may be intentionally minimal right now; see `CONTRIBUTING.md` for recommendations.
 
+## Job variants
+
+- `app/[job]/` renders a tailored copy of the site at `/<jobId>` for a single job
+  application. Copy for every variant lives in `lib/job-variants.ts`; anything a variant
+  doesn't override falls back to the canonical content.
+- See `JOB_VARIANTS.md` for how to add, preview, and retire one.
+
 ## Changelog
 
 - See `CHANGELOG.md` for user-facing changes.

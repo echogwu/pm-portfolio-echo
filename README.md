@@ -73,6 +73,7 @@ NEXT_PUBLIC_BASE_PATH=/portfolio pnpm build
 ## Docs
 
 - **Project structure**: see `PROJECT_STRUCTURE.md`
+- **Job variants** (a tailored site per application, at `/<jobId>`): see `JOB_VARIANTS.md`
 - **Changelog**: see `CHANGELOG.md`
 - **Contributing**: see `CONTRIBUTING.md`
 

@@ -16,6 +16,10 @@ This format is based on **Keep a Changelog**, and this project aims to follow **
 - IDEO artifacts on `/artifacts` (Figma board + slides).
 - MBA artifacts on `/artifacts` (Google Sheets + slides + 5-year planning PDF).
 - Project tabs on `/artifacts` to switch deliverables by project.
+- Job variants: a tailored copy of the site per application at `/<jobId>`, with homepage,
+  work index, and case study copy overridable in `lib/job-variants.ts` and everything else
+  falling back to the canonical content. Variant pages are `noindex` and canonicalize to
+  the unprefixed originals. See `JOB_VARIANTS.md`.
 
 ### Changed
 
