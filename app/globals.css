@@ -130,6 +130,23 @@
     text-justify: inter-word;
   }
 
+  /* Hero body copy: flush on both edges, with hyphenation to keep the word
+     gaps even. The last line stays ragged so a short one isn't stretched. */
+  .justify-hero {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    hyphens: auto;
+  }
+
+  /* Too narrow a measure to justify without visible rivers. */
+  @media (width < 640px) {
+    .justify-hero {
+      text-align: left;
+      hyphens: manual;
+    }
+  }
+
   /* Shared horizontal gutters — matches nav / homepage content width */
   .page-container {
     @apply mx-auto w-full max-w-6xl px-6 lg:px-8;

@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { SocialLinks } from "@/components/social-links"
+import { type RoutePrefix, withPrefix } from "@/lib/paths"
+import type { IntroAccent, IntroSegment, TimelineCopy, WorkData } from "@/lib/work-data"
 
 type TimelineItem = {
   id: string
@@ -7,9 +9,50 @@ type TimelineItem = {
   companyRole: string
   label: string
   microCaption: string
-  tags: string[]
+  tags: readonly string[]
   href: string
   accent: "pink" | "blue" | "orange" | "green" | "slate"
+}
+
+const INTRO_UNDERLINE: Record<IntroAccent, string> = {
+  lime: "decoration-lime-300",
+  sky: "decoration-sky-300",
+  emerald: "decoration-emerald-300",
+  amber: "decoration-amber-300",
+  pink: "decoration-pink-300",
+  violet: "decoration-violet-300",
+}
+
+function IntroCopy({ intro }: { intro: string | readonly IntroSegment[] }) {
+  if (typeof intro === "string") return <>{intro}</>
+  return (
+    <>
+      {intro.map((segment, i) =>
+        typeof segment === "string" ? (
+          segment
+        ) : (
+          <span
+            key={`${segment.text}-${i}`}
+            className={`font-semibold underline ${INTRO_UNDERLINE[segment.accent]} decoration-[5px] underline-offset-[6px]`}
+          >
+            {segment.text}
+          </span>
+        ),
+      )}
+    </>
+  )
+}
+
+/** Applies a variant's copy override without letting unset keys clobber the default. */
+function applyCopy(item: TimelineItem, copy?: TimelineCopy): TimelineItem {
+  if (!copy) return item
+  return {
+    ...item,
+    companyRole: copy.companyRole ?? item.companyRole,
+    label: copy.label ?? item.label,
+    microCaption: copy.microCaption ?? item.microCaption,
+    tags: copy.tags ?? item.tags,
+  }
 }
 
 function withBasePath(path: string) {
@@ -185,14 +228,37 @@ function accentBgClasses(accent: TimelineItem["accent"]) {
   }
 }
 
-export function ProjectsTimeline() {
-  const total = items.length
+export function ProjectsTimeline({
+  prefix,
+  intro,
+  itemIds,
+  itemCopy,
+}: {
+  prefix?: RoutePrefix
+  /** Replaces the default intro paragraph. */
+  intro?: WorkData["intro"]
+  /** Restricts and reorders the timeline. Unknown ids are ignored. */
+  itemIds?: readonly string[]
+  /** Per-card copy overrides, keyed by item id. */
+  itemCopy?: WorkData["items"]
+} = {}) {
+  const selected = itemIds
+    ? itemIds.map((id) => items.find((item) => item.id === id)).filter((item): item is TimelineItem => Boolean(item))
+    : items
+  const visible = itemCopy ? selected.map((item) => applyCopy(item, itemCopy[item.id])) : selected
+  const total = visible.length
   return (
     <section className="max-w-6xl mx-auto px-6 lg:px-8 pt-16 lg:pt-24 pb-24">
       <div className="mb-10">
         <div className="border-b border-border py-8 lg:py-10">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-start">
             <div className="min-w-0">
+              {intro ? (
+                // hyphens-none so no word is broken across lines; it wraps at spaces only.
+                <p className="text-[clamp(1rem,2.8vw,1.25rem)] leading-relaxed text-foreground/90 text-left hyphens-none">
+                  <IntroCopy intro={intro} />
+                </p>
+              ) : (
               <p className="text-[clamp(1rem,2.8vw,1.25rem)] leading-relaxed text-foreground/90 text-left hyphens-auto">
                 My work has evolved from{" "}
                 <span className="font-semibold underline decoration-lime-300 decoration-[5px] underline-offset-[6px]">
@@ -221,6 +287,7 @@ export function ProjectsTimeline() {
                 </span>
                 .
               </p>
+              )}
             </div>
 
             <div className="md:pl-8 md:border-l md:border-border">
@@ -234,7 +301,7 @@ export function ProjectsTimeline() {
       {/* Desktop: wide "staircase" cards (bottom-left → top-right) */}
       <div className="hidden lg:block">
         <div className="flex flex-col gap-6">
-          {[...items].reverse().map((item, i) => {
+          {[...visible].reverse().map((item, i) => {
           const a = accentClasses(item.accent)
             const bg = accentBgClasses(item.accent)
             const denom = Math.max(1, total - 1)
@@ -245,7 +312,7 @@ export function ProjectsTimeline() {
           return (
               <Link
                 key={item.id}
-                href={item.href}
+                href={withPrefix(prefix, item.href)}
                 className={`relative block w-3/4 overflow-hidden rounded-2xl border border-border bg-card px-6 py-4 shadow-[0_1px_0_rgba(15,23,42,0.04),0_14px_28px_rgba(15,23,42,0.07)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_1px_0_rgba(15,23,42,0.05),0_18px_42px_rgba(15,23,42,0.10)] ${a.hover}`}
                 style={{ marginLeft: `${offsetPct}%` }}
               >
@@ -307,13 +374,13 @@ export function ProjectsTimeline() {
       {/* Mobile: equal-width stacked cards */}
       <div className="lg:hidden">
         <div className="grid grid-cols-1 gap-4">
-          {items.map((item) => {
+          {visible.map((item) => {
             const a = accentClasses(item.accent)
             const bg = accentBgClasses(item.accent)
             return (
               <Link
                 key={item.id}
-                href={item.href}
+                href={withPrefix(prefix, item.href)}
                 className={`relative block overflow-hidden rounded-2xl border border-border bg-card px-5 py-5 shadow-[0_1px_0_rgba(15,23,42,0.04),0_12px_22px_rgba(15,23,42,0.07)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_1px_0_rgba(15,23,42,0.05),0_16px_34px_rgba(15,23,42,0.10)] ${a.hover}`}
               >
                 <div className="absolute inset-0 -z-10" aria-hidden="true">

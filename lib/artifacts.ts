@@ -17,7 +17,7 @@ export type Artifact = {
 export const ARTIFACTS: Artifact[] = [
   {
     id: "dishclosure-product-strategy",
-    headline: "Product Strategy",
+    headline: "Market and Competitive Thesis",
     subline: "Market research, competitive analysis, and ICP definition.",
     projectHref: "/work/dishclosure-founder-mode",
     projectLabel: "Dishclosure",
@@ -27,7 +27,7 @@ export const ARTIFACTS: Artifact[] = [
     images: [
       {
         src: "/dishclosure-product-strategy.png",
-        alt: "Dishclosure product strategy preview (PDF thumbnail)",
+        alt: "Dishclosure market and competitive thesis preview (PDF thumbnail)",
       },
     ],
   },

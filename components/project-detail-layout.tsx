@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ARTIFACTS } from "@/lib/artifacts"
+import { type RoutePrefix, withPrefix } from "@/lib/paths"
 
 export type DecisionBlock = {
   title: string
@@ -16,7 +17,26 @@ export type PlaceholderCard = {
 /** A plain bullet, or a titled one when the outcome needs a short label up front. */
 export type OutcomeItem = string | { label: string; description: string }
 
+/**
+ * One row in a case study's artifact list: either a catalog artifact, optionally
+ * relabeled for this page, or one that has no publishable asset yet and so
+ * renders without a link.
+ */
+export type ArtifactRef =
+  | { id: string; headline?: string; subline?: string }
+  | { pending: true; headline: string; subline?: string }
+
+type ResolvedArtifact = {
+  key: string
+  headline: string
+  subline?: string
+  /** Absent for a pending artifact, which has nothing to open. */
+  id?: string
+}
+
 export type ProjectDetailLayoutProps = {
+  /** Set for job-variant renders so internal links stay inside the variant. */
+  prefix?: RoutePrefix
   title: string
   subline: string
   tags?: string[]
@@ -60,8 +80,11 @@ export type ProjectDetailLayoutProps = {
   }
 
   artifacts?: {
+    /** Canonical path. Doubles as the key that matches entries in ARTIFACTS, so it must stay unprefixed. */
     projectHref: string
     projectLabel: string
+    /** Orders and relabels the list. Defaults to catalog order for `projectHref`. */
+    items?: readonly ArtifactRef[]
   }
 
   /** Upcoming deliverables, shown as light "coming soon" rows. */
@@ -78,6 +101,31 @@ function withBasePath(path: string) {
   if (path.startsWith(base)) return path
   if (path.startsWith("/")) return `${base}${path}`
   return `${base}/${path}`
+}
+
+function resolveArtifacts(artifacts: NonNullable<ProjectDetailLayoutProps["artifacts"]>): ResolvedArtifact[] {
+  const catalog = ARTIFACTS.filter((a) => a.projectHref === artifacts.projectHref)
+
+  if (!artifacts.items) {
+    return catalog.map((a) => ({ key: a.id, id: a.id, headline: a.headline, subline: a.subline }))
+  }
+
+  return artifacts.items.map((ref) => {
+    if ("pending" in ref) {
+      return { key: ref.headline, headline: ref.headline, subline: ref.subline }
+    }
+    const match = catalog.find((a) => a.id === ref.id)
+    if (!match) {
+      // Fail the build rather than quietly dropping a row the page claims to show.
+      throw new Error(`Artifact "${ref.id}" is not in the catalog for ${artifacts.projectHref}.`)
+    }
+    return {
+      key: match.id,
+      id: match.id,
+      headline: ref.headline ?? match.headline,
+      subline: ref.subline ?? match.subline,
+    }
+  })
 }
 
 function OutcomeBullets({ items, className }: { items: OutcomeItem[]; className: string }) {
@@ -146,6 +194,7 @@ function DecisionColumn({
 
 export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
   const {
+    prefix,
     title,
     subline,
     tags = [],
@@ -157,7 +206,9 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
     artifactPlaceholders,
   } = props
 
-  const artifactItems = artifacts ? ARTIFACTS.filter((a) => a.projectHref === artifacts.projectHref) : []
+  // Match on the canonical href; only the rendered links get the variant prefix.
+  const artifactItems = artifacts ? resolveArtifacts(artifacts) : []
+  const artifactsIndexHref = withPrefix(prefix, "/artifacts")
 
   return (
     <main>
@@ -165,7 +216,7 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
       <section className="max-w-6xl mx-auto px-6 lg:px-8 pt-12 pb-12 lg:pt-14 lg:pb-14">
         <div className="mb-8">
           <Link
-            href="/work"
+            href={withPrefix(prefix, "/work")}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             ← Back to work
@@ -283,7 +334,7 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
                   <div className="flex items-center justify-between gap-4">
                     <h2 className="text-2xl font-bold tracking-tight">Artifacts</h2>
                     <Link
-                      href={{ pathname: "/artifacts", query: { project: artifacts.projectLabel } }}
+                      href={{ pathname: artifactsIndexHref, query: { project: artifacts.projectLabel } }}
                       className="shrink-0 inline-flex items-center justify-center rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                       View all ↗
@@ -292,17 +343,23 @@ export function ProjectDetailLayout(props: ProjectDetailLayoutProps) {
 
                   <ul className="mt-4 space-y-3">
                     {artifactItems.map((a) => (
-                      <li key={a.id} className="flex items-start justify-between gap-4">
+                      <li key={a.key} className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
                           <div className="font-semibold text-foreground truncate">{a.headline}</div>
                           <div className="mt-1 text-sm text-muted-foreground line-clamp-2">{a.subline}</div>
                         </div>
-                        <Link
-                          href={{ pathname: "/artifacts", query: { project: artifacts.projectLabel, artifact: a.id } }}
-                          className="shrink-0 text-sm font-semibold text-foreground/80 hover:text-foreground transition-colors"
-                        >
-                          Open ↗
-                        </Link>
+                        {a.id ? (
+                          <Link
+                            href={{ pathname: artifactsIndexHref, query: { project: artifacts.projectLabel, artifact: a.id } }}
+                            className="shrink-0 text-sm font-semibold text-foreground/80 hover:text-foreground transition-colors"
+                          >
+                            Open ↗
+                          </Link>
+                        ) : (
+                          <span className="shrink-0 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                            Coming soon
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>

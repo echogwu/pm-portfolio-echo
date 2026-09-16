@@ -41,10 +41,14 @@ type BuildMetadataArgs = {
   ogImagePath?: string
   ogImageAlt?: string
   type?: "website" | "article"
+  /** Point elsewhere when this page is a near-duplicate, e.g. a job variant. */
+  canonicalPathname?: string
+  /** Keep job-variant pages out of search results. */
+  noindex?: boolean
 }
 
 export function buildMetadata(args: BuildMetadataArgs): Metadata {
-  const canonical = withBasePath(args.pathname)
+  const canonical = withBasePath(args.canonicalPathname ?? args.pathname)
 
   const images: NonNullable<NonNullable<Metadata["openGraph"]>["images"]> = [
     // Always include a crisp default fallback (good for pages without a hero).
@@ -73,6 +77,7 @@ export function buildMetadata(args: BuildMetadataArgs): Metadata {
     title: args.title,
     description: args.description,
     alternates: { canonical },
+    ...(args.noindex ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       type: args.type || "website",
       url: canonical,

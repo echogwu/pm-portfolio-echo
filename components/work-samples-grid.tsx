@@ -5,6 +5,7 @@ import Link from "next/link"
 import { withBasePath } from "@/lib/seo"
 import type { Artifact } from "@/lib/artifacts"
 import { ARTIFACTS } from "@/lib/artifacts"
+import { type RoutePrefix, withPrefix } from "@/lib/paths"
 
 // Artifact data lives in `lib/artifacts.ts` so it can be used by both server and client components.
 
@@ -252,9 +253,11 @@ function LightboxModal({
 function WorkSampleCard({
   item,
   onOpen,
+  prefix,
 }: {
   item: Artifact
   onOpen: () => void
+  prefix?: RoutePrefix
 }) {
   const thumb = item.images[0] ?? { src: "/placeholder.jpg", alt: "Placeholder image" }
 
@@ -310,7 +313,7 @@ function WorkSampleCard({
         <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
           <div className="flex w-full items-center justify-between gap-3">
             <Link
-              href={item.projectHref}
+              href={withPrefix(prefix, item.projectHref)}
               className="min-w-0 truncate text-[clamp(0.8rem,2.6vw,0.95rem)] font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               ← Back to {item.projectLabel}
@@ -337,9 +340,11 @@ function WorkSampleCard({
 export function ArtifactsGrid({
   items = ARTIFACTS,
   autoOpenId,
+  prefix,
 }: {
   items?: Artifact[]
   autoOpenId?: string
+  prefix?: RoutePrefix
 }) {
   const stableItems = useMemo(() => items, [items])
 
@@ -381,6 +386,7 @@ export function ArtifactsGrid({
           <WorkSampleCard
             key={item.id}
             item={item}
+            prefix={prefix}
             onOpen={() => {
               setActive(item)
               setActiveIndex(0)

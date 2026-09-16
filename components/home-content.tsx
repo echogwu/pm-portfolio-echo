@@ -3,92 +3,146 @@ import { Github, Mail, MapPin, Linkedin } from "lucide-react"
 import { SiteNav } from "@/components/site-nav"
 import { SiteFooter } from "@/components/site-footer"
 import howIWorkBg from "@/components/how-i-work-bg.png"
+import { DEFAULT_HOME, type HomeData, type WorkStep } from "@/lib/home-data"
+import { type RoutePrefix, withPrefix } from "@/lib/paths"
 // import { Button } from "@/components/ui/button"
 
-export default function HomeContent() {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
+const SOCIAL_LINKS = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/echo-paulus/", icon: Linkedin, external: true },
+  { label: "Email", href: "mailto:echopaulus@berkeley.edu", icon: Mail, external: false },
+  { label: "Github", href: "https://github.com/echogwu", icon: Github, external: true },
+] as const
 
-  const featuredProjects = [
-    {
-      title: "Klaviyo: Evolving the Event Data Platform",
-      description:
-        "How high-volume behavioral data should be stored, served, and accessed—balancing customer value, latency, reliability, cost, and product economics.",
-      href: "/work/klaviyo-real-time-data-strategy",
-      imageSrc: "/klaviyo-logo.jpg",
-      imageAlt: "Klaviyo",
-      tags: ["Event Infrastructure", "Real-Time Data", "APIs & SLOs", "Platform Economics"],
-    },
-    {
-      title: "Gainbridge: Product Manager, Data and Measurement",
-      description: "Built the instrumentation layer that made performance trustworthy — before optimization.",
-      href: "/work/gainbridge-data-architecture",
-      imageSrc: "/gainbridge.gif",
-      imageAlt: "Gainbridge project",
-      tags: ["Data Architecture", "Measurement Strategy", "Event Taxonomy", "Identity Resolution", "Attribution Systems"],
-    },
-    {
-      title: "Lyft: Quality Engineer → Developer Experience PM",
-      description: "When to stop optimizing for conventional metrics — and start optimizing what actually matters.",
-      href: "/work/lyft-developer-experience-pm",
-      imageSrc: "/lyft.gif",
-      imageAlt: "Lyft project",
-      tags: [
-        "Developer Experience",
-        "Internal Tools",
-        "Simulation",
-        "Systems Thinking",
-        "Validation Strategy",
-        "Platform Reliability",
-      ],
-    },
-  ] as const
+function SocialLinks() {
+  return (
+    <>
+      {SOCIAL_LINKS.map(({ label, href, icon: Icon, external }) => (
+        <Link
+          key={label}
+          href={href}
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <Icon className="w-5 h-5" />
+          {label}
+        </Link>
+      ))}
+    </>
+  )
+}
+
+const STEP_GLYPHS = ["①", "②", "③", "④", "⑤", "⑥"] as const
+
+/** Position drives the accent, so step content stays pure copy. */
+const STEP_ACCENTS = [
+  {
+    node: "bg-emerald-600 text-white",
+    ring: "ring-emerald-500/20",
+    card: "border-emerald-500/20 bg-emerald-500/[0.02]",
+    bullet: "marker:text-emerald-500/80",
+  },
+  {
+    node: "bg-sky-600 text-white",
+    ring: "ring-sky-500/20",
+    card: "border-sky-500/20 bg-sky-500/[0.02]",
+    bullet: "marker:text-sky-500/80",
+  },
+  {
+    node: "bg-amber-600 text-white",
+    ring: "ring-amber-500/20",
+    card: "border-amber-500/25 bg-amber-500/[0.02]",
+    bullet: "marker:text-amber-500/80",
+  },
+  {
+    node: "bg-pink-600 text-white",
+    ring: "ring-pink-500/20",
+    card: "border-pink-500/20 bg-pink-500/[0.02]",
+    bullet: "marker:text-pink-500/80",
+  },
+] as const
+
+function stepAccent(index: number) {
+  return STEP_ACCENTS[index % STEP_ACCENTS.length]
+}
+
+function stepGlyph(index: number) {
+  return STEP_GLYPHS[index] ?? String(index + 1)
+}
+
+function StepBody({ step, bulletClassName }: { step: WorkStep; bulletClassName: string }) {
+  if (step.copy) {
+    return <p className="mt-3 text-foreground/90 leading-relaxed">{step.copy}</p>
+  }
+  return (
+    <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${bulletClassName}`}>
+      {(step.bullets ?? []).map((b) => (
+        <li key={b}>{b}</li>
+      ))}
+    </ul>
+  )
+}
+
+export default function HomeContent({
+  home = DEFAULT_HOME,
+  prefix,
+}: {
+  home?: HomeData
+  prefix?: RoutePrefix
+} = {}) {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
+  const {
+    eyebrow,
+    headline,
+    subhead,
+    supporting,
+    secondaryCta,
+    profileTagline,
+    featured,
+    featuredProjects,
+    howIWork,
+    background,
+    contact,
+  } = home
+  const workHref = withPrefix(prefix, "/work")
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Navigation */}
-      <SiteNav active="home" />
+      <SiteNav active="home" prefix={prefix} />
 
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
+              {eyebrow ? (
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">{eyebrow}</p>
+              ) : null}
               <h1 className="font-bold leading-tight tracking-tight text-balance text-[clamp(2.15rem,8.2vw,3.75rem)]">
-                Product lead, real-time customer data infrastructure
+                {headline}
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                I build event and data platforms where product decisions shape how data is ingested, stored, served, and
-                activated—balancing scale, cost, reliability, and customer trust.
-              </p>
+              {/* One container so both paragraphs justify to the same measure. */}
+              <div className="flex flex-col gap-4 max-w-xl">
+                <p className="justify-hero text-lg text-muted-foreground leading-relaxed">{subhead}</p>
+                {supporting ? (
+                  <p className="justify-hero text-lg text-muted-foreground leading-relaxed">{supporting}</p>
+                ) : null}
+              </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="https://www.linkedin.com/in/echo-paulus/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-                LinkedIn
-              </Link>
-              <Link
-                href="mailto:echopaulus@berkeley.edu"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                Email
-              </Link>
-              <Link
-                href="https://github.com/echogwu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Github className="w-5 h-5" />
-                Github
-              </Link>
+              {secondaryCta ? (
+                <Link
+                  href={secondaryCta.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  {secondaryCta.label}
+                </Link>
+              ) : null}
+              <SocialLinks />
             </div>
           </div>
 
@@ -105,7 +159,7 @@ export default function HomeContent() {
               </div>
               <div className="text-center">
                 <h2 className="text-2xl font-bold">Echo Paulus</h2>
-                <p className="text-muted-foreground font-medium">Product Manager, Data & Platform</p>
+                <p className="text-muted-foreground font-medium">{profileTagline}</p>
                 <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground mt-1">
                   <MapPin className="w-4 h-4" />
                   San Francisco Bay Area, CA
@@ -120,10 +174,13 @@ export default function HomeContent() {
       <section id="projects" className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-20 border-t border-border">
         <div className="flex items-end justify-between gap-6 mb-10 lg:mb-12">
           <div>
-            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">Featured Projects</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">{featured.heading}</h2>
+            {featured.intro ? (
+              <p className="mt-3 text-lg text-muted-foreground leading-relaxed max-w-2xl">{featured.intro}</p>
+            ) : null}
           </div>
           <Link
-            href="/work"
+            href={workHref}
             className="hidden sm:inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             View case studies
@@ -140,7 +197,7 @@ export default function HomeContent() {
               >
                 <div className={isReversed ? "lg:order-2" : undefined}>
                   <Link
-                    href={project.href}
+                    href={withPrefix(prefix, project.href)}
                     aria-hidden="true"
                     tabIndex={-1}
                     className="group block rounded-2xl transition-all duration-200 hover:-translate-y-0.5"
@@ -162,6 +219,13 @@ export default function HomeContent() {
                       {project.description}
                     </p>
 
+                    {project.outcome ? (
+                      <div className="border-l-2 border-lime-300 pl-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Outcome</p>
+                        <p className="mt-1 text-foreground/90 leading-relaxed justify-text">{project.outcome}</p>
+                      </div>
+                    ) : null}
+
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <span
@@ -174,7 +238,7 @@ export default function HomeContent() {
                     </div>
 
                     <Link
-                      href={project.href}
+                      href={withPrefix(prefix, project.href)}
                       className="text-blue-600 hover:text-blue-700 font-medium text-sm inline-flex items-center gap-1 group w-fit"
                     >
                       Read Case Study
@@ -188,7 +252,7 @@ export default function HomeContent() {
 
           <div className="sm:hidden pt-2">
             <Link
-              href="/work"
+              href={workHref}
               className="inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               View case studies
@@ -209,14 +273,24 @@ export default function HomeContent() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="space-y-3">
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">
-                How I work: turn complexity into{" "}
-                <span className="underline decoration-lime-300 decoration-[6px] underline-offset-[6px]">product decisions</span>
+                {howIWork.heading}
+                {howIWork.headingAccent ? (
+                  <>
+                    {" "}
+                    <span className="underline decoration-lime-300 decoration-[6px] underline-offset-[6px]">
+                      {howIWork.headingAccent}
+                    </span>
+                  </>
+                ) : null}
               </h2>
+              {howIWork.intro ? (
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">{howIWork.intro}</p>
+              ) : null}
             </div>
 
             <div className="pt-2 lg:pt-0">
               <Link
-                href="/work"
+                href={workHref}
                 className="inline-flex items-center justify-center rounded-full bg-lime-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-lime-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 View case studies
@@ -237,176 +311,96 @@ export default function HomeContent() {
                 </div>
 
                 {/* Content (reserve space for the bottom-bar quote) */}
-                <div className="px-8 py-10 pb-20">
-                {(() => {
-                  const steps = [
-                    {
-                      step: "①",
-                      firstLine: "Define the right to win",
-                      bullets: ["Competitive landscape", "Differentiated positioning", "Strategic wedge"],
-                      accent: "emerald" as const,
-                      placement: "below" as const, // 1 below
-                    },
-                    {
-                      step: "②",
-                      firstLine: "Map the system",
-                      bullets: [
-                        "Follow the end-to-end data flow",
-                        "Map data → product capability",
-                        "Define contracts, SLOs, and dependencies",
-                      ],
-                      accent: "sky" as const,
-                      placement: "above" as const, // 2 above
-                    },
-                    {
-                      step: "③",
-                      firstLine: "Understand the customer job",
-                      bullets: [
-                        "Customer interviews",
-                        "Workflow and pain-point walkthroughs",
-                        "Quantify frequency, severity, and stakes",
-                      ],
-                      accent: "amber" as const,
-                      placement: "below" as const, // 3 below
-                    },
-                    {
-                      step: "④",
-                      firstLine: "Make the product call",
-                      bullets: [
-                        "Customer value",
-                        "Technical feasibility",
-                        "Economics and cost",
-                        "GTM and operational complexity",
-                      ],
-                      accent: "pink" as const,
-                      placement: "above" as const, // 4 above
-                    },
-                  ]
-
-                  const accentClasses = (accent: (typeof steps)[number]["accent"]) => {
-                    if (accent === "emerald")
-                      return {
-                        node: "bg-emerald-600 text-white",
-                        ring: "ring-emerald-500/20",
-                        card: "border-emerald-500/20 bg-emerald-500/[0.02]",
-                        bullet: "marker:text-emerald-500/80",
-                      }
-                    if (accent === "sky")
-                      return {
-                        node: "bg-sky-600 text-white",
-                        ring: "ring-sky-500/20",
-                        card: "border-sky-500/20 bg-sky-500/[0.02]",
-                        bullet: "marker:text-sky-500/80",
-                      }
-                    if (accent === "amber")
-                      return {
-                        node: "bg-amber-600 text-white",
-                        ring: "ring-amber-500/20",
-                        card: "border-amber-500/25 bg-amber-500/[0.02]",
-                        bullet: "marker:text-amber-500/80",
-                      }
-                    return {
-                      node: "bg-pink-600 text-white",
-                      ring: "ring-pink-500/20",
-                      card: "border-pink-500/20 bg-pink-500/[0.02]",
-                      bullet: "marker:text-pink-500/80",
-                    }
-                  }
-
-                  return (
-                    <div className="grid grid-cols-4 grid-rows-[auto_140px_auto] gap-x-8 gap-y-8">
-                      {/* Cards (explicitly aligned to the matching node column) */}
-                      {steps.map((s, i) => {
-                        const a = accentClasses(s.accent)
-                        const isAbove = s.placement === "above"
-                        return (
-                          <div
-                            key={`card-${s.step}`}
-                            className="relative"
-                            style={{
-                              gridColumnStart: i + 1,
-                              gridRowStart: isAbove ? 1 : 3,
-                            }}
-                          >
-                            {/* Connector stub toward the timeline */}
-                            <div
-                              className={`absolute left-1/2 -translate-x-1/2 w-px bg-border ${isAbove ? "-bottom-8 h-8" : "-top-8 h-8"}`}
-                              aria-hidden="true"
-                            />
-                            <div className={`rounded-2xl border bg-background/90 backdrop-blur-sm p-5 shadow-sm ${a.card}`}>
-                              <div className="text-foreground font-bold">{s.firstLine}</div>
-                              <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${a.bullet}`}>
-                                {s.bullets.map((b) => (
-                                  <li key={b}>{b}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-                        )
-                      })}
-
-                      {/* Timeline row */}
-                      <div className="col-span-4 row-start-2 relative flex items-center">
-                        {/* Main line */}
+                <div className={`px-8 py-10 ${howIWork.quote ? "pb-20" : ""}`}>
+                  <div className="grid grid-cols-4 grid-rows-[auto_140px_auto] gap-x-8 gap-y-8">
+                    {/* Cards (explicitly aligned to the matching node column) */}
+                    {howIWork.steps.map((s, i) => {
+                      const a = stepAccent(i)
+                      const isAbove = i % 2 === 1
+                      return (
                         <div
-                          className="absolute left-2 right-2 h-1 rounded-full bg-gradient-to-r from-emerald-500/70 via-sky-500/70 via-amber-500/70 to-pink-500/70"
-                          aria-hidden="true"
-                        />
-                        {/* Arrowhead (subtle progression cue) */}
-                        <div
-                          className="absolute right-2"
+                          key={`card-${s.title}`}
+                          className="relative"
                           style={{
-                            width: 0,
-                            height: 0,
-                            borderTop: "8px solid transparent",
-                            borderBottom: "8px solid transparent",
-                            borderLeft: "14px solid rgba(236, 72, 153, 0.75)", // pink-500-ish
-                            transform: "translateY(-1px)",
+                            gridColumnStart: i + 1,
+                            gridRowStart: isAbove ? 1 : 3,
                           }}
-                          aria-hidden="true"
-                        />
-                        {/* Nodes */}
-                        <div className="grid grid-cols-4 w-full gap-x-8">
-                          {steps.map((s, i) => {
-                            const a = accentClasses(s.accent)
-                            const isAbove = s.placement === "above"
-                            return (
-                              <div key={`node-${s.step}`} className="relative flex items-center justify-center">
-                                {/* Connector stub up/down */}
-                                <div
-                                  className={`absolute left-1/2 -translate-x-1/2 w-px bg-border ${isAbove ? "top-[-32px] h-8" : "bottom-[-32px] h-8"}`}
-                                  aria-hidden="true"
-                                />
-                                <div
-                                  className={`relative z-10 h-12 w-12 rounded-full ${a.node} shadow-sm flex items-center justify-center text-lg font-bold ring-8 ${a.ring}`}
-                                >
-                                  {s.step}
-                                </div>
-                                {/* Arrow between nodes */}
-                                {i !== steps.length - 1 && (
-                                  <div
-                                    className="absolute top-1/2 -translate-y-1/2 -right-6 text-muted-foreground"
-                                    aria-hidden="true"
-                                  >
-                                    →
-                                  </div>
-                                )}
-                              </div>
-                            )
-                          })}
+                        >
+                          {/* Connector stub toward the timeline */}
+                          <div
+                            className={`absolute left-1/2 -translate-x-1/2 w-px bg-border ${isAbove ? "-bottom-8 h-8" : "-top-8 h-8"}`}
+                            aria-hidden="true"
+                          />
+                          <div className={`rounded-2xl border bg-background/90 backdrop-blur-sm p-5 shadow-sm ${a.card}`}>
+                            <div className="text-foreground font-bold">{s.title}</div>
+                            <StepBody step={s} bulletClassName={a.bullet} />
+                          </div>
                         </div>
+                      )
+                    })}
+
+                    {/* Timeline row */}
+                    <div className="col-span-4 row-start-2 relative flex items-center">
+                      {/* Main line */}
+                      <div
+                        className="absolute left-2 right-2 h-1 rounded-full bg-gradient-to-r from-emerald-500/70 via-sky-500/70 via-amber-500/70 to-pink-500/70"
+                        aria-hidden="true"
+                      />
+                      {/* Arrowhead (subtle progression cue) */}
+                      <div
+                        className="absolute right-2"
+                        style={{
+                          width: 0,
+                          height: 0,
+                          borderTop: "8px solid transparent",
+                          borderBottom: "8px solid transparent",
+                          borderLeft: "14px solid rgba(236, 72, 153, 0.75)", // pink-500-ish
+                          transform: "translateY(-1px)",
+                        }}
+                        aria-hidden="true"
+                      />
+                      {/* Nodes */}
+                      <div className="grid grid-cols-4 w-full gap-x-8">
+                        {howIWork.steps.map((s, i) => {
+                          const a = stepAccent(i)
+                          const isAbove = i % 2 === 1
+                          return (
+                            <div key={`node-${s.title}`} className="relative flex items-center justify-center">
+                              {/* Connector stub up/down */}
+                              <div
+                                className={`absolute left-1/2 -translate-x-1/2 w-px bg-border ${isAbove ? "top-[-32px] h-8" : "bottom-[-32px] h-8"}`}
+                                aria-hidden="true"
+                              />
+                              <div
+                                className={`relative z-10 h-12 w-12 rounded-full ${a.node} shadow-sm flex items-center justify-center text-lg font-bold ring-8 ${a.ring}`}
+                              >
+                                {stepGlyph(i)}
+                              </div>
+                              {/* Arrow between nodes */}
+                              {i !== howIWork.steps.length - 1 && (
+                                <div
+                                  className="absolute top-1/2 -translate-y-1/2 -right-6 text-muted-foreground"
+                                  aria-hidden="true"
+                                >
+                                  →
+                                </div>
+                              )}
+                            </div>
+                          )
+                        })}
                       </div>
                     </div>
-                  )
-                })()}
+                  </div>
                 </div>
 
                 {/* Quote placed on the image's bottom bar */}
-                <div className="absolute inset-x-0 bottom-0 px-8 pb-5">
-                  <p className="text-center text-sm font-semibold text-foreground/80">
-                    “Clarity turns complex tradeoffs into confident product decisions.”
-                  </p>
-                </div>
+                {howIWork.quote ? (
+                  <div className="absolute inset-x-0 bottom-0 px-8 pb-5">
+                    <p className="text-center text-sm font-semibold text-foreground/80">
+                      {`“${howIWork.quote}”`}
+                    </p>
+                  </div>
+                ) : null}
               </div>
             </div>
 
@@ -418,120 +412,73 @@ export default function HomeContent() {
                   <div className="absolute inset-0 bg-background/40" />
                 </div>
 
-                <div className="p-5 pb-16">
-              <ol className="space-y-4">
-                {[
-                  {
-                    step: "①",
-                    title: "Define the right to win",
-                    firstLine: "Define the right to win",
-                    bullets: ["Competitive landscape", "Differentiated positioning", "Strategic wedge"],
-                    accent: "emerald",
-                  },
-                  {
-                    step: "②",
-                    title: "Map the system",
-                    firstLine: "Map the system",
-                    bullets: [
-                      "Follow the end-to-end data flow",
-                      "Map data → product capability",
-                      "Define contracts, SLOs, and dependencies",
-                    ],
-                    accent: "sky",
-                  },
-                  {
-                    step: "③",
-                    title: "Understand the customer job",
-                    firstLine: "Understand the customer job",
-                    bullets: [
-                      "Customer interviews",
-                      "Workflow and pain-point walkthroughs",
-                      "Quantify frequency, severity, and stakes",
-                    ],
-                    accent: "amber",
-                  },
-                  {
-                    step: "④",
-                    title: "Make the product call",
-                    firstLine: "Make the product call",
-                    bullets: [
-                      "Customer value",
-                      "Technical feasibility",
-                      "Economics and cost",
-                      "GTM and operational complexity",
-                    ],
-                    accent: "pink",
-                  },
-                ].map((item, idx, arr) => (
-                  <li key={item.step} className="relative">
-                    {idx !== arr.length - 1 && (
-                      <div className="absolute left-6 top-14 bottom-[-16px] w-px bg-border" aria-hidden="true" />
-                    )}
-                    <div className="flex gap-4">
-                      {(() => {
-                        const accent =
-                          item.accent === "emerald"
-                                ? {
-                                    node: "bg-emerald-600 text-white",
-                                    ring: "ring-emerald-500/20",
-                                    card: "border-emerald-500/20 bg-emerald-500/[0.02]",
-                                    bullet: "marker:text-emerald-500/80",
-                                  }
-                            : item.accent === "sky"
-                                  ? {
-                                      node: "bg-sky-600 text-white",
-                                      ring: "ring-sky-500/20",
-                                      card: "border-sky-500/20 bg-sky-500/[0.02]",
-                                      bullet: "marker:text-sky-500/80",
-                                    }
-                              : item.accent === "amber"
-                                    ? {
-                                        node: "bg-amber-600 text-white",
-                                        ring: "ring-amber-500/20",
-                                        card: "border-amber-500/25 bg-amber-500/[0.02]",
-                                        bullet: "marker:text-amber-500/80",
-                                      }
-                                    : {
-                                        node: "bg-pink-600 text-white",
-                                        ring: "ring-pink-500/20",
-                                        card: "border-pink-500/20 bg-pink-500/[0.02]",
-                                        bullet: "marker:text-pink-500/80",
-                                      }
-                        return (
-                          <>
+                <div className={`p-5 ${howIWork.quote ? "pb-16" : ""}`}>
+                  <ol className="space-y-4">
+                    {howIWork.steps.map((step, idx, arr) => {
+                      const accent = stepAccent(idx)
+                      return (
+                        <li key={step.title} className="relative">
+                          {idx !== arr.length - 1 && (
+                            <div className="absolute left-6 top-14 bottom-[-16px] w-px bg-border" aria-hidden="true" />
+                          )}
+                          <div className="flex gap-4">
                             <div
                               className={`h-12 w-12 rounded-full shadow-sm flex items-center justify-center text-lg font-bold shrink-0 ring-8 ${accent.ring} ${accent.node}`}
                             >
-                              {item.step}
+                              {stepGlyph(idx)}
                             </div>
-                                <div className={`rounded-2xl border bg-background/90 backdrop-blur-sm p-5 shadow-sm flex-1 ${accent.card}`}>
-                              <div className="text-foreground font-bold">{item.firstLine}</div>
-                              <ul className={`mt-3 list-disc pl-5 space-y-1 text-foreground/90 leading-relaxed ${accent.bullet}`}>
-                                {item.bullets.map((b) => (
-                                  <li key={b}>{b}</li>
-                                ))}
-                              </ul>
+                            <div className={`rounded-2xl border bg-background/90 backdrop-blur-sm p-5 shadow-sm flex-1 ${accent.card}`}>
+                              <div className="text-foreground font-bold">{step.title}</div>
+                              <StepBody step={step} bulletClassName={accent.bullet} />
                             </div>
-                          </>
-                        )
-                      })()}
-                    </div>
-                  </li>
-                ))}
-              </ol>
+                          </div>
+                        </li>
+                      )
+                    })}
+                  </ol>
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 px-5 pb-4">
-                  <p className="text-center text-sm font-semibold text-foreground/80">
-                  “Clarity turns complex tradeoffs into confident product decisions.”
-                </p>
-                </div>
+                {howIWork.quote ? (
+                  <div className="absolute inset-x-0 bottom-0 px-5 pb-4">
+                    <p className="text-center text-sm font-semibold text-foreground/80">
+                      {`“${howIWork.quote}”`}
+                    </p>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
 
         </div>
       </section>
+
+      {/* Background */}
+      {background ? (
+        <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-20 border-t border-border">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">{background.heading}</h2>
+              <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{background.body}</p>
+            </div>
+            <ul className="grid gap-x-10 gap-y-2 sm:grid-cols-2 lg:grid-cols-1 lg:self-center list-disc pl-5 text-foreground/90 leading-relaxed">
+              {background.capabilities.map((capability) => (
+                <li key={capability}>{capability}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
+
+      {/* Contact */}
+      {contact ? (
+        <section id="contact" className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-20 border-t border-border">
+          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-balance">{contact.heading}</h2>
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-2xl">{contact.copy}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <SocialLinks />
+          </div>
+        </section>
+      ) : null}
 
       {/* Footer */}
       <SiteFooter />

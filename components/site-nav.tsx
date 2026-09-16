@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { type RoutePrefix, withPrefix } from "@/lib/paths"
 
 export type SiteNavActive = "home" | "work" | "artifacts"
 
@@ -12,13 +13,17 @@ function linkClass(active: boolean) {
   ].join(" ")
 }
 
-export function SiteNav({ active }: { active: SiteNavActive }) {
+export function SiteNav({ active, prefix }: { active: SiteNavActive; prefix?: RoutePrefix }) {
+  const home = withPrefix(prefix, "/")
+  const work = withPrefix(prefix, "/work")
+  const artifacts = withPrefix(prefix, "/artifacts")
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="mx-auto max-w-6xl px-3 sm:px-6 lg:px-8 py-3.5 sm:py-4">
         <div className="flex items-center gap-3">
           <Link
-            href="/"
+            href={home}
             className="shrink-0 whitespace-nowrap leading-none text-[clamp(0.85rem,3vw,1.125rem)] font-semibold tracking-tight hover:text-foreground/70 transition-colors"
           >
             PM Portfolio
@@ -26,18 +31,18 @@ export function SiteNav({ active }: { active: SiteNavActive }) {
 
           <div className="ml-auto flex flex-1 min-w-0 justify-end">
             <div className="flex items-center gap-2.5 sm:gap-8 flex-nowrap">
-              <Link href="/" aria-current={active === "home" ? "page" : undefined} className={linkClass(active === "home")}>
+              <Link href={home} aria-current={active === "home" ? "page" : undefined} className={linkClass(active === "home")}>
                 Home
               </Link>
               <Link
-                href="/work"
+                href={work}
                 aria-current={active === "work" ? "page" : undefined}
                 className={linkClass(active === "work")}
               >
                 Work
               </Link>
               <Link
-                href="/artifacts"
+                href={artifacts}
                 aria-current={active === "artifacts" ? "page" : undefined}
                 className={linkClass(active === "artifacts")}
               >

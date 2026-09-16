@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { ArtifactsGrid } from "@/components/work-samples-grid"
 import { ARTIFACTS } from "@/lib/artifacts"
+import type { RoutePrefix } from "@/lib/paths"
 
 type Tab = {
   key: string
@@ -29,7 +30,7 @@ function tabButtonClass(active: boolean) {
   ].join(" ")
 }
 
-export function ArtifactsTabs() {
+export function ArtifactsTabs({ prefix }: { prefix?: RoutePrefix } = {}) {
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -103,7 +104,7 @@ export function ArtifactsTabs() {
         </div>
       </div>
 
-      <ArtifactsGrid items={activeItems} autoOpenId={requestedArtifact ?? undefined} />
+      <ArtifactsGrid items={activeItems} autoOpenId={requestedArtifact ?? undefined} prefix={prefix} />
     </div>
   )
 }
