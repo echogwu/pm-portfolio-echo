@@ -341,6 +341,137 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
           },
         },
       },
+      "klaviyo-real-time-data-strategy": {
+        meta: {
+          title: "Klaviyo | Turning Platform Economics into Product Strategy",
+          description:
+            "Turned an infrastructure cost mandate into a phased data-access strategy—balancing customer value, platform differentiation, technical risk, and savings at increasing scale.",
+        },
+        layout: {
+          title: "Klaviyo: Turning Platform Economics into Product Strategy",
+          subline:
+            "Turned an infrastructure cost mandate into a phased data-access strategy—balancing customer value, platform differentiation, technical risk, and savings at increasing scale.",
+          tags: [
+            "Platform Strategy",
+            "Customer Research",
+            "Product Economics",
+            "Roadmap Sequencing",
+            "Change Management",
+          ],
+          row1: {
+            challenge: {
+              heading: "Challenge",
+              bullets: [
+                "One event platform supports customer experiences with very different requirements for history, latency, freshness, and throughput.",
+                "Rapid data growth created substantial infrastructure costs, but reducing retention could disrupt workflows across the product.",
+                "Long-term data access was also part of the company’s customer promise and competitive positioning.",
+                "The decision extended beyond storage: what access should remain standard, what required a different architecture, and what could eventually become a paid capability?",
+                "The challenge was to reduce cost without treating every event, workload, or customer as interchangeable.",
+              ],
+            },
+            role: {
+              heading: "Role",
+              // Scope and accountability only; the actions live in Approach & Decisions.
+              bullets: [
+                "Senior Product Manager for the Events platform.",
+                "Product owner for event ingestion, storage, and retrieval experiences.",
+                "Accountable for the platform’s product strategy, customer-facing guarantees, and roadmap priorities.",
+                "Product lead coordinating decisions across Engineering, adjacent product teams, Marketing, and Customer Success.",
+              ],
+            },
+          },
+          // Six items read down the left column, then down the right.
+          row2: {
+            left: [
+              {
+                title: "Reframed the mandate",
+                description:
+                  "Turned a cost-reduction request into a broader product, architecture, and monetization decision. Shifted the question from “How long should we retain data?” to “What access must the product guarantee—and for which customer workflows?”",
+              },
+              {
+                title: "Built the evidence",
+                description:
+                  "Combined customer interviews, product usage, competitive research, downstream requirements, and infrastructure economics to distinguish essential access from costly historical availability.",
+              },
+              {
+                title: "Defined a phased strategy",
+                description:
+                  "Separated the opportunity into sequenced decisions: begin with a lower-impact event class, then address broader hot-storage retention, cross-product consistency, cold retrieval, and future monetization.",
+              },
+            ],
+            right: [
+              {
+                title: "Matched access to value",
+                description:
+                  "Distinguished workloads requiring immediate access from those that could use alternative serving paths, preserving critical customer outcomes without applying the most expensive guarantee universally.",
+              },
+              {
+                title: "Aligned the organization",
+                description:
+                  "Established shared requirements and decision points across Engineering, adjacent product teams, Marketing, and Customer Success before moving from strategy into customer-facing change.",
+              },
+              {
+                title: "Designed for reversible learning",
+                description:
+                  "Created staged cohorts, evidence gates, rollback criteria, customer communications, and special handling for strategically important accounts before expanding exposure.",
+              },
+            ],
+          },
+          row3: {
+            outcomes: {
+              heading: "Outcomes so far",
+              bullets: [
+                {
+                  label: "Near-term savings underway",
+                  description:
+                    "Initiated the first rollout in a broader strategy, targeting high-six-figure annual infrastructure savings from a lower-impact event class.",
+                },
+                {
+                  label: "Larger strategic decision defined",
+                  description:
+                    "Structured subsequent retention changes expected to save hundreds of thousands of dollars per month while reshaping data access across the product for hundreds of thousands of customers.",
+                },
+                {
+                  label: "Execution risk reduced",
+                  description:
+                    "Turned a broad, irreversible platform change into sequenced releases with measurable evidence, rollback paths, customer communication, and explicit decision gates.",
+                },
+                {
+                  label: "Future business model enabled",
+                  description:
+                    "Connected data-access guarantees and infrastructure economics to future pricing, packaging, and differentiated retention options.",
+                },
+              ],
+            },
+            learnings: {
+              heading: "How I structure the decision",
+              flow: "Customer workflow → Product guarantee → Serving model → Economics → Packaging → Rollout evidence",
+            },
+          },
+          // Titles, order, and destinations come from the catalog; descriptions only here.
+          artifacts: {
+            projectHref: "/work/klaviyo-real-time-data-strategy",
+            projectLabel: "Klaviyo",
+            items: [
+              {
+                id: "klaviyo-data-access-decision-gates",
+                subline:
+                  "How customer access requirements translate into product guarantees and serving decisions.",
+              },
+              {
+                id: "klaviyo-cost-to-value-segmentation",
+                subline:
+                  "How customer value and infrastructure burden inform investment, service, and monetization decisions.",
+              },
+              {
+                id: "klaviyo-rollout-and-evidence-plan",
+                subline:
+                  "How representative cohorts, evidence gates, rollback criteria, and communication reduce the risk of consequential platform changes.",
+              },
+            ],
+          },
+        },
+      },
     },
   },
 ]
