@@ -59,8 +59,8 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
         "My work spans data platforms, internal tools, and zero-to-one products where the right answer may be to build, sequence, redesign, or stop.",
       secondaryCta: {
         label: "View resume",
-        // /preview rather than /edit: read-only, and keeps the account ouid out of the page.
-        href: "https://docs.google.com/document/d/1C_CWiI04BhbqndfwnNRW6J8NLtvylQZg/preview",
+        // /preview rather than /edit: read-only for anyone with the link.
+        href: "https://docs.google.com/document/d/1IvvKrSemzRZntXW7Qg-lLgrQMPwvk7beZ_0zGeT0lnc/preview",
       },
       profileTagline: "Technical Product Leader",
       featured: {
