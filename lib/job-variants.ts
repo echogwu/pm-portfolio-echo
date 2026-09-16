@@ -68,24 +68,8 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
         intro:
           "Three examples of turning incomplete information into a product strategy, build plan, or investment decision.",
       },
+      // Dishclosure leads as the flagship case study.
       featuredProjects: [
-        {
-          title: "Klaviyo: Event Platform Strategy",
-          description:
-            "Turned infrastructure cost pressure into a phased data-access strategy balancing customer value, platform economics, technical constraints, and long-term differentiation.",
-          outcome:
-            "The first release targets high six-figure annual savings, followed by retention changes expected to save hundreds of thousands of dollars per month across an experience used by hundreds of thousands of customers.",
-          href: "/work/klaviyo-real-time-data-strategy",
-          imageSrc: "/klaviyo-logo.jpg",
-          imageAlt: "Klaviyo",
-          tags: [
-            "Platform Strategy",
-            "Customer Research",
-            "Product Economics",
-            "Roadmap Sequencing",
-            "Decision Frameworks",
-          ],
-        },
         {
           title: "Dishclosure: Founder and Product Lead",
           description:
@@ -101,6 +85,23 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
             "Competitive Analysis",
             "Zero-to-One Build",
             "Go or No-Go Decision",
+          ],
+        },
+        {
+          title: "Klaviyo: Event Platform Strategy",
+          description:
+            "Turned infrastructure cost pressure into a phased data-access strategy balancing customer value, platform economics, technical constraints, and long-term differentiation.",
+          outcome:
+            "The first release targets high six-figure annual savings, followed by retention changes expected to save hundreds of thousands of dollars per month across an experience used by hundreds of thousands of customers.",
+          href: "/work/klaviyo-real-time-data-strategy",
+          imageSrc: "/klaviyo-logo.jpg",
+          imageAlt: "Klaviyo",
+          tags: [
+            "Platform Strategy",
+            "Customer Research",
+            "Product Economics",
+            "Roadmap Sequencing",
+            "Decision Frameworks",
           ],
         },
         {
