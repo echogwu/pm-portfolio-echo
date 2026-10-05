@@ -57,11 +57,6 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
         "I turn ambiguous opportunities into clear product and investment decisions by combining customer research, business analysis, and technical depth.",
       supporting:
         "My work spans data platforms, internal tools, and zero-to-one products where the right answer may be to build, sequence, redesign, or stop.",
-      secondaryCta: {
-        label: "View resume",
-        // /preview rather than /edit: read-only for anyone with the link.
-        href: "https://docs.google.com/document/d/1IvvKrSemzRZntXW7Qg-lLgrQMPwvk7beZ_0zGeT0lnc/preview",
-      },
       profileTagline: "Technical Product Leader",
       featured: {
         heading: "Featured Projects",
@@ -88,11 +83,11 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
           ],
         },
         {
-          title: "Klaviyo: Event Platform Strategy",
+          title: "Klaviyo: Events Platform Strategy",
           description:
-            "Turned infrastructure cost pressure into a phased data-access strategy balancing customer value, platform economics, technical constraints, and long-term differentiation.",
+            "Evolved events infrastructure from a cost center into a growth lever",
           outcome:
-            "The first release targets high six-figure annual savings, followed by retention changes expected to save hundreds of thousands of dollars per month across an experience used by hundreds of thousands of customers.",
+            "Initiated rollout targeting high six-figure near-term infrastructure savings, with a path to multi-million-dollar annual savings at full scale. Create full customer journey from anonymous activity to conversion, enabling onsite personalization, more efficient acquisition, and higher-quality ML training data.",
           href: "/work/klaviyo-real-time-data-strategy",
           imageSrc: "/klaviyo-logo.jpg",
           imageAlt: "Klaviyo",
