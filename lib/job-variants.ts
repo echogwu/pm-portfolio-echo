@@ -472,7 +472,7 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
   },
   {
     id: "01a155",
-    note: "API product manager role. Homepage hero, featured cards, and work-index copy for Klaviyo, Dishclosure, Gainbridge, Lyft, and engineering.",
+    note: "API product manager role. Homepage, work index, and the Klaviyo, Dishclosure, and Lyft case studies.",
     home: {
       headline: "API & Platform Product Leader",
       subhead:
@@ -575,6 +575,315 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
           label: "Building an Engineering Foundation for Platform Products",
           microCaption:
             "Developing expertise in APIs, distributed systems, reliability, and automation across large-scale software platforms.",
+        },
+      },
+    },
+    caseStudies: {
+      "klaviyo-real-time-data-strategy": {
+        meta: {
+          title: "Klaviyo | Evolving an Enterprise Event & API Platform",
+          description:
+            "Defining API capabilities, data access guarantees, and rollout strategies that balance customer experience, platform reliability, and infrastructure economics.",
+        },
+        layout: {
+          title: "Klaviyo: Evolving an Enterprise Event & API Platform",
+          subline:
+            "Defining API capabilities, data access guarantees, and rollout strategies that balance customer experience, platform reliability, and infrastructure economics.",
+          tags: ["API Strategy", "API Governance", "Data Access", "Platform Economics", "Change Management"],
+          row1: {
+            challenge: {
+              heading: "Challenge",
+              bullets: [
+                "One event platform serves internal products, customer integrations, and external APIs.",
+                "Different consumers require different guarantees for schema, history, latency, freshness, and completeness.",
+                "Growing data volume and evolving API needs introduced competing demands for flexibility, reliability, and cost.",
+                "The challenge: evolve platform capabilities and economics without breaking customer workflows or developer trust.",
+              ],
+            },
+            role: {
+              heading: "Role",
+              bullets: [
+                "Owned product strategy for event ingestion, storage, and serving.",
+                "Defined API capabilities, data access requirements, and customer-facing platform guarantees.",
+                "Drove tradeoffs across developer flexibility, backward compatibility, reliability, and infrastructure economics.",
+                "Coordinated Engineering, adjacent Product teams, Marketing, and Customer Success on platform changes.",
+              ],
+            },
+          },
+          row2: {
+            left: [
+              {
+                title: "Defined API and data access contracts",
+                description:
+                  "Translated customer workflows into requirements for history, latency, freshness, completeness, throughput, and API compatibility.",
+              },
+              {
+                title: "Balanced API flexibility with governance",
+                description:
+                  "Evaluated partner demand for creating event types without payloads. Weighed developer convenience against event proliferation and schema drift, favoring a lightweight endpoint to test adoption before broader governance investment.",
+              },
+              {
+                title: "Matched access patterns to customer needs",
+                description:
+                  "Evaluated synchronous APIs, asynchronous exports, and warehouse sync against workload requirements to distinguish low-latency access from cost-efficient historical retrieval.",
+              },
+            ],
+            right: [
+              {
+                title: "Connected platform economics to product value",
+                description:
+                  "Compared infrastructure cost, customer usage, and strategic account needs to inform differentiated access and future pricing and packaging decisions.",
+              },
+              {
+                title: "Decomposed change to protect compatibility",
+                description:
+                  "Isolated a lower-impact event class for the initial cost-reduction rollout, preserving higher-value workflows while validating the broader strategy.",
+              },
+              {
+                title: "Designed customer-centered rollout and monitoring",
+                description:
+                  "Defined representative cohorts, evidence gates, rollback criteria, proactive communications, support workflows, and API-related ticket monitoring to identify customer friction early.",
+              },
+            ],
+          },
+          row3: {
+            outcomes: {
+              heading: "Outcomes so far",
+              bullets: [
+                {
+                  label: "$624K–$960K annual savings opportunity",
+                  description:
+                    "Initiated a targeted event-removal rollout with projected annual infrastructure savings in this range.",
+                },
+                {
+                  label: "Defined API and data access requirements",
+                  description:
+                    "Established workload-specific requirements across history, latency, freshness, completeness, throughput, and compatibility.",
+                },
+                {
+                  label: "Reduced change risk",
+                  description:
+                    "Designed reversible cohorts, monitoring, customer communications, and escalation paths before broader rollout.",
+                },
+                {
+                  label: "Informed future platform investment",
+                  description:
+                    "Connected API capabilities, customer access patterns, and infrastructure economics to prioritization and packaging decisions.",
+                },
+              ],
+            },
+            learnings: {
+              heading: "How I make the tradeoff",
+              flow: "Developer & customer needs → API contract → Architecture → Economics → Compatibility → Rollout",
+            },
+          },
+          artifacts: {
+            projectHref: "/work/klaviyo-real-time-data-strategy",
+            projectLabel: "Klaviyo",
+            items: [
+              { id: "klaviyo-data-access-decision-gates", headline: "API & Data Access Decision Gates" },
+              { id: "klaviyo-cost-to-value-segmentation" },
+              { id: "klaviyo-rollout-and-evidence-plan" },
+            ],
+          },
+        },
+      },
+      "dishclosure-founder-mode": {
+        meta: {
+          title: "Dishclosure | Building a Multi-Tenant API Platform from 0→1",
+          description:
+            "Turning fragmented restaurant data into structured, trustworthy APIs—while testing whether the underlying customer problem justified building a business.",
+        },
+        layout: {
+          title: "Dishclosure: Building a Multi-Tenant API Platform from 0→1",
+          subline:
+            "Turning fragmented restaurant data into structured, trustworthy APIs—while testing whether the underlying customer problem justified building a business.",
+          tags: ["0→1 Product", "API Architecture", "Multi-Tenant Platform", "Data Integrity", "Customer Discovery"],
+          row1: {
+            challenge: {
+              heading: "Challenge",
+              bullets: [
+                "Diners with dietary restrictions need reliable ingredient and allergen information.",
+                "Restaurants manage that information across fragmented menus, recipes, modifiers, and operational workflows.",
+                "Existing systems were not designed to consistently expose the ingredient-level data required for trustworthy consumer experiences.",
+                "The challenge: design a scalable data foundation while validating whether restaurants would adopt and maintain it.",
+              ],
+            },
+            role: {
+              heading: "Role",
+              bullets: [
+                "Founded the venture and owned product discovery, technical architecture, and go-to-market exploration.",
+                "Conducted 10 consumer interviews, 15 operator interviews, and 50 field visits.",
+                "Designed and built a multi-tenant application with 50+ API endpoints.",
+                "Led product prioritization and the evidence-based decision on whether to continue investing.",
+              ],
+            },
+          },
+          row2: {
+            throughline: undefined,
+            left: [
+              {
+                title: "Started with the data integrity problem",
+                description:
+                  "Mapped how ingredients, recipes, modifiers, and menu items relate, identifying where incomplete or inconsistent information could undermine consumer trust.",
+              },
+              {
+                title: "Designed operator-first data models",
+                description:
+                  "Structured APIs around restaurant workflows rather than consumer-facing screens alone, with allergen propagation, validation, and explicit unknown states.",
+              },
+              {
+                title: "Built a multi-tenant API foundation",
+                description:
+                  "Implemented 50+ endpoints with tenant isolation, authentication, role-based access, and scoped operator and diner workflows.",
+              },
+            ],
+            right: [
+              {
+                title: "Evaluated ecosystem integration",
+                description:
+                  "Explored how existing restaurant systems could supply or maintain data, distinguishing feasible integrations from unresolved dependencies and operational gaps.",
+              },
+              {
+                title: "Validated willingness to adopt",
+                description:
+                  "Combined consumer interviews, restaurant-operator discovery, and field visits to test the problem, workflow burden, and potential adoption barriers.",
+              },
+              {
+                title: "Made the go/no-go decision",
+                description:
+                  "Weighed technical feasibility against data-maintenance costs, restaurant incentives, and evidence of demand; chose to pause rather than scale an unproven model.",
+              },
+            ],
+          },
+          row3: {
+            outcomes: {
+              heading: "Outcomes",
+              bullets: [
+                {
+                  label: "Built the technical foundation",
+                  description:
+                    "Designed and implemented a multi-tenant application with 50+ API endpoints and scoped access controls.",
+                },
+                {
+                  label: "Established a trustworthy data model",
+                  description:
+                    "Connected ingredients, recipes, modifiers, and menus with validation and explicit handling of unknown information.",
+                },
+                {
+                  label: "Generated market evidence",
+                  description:
+                    "Completed 10 consumer interviews, 15 operator interviews, and 50 field visits; identified three restaurants interested in potential pilots.",
+                },
+                {
+                  label: "Exercised founder-level judgment",
+                  description:
+                    "Paused further investment when evidence did not yet support a repeatable, scalable business.",
+                },
+              ],
+            },
+            learnings: {
+              heading: "How I make the tradeoff",
+              flow: "User trust → Data requirements → API design → Operator workflow → Adoption economics → Go/No-Go",
+            },
+          },
+          artifacts: {
+            projectHref: "/work/dishclosure-founder-mode",
+            projectLabel: "Dishclosure",
+            items: [
+              { id: "dishclosure-technical-design" },
+              { id: "dishclosure-data-erd" },
+              { id: "dishclosure-ux-prototype" },
+              { id: "dishclosure-product-strategy" },
+              { id: "dishclosure-legal-doc" },
+            ],
+          },
+        },
+      },
+      "lyft-developer-experience-pm": {
+        meta: {
+          title: "Lyft | Driving Developer Platform Adoption",
+          description:
+            "Improving internal developer workflows and platform reliability to accelerate engineering productivity, reduce operational friction, and deliver measurable cost savings.",
+        },
+        layout: {
+          title: "Lyft: Driving Developer Platform Adoption",
+          subline:
+            "Improving internal developer workflows and platform reliability to accelerate engineering productivity, reduce operational friction, and deliver measurable cost savings.",
+          tags: ["Developer Experience", "Platform Adoption", "Internal Tools", "Reliability", "Product Strategy"],
+          row1: {
+            challenge: {
+              heading: "Challenge",
+              bullets: [
+                "Internal developer platforms must make complex engineering workflows faster and more dependable.",
+                "Friction in tooling, validation, and support creates costs across engineering teams.",
+                "Platform success depends on adoption and developer outcomes—not just technical capabilities.",
+                "The challenge: prioritize improvements that developers would use while improving reliability and operating efficiency.",
+              ],
+            },
+            role: {
+              heading: "Role",
+              bullets: [
+                "Led product improvements for an internal rider-driver simulation platform.",
+                "Translated developer workflows and feedback into product requirements and priorities.",
+                "Partnered with engineering to improve platform usability, reliability, and operational efficiency.",
+              ],
+            },
+          },
+          row2: {
+            throughline: undefined,
+            left: [
+              {
+                title: "Started with developer workflows",
+                description:
+                  "Focused on where engineers encountered friction in simulation, validation, and day-to-day platform usage.",
+              },
+              {
+                title: "Prioritized adoption over feature volume",
+                description:
+                  "Evaluated improvements through developer usefulness and recurring workflow needs, rather than treating feature delivery as the measure of success.",
+              },
+            ],
+            right: [
+              {
+                title: "Improved reliability as part of the product experience",
+                description:
+                  "Treated dependable tooling and reduced support friction as essential requirements for developer trust.",
+              },
+              {
+                title: "Connected platform investment to measurable value",
+                description:
+                  "Evaluated adoption, reliability, support demand, and operational cost together to prioritize improvements with meaningful impact.",
+              },
+            ],
+          },
+          row3: {
+            outcomes: {
+              heading: "Outcomes",
+              bullets: [
+                {
+                  label: "10% higher adoption and reliability",
+                  description: "Increased usage and dependability of the internal developer platform.",
+                },
+                {
+                  label: "30% lower support demand",
+                  description: "Reduced support burden and on-call noise through platform improvements.",
+                },
+                {
+                  label: "$150K quarterly savings",
+                  description: "Validated about $150K in quarterly operating cost reductions.",
+                },
+                {
+                  label: "Earlier detection of high-risk failures",
+                  description: "Shifted discovery of severe failures from post-launch to pre-release.",
+                },
+              ],
+            },
+            learnings: {
+              heading: "How I make the tradeoff",
+              flow: "Developer workflow → Product friction → Platform improvement → Adoption → Reliability → Business impact",
+            },
+          },
         },
       },
     },
