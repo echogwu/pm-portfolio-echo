@@ -470,6 +470,115 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
       },
     },
   },
+  {
+    id: "01a155",
+    note: "API product manager role. Homepage hero, featured cards, and work-index copy for Klaviyo, Dishclosure, Gainbridge, Lyft, and engineering.",
+    home: {
+      headline: "API & Platform Product Leader",
+      subhead:
+        "I build API platforms and developer tools that turn complex systems into reliable, usable products—connecting developer needs, technical architecture, and business outcomes.",
+      profileTagline: "Product Lead, APIs & Developer Platforms",
+      featuredProjects: [
+        {
+          title: "Klaviyo: API Strategy at Enterprise Scale",
+          description:
+            "Shaping API capabilities, data access strategies, and developer-facing experiences while balancing platform reliability, customer needs, and infrastructure economics.",
+          href: "/work/klaviyo-real-time-data-strategy",
+          imageSrc: "/klaviyo-logo.jpg",
+          imageAlt: "Klaviyo",
+          tags: ["API Strategy", "Developer Experience", "Data Access", "Platform Economics"],
+        },
+        {
+          title: "Dishclosure: Building a Multi-Tenant API Platform from 0→1",
+          description:
+            "Designed and built 50+ API endpoints with multi-tenant isolation, authentication, and role-based access—turning complex restaurant workflows into reliable, structured data for consumer applications.",
+          href: "/work/dishclosure-founder-mode",
+          imageSrc: "/dishclosure.gif",
+          imageAlt: "Dishclosure project",
+          tags: ["API Product Design", "Multi-Tenant Architecture", "Developer Experience", "0→1 Product"],
+        },
+        {
+          title: "Lyft: Driving Developer Platform Adoption",
+          description:
+            "Led an internal simulation platform, translating developer workflows and feedback into product improvements that increased adoption and reliability by 10%, reduced support demand by 30%, and saved $150K quarterly.",
+          href: "/work/lyft-developer-experience-pm",
+          imageSrc: "/lyft.gif",
+          imageAlt: "Lyft project",
+          tags: ["Developer Experience", "Platform Adoption", "Product Strategy", "Developer Tools"],
+        },
+        {
+          title: "Gainbridge: Product Manager, Data and Measurement",
+          description: "Built the instrumentation layer that made performance trustworthy — before optimization.",
+          href: "/work/gainbridge-data-architecture",
+          imageSrc: "/gainbridge.gif",
+          imageAlt: "Gainbridge project",
+          tags: [
+            "Data Architecture",
+            "Measurement Strategy",
+            "Event Taxonomy",
+            "Identity Resolution",
+            "Attribution Systems",
+          ],
+        },
+      ],
+    },
+    work: {
+      description:
+        "My career has evolved from engineering, to developer experience, to API and platform product leadership.",
+      intro: [
+        "My career has evolved from ",
+        { text: "engineering", accent: "lime" },
+        ", to ",
+        { text: "developer experience", accent: "sky" },
+        ", to ",
+        { text: "API and platform product leadership", accent: "emerald" },
+        ". Along the way, I've designed APIs, built developer tools, and led complex data platform decisions. Today, I bring together ",
+        { text: "developer needs", accent: "amber" },
+        ", ",
+        { text: "technical architecture", accent: "pink" },
+        ", and ",
+        { text: "business strategy", accent: "violet" },
+        " to build platforms that are reliable, usable, and valuable.",
+      ],
+      items: {
+        klaviyo: {
+          label: "Defining API Strategy at Scale",
+          microCaption:
+            "Driving API governance, data access strategy, and developer-facing change management while balancing customer experience and platform economics.",
+          tags: ["API Strategy", "API Governance", "Developer Experience", "Data Serving", "Platform Economics"],
+        },
+        dishclosure: {
+          label: "Building an API Platform from 0→1",
+          microCaption:
+            "Designed 50+ endpoints with multi-tenant isolation, role-based access, and operator-first data models to power secure, trustworthy consumer experiences.",
+          tags: [
+            "API Product Design",
+            "Multi-Tenant Architecture",
+            "Authentication & RBAC",
+            "Operator Experience",
+            "Zero-to-One",
+          ],
+        },
+        gainbridge: {
+          label: "Connecting Data, APIs, and Business Decisions",
+          microCaption:
+            "Unified customer data and third-party integrations to power reliable attribution, personalization, and multimillion-dollar marketing decisions.",
+          tags: ["API Integrations", "Data Architecture", "Event Taxonomy", "Attribution", "Business Decisioning"],
+        },
+        lyft: {
+          label: "Driving Developer Platform Adoption",
+          microCaption:
+            "Improved internal developer tooling, increasing adoption and reliability by 10%, reducing support demand by 30%, and saving $150K quarterly.",
+          tags: ["Developer Experience", "Platform Adoption", "Internal Tools", "Simulation", "Developer Productivity"],
+        },
+        engineering: {
+          label: "Building an Engineering Foundation for Platform Products",
+          microCaption:
+            "Developing expertise in APIs, distributed systems, reliability, and automation across large-scale software platforms.",
+        },
+      },
+    },
+  },
 ]
 
 const BY_ID = new Map(JOB_VARIANTS.map((variant) => [variant.id, variant]))
