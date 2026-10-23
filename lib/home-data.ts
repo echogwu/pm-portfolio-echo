@@ -17,6 +17,8 @@ export type FeaturedProject = {
   imageSrc: string
   imageAlt: string
   tags: readonly string[]
+  /** Card link label. Defaults to "Read Case Study" when unset. */
+  ctaLabel?: string
 }
 
 /**

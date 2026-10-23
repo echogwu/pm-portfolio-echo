@@ -241,7 +241,7 @@ export default function HomeContent({
                       href={withPrefix(prefix, project.href)}
                       className="text-blue-600 hover:text-blue-700 font-medium text-sm inline-flex items-center gap-1 group w-fit"
                     >
-                      Read Case Study
+                      {project.ctaLabel ?? "Read Case Study"}
                       <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </Link>
                   </div>

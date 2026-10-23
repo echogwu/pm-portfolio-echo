@@ -888,6 +888,496 @@ export const JOB_VARIANTS: readonly JobVariant[] = [
       },
     },
   },
+  {
+    id: "4f8b2a",
+    note: "MongoDB, Senior PM Technical Services Engineering. Homepage plus the Klaviyo, Lyft, and Dishclosure case studies. No MongoDB branding in the rendered copy.",
+    home: {
+      headline: "Building technical platforms that make engineers more effective",
+      subhead:
+        "I turn complex engineering workflows into scalable products—improving developer productivity, automating repetitive work, and making technical systems more reliable. My experience spans internal developer tools, API integrations, and large-scale data platforms.",
+      profileTagline: "Product Lead | Technical Platforms & Developer Experience",
+      featuredProjects: [
+        {
+          title: "Lyft: Scaling Developer Productivity Through Internal Platforms",
+          description:
+            "Owned an internal developer simulation platform, turning workflow friction and reliability problems into a product roadmap that improved adoption, reduced support demand, and increased engineering efficiency.",
+          href: "/work/lyft-developer-experience-pm",
+          imageSrc: "/lyft.gif",
+          imageAlt: "Lyft project",
+          tags: ["Developer Experience", "Internal Platforms", "Workflow Optimization", "Operational Efficiency"],
+          ctaLabel: "Explore Case Study",
+        },
+        {
+          title: "Gainbridge: Turning Fragmented Systems into Reliable Workflows",
+          description:
+            "Built internal automation and integrated data systems to eliminate repetitive work, improve API validation, and give teams more reliable information for operational and business decisions.",
+          href: "/work/gainbridge-data-architecture",
+          imageSrc: "/gainbridge.gif",
+          imageAlt: "Gainbridge project",
+          tags: ["Workflow Automation", "Systems Integration", "Internal Tools", "Data Reliability"],
+          ctaLabel: "Explore Case Study",
+        },
+        {
+          title: "Klaviyo: Leading Strategy for a Scalable Data Platform",
+          description:
+            "Shaped platform strategy across data access, reliability, and infrastructure economics—balancing enterprise customer needs, long-term product differentiation, and operational scalability.",
+          href: "/work/klaviyo-real-time-data-strategy",
+          imageSrc: "/klaviyo-logo.jpg",
+          imageAlt: "Klaviyo",
+          tags: ["Platform Strategy", "Enterprise Reliability", "Customer Trust", "Cross-Functional Leadership"],
+          ctaLabel: "Explore Case Study",
+        },
+      ],
+      howIWork: {
+        heading: "How I work: turn technical complexity into",
+        headingAccent: "operational leverage",
+        quote: "The best internal platforms make complex work simpler, faster, and more reliable.",
+        steps: [
+          {
+            title: "Understand the Workflow",
+            bullets: [
+              "Observe how engineers actually work",
+              "Identify friction, repetition, and failure points",
+              "Quantify impact on productivity and customers",
+            ],
+          },
+          {
+            title: "Map the System",
+            bullets: [
+              "Trace workflows across tools and services",
+              "Identify integration and reliability constraints",
+              "Use telemetry to distinguish symptoms from root causes",
+            ],
+          },
+          {
+            title: "Design for Leverage",
+            bullets: [
+              "Prioritize the highest-impact opportunities",
+              "Evaluate automation, self-service, and platform improvements",
+              "Balance technical feasibility with business value",
+            ],
+          },
+          {
+            title: "Drive Adoption & Outcomes",
+            bullets: [
+              "Align stakeholders around clear tradeoffs",
+              "Deliver incrementally with measurable guardrails",
+              "Track adoption, efficiency, reliability, and customer impact",
+            ],
+          },
+        ],
+      },
+    },
+    caseStudies: {
+      "klaviyo-real-time-data-strategy": {
+        meta: {
+          title: "Klaviyo | Evolving a Data Platform for Scale and Customer Trust",
+          description:
+            "Balancing enterprise reliability, platform economics, and customer experience through complex technical change.",
+        },
+        layout: {
+          title: "Klaviyo: Evolving a Data Platform for Scale and Customer Trust",
+          subline:
+            "Balancing enterprise reliability, platform economics, and customer experience through complex technical change.",
+          tags: [
+            "Platform Strategy",
+            "Enterprise Reliability",
+            "Customer Experience",
+            "Cross-Functional Leadership",
+            "Operational Scalability",
+          ],
+          row1: {
+            challenge: {
+              heading: "Challenge",
+              bullets: [
+                "A shared event platform powers mission-critical workflows across automation, customer profiles, APIs, reporting, and data exports.",
+                "Different customer workflows require different guarantees for latency, data history, freshness, and reliability.",
+                "Growing infrastructure costs created pressure to change how data was stored and accessed—without undermining enterprise customer expectations.",
+                "Any platform change required coordination across multiple product, engineering, and customer-facing teams.",
+              ],
+            },
+            role: {
+              heading: "Role",
+              bullets: [
+                "Platform Strategy: Own the product direction for event ingestion, storage, serving, and data-access capabilities.",
+                "Customer & Business Judgment: Translate customer needs, enterprise requirements, and infrastructure economics into product priorities.",
+                "Cross-Functional Leadership: Align Engineering, Product, Customer Success, and Marketing on decisions, dependencies, and rollout readiness.",
+                "Change Management: Define customer safeguards, success criteria, and reversible rollout approaches for high-impact changes.",
+              ],
+            },
+          },
+          row2: {
+            throughline: "Customer workflows → Platform guarantees → Strategic tradeoffs → Customer-safe rollout",
+            left: [
+              {
+                title: "Define What Customers Must Be Able to Rely On",
+                description:
+                  "Shifted the discussion from infrastructure policies to the actual guarantees customers and downstream products need.",
+                bullets: [
+                  "Distinguished latency-sensitive operational workflows from analytical and historical data-access needs.",
+                ],
+              },
+              {
+                title: "Make Platform Economics a Product Decision",
+                description:
+                  "Evaluated serving architectures against customer value, performance expectations, operational complexity, and long-term business economics.",
+                bullets: [
+                  "Prioritized differentiated access where it matters most, rather than applying the same expensive guarantees to every workload.",
+                ],
+              },
+            ],
+            right: [
+              {
+                title: "Protect Enterprise Customer Workflows",
+                description:
+                  "Mapped the impact of proposed changes across APIs, integrations, data exports, and dependent products to identify where customer experience could degrade.",
+                bullets: [
+                  "Defined customer-facing guarantees and special handling for strategically important accounts and workflows.",
+                ],
+              },
+              {
+                title: "Design Change for Adoption and Reversibility",
+                description:
+                  "Translated strategy into a phased rollout model with clear readiness criteria across engineering and customer-facing teams.",
+                bullets: [
+                  "Used representative customer cohorts, monitoring signals, and explicit rollback criteria.",
+                  "Incorporated customer communication and support readiness into launch decisions—not as an afterthought.",
+                ],
+              },
+            ],
+          },
+          row3: {
+            outcomes: {
+              heading: "Outcomes so far",
+              bullets: [
+                {
+                  label: "Strategic Clarity",
+                  description:
+                    "Reframed an infrastructure cost challenge into a platform strategy balancing customer value, reliability, differentiation, and economics.",
+                },
+                {
+                  label: "Business Impact",
+                  description:
+                    "Initiated phased changes targeting approximately $1M in annual infrastructure savings, with additional opportunities at broader scale.",
+                },
+                {
+                  label: "Operational Risk Reduction",
+                  description:
+                    "Established staged rollout decisions, customer safeguards, monitoring criteria, and cross-functional readiness requirements for high-impact platform changes.",
+                },
+              ],
+            },
+            learnings: {
+              heading: "How I make the tradeoff",
+              bullets: [
+                "Customer Impact: Which customer workflows and experiences are at risk?",
+                "Platform Guarantees: What must remain reliable, available, and predictable?",
+                "Technical Feasibility: Which architectures meet those requirements?",
+                "Business Economics: What does each level of service cost?",
+                "Operational Readiness: Can engineering and customer-facing teams support the change?",
+                "Reversibility: What evidence is needed before expanding the rollout?",
+              ],
+            },
+          },
+          artifacts: {
+            projectHref: "/work/klaviyo-real-time-data-strategy",
+            projectLabel: "Klaviyo",
+            items: [
+              {
+                id: "klaviyo-data-access-decision-gates",
+                subline: "How customer guarantees, technical constraints, and business tradeoffs shape platform decisions.",
+              },
+              {
+                id: "klaviyo-cost-to-value-segmentation",
+                subline:
+                  "A structured method for evaluating infrastructure costs alongside customer value and revenue exposure.",
+              },
+              {
+                id: "klaviyo-rollout-and-evidence-plan",
+                subline:
+                  "A staged approach to customer-safe change, combining representative cohorts, monitoring, rollback criteria, and communication readiness.",
+              },
+            ],
+          },
+        },
+      },
+      "lyft-developer-experience-pm": {
+        meta: {
+          title: "Lyft | Transforming Internal Developer Tools into a Productivity Platform",
+          description:
+            "Turning fragmented engineering workflows into reliable self-service capabilities that improve adoption, reduce support demand, and scale developer productivity.",
+        },
+        layout: {
+          title: "Lyft: Transforming Internal Developer Tools into a Productivity Platform",
+          subline:
+            "Turning fragmented engineering workflows into reliable self-service capabilities that improve adoption, reduce support demand, and scale developer productivity.",
+          tags: [
+            "Developer Experience",
+            "Internal Platforms",
+            "Workflow Transformation",
+            "Engineering Productivity",
+            "Operational Efficiency",
+          ],
+          row1: {
+            challenge: {
+              heading: "Challenge",
+              bullets: [
+                "An internal rider-driver simulation platform supported engineering development and validation workflows.",
+                "Usability friction, inconsistent reliability, and troubleshooting overhead limited developer productivity.",
+                "Technical and non-technical users had different needs, making a one-size-fits-all experience ineffective.",
+                "The challenge was to improve adoption and self-service while reducing the operational burden on engineering teams.",
+              ],
+            },
+            role: {
+              heading: "Role",
+              bullets: [
+                "Product Ownership: Took ownership of the internal simulation platform's product direction and roadmap.",
+                "Developer Discovery: Combined user feedback, workflow analysis, and telemetry to identify high-impact friction.",
+                "Cross-Functional Leadership: Partnered with backend engineering, frontend engineering, and design to prioritize platform improvements.",
+                "Outcome Accountability: Measured success through adoption, reliability, support demand, and engineering productivity.",
+              ],
+            },
+          },
+          row2: {
+            throughline: "Discover friction → Segment workflows → Prioritize leverage → Drive adoption",
+            left: [
+              {
+                title: "Start With Developer Workflows",
+                description:
+                  "Shifted the focus from technical defects to understanding how developers used the platform and where their workflows broke down.",
+                bullets: [
+                  "Gathered feedback from technical and non-technical users.",
+                  "Combined user research with usage logs and support patterns.",
+                  "Identified barriers to adoption and self-service.",
+                ],
+              },
+              {
+                title: "Differentiate User Needs",
+                description:
+                  "Recognized that the platform served multiple user groups with different technical capabilities and workflows.",
+                bullets: [
+                  "Segmented user needs based on usage and workflow.",
+                  "Distinguished reliability problems from usability and onboarding friction.",
+                  "Focused the roadmap on improvements with broad productivity impact.",
+                ],
+              },
+            ],
+            right: [
+              {
+                title: "Prioritize Operational Leverage",
+                description:
+                  "Evaluated improvements based on how much developer effort and troubleshooting they could eliminate—not simply the number of defects resolved.",
+                bullets: [
+                  "Prioritized reliability, clearer errors, onboarding, and documentation.",
+                  "Used support burden and adoption as product signals.",
+                  "Balanced implementation cost against recurring operational savings.",
+                ],
+              },
+              {
+                title: "Build for Self-Service and Adoption",
+                description:
+                  "Worked across engineering and design to make the platform more dependable and easier to use without relying on ongoing manual support.",
+                bullets: [
+                  "Turned workflow findings into a sequenced product roadmap.",
+                  "Improved usability and reliability for a wider range of users.",
+                  "Validated impact through usage, adoption, and operational metrics.",
+                ],
+              },
+            ],
+          },
+          row3: {
+            outcomes: {
+              heading: "Outcomes",
+              bullets: [
+                {
+                  label: "Developer adoption and reliability",
+                  description: "Increased reliability and adoption of the internal platform by 10%.",
+                },
+                {
+                  label: "Operational Efficiency",
+                  description: "Reduced support demand and on-call noise by 30%.",
+                },
+                {
+                  label: "Business Impact",
+                  description: "Validated approximately $150K in quarterly savings.",
+                },
+                {
+                  label: "Earlier failure detection",
+                  description: "Shifted discovery of high-risk failures from post-launch to pre-release.",
+                },
+              ],
+            },
+            learnings: {
+              heading: "How I Make the Product Decision",
+              bullets: [
+                "Developer Value: Where are users losing the most time?",
+                "Workflow Frequency: How often does the friction occur?",
+                "Reliability: Which failures interrupt critical workflows?",
+                "Self-Service: What can users resolve without engineering assistance?",
+                "Engineering Investment: Which improvements create the most leverage?",
+                "Adoption: Does the change measurably improve real usage?",
+              ],
+              closing:
+                "A successful internal platform isn't measured by how much functionality it offers, but by how much friction it removes from the work people need to do.",
+            },
+          },
+        },
+      },
+      "dishclosure-founder-mode": {
+        meta: {
+          title: "Dishclosure | Turning Complex Operator Workflows into a Scalable Product",
+          description:
+            "From frontline customer discovery to a working multi-tenant platform—designing for data reliability, operational simplicity, and sustainable scale.",
+        },
+        layout: {
+          title: "Dishclosure: Turning Complex Operator Workflows into a Scalable Product",
+          subline:
+            "From frontline customer discovery to a working multi-tenant platform—designing for data reliability, operational simplicity, and sustainable scale.",
+          tags: [
+            "0→1 Product Development",
+            "Workflow Transformation",
+            "Systems Architecture",
+            "Customer Discovery",
+            "AI-Assisted Development",
+          ],
+          row1: {
+            challenge: {
+              heading: "Challenge",
+              bullets: [
+                "Restaurants manage complex ingredient, recipe, menu, and customization data across fragmented operational workflows.",
+                "Consumers with dietary restrictions depend on accurate information, but restaurant data is often incomplete or difficult to maintain.",
+                "A useful solution needed to fit restaurant operations without creating excessive manual upkeep.",
+                "The central challenge was designing a trustworthy, scalable system while validating whether the business could support ongoing data maintenance.",
+              ],
+            },
+            role: {
+              heading: "Role",
+              bullets: [
+                "End-to-End Ownership: Led problem discovery, product strategy, technical design, implementation, and early customer validation.",
+                "Operator Workflow Discovery: Conducted 15 restaurant-operator interviews, 10 consumer interviews, and 50 field visits to understand operational constraints.",
+                "Technical Product Development: Designed and built a multi-tenant product with operator-facing workflows, consumer experiences, and 50+ backend API endpoints.",
+                "Investment Judgment: Evaluated demand, reliability, operating costs, ecosystem dependencies, and scalability before deciding whether to continue investing.",
+              ],
+            },
+          },
+          row2: {
+            throughline: "Discover workflows → Model complexity → Build for reliability → Validate scalability",
+            left: [
+              {
+                title: "Understand the Real Operator Workflow",
+                description:
+                  "Started with how restaurants actually manage menus, ingredients, and customer requests rather than assuming they would adopt a new standalone system.",
+                bullets: [
+                  "Interviewed restaurant operators and observed frontline workflows.",
+                  "Identified data-maintenance burden and integration constraints.",
+                  "Distinguished consumer demand from restaurant willingness and ability to participate.",
+                ],
+              },
+              {
+                title: "Translate Domain Complexity into a Data Model",
+                description:
+                  "Designed a structured data model to represent ingredients, recipes, modifiers, and menu items while making information accuracy an explicit product requirement.",
+                bullets: [
+                  "Modeled relationships between ingredients, recipes, and customized menu items.",
+                  "Accounted for allergen propagation and incomplete information.",
+                  "Designed APIs around maintainable operator workflows rather than isolated consumer features.",
+                ],
+              },
+            ],
+            right: [
+              {
+                title: "Build an Integrated, Multi-Tenant Product",
+                description: "Turned research into a working system spanning restaurant operations, consumer access, and backend services.",
+                bullets: [
+                  "Built an operator portal, consumer application, and backend with 50+ API endpoints.",
+                  "Implemented tenant isolation, authentication, and role-based access.",
+                  "Used AI-assisted development to accelerate prototyping and implementation.",
+                ],
+              },
+              {
+                title: "Make the Scale-or-Stop Decision",
+                description:
+                  "Evaluated whether a functional product and early customer interest translated into a sustainable business opportunity.",
+                bullets: [
+                  "Secured pilot interest from three restaurants.",
+                  "Evaluated ongoing data accuracy, liability, integration dependencies, and operational cost.",
+                  "Paused further investment when the scalability and market-timing constraints outweighed the available evidence for expansion.",
+                ],
+              },
+            ],
+          },
+          row3: {
+            outcomes: {
+              heading: "Outcomes",
+              bullets: [
+                {
+                  label: "Customer Validation",
+                  description:
+                    "Conducted 25 customer interviews and 50 field visits, identifying both consumer demand and operator adoption constraints.",
+                },
+                {
+                  label: "Technical Execution",
+                  description:
+                    "Built a functional multi-tenant MVP with an operator portal, consumer application, and 50+ API endpoints.",
+                },
+                {
+                  label: "Early Market Traction",
+                  description: "Secured pilot interest from three restaurant operators.",
+                },
+                {
+                  label: "Investment Discipline",
+                  description:
+                    "Made an evidence-based decision to pause rather than scale a product with unresolved operational and ecosystem constraints.",
+                },
+              ],
+            },
+            learnings: {
+              heading: "How I Evaluate Product Viability",
+              bullets: [
+                "User Value: Does the product solve a meaningful problem?",
+                "Workflow Fit: Can it work within existing operator processes?",
+                "Data Reliability: Can the system maintain accurate, trustworthy information?",
+                "Technical Complexity: What architecture and integrations are required?",
+                "Operational Scalability: What manual work remains as adoption grows?",
+                "Investment Decision: Does the evidence justify the next phase of development?",
+              ],
+              closing:
+                "Building a working product proves technical feasibility. Building a scalable business requires operational feasibility—and knowing when those two diverge is a critical product decision.",
+            },
+          },
+          artifacts: {
+            projectHref: "/work/dishclosure-founder-mode",
+            projectLabel: "Dishclosure",
+            items: [
+              {
+                id: "dishclosure-product-strategy",
+                subline:
+                  "How adjacent products, integrations, and market structure informed the product's strategic positioning.",
+              },
+              {
+                id: "dishclosure-data-erd",
+                subline:
+                  "How ingredients, recipes, modifiers, and menu relationships were translated into the data model.",
+              },
+              {
+                id: "dishclosure-ux-prototype",
+                subline:
+                  "How frontline observation and operator interviews shaped the workflows used to test menu and ingredient maintenance.",
+              },
+              {
+                id: "dishclosure-legal-doc",
+              },
+              {
+                id: "dishclosure-technical-design",
+                subline:
+                  "How customer research became technical specifications and a working multi-tenant product.",
+              },
+            ],
+          },
+        },
+      },
+    },
+  },
 ]
 
 const BY_ID = new Map(JOB_VARIANTS.map((variant) => [variant.id, variant]))

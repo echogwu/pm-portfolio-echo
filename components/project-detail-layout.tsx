@@ -76,6 +76,8 @@ export type ProjectDetailLayoutProps = {
       bullets?: string[]
       /** A single arrow chain, shown in place of the bullet list. */
       flow?: string
+      /** Optional line under the list or chain. Omitted pages render nothing here. */
+      closing?: string
     }
   }
 
@@ -149,18 +151,22 @@ function LearningsBody({
   learnings,
   listClassName,
 }: {
-  learnings: { bullets?: string[]; flow?: string }
+  learnings: { bullets?: string[]; flow?: string; closing?: string }
   listClassName: string
 }) {
-  if (learnings.flow) {
-    return <p className="mt-4 text-foreground/90 leading-relaxed italic">{learnings.flow}</p>
-  }
   return (
-    <ul className={listClassName}>
-      {(learnings.bullets ?? []).map((b) => (
-        <li key={b}>{b}</li>
-      ))}
-    </ul>
+    <>
+      {learnings.flow ? (
+        <p className="mt-4 text-foreground/90 leading-relaxed italic">{learnings.flow}</p>
+      ) : (
+        <ul className={listClassName}>
+          {(learnings.bullets ?? []).map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+      )}
+      {learnings.closing ? <p className="mt-4 text-foreground/90 leading-relaxed">{learnings.closing}</p> : null}
+    </>
   )
 }
 
